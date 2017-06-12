@@ -1,10 +1,81 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
-import styles from './styles/HomePage.css';
-import classNames from 'classnames/bind';
+// import styles from './styles/HomePage.css';
+// import classNames from 'classnames/bind';
+//
+// let cx = classNames.bind(styles);
 
-let cx = classNames.bind(styles);
+const Section = styled.section`
+	height: 100vh;
+	width: 100%;
+`;
+
+const AboutSection = Section.extend`
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
+const Name = styled.h1`
+	font-family: Helvetica;
+	font-size: 180px;
+	margin-top: 30vh;
+`;
+
+const SkillArea = styled.h3`
+	color: #9B9B9B;
+	font-family: Helvetica;
+	font-size: 64px;
+
+	&:hover {
+		color: #000000;
+	}
+`;
+
+const BodyText = styled.p`
+	color: white;
+	font-family: Courier;
+	font-size: 30px;
+`;
+
+const AboutText = BodyText.extend`
+	width: 40%;
+	margin-left: 10%;
+`;
+
+const Circle = styled.h5`
+	position: relative;
+	display: inline-block;
+
+	> span {
+	    font-family: Courier;
+	    font-size: 20px;
+	    height: 80px;
+	    position: absolute;
+	    transform-origin: bottom center;
+	    width: 20px;
+	}
+
+	:nth-child(1) {
+	    left: 0%;
+	}
+
+	:nth-child(2) {
+	    left: 33.3%;
+	}
+
+	:nth-child(3) {
+	    left: 66.6%;
+	}
+
+	:nth-child(4) {
+	    left: 100%;
+	}
+`;
+
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -17,42 +88,42 @@ class HomePage extends React.Component {
     render() {
         return (
         	<div>
-	            <section className={cx('section-full')} id={cx('splash')}>
+	            <Section>
 					<Grid fluid>
 						<Row>
 							<Col xs={6}>
-	                    		<h1 onMouseLeave={this.revealFeature} className={cx('splash-text')} id={cx('name')}>BOMANI</h1>
+	                    		<Name>BOMANI</Name>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<h3 className={classNames(cx('splash-text'), cx('skill-area'))}>SOFTWARE</h3>
+	                    		<SkillArea>SOFTWARE</SkillArea>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<h3 className={classNames(cx('splash-text'), cx('skill-area'))}>DESIGN</h3>
+	                    		<SkillArea>DESIGN</SkillArea>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<h3 className={classNames(cx('splash-text'), cx('skill-area'))}>ART</h3>
+	                    		<SkillArea>ART</SkillArea>
 							</Col>
 						</Row>
 					</Grid>
-                </section>
-				<section className={cx('section-full')} id={cx('about')}>
-					<img id={cx('scan')} src="http://vgl.ict.usc.edu/Research/DigitalEmily/webImages/Slide40_SINGLE.png"/>
-					<p className={cx('body-text')} id={cx('about-text')}>
+                </Section>
+				<AboutSection>
+					<img id='scan' src="http://vgl.ict.usc.edu/Research/DigitalEmily/webImages/Slide40_SINGLE.png"/>
+					<AboutText>
 						My name is Bomani McClendon. I’m a software developer, researcher, and designer
 						based in Nashville, TN. My interests include instructional design and music.
 						I write software tutorials and speak about design and technology.
-					</p>
-				</section>
-				<section className={cx('footer')}>
+					</AboutText>
+				</AboutSection>
+				<div>
 					<Grid fluid>
 						<Row>
-							<Col xs={8} xsOffset={2} className={cx('circle-container')}>
+							<Col xs={8} xsOffset={2}>
 								<CircleType text="MEDIUM MEDIUM MEDIUM "/>
 								<CircleType text="GITHUB GITHUB GITHUB "/>
 								<CircleType text="LINKEDIN LINKEDIN LINKEDIN "/>
@@ -60,7 +131,7 @@ class HomePage extends React.Component {
 							</Col>
 						</Row>
 					</Grid>
-				</section>
+				</div>
             </div>
         );
     }
@@ -76,7 +147,6 @@ class CircleType extends React.Component {
 		for(let i = 0; i < splitString.length; i++) {
 			splitElements.push(
 				<span
-					className={cx("char" + (i+1))}
 					style={{
 						transform: `rotate(${Math.ceil((360/splitString.length)*i)}deg)`
 					}}>
@@ -89,9 +159,9 @@ class CircleType extends React.Component {
 	}
     render() {
         return (
-			<h5 className={cx('circle')}>
+			<Circle>
 				{this.charify(this.props.text)}
-			</h5>
+			</Circle>
 		)
     }
 }
