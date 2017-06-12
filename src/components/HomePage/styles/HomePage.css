@@ -4,16 +4,13 @@
     width: 100%;
 }
 
-.footer {
-    height: 20vh;
-}
+.footer {}
 
 #about {
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction:row;
 }
 
 
@@ -38,8 +35,7 @@
 
 
 /* About Page Section */
-#scan {
-}
+#scan {}
 
 .body-text {
     color: white;
@@ -50,5 +46,35 @@
 #about-text {
     width: 40%;
     margin-left: 10%;
+}
 
+/* Footer Section */
+.circle {
+    position: relative;
+    display: inline-block;
+}
+
+.circle:nth-child(1) {
+    left: 0%;
+}
+
+.circle:nth-child(2) {
+    left: 33.3%;
+}
+
+.circle:nth-child(3) {
+    left: 66.6%;
+}
+
+.circle:nth-child(4) {
+    left: 100%;
+}
+
+.circle span {
+    font-family: Courier;
+    font-size: 20px;
+    height: 80px;
+    position: absolute;
+    transform-origin: bottom center;
+    width: 20px;
 }

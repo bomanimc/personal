@@ -45,9 +45,50 @@ class HomePage extends React.Component {
 						I write software tutorials and speak about design and technology.
 					</p>
 				</section>
-				<section className={cx('footer')}></section>
+				<section className={cx('footer')}>
+					<Grid fluid>
+						<Row>
+							<Col xs={8} xsOffset={2} className={cx('circle-container')}>
+								<CircleType text="MEDIUM MEDIUM MEDIUM "/>
+								<CircleType text="GITHUB GITHUB GITHUB "/>
+								<CircleType text="LINKEDIN LINKEDIN LINKEDIN "/>
+								<CircleType text="TWITTER TWITTER TWITTER "/>
+							</Col>
+						</Row>
+					</Grid>
+				</section>
             </div>
         );
+    }
+}
+
+class CircleType extends React.Component {
+	constructor(props) {
+        super(props);
+    }
+	charify(input) {
+		let splitString = input.split("");
+		let splitElements = [];
+		for(let i = 0; i < splitString.length; i++) {
+			splitElements.push(
+				<span
+					className={cx("char" + (i+1))}
+					style={{
+						transform: `rotate(${Math.ceil((360/splitString.length)*i)}deg)`
+					}}>
+					{splitString[i]}
+				</span>
+			);
+		}
+
+		return splitElements;
+	}
+    render() {
+        return (
+			<h5 className={cx('circle')}>
+				{this.charify(this.props.text)}
+			</h5>
+		)
     }
 }
 
