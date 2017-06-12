@@ -10,14 +10,18 @@ class HomePage extends React.Component {
 	constructor(props) {
         super(props);
     }
+	revealFeature() {
+		console.log("REVEAL")
+		// document.getElementById(cx('splash')).style.backgroundPosition = "0 -100%";
+	}
     render() {
         return (
         	<div>
-	            <section className={cx('section-full')}>
+	            <section className={cx('section-full')} id={cx('splash')}>
 					<Grid fluid>
 						<Row>
 							<Col xs={6}>
-	                    		<h1 className={cx('splash-text')} id={cx('name')}>BOMANI</h1>
+	                    		<h1 onMouseLeave={this.revealFeature} className={cx('splash-text')} id={cx('name')}>BOMANI</h1>
 							</Col>
 						</Row>
 						<Row>
