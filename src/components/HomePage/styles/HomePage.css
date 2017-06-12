@@ -1,0 +1,31 @@
+# Basic CSS to setup the sections.
+.section-full {
+    height: 100vh;
+}
+
+.footer {
+    height: 20vh;
+}
+
+#about {
+    background-color: black;
+}
+
+.splash-text {
+    font-family: Helvetica;
+}
+
+#name {
+    font-size: 180px;
+    margin-top: 30vh;
+}
+
+.skill-area {
+    color: #9B9B9B;
+    /*display: inline-block;*/
+    font-size: 64px;
+}
+
+.skill-area:hover {
+    color: #000000;
+}
