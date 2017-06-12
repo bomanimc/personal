@@ -2,11 +2,6 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
-// import styles from './styles/HomePage.css';
-// import classNames from 'classnames/bind';
-//
-// let cx = classNames.bind(styles);
-
 const Section = styled.section`
 	height: 100vh;
 	width: 100%;
