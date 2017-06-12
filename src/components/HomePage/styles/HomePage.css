@@ -1,6 +1,7 @@
-# Basic CSS to setup the sections.
+/* Basic CSS to setup the sections. */
 .section-full {
     height: 100vh;
+    width: 100%;
 }
 
 .footer {
@@ -9,8 +10,14 @@
 
 #about {
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:row;
 }
 
+
+/* Splash Page Section */
 .splash-text {
     font-family: Helvetica;
 }
@@ -22,10 +29,26 @@
 
 .skill-area {
     color: #9B9B9B;
-    /*display: inline-block;*/
     font-size: 64px;
 }
 
 .skill-area:hover {
     color: #000000;
+}
+
+
+/* About Page Section */
+#scan {
+}
+
+.body-text {
+    color: white;
+    font-family: Courier;
+    font-size: 30px;
+}
+
+#about-text {
+    width: 40%;
+    margin-left: 10%;
+
 }

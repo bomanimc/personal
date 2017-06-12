@@ -37,7 +37,14 @@ class HomePage extends React.Component {
 						</Row>
 					</Grid>
                 </section>
-				<section className={cx('section-full')} id={cx('about')}></section>
+				<section className={cx('section-full')} id={cx('about')}>
+					<img id={cx('scan')} src="http://vgl.ict.usc.edu/Research/DigitalEmily/webImages/Slide40_SINGLE.png"/>
+					<p className={cx('body-text')} id={cx('about-text')}>
+						My name is Bomani McClendon. I’m a software developer, researcher, and designer
+						based in Nashville, TN. My interests include instructional design and music.
+						I write software tutorials and speak about design and technology.
+					</p>
+				</section>
 				<section className={cx('footer')}></section>
             </div>
         );
