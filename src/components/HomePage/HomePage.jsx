@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 
 const Section = styled.section`
 	height: 100vh;
@@ -45,18 +46,19 @@ const AboutText = BodyText.extend`
 	margin-left: 10%;
 `;
 
+const rotate360 = props => keyframes`
+	from {
+		transform: rotate(${props.deg}deg);
+	}
+
+	to {
+		transform: rotate(${props.deg + 360}deg);
+	}
+`;
+
 const Circle = styled.h5`
 	position: relative;
 	display: inline-block;
-
-	> span {
-	    font-family: Courier;
-	    font-size: 20px;
-	    height: 80px;
-	    position: absolute;
-	    transform-origin: bottom center;
-	    width: 20px;
-	}
 
 	:nth-child(1) {
 	    left: 0%;
@@ -73,6 +75,16 @@ const Circle = styled.h5`
 	:nth-child(4) {
 	    left: 100%;
 	}
+`;
+
+const Letter = styled.span`
+	animation: ${rotate360} 10s linear infinite;
+	font-family: Courier;
+	font-size: 20px;
+	height: 80px;
+	position: absolute;
+	transform-origin: bottom center;
+	width: 20px;
 `;
 
 const SocialMediaLink = styled.a`
@@ -152,13 +164,10 @@ class CircleType extends React.Component {
 		let splitElements = [];
 		for(let i = 0; i < splitString.length; i++) {
 			splitElements.push(
-				<span
-					key={i}
-					style={{
-						transform: `rotate(${Math.ceil((360/splitString.length)*i)}deg)`
-					}}>
+				<Letter deg={Math.ceil((360/splitString.length)*i)}
+					key={i}>
 					<SocialMediaLink href={this.props.url}>{splitString[i]}</SocialMediaLink>
-				</span>
+				</Letter>
 			);
 		}
 
