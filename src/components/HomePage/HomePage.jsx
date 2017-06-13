@@ -150,6 +150,7 @@ class CircleType extends React.Component {
 		for(let i = 0; i < splitString.length; i++) {
 			splitElements.push(
 				<span
+					key={i}
 					style={{
 						transform: `rotate(${Math.ceil((360/splitString.length)*i)}deg)`
 					}}>
