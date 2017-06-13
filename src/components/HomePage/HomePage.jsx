@@ -71,6 +71,14 @@ const Circle = styled.h5`
 	}
 `;
 
+const SocialMediaLink = styled.a`
+	color: black;
+	text-decoration: none;
+
+	&:visted {
+		color: black;
+	}
+`;
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -119,10 +127,10 @@ class HomePage extends React.Component {
 					<Grid fluid>
 						<Row>
 							<Col xs={8} xsOffset={2}>
-								<CircleType text="MEDIUM MEDIUM MEDIUM "/>
-								<CircleType text="GITHUB GITHUB GITHUB "/>
-								<CircleType text="LINKEDIN LINKEDIN LINKEDIN "/>
-								<CircleType text="TWITTER TWITTER TWITTER "/>
+								<CircleType text="MEDIUM MEDIUM MEDIUM " url="https://medium.com/@bomani"/>
+								<CircleType text="GITHUB GITHUB GITHUB " url="https://github.com/bomanimc"/>
+								<CircleType text="LINKEDIN LINKEDIN LINKEDIN " url="https://www.linkedin.com/in/bomanimc/"/>
+								<CircleType text="TWITTER TWITTER TWITTER " url="https://twitter.com/bxmani"/>
 							</Col>
 						</Row>
 					</Grid>
@@ -145,7 +153,7 @@ class CircleType extends React.Component {
 					style={{
 						transform: `rotate(${Math.ceil((360/splitString.length)*i)}deg)`
 					}}>
-					{splitString[i]}
+					<SocialMediaLink href={this.props.url}>{splitString[i]}</SocialMediaLink>
 				</span>
 			);
 		}
