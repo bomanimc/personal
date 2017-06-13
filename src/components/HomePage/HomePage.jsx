@@ -7,6 +7,10 @@ const Section = styled.section`
 	width: 100%;
 `;
 
+const SplashSection = Section.extend`
+	transition: background .5s ease;
+`;
+
 const AboutSection = Section.extend`
 	background-color: black;
 	display: flex;
@@ -21,7 +25,7 @@ const Name = styled.h1`
 `;
 
 const SkillArea = styled.h3`
-	color: #9B9B9B;
+	color: rgba(0, 0, 0, 0.3);
 	font-family: Helvetica;
 	font-size: 64px;
 
@@ -84,14 +88,13 @@ class HomePage extends React.Component {
 	constructor(props) {
         super(props);
     }
-	revealFeature() {
-		console.log("REVEAL")
-		// document.getElementById(cx('splash')).style.backgroundPosition = "0 -100%";
+	revealFeature(e) {
+		document.getElementById("splash").style.backgroundColor = e.target.getAttribute("data-color");
 	}
     render() {
         return (
         	<div>
-	            <Section>
+	            <SplashSection id="splash">
 					<Grid fluid>
 						<Row>
 							<Col xs={6}>
@@ -100,21 +103,21 @@ class HomePage extends React.Component {
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<SkillArea>SOFTWARE</SkillArea>
+	                    		<SkillArea data-color="#f1c40f" onMouseEnter={this.revealFeature}>SOFTWARE</SkillArea>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<SkillArea>DESIGN</SkillArea>
+	                    		<SkillArea data-color="#3498db" onMouseEnter={this.revealFeature}>DESIGN</SkillArea>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<SkillArea>ART</SkillArea>
+	                    		<SkillArea data-color="#e74c3c" onMouseEnter={this.revealFeature}>ART</SkillArea>
 							</Col>
 						</Row>
 					</Grid>
-                </Section>
+                </SplashSection>
 				<AboutSection>
 					<img id='scan' src="http://vgl.ict.usc.edu/Research/DigitalEmily/webImages/Slide40_SINGLE.png"/>
 					<AboutText>
