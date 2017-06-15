@@ -9,19 +9,24 @@ const Section = styled.section`
 `;
 
 const SplashSection = Section.extend`
+	align-items: flex-start;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
 	transition: background .5s ease;
 `;
 
 const AboutSection = Section.extend`
+	align-items: center;
 	background-color: black;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 `;
 
 const Name = styled.h1`
 	font-family: Helvetica;
 	font-size: 180px;
+	line-height: 0.80;
 	margin-top: 30vh;
 `;
 
@@ -32,6 +37,37 @@ const SkillArea = styled.h3`
 
 	&:hover {
 		color: #000000;
+	}
+`;
+
+const Header = styled.h5`
+	color: #FFFFFF;
+	font-family: Courier;
+	font-size: 20px;
+	margin-top: 30vh;
+`;
+
+const FeaturedName = styled.h3`
+	color: #FFFFFF;
+	font-family: Courier;
+	font-size: 64px;
+`;
+
+const FeaturedText = styled.p`
+	color: #FFFFFF;
+	font-family: Courier;
+	font-size: 20px;
+	margin: 10px 0px;
+`;
+
+const AllProjects = styled.a`
+	color: #FFFFFF;
+	font-family: Courier;
+	font-size: 20px;
+	margin: 10px 0px;
+
+	&:visted {
+		color: #FFFFFF;
 	}
 `;
 
@@ -96,18 +132,43 @@ const SocialMediaLink = styled.a`
 	}
 `;
 
+let features = {
+	dialup: {
+		name: "DIAL UP",
+		body: "CREATIVE COLLECTIVE THAT CREATES MUSIC, VIDEOS, MAGAZINES, AND TECHNOLOGY. WEBSITE FEATURED ON BRUTALIST WEBSITES.",
+		roles: "ROLES: WEBSITE DESIGN/DEVELOMENT, DJ, WRITER."
+	},
+	urgentaction: {
+		name: "URGENT ACTION",
+		body: "REDESIGN OF AMNESTY INTERNATIONAL’S URGENT SERVICE. REIMPLEMENT IN REACT NATIVE.",
+		roles: "ROLES: UI/UX DESIGN, SOFTWARE DEVELOPMENT."
+	},
+	shrumenlumen: {
+		name: "SHRUMEN LUMEN",
+		body: "INTERACTIVE ART INSTALLATION MADE UP OF FIVE GLOWING MUSHROOMS THAT REACT TO THE PRESENCE OF PEOPLE.",
+		roles: "ROLES: LEAD SOFTWARE DEVELOPER (FIRST SHOWINGS), HARDWARE-SOFTWARE INTEGRATION."
+	}
+}
 class HomePage extends React.Component {
 	constructor(props) {
         super(props);
+		this.state = {
+			feature: {nane: "", body: "", roles: ""},
+			featureShow: false
+		}
     }
 	revealFeature(e) {
 		document.getElementById("splash").style.backgroundColor = e.target.getAttribute("data-color");
+		this.setState({
+			feature: features[e.target.getAttribute("data-feature")],
+			featureShow: true
+		})
 	}
     render() {
         return (
         	<div>
 	            <SplashSection id="splash">
-					<Grid fluid>
+					<Grid fluid style={{margin: "0px 0px"}}>
 						<Row>
 							<Col xs={6}>
 	                    		<Name>BOMANI</Name>
@@ -115,17 +176,59 @@ class HomePage extends React.Component {
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<SkillArea data-color="#f1c40f" onMouseEnter={this.revealFeature}>SOFTWARE</SkillArea>
+	                    		<SkillArea
+									data-color="#f1c40f"
+									data-feature="dialup"
+									onMouseEnter={this.revealFeature.bind(this)}>
+									SOFTWARE
+								</SkillArea>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<SkillArea data-color="#3498db" onMouseEnter={this.revealFeature}>DESIGN</SkillArea>
+	                    		<SkillArea
+									data-color="#3498db"
+									data-feature="urgentaction"
+									onMouseEnter={this.revealFeature.bind(this)}>
+									DESIGN
+								</SkillArea>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={4}>
-	                    		<SkillArea data-color="#e74c3c" onMouseEnter={this.revealFeature}>ART</SkillArea>
+	                    		<SkillArea
+									data-color="#e74c3c"
+									data-feature="shrumenlumen"
+									onMouseEnter={this.revealFeature.bind(this)}>
+									ART
+								</SkillArea>
+							</Col>
+						</Row>
+					</Grid>
+					<Grid fluid style={{margin: "0px 0px 0px 20px", visibility: this.state.featureShow ? "block" : "none"}}>
+						<Row>
+							<Col xs={1} xsOffset={1}>
+	                    		<Header>FEATURED</Header>
+							</Col>
+						</Row>
+						<Row>
+							<Col xs={9} xsOffset={1}>
+	                    		<FeaturedName>{this.state.feature.name}</FeaturedName>
+							</Col>
+						</Row>
+						<Row>
+							<Col xs={9} xsOffset={1}>
+	                    		<FeaturedText>{this.state.feature.body}</FeaturedText>
+							</Col>
+						</Row>
+						<Row>
+							<Col xs={9} xsOffset={1}>
+	                    		<FeaturedText>{this.state.feature.roles}</FeaturedText>
+							</Col>
+						</Row>
+						<Row>
+							<Col xs={9} xsOffset={1}>
+	                    		<AllProjects href="/projects">ALL PROJECTS</AllProjects>
 							</Col>
 						</Row>
 					</Grid>
