@@ -1,5 +1,3 @@
-
-
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 THREE.Cache.enabled = true;
@@ -34,14 +32,10 @@ var mouseXOnMouseDown = 0;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
-init();
-animate();
-
 function init() {
 
-	container = document.createElement( 'div' );
-	document.body.appendChild( container );
-
+	container = document.getElementById('three');
+  
 	// CAMERA
 
 	camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 1500 );
@@ -353,3 +347,6 @@ function render() {
 	effect.render( scene, camera );
 
 }
+
+window.initThree = init;
+window.animateThree = animate;
