@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 let Section = styled.section`
 	background-color: ${props => props.bgColor};
@@ -39,6 +39,39 @@ let Role = styled.p`
 
 let Image = styled.img`
 	width: 100%;
+`;
+
+const rotate360 = props => keyframes`
+	from {
+		transform: rotate(${props.deg}deg);
+	}
+	to {
+		transform: rotate(${props.deg + 360}deg);
+	}
+`;
+
+const Circle = styled.h5`
+	position: fixed;
+	display: inline-block;
+	bottom: 150px;
+	right: 100px;
+`;
+
+const Letter = styled.span`
+	animation: ${rotate360} 10s linear infinite;
+	font-family: Courier;
+	height: 70px;
+	position: absolute;
+	transform-origin: bottom center;
+	width: 20px;
+`;
+
+const SocialMediaLink = styled.a`
+	color: white;
+	text-decoration: none;
+	&:visted {
+		color: white;
+	}
 `;
 
 class HomePage extends React.Component {
@@ -85,6 +118,10 @@ class HomePage extends React.Component {
 						(section, idx) => <ProjectSection key={idx} content={section}/>
 					)
 				}
+				<CircleType
+					text="GITHUB EMAIL TWITTER LINKEDIN "
+					url="https://medium.com/@bomani"
+				/>
 			</div>
 		);
 	}
@@ -116,6 +153,34 @@ class ProjectSection extends React.Component {
 				</Grid>
 			</Section>
 		);
+	}
+}
+
+class CircleType extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	charify(input) {
+		let splitString = input.split("");
+		let splitElements = [];
+		for(let i = 0; i < splitString.length; i++) {
+			splitElements.push(
+				<Letter deg={Math.ceil((360/splitString.length)*i)} key={i}>
+					<SocialMediaLink href={this.props.url}>
+						{splitString[i]}
+					</SocialMediaLink>
+				</Letter>
+			);
+		}
+
+		return splitElements;
+	}
+	render() {
+		return (
+			<Circle>
+				{this.charify(this.props.text)}
+			</Circle>
+		)
 	}
 }
 
