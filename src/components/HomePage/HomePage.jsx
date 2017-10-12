@@ -2,14 +2,18 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled, { keyframes } from 'styled-components';
 
+// import AsciiName from './ascii_name';
+import Shape from './Shape';
+
 let Section = styled.section`
 	background-color: ${props => props.bgColor};
 	color: ${props => props.textColor};
 	min-height: 100vh;
 	border-top: 1px solid white;
 	display: flex;
-  align-items: center;
-  justify-content: center;
+	flex-direction: column;
+  align-items: ${props => props.align};
+  justify-content: space-between;
 `;
 
 let Tagline = styled.p`
@@ -22,14 +26,38 @@ let Tagline = styled.p`
 	padding: 5px;
 `;
 
+let ThreeArea = styled.section`
+	color: white;
+	width: 100%;
+	min-height: 100vh;
+	width: 15%;
+`;
+
+let Introduction = styled.section`
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+	height: 100vh;
+	width: 30%;
+	text-align: center;
+	margin: 0 auto;
+`;
+
 let Title = styled.h1`
-	font-size: 75px;
+	font-size: 30px;
 	font-weight: bold;
 `;
 
 let Body = styled.p`
 	margin-top: 20px;
-	font-size: 20px;
+	font-size: 15px;
+	font-weight: lighter;
+`;
+
+let Banner = styled.div`
+	width: 100%;
+	height: 40px;
+	background-color: blue;
 `;
 
 let Role = styled.p`
@@ -39,39 +67,6 @@ let Role = styled.p`
 
 let Image = styled.img`
 	width: 100%;
-`;
-
-const rotate360 = props => keyframes`
-	from {
-		transform: rotate(${props.deg}deg);
-	}
-	to {
-		transform: rotate(${props.deg + 360}deg);
-	}
-`;
-
-const Circle = styled.h5`
-	position: fixed;
-	display: inline-block;
-	bottom: 150px;
-	right: 100px;
-`;
-
-const Letter = styled.span`
-	animation: ${rotate360} 10s linear infinite;
-	font-family: Courier;
-	height: 70px;
-	position: absolute;
-	transform-origin: bottom center;
-	width: 20px;
-`;
-
-const SocialMediaLink = styled.a`
-	color: white;
-	text-decoration: none;
-	&:visted {
-		color: white;
-	}
 `;
 
 class HomePage extends React.Component {
@@ -101,34 +96,61 @@ class HomePage extends React.Component {
 		      textColor: `#FF433E`
 		    }
 		  ];
+			console.log("REACT CONSTRUCTOR")
+			this.leftShape = new Shape("left");
+			this.rightShape = new Shape("right");
 
 			this.state = {
 				content: content,
 			};
 	}
   render() {
+		console.log("RENDER")
 		return (
 			<div>
-				<Section bgColor="black" textColor="white">
-					<div id="three"></div>
-					<Tagline>software. design. art.</Tagline>
+				<Section bgColor="black" textColor="white" align="center">
+					{/* <ThreeArea id="left"></ThreeArea> */}
+					<Introduction>
+						<Title>Bomani McClendon</Title>
+						<Body>
+							Bomani McClendon is a software engineer, designer, and freelancer based in New York City.
+						</Body>
+						<Body>
+							His interests lay at the intersection of software, design, and art.
+						</Body>
+						<Body>
+							See his work below.
+						</Body>
+					</Introduction>
+					{/* <ThreeArea id="right"></ThreeArea> */}
 				</Section>
-				{
+				<Section bgColor="black" textColor="white" align ="normal">
+					<Marquee />
+				</Section>
+				{/* {
 					this.state.content.map(
 						(section, idx) => <ProjectSection key={idx} content={section}/>
 					)
-				}
-				<CircleType
-					text="GITHUB EMAIL TWITTER LINKEDIN "
-					url="https://medium.com/@bomani"
-				/>
+				} */}
 			</div>
 		);
 	}
 
 	componentDidMount() {
-		window.initThree();
-		window.animateThree();
+		this.leftShape.init();
+		this.leftShape.animate();
+		this.rightShape.init();
+		this.rightShape.animate();
+	}
+}
+
+class Marquee extends React.Component {
+	render() {
+		return (
+			<Banner>
+
+			</Banner>
+		);
 	}
 }
 
@@ -153,34 +175,6 @@ class ProjectSection extends React.Component {
 				</Grid>
 			</Section>
 		);
-	}
-}
-
-class CircleType extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	charify(input) {
-		let splitString = input.split("");
-		let splitElements = [];
-		for(let i = 0; i < splitString.length; i++) {
-			splitElements.push(
-				<Letter deg={Math.ceil((360/splitString.length)*i)} key={i}>
-					<SocialMediaLink href={this.props.url}>
-						{splitString[i]}
-					</SocialMediaLink>
-				</Letter>
-			);
-		}
-
-		return splitElements;
-	}
-	render() {
-		return (
-			<Circle>
-				{this.charify(this.props.text)}
-			</Circle>
-		)
 	}
 }
 
