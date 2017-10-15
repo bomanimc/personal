@@ -1,14 +1,13 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled, { keyframes } from 'styled-components';
 
-// import AsciiName from './ascii_name';
 import Shape from './Shape';
 
 let Section = styled.section`
 	background-color: ${props => props.bgColor};
 	color: ${props => props.textColor};
-	min-height: 100vh;
+	height: 100vh;
+	min-height: ${props => props.minHeight};
 	display: flex;
 	flex-direction: column;
   align-items: ${props => props.align};
@@ -33,12 +32,15 @@ let ThreeArea = styled.section`
 	width: 15%;
 `;
 
-let Introduction = styled.section`
+let ContentContainer = styled.section`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
+	align-items: ${props => props.horizontalCenter ? "center" : "normal"};
+	justify-content: ${props => props.verticalCenter ? "center" : "normal"};
+	height: 100%;
+`;
+
+let Introduction = ContentContainer.extend`
 	width: 30%;
 	text-align: center;
 
@@ -53,8 +55,11 @@ let Title = styled.h1`
 	font-weight: bold;
 `;
 
+let Name = Title.extend`
+	margin-bottom: 20px;
+`;
+
 let Body = styled.p`
-	margin-top: 20px;
 	font-size: 15px;
 	font-weight: lighter;
 `;
@@ -71,13 +76,63 @@ let Banner = styled.div`
 	background-color: blue;
 `;
 
+let Filter = Body.extend`
+	margin: 10px 0px 40px 0px;
+`;
+
+let Link = styled.a`
+	text-decoration: none;
+	color: white;
+
+	&:hover {
+		text-decoration: underline;
+	}
+`;
+
 let Role = styled.p`
 	margin-top: 20px;
 	font-size: 20px;
 `;
 
-let Image = styled.img`
-	width: 100%;
+let ProjectContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-bottom: 40px;
+	flex-wrap: nowrap;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
+`;
+
+let ProjectContent = styled.div`
+	flex-basis: 500px;
+	order: ${props => props.order};
+`;
+
+let ProjectImage = styled.img`
+	height: 200px;
+	width: 300px;
+	flex-basis: 300px;
+	margin-right: 10px;
+	border: solid white;
+	order: ${props => props.order};
+`;
+
+let ProjectTitle= Title.extend`
+	text-transform: uppercase;
+`;
+
+let ProjectDetail = Body.extend`
+	margin: 5px 0px 15px 0px;
+`;
+
+let ProjectTags = styled.span`
+	font-style: italic;
+`;
+
+let ProjectRole= Body.extend`
+	margin-top: 20px;
 `;
 
 class HomePage extends React.Component {
@@ -87,6 +142,7 @@ class HomePage extends React.Component {
 		 const content = [
 		    {
 		      title: `Shrumen Lumen`,
+					tags: ['Software', 'Art'],
 		      body: `Interactive art installation made up of five glowing mushrooms
 						that react to the presence of people. Presented at Burning Man 2016
 						and Meet D3 Festival in Dubai. On diplay at the Smithsonian Museum
@@ -99,30 +155,40 @@ class HomePage extends React.Component {
 		    },
 		    {
 		      title: `Dial Up`,
+					tags: ['Software', 'Design'],
 		      body: `Creative collective that creates music, videos, magazines, and
 						technology. Website featured on Brutalist Websites.`,
 		      roles: `Website Design/Develoment, DJ, Writer.`,
 		      media: `img/dialup/dialupscreen.png`,
 		      bgColor: `#FFF`,
 		      textColor: `#FF433E`
+		    },
+				{
+		      title: `NegativeReel`,
+					tags: ['Software', 'Art'],
+		      body: `Projection mapping installation that displays negative thoughts
+						 people have about themselves as an expression of vulnerability.`,
+		      roles: `Creative Lead, Projection Mapping, Software Development.`,
+		      media: `img/dialup/dialupscreen.png`,
+		      bgColor: `#FFF`,
+		      textColor: `#FF433E`
 		    }
 		  ];
-			console.log("REACT CONSTRUCTOR")
-			this.leftShape = new Shape("left");
-			this.rightShape = new Shape("right");
 
 			this.state = {
 				content: content,
 			};
 	}
   render() {
-		console.log("RENDER")
 		return (
 			<div>
-				<Section bgColor="black" textColor="white" align="center">
-					{/* <ThreeArea id="left"></ThreeArea> */}
-					<Introduction>
-						<Title>Bomani McClendon</Title>
+				<Section
+					bgColor="black"
+					textColor="white"
+					align="center"
+					minHeight="600px">
+					<Introduction horizontalCenter={true} verticalCenter={true}>
+						<Name>Bomani McClendon</Name>
 						<Body>
 							Bomani McClendon is a software engineer, designer, and freelancer based in New York City.
 						</Body>
@@ -134,26 +200,23 @@ class HomePage extends React.Component {
 							See his work below.
 						</Body>
 					</Introduction>
-					{/* <ThreeArea id="right"></ThreeArea> */}
 				</Section>
 				<Marquee />
-				<Section bgColor="black" textColor="white" align ="normal">
-
+				<Section bgColor="black" textColor="white" align ="normal" minHeight={`${this.state.content.length*250 + 200}px`}>
+					<ContentContainer horizontalCenter={true}>
+						<Title>Projects</Title>
+						<Filter>
+							<Link href='#'>Featured</Link> | <Link href='#'>Software</Link> • <Link href='#'>Design</Link> • <Link href='#'>Art</Link>
+						</Filter>
+						{
+							this.state.content.map(
+								(section, idx) => <ProjectSection key={idx} content={section}/>
+							)
+						}
+					</ContentContainer>
 				</Section>
-				{/* {
-					this.state.content.map(
-						(section, idx) => <ProjectSection key={idx} content={section}/>
-					)
-				} */}
 			</div>
 		);
-	}
-
-	componentDidMount() {
-		this.leftShape.init();
-		this.leftShape.animate();
-		this.rightShape.init();
-		this.rightShape.animate();
 	}
 }
 
@@ -169,24 +232,26 @@ class Marquee extends React.Component {
 
 class ProjectSection extends React.Component {
 	render() {
+		let tagString = '';
+		this.props.content.tags.map((tag, idx) => {
+			tagString += tag;
+			if (idx !== (this.props.content.tags.length - 1)) {
+				tagString += ' • ';
+			}
+		});
+
 		return (
-			<Section
-				bgColor={this.props.content.bgColor}
-				textColor={this.props.content.textColor}
-			>
-				<Grid fluid>
-					<Row>
-						<Col lg={4}>
-							<Title>{this.props.content.title.toUpperCase()}</Title>
-							<Body>{this.props.content.body}</Body>
-							<Role><b>Roles:</b> {this.props.content.roles}</Role>
-						</Col>
-						<Col lgOffset={1} lg={7}>
-							<Image src={this.props.content.media} />
-						</Col>
-					</Row>
-				</Grid>
-			</Section>
+			<ProjectContainer>
+				<ProjectImage order={1} />
+				<ProjectContent order={2}>
+					<ProjectTitle>{this.props.content.title}</ProjectTitle>
+					<ProjectDetail>
+						<ProjectTags>{tagString}</ProjectTags> | <Link>View</Link>
+					</ProjectDetail>
+					<Body>{this.props.content.body}</Body>
+					<ProjectRole>Roles: {this.props.content.roles}</ProjectRole>
+				</ProjectContent>
+			</ProjectContainer>
 		);
 	}
 }
