@@ -9,11 +9,11 @@ let Section = styled.section`
 	background-color: ${props => props.bgColor};
 	color: ${props => props.textColor};
 	min-height: 100vh;
-	border-top: 1px solid white;
 	display: flex;
 	flex-direction: column;
   align-items: ${props => props.align};
   justify-content: space-between;
+	margin: 0px 20px;
 `;
 
 let Tagline = styled.p`
@@ -36,11 +36,16 @@ let ThreeArea = styled.section`
 let Introduction = styled.section`
 	display: flex;
 	flex-direction: column;
-	align-content: space-between;
+	align-items: center;
+	justify-content: center;
 	height: 100vh;
 	width: 30%;
 	text-align: center;
-	margin: 0 auto;
+
+	@media (max-width: 768px) {
+		margin: 0px 20px;
+		width: 100%;
+	}
 `;
 
 let Title = styled.h1`
@@ -52,6 +57,12 @@ let Body = styled.p`
 	margin-top: 20px;
 	font-size: 15px;
 	font-weight: lighter;
+`;
+
+let Diagram = styled.img`
+	height: 200px;
+	width: 200px;
+	margin: 30px;
 `;
 
 let Banner = styled.div`
@@ -118,14 +129,16 @@ class HomePage extends React.Component {
 						<Body>
 							His interests lay at the intersection of software, design, and art.
 						</Body>
+						<Diagram src="/img/diagram.png" />
 						<Body>
 							See his work below.
 						</Body>
 					</Introduction>
 					{/* <ThreeArea id="right"></ThreeArea> */}
 				</Section>
+				<Marquee />
 				<Section bgColor="black" textColor="white" align ="normal">
-					<Marquee />
+
 				</Section>
 				{/* {
 					this.state.content.map(
