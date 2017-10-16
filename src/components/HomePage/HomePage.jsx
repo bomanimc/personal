@@ -111,11 +111,11 @@ let ProjectContent = styled.div`
 `;
 
 let ProjectImage = styled.img`
-	height: 200px;
-	width: 300px;
-	flex-basis: 300px;
+	height: 250px;
+	width: 400px;
+	flex-basis: 400px;
 	margin-right: 10px;
-	border: solid white;
+	border: 1px solid white;
 	order: ${props => props.order};
 `;
 
@@ -149,7 +149,7 @@ class HomePage extends React.Component {
 						in 2018.`,
 		      roles: `Lead Software Developer (First Showings),
 						Hardware-Software Integration.`,
-		      media: `img/shrumenlumen/Shrumen-Playa-day-50.jpg`,
+		      media: `img/shrumenlumen/shrumenlumen_main.png`,
 		      bgColor: `#919FB4`,
 		      textColor: `#FFF`
 		    },
@@ -159,7 +159,7 @@ class HomePage extends React.Component {
 		      body: `Creative collective that creates music, videos, magazines, and
 						technology. Website featured on Brutalist Websites.`,
 		      roles: `Website Design/Develoment, DJ, Writer.`,
-		      media: `img/dialup/dialupscreen.png`,
+		      media: `img/dialup/dialup_main.png`,
 		      bgColor: `#FFF`,
 		      textColor: `#FF433E`
 		    },
@@ -169,7 +169,7 @@ class HomePage extends React.Component {
 		      body: `Projection mapping installation that displays negative thoughts
 						 people have about themselves as an expression of vulnerability.`,
 		      roles: `Creative Lead, Projection Mapping, Software Development.`,
-		      media: `img/dialup/dialupscreen.png`,
+		      media: `img/negativereel/negativereel_main.png`,
 		      bgColor: `#FFF`,
 		      textColor: `#FF433E`
 		    }
@@ -242,7 +242,7 @@ class ProjectSection extends React.Component {
 
 		return (
 			<ProjectContainer>
-				<ProjectImage order={1} />
+				<ProjectImage order={1} src={this.props.content.media} />
 				<ProjectContent order={2}>
 					<ProjectTitle>{this.props.content.title}</ProjectTitle>
 					<ProjectDetail>
