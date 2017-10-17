@@ -101,25 +101,34 @@ let ProjectContainer = styled.div`
 	flex-wrap: nowrap;
 
 	@media (max-width: 768px) {
-		flex-direction: column;
+		display: block;
+		width: 100%;
 	}
 `;
 
 let ProjectContent = styled.div`
 	flex-basis: 500px;
-	order: ${props => props.order};
 `;
 
 let ProjectImage = styled.img`
 	height: 250px;
 	width: 400px;
 	flex-basis: 400px;
+	min-height: 250px;
+	min-width: 400px;
 	margin-right: 10px;
 	border: 1px solid white;
-	order: ${props => props.order};
+
+	@media (max-width: 768px) {
+		display: block;
+		width: 100%;
+		height: auto;
+		min-height: auto;
+		min-width: auto;
+	}
 `;
 
-let ProjectTitle= Title.extend`
+let ProjectTitle = Title.extend`
 	text-transform: uppercase;
 `;
 
@@ -131,7 +140,7 @@ let ProjectTags = styled.span`
 	font-style: italic;
 `;
 
-let ProjectRole= Body.extend`
+let ProjectRole = Body.extend`
 	margin-top: 20px;
 `;
 
