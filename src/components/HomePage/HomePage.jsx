@@ -210,7 +210,6 @@ class HomePage extends React.Component {
 						</Body>
 					</Introduction>
 				</Section>
-				<Marquee />
 				<Section bgColor="black" textColor="white" align ="normal" minHeight={`${this.state.content.length*250 + 200}px`}>
 					<ContentContainer horizontalCenter={true}>
 						<Title>Projects</Title>
@@ -223,6 +222,19 @@ class HomePage extends React.Component {
 							)
 						}
 					</ContentContainer>
+				</Section>
+				<Section
+					bgColor="black"
+					textColor="white"
+					align="center"
+					minHeight="600px">
+					<Introduction horizontalCenter={true} verticalCenter={true}>
+						<Body>
+							During the day, Bomani works on news products at Facebok.
+							He has previously interned at IDEO, Grubhub, and Boeing. See his
+							full resume <Link>here</Link>.
+						</Body>
+					</Introduction>
 				</Section>
 			</div>
 		);
