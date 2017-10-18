@@ -89,13 +89,9 @@ let Link = styled.a`
 	}
 `;
 
-let Role = styled.p`
-	margin-top: 20px;
-	font-size: 20px;
-`;
-
 let ProjectContainer = styled.div`
 	display: flex;
+	flex: 0 0 auto;
 	justify-content: center;
 	margin-bottom: 40px;
 	flex-wrap: nowrap;
@@ -115,7 +111,6 @@ let ProjectImage = styled.img`
 	width: 400px;
 	flex-basis: 400px;
 	min-height: 250px;
-	min-width: 400px;
 	margin-right: 10px;
 	border: 1px solid white;
 
