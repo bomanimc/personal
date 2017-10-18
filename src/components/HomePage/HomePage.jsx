@@ -6,7 +6,7 @@ import Shape from './Shape';
 let Section = styled.section`
 	background-color: ${props => props.bgColor};
 	color: ${props => props.textColor};
-	height: 100vh;
+	height: ${props => props.height};
 	min-height: ${props => props.minHeight};
 	display: flex;
 	flex-direction: column;
@@ -195,6 +195,7 @@ class HomePage extends React.Component {
 					bgColor="black"
 					textColor="white"
 					align="center"
+					height="100vh"
 					minHeight="600px">
 					<Introduction horizontalCenter={true} verticalCenter={true}>
 						<Name>Bomani McClendon</Name>
@@ -210,7 +211,12 @@ class HomePage extends React.Component {
 						</Body>
 					</Introduction>
 				</Section>
-				<Section bgColor="black" textColor="white" align ="normal" minHeight={`${this.state.content.length*250 + 200}px`}>
+				<Section
+					bgColor="black"
+					textColor="white"
+					align ="normal"
+					height="auto"
+					minHeight={`${this.state.content.length*250 + 200}px`}>
 					<ContentContainer horizontalCenter={true}>
 						<Title>Projects</Title>
 						<Filter>
@@ -227,6 +233,7 @@ class HomePage extends React.Component {
 					bgColor="black"
 					textColor="white"
 					align="center"
+					height="100vh"
 					minHeight="600px">
 					<Introduction horizontalCenter={true} verticalCenter={true}>
 						<Body>
