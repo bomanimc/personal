@@ -6,7 +6,7 @@ import Shape from './Shape';
 let Section = styled.section`
 	background-color: ${props => props.bgColor};
 	color: ${props => props.textColor};
-	height: ${props => props.height};
+	height: ${props => props.sectionHeight};
 	min-height: ${props => props.minHeight};
 	display: flex;
 	flex-direction: column;
@@ -37,7 +37,7 @@ let ContentContainer = styled.section`
 	flex-direction: column;
 	align-items: ${props => props.horizontalCenter ? "center" : "normal"};
 	justify-content: ${props => props.verticalCenter ? "center" : "normal"};
-	height: 100%;
+	height: ${props => props.containerHeight ? props.containerHeight : "100%"};
 `;
 
 let Introduction = ContentContainer.extend`
@@ -95,6 +95,7 @@ let ProjectContainer = styled.div`
 	justify-content: center;
 	margin-bottom: 40px;
 	flex-wrap: nowrap;
+	max-width: 100%;
 
 	@media (max-width: 768px) {
 		display: block;
@@ -190,7 +191,7 @@ class HomePage extends React.Component {
 					bgColor="black"
 					textColor="white"
 					align="center"
-					height="100vh"
+					sectionHeight="100vh"
 					minHeight="600px">
 					<Introduction horizontalCenter={true} verticalCenter={true}>
 						<Name>Bomani McClendon</Name>
@@ -210,9 +211,9 @@ class HomePage extends React.Component {
 					bgColor="black"
 					textColor="white"
 					align ="normal"
-					height="auto"
+					sectionHeight="auto"
 					minHeight={`${this.state.content.length*250 + 200}px`}>
-					<ContentContainer horizontalCenter={true}>
+					<ContentContainer horizontalCenter={true} containerHeight="auto">
 						<Title>Projects</Title>
 						<Filter>
 							<Link href='#'>Featured</Link> | <Link href='#'>Software</Link> • <Link href='#'>Design</Link> • <Link href='#'>Art</Link>
@@ -228,7 +229,7 @@ class HomePage extends React.Component {
 					bgColor="black"
 					textColor="white"
 					align="center"
-					height="100vh"
+					sectionHeight="100vh"
 					minHeight="600px">
 					<Introduction horizontalCenter={true} verticalCenter={true}>
 						<Body>
