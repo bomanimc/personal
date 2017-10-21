@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-
+import Gallery from '../partials/Gallery';
 import Shape from './Shape';
 
 let Section = styled.section`
@@ -182,8 +182,19 @@ class HomePage extends React.Component {
 
 			this.state = {
 				content: content,
+				showGallery: false,
 			};
+
+			this.openGallery = this.openGallery.bind(this)
 	}
+
+	openGallery(e) {
+		console.log("GALLERY OPEN");
+		this.setState({
+			showGallery: true,
+		});
+	}
+
   render() {
 		return (
 			<div>
@@ -220,7 +231,12 @@ class HomePage extends React.Component {
 						</Filter>
 						{
 							this.state.content.map(
-								(section, idx) => <ProjectSection key={idx} content={section}/>
+								(section, idx) =>
+									<ProjectSection
+										key={idx}
+										content={section}
+										openGallery={this.openGallery}
+									/>
 							)
 						}
 					</ContentContainer>
@@ -239,6 +255,7 @@ class HomePage extends React.Component {
 						</Body>
 					</Introduction>
 				</Section>
+				{this.state.showGallery && <Gallery />}
 			</div>
 		);
 	}
@@ -270,7 +287,7 @@ class ProjectSection extends React.Component {
 				<ProjectContent order={2}>
 					<ProjectTitle>{this.props.content.title}</ProjectTitle>
 					<ProjectDetail>
-						<ProjectTags>{tagString}</ProjectTags> | <Link>View</Link>
+						<ProjectTags>{tagString}</ProjectTags> | <Link onClick={this.props.openGallery}>View</Link>
 					</ProjectDetail>
 					<Body>{this.props.content.body}</Body>
 					<ProjectRole>Roles: {this.props.content.roles}</ProjectRole>
