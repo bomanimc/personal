@@ -9,14 +9,6 @@ class LightboxGallery extends React.Component {
     this.state = {
       isGalleryOpen: false,
       currentImage: 0,
-      media: [
-        {
-          src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
-        },
-        {
-          src: 'img/shrumenlumen/gallery/shrumen_solo.JPG',
-        },
-      ],
     };
 
     this.gotoPrevious = this.gotoPrevious.bind(this);
@@ -41,11 +33,19 @@ class LightboxGallery extends React.Component {
 		});
 	}
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      this.setState({
+        currentImage: 0,
+      });
+    }
+  }
+
   render() {
     return(
       <Lightbox
         currentImage={this.state.currentImage}
-        images={this.state.media}
+        images={this.props.media}
         isOpen={this.props.isGalleryOpen}
         onClose={this.props.onCloseHandler}
         onClickNext={this.gotoNext}

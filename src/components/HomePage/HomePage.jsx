@@ -156,7 +156,15 @@ class HomePage extends React.Component {
 						Hardware-Software Integration.`,
 		      media: `img/shrumenlumen/shrumenlumen_main.png`,
 		      bgColor: `#919FB4`,
-		      textColor: `#FFF`
+		      textColor: `#FFF`,
+					images: [
+		        {
+		          src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
+		        },
+		        {
+		          src: 'img/shrumenlumen/gallery/shrumen_solo.JPG',
+		        },
+		      ],
 		    },
 		    {
 		      title: `Dial Up`,
@@ -166,7 +174,12 @@ class HomePage extends React.Component {
 		      roles: `Website Design/Develoment, DJ, Writer.`,
 		      media: `img/dialup/dialup_main.png`,
 		      bgColor: `#FFF`,
-		      textColor: `#FF433E`
+		      textColor: `#FF433E`,
+					images: [
+		        {
+		          src: 'img/dialup/gallery/dialup_screen.png',
+		        },
+		      ],
 		    },
 				{
 		      title: `NegativeReel`,
@@ -176,22 +189,29 @@ class HomePage extends React.Component {
 		      roles: `Creative Lead, Projection Mapping, Software Development.`,
 		      media: `img/negativereel/negativereel_main.png`,
 		      bgColor: `#FFF`,
-		      textColor: `#FF433E`
+		      textColor: `#FF433E`,
+					images: [
+		        {
+		          src: 'img/negativereel/gallery/negativereel_front.gif',
+		        },
+		      ],
 		    }
 		  ];
 
 			this.state = {
 				content: content,
 				showGallery: false,
+				currentMedia: [],
 			};
 
 			this.openGallery = this.openGallery.bind(this)
 	}
 
-	openGallery(e) {
-		console.log("GALLERY OPEN");
+	openGallery(images) {
+		console.log(images)
 		this.setState({
 			showGallery: true,
+			currentMedia: images,
 		});
 	}
 
@@ -258,6 +278,7 @@ class HomePage extends React.Component {
 				<Gallery
 					isGalleryOpen={this.state.showGallery}
 					onCloseHandler={() => this.setState({showGallery: false})}
+					media={this.state.currentMedia}
 				/>
 			</div>
 		);
@@ -290,7 +311,7 @@ class ProjectSection extends React.Component {
 				<ProjectContent order={2}>
 					<ProjectTitle>{this.props.content.title}</ProjectTitle>
 					<ProjectDetail>
-						<ProjectTags>{tagString}</ProjectTags> | <Link onClick={this.props.openGallery}>View</Link>
+						<ProjectTags>{tagString}</ProjectTags> | <Link onClick={() => this.props.openGallery(this.props.content.images)}>View</Link>
 					</ProjectDetail>
 					<Body>{this.props.content.body}</Body>
 					<ProjectRole>Roles: {this.props.content.roles}</ProjectRole>
