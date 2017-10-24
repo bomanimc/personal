@@ -1,4 +1,4 @@
-if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+if (!Detector.webgl) Detector.addGetWebGLMessage();
 
 THREE.Cache.enabled = true;
 
@@ -25,8 +25,8 @@ class AsciiName {
 
     this.firstLetter = true;
 
-    this.text = "BOMANI";
-    this.font = "Aktiv_Grotesk_Regular";
+    this.text = 'BOMANI';
+    this.font = 'Aktiv_Grotesk_Regular';
     this.height = 20;
     this.size = 70;
     this.hover = 30;
@@ -47,19 +47,19 @@ class AsciiName {
   }
 
   init() {
-    console.log("INIT");
+    console.log('INIT');
   	this.container = document.getElementById(this.id);
-    console.log(this.container)
-    var windowHalfX = this.container.offsetWidth / 2;
-    var windowHalfY = this.container.offsetHeight / 2;
+    console.log(this.container);
+    const windowHalfX = this.container.offsetWidth / 2;
+    const windowHalfY = this.container.offsetHeight / 2;
 
   	// CAMERA
 
   	// camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 1500 );
-  	this.camera = new THREE.PerspectiveCamera( 30, this.container.offsetWidth / this.container.offsetHeight, 1, 1500 );
-  	this.camera.position.set( 0, 400, 700 );
+  	this.camera = new THREE.PerspectiveCamera(30, this.container.offsetWidth / this.container.offsetHeight, 1, 1500);
+  	this.camera.position.set(0, 400, 700);
 
-  	this.cameraTarget = new THREE.Vector3( 0, 150, 0 );
+  	this.cameraTarget = new THREE.Vector3(0, 150, 0);
 
     // TRACKBALL CONTROLS
     // controls = new THREE.TrackballControls(camera);
@@ -70,51 +70,50 @@ class AsciiName {
 
   	// LIGHTS
 
-  	var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
-  	dirLight.position.set( 0.2, 1, 0 );
-  	this.scene.add( dirLight );
+  	const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+  	dirLight.position.set(0.2, 1, 0);
+  	this.scene.add(dirLight);
 
   	this.materials = [
-  		new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
-  		new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } ) // side
+  		new THREE.MeshPhongMaterial({ color: 0xffffff, shading: THREE.FlatShading }), // front
+  		new THREE.MeshPhongMaterial({ color: 0xffffff, shading: THREE.SmoothShading }), // side
   	];
 
   	this.group = new THREE.Group();
   	this.group.position.y = 100;
 
-  	this.scene.add( this.group );
-    console.log(this.scene)
+  	this.scene.add(this.group);
+    console.log(this.scene);
 
   	this.loadFont();
 
   	// RENDERER
 
-  	this.renderer = new THREE.WebGLRenderer( { antialias: true } );
-    this.renderer.setClearColor( 0xf0f0f0 );
-  	this.renderer.setPixelRatio( window.devicePixelRatio );
+  	this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer.setClearColor(0xf0f0f0);
+  	this.renderer.setPixelRatio(window.devicePixelRatio);
   	// renderer.setSize( window.innerWidth, window.innerHeight );
-  	this.renderer.setSize( this.container.offsetWidth, this.container.offsetHeight );
+  	this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
 
-    this.effect = new THREE.AsciiEffect( this.renderer );
-    console.log(this.effect)
-  	this.effect.setSize( this.container.offsetWidth, this.container.offsetHeight );
-  	this.container.appendChild( this.effect.domElement );
+    this.effect = new THREE.AsciiEffect(this.renderer);
+    console.log(this.effect);
+  	this.effect.setSize(this.container.offsetWidth, this.container.offsetHeight);
+  	this.container.appendChild(this.effect.domElement);
 
-    console.log(this.container.offsetWidth)
-    console.log(this.container.offsetHeight)
+    console.log(this.container.offsetWidth);
+    console.log(this.container.offsetHeight);
 
   	// EVENTS
 
-  	document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this), false );
-  	document.addEventListener( 'touchstart', this.onDocumentTouchStart.bind(this), false );
-  	document.addEventListener( 'touchmove', this.onDocumentTouchMove.bind(this), false );
-  	document.addEventListener( 'keypress', this.onDocumentKeyPress.bind(this), false );
-  	document.addEventListener( 'keydown', this.onDocumentKeyDown.bind(this), false );
+  	document.addEventListener('mousedown', this.onDocumentMouseDown.bind(this), false);
+  	document.addEventListener('touchstart', this.onDocumentTouchStart.bind(this), false);
+  	document.addEventListener('touchmove', this.onDocumentTouchMove.bind(this), false);
+  	document.addEventListener('keypress', this.onDocumentKeyPress.bind(this), false);
+  	document.addEventListener('keydown', this.onDocumentKeyDown.bind(this), false);
 
   	//
 
-  	window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
-
+  	window.addEventListener('resize', this.onWindowResize.bind(this), false);
   }
 
   onWindowResize() {
@@ -128,73 +127,56 @@ class AsciiName {
   	this.camera.aspect = this.container.offsetWidth / this.container.offsetHeight;
   	this.camera.updateProjectionMatrix();
 
-  	this.renderer.setSize( this.container.offsetWidth, this.container.offsetHeight );
-    this.effect.setSize( this.container.offsetWidth, this.container.offsetHeight);
-
+  	this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+    this.effect.setSize(this.container.offsetWidth, this.container.offsetHeight);
   }
 
-  onDocumentKeyDown( event ) {
-
-  	if ( this.firstLetter ) {
-
+  onDocumentKeyDown(event) {
+  	if (this.firstLetter) {
   		this.firstLetter = false;
-  		this.text = "";
-
+  		this.text = '';
   	}
 
-  	var keyCode = event.keyCode;
+  	const keyCode = event.keyCode;
 
   	// backspace
 
-  	if ( keyCode == 8 ) {
-
+  	if (keyCode == 8) {
   		event.preventDefault();
 
-  		this.text = this.text.substring( 0, this.text.length - 1 );
+  		this.text = this.text.substring(0, this.text.length - 1);
   		this.refreshText();
 
   		return false;
-
   	}
-
   }
 
-  onDocumentKeyPress( event ) {
-
-  	var keyCode = event.which;
+  onDocumentKeyPress(event) {
+  	const keyCode = event.which;
 
   	// backspace
 
-  	if ( keyCode == 8 ) {
-
+  	if (keyCode == 8) {
   		event.preventDefault();
-
   	} else {
-
-  		var ch = String.fromCharCode( keyCode );
+  		const ch = String.fromCharCode(keyCode);
   		this.text += ch;
 
   		this.refreshText();
-
   	}
-
   }
 
   loadFont() {
-  	var loader = new THREE.FontLoader();
-  	loader.load( 'fonts/Aktiv_Grotesk_Regular.json', function ( response ) {
-
+  	const loader = new THREE.FontLoader();
+  	loader.load('fonts/Aktiv_Grotesk_Regular.json', (response) => {
   		this.font = response;
 
   		this.refreshText();
-
-  	}.bind(this) );
-
+  	});
   }
 
   createText() {
-
-  	this.textGeo = new THREE.TextBufferGeometry( this.text, {
+  	this.textGeo = new THREE.TextBufferGeometry(this.text, {
 
   		font: this.font,
 
@@ -207,7 +189,7 @@ class AsciiName {
   		bevelEnabled: this.bevelEnabled,
 
   		material: 0,
-  		extrudeMaterial: 1
+  		extrudeMaterial: 1,
 
   	});
     console.log(this.textGeo);
@@ -218,48 +200,36 @@ class AsciiName {
   	// "fix" side normals by removing z-component of normals for side faces
   	// (this doesn't work well for beveled geometry as then we lose nice curvature around z-axis)
 
-  	if ( ! this.bevelEnabled ) {
+  	if (!this.bevelEnabled) {
+  		const triangleAreaHeuristics = 0.1 * (this.height * this.size);
 
-  		var triangleAreaHeuristics = 0.1 * ( this.height * this.size );
+  		for (let i = 0; i < this.textGeo.faces.length; i++) {
+  			const face = this.textGeo.faces[i];
 
-  		for ( var i = 0; i < this.textGeo.faces.length; i ++ ) {
-
-  			var face = this.textGeo.faces[ i ];
-
-  			if ( face.materialIndex == 1 ) {
-
-  				for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
-
-  					face.vertexNormals[ j ].z = 0;
-  					face.vertexNormals[ j ].normalize();
-
+  			if (face.materialIndex == 1) {
+  				for (var j = 0; j < face.vertexNormals.length; j++) {
+  					face.vertexNormals[j].z = 0;
+  					face.vertexNormals[j].normalize();
   				}
 
-  				var va = this.textGeo.vertices[ face.a ];
-  				var vb = this.textGeo.vertices[ face.b ];
-  				var vc = this.textGeo.vertices[ face.c ];
+  				const va = this.textGeo.vertices[face.a];
+  				const vb = this.textGeo.vertices[face.b];
+  				const vc = this.textGeo.vertices[face.c];
 
-  				var s = THREE.GeometryUtils.triangleArea( va, vb, vc );
+  				const s = THREE.GeometryUtils.triangleArea(va, vb, vc);
 
-  				if ( s > triangleAreaHeuristics ) {
-
-  					for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
-
-  						face.vertexNormals[ j ].copy( face.normal );
-
+  				if (s > triangleAreaHeuristics) {
+  					for (var j = 0; j < face.vertexNormals.length; j++) {
+  						face.vertexNormals[j].copy(face.normal);
   					}
-
   				}
-
   			}
-
   		}
-
   	}
 
-  	var centerOffset = -0.5 * ( this.textGeo.boundingBox.max.x - this.textGeo.boundingBox.min.x );
+  	const centerOffset = -0.5 * (this.textGeo.boundingBox.max.x - this.textGeo.boundingBox.min.x);
 
-  	this.textMesh1 = new THREE.Mesh( this.textGeo, this.materials );
+  	this.textMesh1 = new THREE.Mesh(this.textGeo, this.materials);
 
   	this.textMesh1.position.x = this.centerOffset;
   	this.textMesh1.position.y = this.hover;
@@ -268,102 +238,80 @@ class AsciiName {
   	this.textMesh1.rotation.x = 0;
   	this.textMesh1.rotation.y = Math.PI * 2;
 
-  	this.group.add( this.textMesh1 );
-
+  	this.group.add(this.textMesh1);
   }
 
   refreshText() {
+  	this.group.remove(this.textMesh1);
 
-  	this.group.remove( this.textMesh1 );
-
-  	if ( !this.text ) return;
+  	if (!this.text) return;
 
   	this.createText();
-
   }
 
-  onDocumentMouseDown( event ) {
-
+  onDocumentMouseDown(event) {
   	event.preventDefault();
 
-  	document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
-  	document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this), false );
-  	document.addEventListener( 'mouseout', this.onDocumentMouseOut.bind(this), false );
+  	document.addEventListener('mousemove', this.onDocumentMouseMove.bind(this), false);
+  	document.addEventListener('mouseup', this.onDocumentMouseUp.bind(this), false);
+  	document.addEventListener('mouseout', this.onDocumentMouseOut.bind(this), false);
 
   	this.mouseXOnMouseDown = event.clientX - this.windowHalfX;
   	this.targetRotationOnMouseDown = this.targetRotation;
-
   }
 
-  onDocumentMouseMove( event ) {
-
+  onDocumentMouseMove(event) {
   	this.mouseX = event.clientX - this.windowHalfX;
 
-  	this.targetRotation = this.targetRotationOnMouseDown + ( this.mouseX - this.mouseXOnMouseDown ) * 0.02;
-
+  	this.targetRotation = this.targetRotationOnMouseDown + (this.mouseX - this.mouseXOnMouseDown) * 0.02;
   }
 
-  onDocumentMouseUp( event ) {
-
-  	document.removeEventListener( 'mousemove', this.onDocumentMouseMove, false );
-  	document.removeEventListener( 'mouseup', this.onDocumentMouseUp, false );
-  	document.removeEventListener( 'mouseout', this.onDocumentMouseOut, false );
-
+  onDocumentMouseUp(event) {
+  	document.removeEventListener('mousemove', this.onDocumentMouseMove, false);
+  	document.removeEventListener('mouseup', this.onDocumentMouseUp, false);
+  	document.removeEventListener('mouseout', this.onDocumentMouseOut, false);
   }
 
-  onDocumentMouseOut( event ) {
-
-  	document.removeEventListener( 'mousemove', this.onDocumentMouseMove, false );
-  	document.removeEventListener( 'mouseup', this.onDocumentMouseUp, false );
-  	document.removeEventListener( 'mouseout', this.onDocumentMouseOut, false );
-
+  onDocumentMouseOut(event) {
+  	document.removeEventListener('mousemove', this.onDocumentMouseMove, false);
+  	document.removeEventListener('mouseup', this.onDocumentMouseUp, false);
+  	document.removeEventListener('mouseout', this.onDocumentMouseOut, false);
   }
 
-  onDocumentTouchStart( event ) {
-
-  	if ( event.touches.length == 1 ) {
-
+  onDocumentTouchStart(event) {
+  	if (event.touches.length == 1) {
   		event.preventDefault();
 
-  		this.mouseXOnMouseDown = event.touches[ 0 ].pageX - this.windowHalfX;
+  		this.mouseXOnMouseDown = event.touches[0].pageX - this.windowHalfX;
   		this.targetRotationOnMouseDown = this.targetRotation;
-
   	}
-
   }
 
-  onDocumentTouchMove( event ) {
-
-  	if ( event.touches.length == 1 ) {
-
+  onDocumentTouchMove(event) {
+  	if (event.touches.length == 1) {
   		event.preventDefault();
 
-  		this.mouseX = event.touches[ 0 ].pageX - this.windowHalfX;
-  		this.targetRotation = this.targetRotationOnMouseDown + ( this.mouseX - this.mouseXOnMouseDown ) * 0.05;
-
+  		this.mouseX = event.touches[0].pageX - this.windowHalfX;
+  		this.targetRotation = this.targetRotationOnMouseDown + (this.mouseX - this.mouseXOnMouseDown) * 0.05;
   	}
-
   }
 
   //
 
   animate() {
-  	requestAnimationFrame( this.animate.bind(this) );
+  	requestAnimationFrame(this.animate.bind(this));
 
   	this.render();
-
   }
 
   render() {
+  	this.group.rotation.y += (this.targetRotation - this.group.rotation.y) * 0.05;
 
-  	this.group.rotation.y += ( this.targetRotation - this.group.rotation.y ) * 0.05;
-
-  	this.camera.lookAt( this.cameraTarget );
+  	this.camera.lookAt(this.cameraTarget);
     // controls.update();
 
   	this.renderer.clear();
-  	this.effect.render( this.scene, this.camera );
-
+  	this.effect.render(this.scene, this.camera);
   }
 }
 
@@ -450,10 +398,8 @@ class AsciiName {
 
 //
 
-function boolToNum( b ) {
-
-	return b ? 1 : 0;
-
+function boolToNum(b) {
+  return b ? 1 : 0;
 }
 
 // function onDocumentKeyDown( event ) {

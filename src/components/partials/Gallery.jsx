@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Lightbox from 'react-images';
 
-let Background = styled.div`
+const Background = styled.div`
   height: 50%;
   width: 50%;
   background: rgba(0, 0, 0, 0.8);
@@ -15,44 +15,44 @@ let Background = styled.div`
   align-items: center;
 `;
 
-let GalleryContainer = styled.div`
-  ${'' /* height: 90%; */}
+const GalleryContainer = styled.div`
+  ${''}
   max-width: 100%;
   max-height: 100%;
   width: 80%;
   display: flex;
   flex-direction: column;
-  ${'' /* min-height: 600px; */}
+  ${''}
 `;
 
-let MediaSection = styled.div`
+const MediaSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 `;
 
-let PrimaryMedia = styled.img`
+const PrimaryMedia = styled.img`
   width: 100%;
-  ${'' /* height: auto; */}
+  ${''}
   border: 1px solid white;
 `;
 
-let ThumbnailSection = styled.div`
+const ThumbnailSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
 `;
 
-let Thumbnail = styled.img`
+const Thumbnail = styled.img`
   height: 100%;
   margin: 0px 5px;
 `;
 
 class Gallery extends React.Component {
-	constructor() {
-		super();
+  constructor() {
+    super();
 
     this.state = {
       isGalleryOpen: false,
@@ -84,22 +84,22 @@ class Gallery extends React.Component {
   }
 
   gotoImage(index) {
-		this.setState({
-			currentImage: index,
-		});
-	}
+    this.setState({
+      currentImage: index,
+    });
+  }
 
   render() {
-    return(
+    return (
       <Lightbox
         currentImage={this.state.currentImage}
         images={this.state.media}
         isOpen={this.props.isGalleryOpen}
         onClose={this.props.onCloseHandler}
         onClickNext={this.gotoNext}
-				onClickPrev={this.gotoPrevious}
+        onClickPrev={this.gotoPrevious}
         onClickThumbnail={this.gotoImage}
-        showThumbnails={true}
+        showThumbnails
       />
       // <Background>
       //   <GalleryContainer>

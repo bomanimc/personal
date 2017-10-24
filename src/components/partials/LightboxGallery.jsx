@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 import Lightbox from 'react-images';
 
 class LightboxGallery extends React.Component {
-	constructor() {
-		super();
+  constructor() {
+    super();
 
     this.state = {
       isGalleryOpen: false,
@@ -14,6 +14,14 @@ class LightboxGallery extends React.Component {
     this.gotoPrevious = this.gotoPrevious.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
     this.gotoImage = this.gotoImage.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      this.setState({
+        currentImage: 0,
+      });
+    }
   }
 
   gotoPrevious() {
@@ -28,33 +36,33 @@ class LightboxGallery extends React.Component {
   }
 
   gotoImage(index) {
-		this.setState({
-			currentImage: index,
-		});
-	}
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
-      this.setState({
-        currentImage: 0,
-      });
-    }
+    this.setState({
+      currentImage: index,
+    });
   }
 
   render() {
-    return(
+    return (
       <Lightbox
         currentImage={this.state.currentImage}
         images={this.props.media}
         isOpen={this.props.isGalleryOpen}
         onClose={this.props.onCloseHandler}
         onClickNext={this.gotoNext}
-				onClickPrev={this.gotoPrevious}
+        onClickPrev={this.gotoPrevious}
         onClickThumbnail={this.gotoImage}
-        showThumbnails={true}
+        showThumbnails
       />
     );
   }
 }
+
+LightboxGallery.propTypes = {
+  media: PropTypes.arrayOf(PropTypes.shape({
+    src: PropTypes.string.isRequired,
+  })).isRequired,
+  isGalleryOpen: PropTypes.bool.isRequired,
+  onCloseHandler: PropTypes.func.isRequired,
+};
 
 export default LightboxGallery;
