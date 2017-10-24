@@ -260,7 +260,7 @@ class HomePage extends React.Component {
             <Body>
               During the day, Bomani works on news products at Facebok.
               He has previously interned at IDEO, Grubhub, and Boeing. See his
-              full resume <Link>here</Link>.
+              full resume <Link href="/resume">here</Link>.
             </Body>
           </Introduction>
         </Section>

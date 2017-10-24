@@ -15,6 +15,11 @@ app.use(robots(`${__dirname}/robots.txt`));
 //     res.render('');
 // });
 
+// Serve resume
+app.get('/resume', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'resume.pdf'));
+});
+
 // Universal routing and rendering handled by React & react-router
 // on the client-side.
 app.get('*', (req, res) => {
