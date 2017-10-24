@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Gallery from '../partials/Gallery';
+import Gallery from '../partials/LightboxGallery';
 import Shape from './Shape';
 
 let Section = styled.section`
@@ -255,7 +255,10 @@ class HomePage extends React.Component {
 						</Body>
 					</Introduction>
 				</Section>
-				{this.state.showGallery && <Gallery />}
+				<Gallery
+					isGalleryOpen={this.state.showGallery}
+					onCloseHandler={() => this.setState({showGallery: false})}
+				/>
 			</div>
 		);
 	}

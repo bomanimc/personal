@@ -1,9 +1,10 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import Lightbox from 'react-images';
 
 let Background = styled.div`
-  height: 100%;
-  width: 100%;
+  height: 50%;
+  width: 50%;
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
   z-index: 1;
@@ -15,21 +16,26 @@ let Background = styled.div`
 `;
 
 let GalleryContainer = styled.div`
-  height: 80vh;
-  width: 80vh;
+  ${'' /* height: 90%; */}
+  max-width: 100%;
+  max-height: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
+  ${'' /* min-height: 600px; */}
 `;
 
 let MediaSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+  margin-bottom: 20px;
 `;
 
 let PrimaryMedia = styled.img`
   width: 100%;
+  ${'' /* height: auto; */}
+  border: 1px solid white;
 `;
 
 let ThumbnailSection = styled.div`
@@ -41,45 +47,74 @@ let ThumbnailSection = styled.div`
 
 let Thumbnail = styled.img`
   height: 100%;
+  margin: 0px 5px;
 `;
 
 class Gallery extends React.Component {
 	constructor() {
 		super();
+
     this.state = {
+      isGalleryOpen: false,
+      currentImage: 0,
       media: [
         {
-          path: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
-          type: 'image',
+          src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
         },
         {
-          path: 'img/shrumenlumen/gallery/shrumen_solo.JPG',
-          type: 'image',
-        },
-        {
-          path: 'img/shrumenlumen/gallery/shrumen_pad.mp4',
-          type: 'video',
+          src: 'img/shrumenlumen/gallery/shrumen_solo.JPG',
         },
       ],
-    }
+    };
+
+    this.gotoPrevious = this.gotoPrevious.bind(this);
+    this.gotoNext = this.gotoNext.bind(this);
+    this.gotoImage = this.gotoImage.bind(this);
   }
+
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    });
+  }
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    });
+  }
+
+  gotoImage(index) {
+		this.setState({
+			currentImage: index,
+		});
+	}
 
   render() {
     return(
-      <Background>
-        <GalleryContainer>
-          <MediaSection>
-            <PrimaryMedia src={this.state.media[0].path} />
-          </MediaSection>
-          <ThumbnailSection>
-            {
-              this.state.media.map(media_item =>
-                <Thumbnail src={media_item.path} key={media_item.path}/>
-              )
-            }
-          </ThumbnailSection>
-        </GalleryContainer>
-      </Background>
+      <Lightbox
+        currentImage={this.state.currentImage}
+        images={this.state.media}
+        isOpen={this.props.isGalleryOpen}
+        onClose={this.props.onCloseHandler}
+        onClickNext={this.gotoNext}
+				onClickPrev={this.gotoPrevious}
+        onClickThumbnail={this.gotoImage}
+        showThumbnails={true}
+      />
+      // <Background>
+      //   <GalleryContainer>
+      //     <MediaSection>
+      //       <PrimaryMedia src={this.state.media[0].path} />
+      //     </MediaSection>
+      //     <ThumbnailSection>
+      //       {
+      //         this.state.media.map(media_item =>
+      //           <Thumbnail src={media_item.path} key={media_item.path}/>
+      //         )
+      //       }
+      //     </ThumbnailSection>
+      //   </GalleryContainer>
+      // </Background>
     );
   }
 }
