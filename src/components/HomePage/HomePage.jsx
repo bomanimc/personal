@@ -115,6 +115,7 @@ const ProjectDetail = Body.extend`
 
 const ProjectTags = styled.span`
   font-style: italic;
+  text-transform: capitalize;
 `;
 
 const ProjectRole = Body.extend`
@@ -129,7 +130,7 @@ class HomePage extends React.Component {
       {
         id: shortid.generate(),
         title: 'Shrumen Lumen',
-        tags: ['Software', 'Art'],
+        tags: ['featured', 'software', 'art'],
         body: `Interactive art installation made up of five glowing mushrooms
         that react to the presence of people. Presented at Burning Man 2016
         and Meet D3 Festival in Dubai. On diplay at the Smithsonian Museum
@@ -151,7 +152,7 @@ class HomePage extends React.Component {
       {
         id: shortid.generate(),
         title: 'Dial Up',
-        tags: ['Software', 'Design'],
+        tags: ['featured', 'software', 'design'],
         body: `Creative collective that creates music, videos, magazines, and
         technology. Website featured on Brutalist Websites.`,
         roles: 'Website Design/Develoment, DJ, Writer.',
@@ -167,7 +168,7 @@ class HomePage extends React.Component {
       {
         id: shortid.generate(),
         title: 'NegativeReel',
-        tags: ['Software', 'Art'],
+        tags: ['software', 'art'],
         body: `Projection mapping installation that displays negative thoughts
         people have about themselves as an expression of vulnerability.`,
         roles: 'Creative Lead, Projection Mapping, Software Development.',
@@ -184,6 +185,7 @@ class HomePage extends React.Component {
 
     this.state = {
       content,
+      filterOption: 'featured',
       showGallery: false,
       currentMedia: [],
     };
@@ -196,6 +198,10 @@ class HomePage extends React.Component {
       showGallery: true,
       currentMedia: images,
     });
+  }
+
+  filterProjects(filterOption) {
+    this.setState({ filterOption });
   }
 
   render() {
@@ -234,17 +240,29 @@ class HomePage extends React.Component {
           <ContentContainer horizontalCenter containerHeight="auto">
             <Title>Projects</Title>
             <Filter>
-              <Link href="#">Featured</Link> | <Link href="#">Software</Link> •
-              <Link href="#">Design</Link> • <Link href="#">Art</Link>
+              <Link onClick={() => this.filterProjects('featured')}>
+                Featured
+              </Link>&nbsp;|&nbsp;
+              <Link onClick={() => this.filterProjects('software')}>
+                Software
+              </Link>&nbsp;•&nbsp;
+              <Link onClick={() => this.filterProjects('design')}>
+                Design
+              </Link>&nbsp;•&nbsp;
+              <Link onClick={() => this.filterProjects('art')}>
+                Art
+              </Link>
             </Filter>
             {
               this.state.content.map(
                 section =>
-                (<ProjectSection
-                  key={section.id}
-                  content={section}
-                  openGallery={this.openGallery}
-                />),
+                section.tags.includes(this.state.filterOption)
+                  ? <ProjectSection
+                    key={section.id}
+                    content={section}
+                    openGallery={this.openGallery}
+                  />
+                  : <div />,
               )
             }
           </ContentContainer>
@@ -277,9 +295,11 @@ class HomePage extends React.Component {
 const ProjectSection = (section) => {
   let tagString = '';
   section.content.tags.map((tag, idx) => {
-    tagString += tag;
-    if (idx !== (section.content.tags.length - 1)) {
-      tagString += ' • ';
+    if (tag !== 'featured') {
+      tagString += tag;
+      if (idx !== (section.content.tags.length - 1)) {
+        tagString += ' • ';
+      }
     }
   });
 
