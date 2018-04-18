@@ -33,6 +33,7 @@ const ContentContainer = styled.section`
   align-items: ${props => props.horizontalCenter ? 'center' : 'normal'};
   justify-content: ${props => props.verticalCenter ? 'center' : 'normal'};
   height: ${props => props.containerHeight ? props.containerHeight : '100%'};
+  margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
 `;
 
 const Introduction = ContentContainer.extend`
@@ -46,6 +47,7 @@ const Introduction = ContentContainer.extend`
 const Title = styled.h1`
   font-size: 30px;
   font-weight: bold;
+  margin-bottom: 32px;
 `;
 
 const Name = styled.h1`
@@ -69,10 +71,6 @@ const SkillArea = styled.h3`
   &:hover {
     color: #000000;
   }
-`;
-
-const Filter = Body.extend`
-  margin: 10px 0px 40px 0px;
 `;
 
 const Link = styled.a`
@@ -121,6 +119,7 @@ const ProjectImage = styled.img`
 
 const ProjectTitle = Title.extend`
   text-transform: uppercase;
+  margin-bottom: 0px;
 `;
 
 const ProjectDetail = Body.extend`
@@ -217,7 +216,6 @@ class HomePage extends React.Component {
 
     this.state = {
       content,
-      filterOption: 'featured',
       showGallery: false,
       currentMedia: [],
       feature: { name: '', body: '', roles: '' },
@@ -232,10 +230,6 @@ class HomePage extends React.Component {
       showGallery: true,
       currentMedia: images,
     });
-  }
-
-  filterProjects(filterOption) {
-    this.setState({ filterOption });
   }
 
   revealFeature(e) {
@@ -288,32 +282,16 @@ class HomePage extends React.Component {
           sectionHeight="auto"
           minHeight={`${(this.state.content.length * 250) + 200}px`}
         >
-          <ContentContainer horizontalCenter containerHeight="auto">
+          <ContentContainer horizontalCenter containerHeight="auto" marginTop="24px">
             <Title>Projects</Title>
-            <Filter>
-              <Link onClick={() => this.filterProjects('featured')}>
-                Featured
-              </Link>&nbsp;|&nbsp;
-              <Link onClick={() => this.filterProjects('software')}>
-                Software
-              </Link>&nbsp;•&nbsp;
-              <Link onClick={() => this.filterProjects('design')}>
-                Design
-              </Link>&nbsp;•&nbsp;
-              <Link onClick={() => this.filterProjects('art')}>
-                Art
-              </Link>
-            </Filter>
             {
               this.state.content.map(
                 section =>
-                section.tags.includes(this.state.filterOption)
-                  ? <ProjectSection
+                  (<ProjectSection
                     key={section.id}
                     content={section}
                     openGallery={this.openGallery}
-                  />
-                  : <div />,
+                  />),
               )
             }
           </ContentContainer>
