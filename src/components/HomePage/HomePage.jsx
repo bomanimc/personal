@@ -18,6 +18,15 @@ const Section = styled.section`
   margin: 0px 20px;
 `;
 
+const SplashSection = Section.extend`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  transition: background .5s ease;
+  margin: 0px;
+`;
+
 const ContentContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -27,9 +36,7 @@ const ContentContainer = styled.section`
 `;
 
 const Introduction = ContentContainer.extend`
-  width: 30%;
-  text-align: center;
-
+  margin-left: 20px;
   @media (max-width: 768px) {
     margin: 0px 20px;
     width: 100%;
@@ -41,8 +48,12 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 
-const Name = Title.extend`
-  margin-bottom: 20px;
+const Name = styled.h1`
+  font-family: Helvetica;
+  color: black;
+  font-size: 180px;
+  line-height: 0.80;
+  margin-top: 30vh;
 `;
 
 const Body = styled.p`
@@ -50,12 +61,15 @@ const Body = styled.p`
   font-weight: lighter;
 `;
 
-const Diagram = styled.img`
-  height: 200px;
-  width: 200px;
-  margin: 30px;
-`;
+const SkillArea = styled.h3`
+  color: rgba(0, 0, 0, 0.3);
+  font-family: Helvetica;
+  font-size: 64px;
 
+  &:hover {
+    color: #000000;
+  }
+`;
 
 const Filter = Body.extend`
   margin: 10px 0px 40px 0px;
@@ -121,6 +135,24 @@ const ProjectTags = styled.span`
 const ProjectRole = Body.extend`
   margin-top: 20px;
 `;
+
+const features = {
+  dialup: {
+    name: 'DIAL UP',
+    body: 'CREATIVE COLLECTIVE THAT CREATES MUSIC, VIDEOS, MAGAZINES, AND TECHNOLOGY. WEBSITE FEATURED ON BRUTALIST WEBSITES.',
+    roles: 'ROLES: WEBSITE DESIGN/DEVELOMENT, DJ, WRITER.',
+  },
+  urgentaction: {
+    name: 'URGENT ACTION',
+    body: 'REDESIGN OF AMNESTY INTERNATIONAL’S URGENT SERVICE. REIMPLEMENT IN REACT NATIVE.',
+    roles: 'ROLES: UI/UX DESIGN, SOFTWARE DEVELOPMENT.',
+  },
+  shrumenlumen: {
+    name: 'SHRUMEN LUMEN',
+    body: 'INTERACTIVE ART INSTALLATION MADE UP OF FIVE GLOWING MUSHROOMS THAT REACT TO THE PRESENCE OF PEOPLE.',
+    roles: 'ROLES: LEAD SOFTWARE DEVELOPER (FIRST SHOWINGS), HARDWARE-SOFTWARE INTEGRATION.',
+  },
+};
 
 class HomePage extends React.Component {
   constructor() {
@@ -188,6 +220,8 @@ class HomePage extends React.Component {
       filterOption: 'featured',
       showGallery: false,
       currentMedia: [],
+      feature: { name: '', body: '', roles: '' },
+      featureShow: false,
     };
 
     this.openGallery = this.openGallery.bind(this);
@@ -204,32 +238,49 @@ class HomePage extends React.Component {
     this.setState({ filterOption });
   }
 
+  revealFeature(e) {
+    document.getElementById('splash').style.backgroundColor = e.target.getAttribute('data-color');
+    this.setState({
+      feature: features[e.target.getAttribute('data-feature')],
+      featureShow: true,
+    });
+  }
+
   render() {
     return (
       <div>
-        <Section
-          bgColor="black"
+        <SplashSection
+          bgColor="white"
           textColor="white"
-          align="center"
           sectionHeight="100vh"
           minHeight="600px"
+          id="splash"
         >
-          <Introduction horizontalCenter verticalCenter>
-            <Name>Bomani McClendon</Name>
-            <Body>
-              Bomani McClendon is a software engineer, designer, and
-              freelancer based in New York City.
-            </Body>
-            <Body>
-              His interests lay at the intersection of software, design, and
-              art.
-            </Body>
-            <Diagram src="/img/diagram.png" />
-            <Body>
-              See his work below.
-            </Body>
+          <Introduction>
+            <Name>BOMANI</Name>
+            <SkillArea
+              data-color="#f1c40f"
+              data-feature="dialup"
+              onMouseEnter={e => this.revealFeature(e)}
+            >
+              SOFTWARE
+            </SkillArea>
+            <SkillArea
+              data-color="#3498db"
+              data-feature="urgentaction"
+              onMouseEnter={e => this.revealFeature(e)}
+            >
+              DESIGN
+            </SkillArea>
+            <SkillArea
+              data-color="#e74c3c"
+              data-feature="shrumenlumen"
+              onMouseEnter={e => this.revealFeature(e)}
+            >
+              ART
+            </SkillArea>
           </Introduction>
-        </Section>
+        </SplashSection>
         <Section
           bgColor="black"
           textColor="white"
