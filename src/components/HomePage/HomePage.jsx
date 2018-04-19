@@ -65,7 +65,7 @@ const Name = styled.h1`
   line-height: 0.80;
 
   @media (max-width: 768px) {
-    font-size: 10px;
+    font-size: 5rem;
   }
 `;
 
@@ -84,7 +84,7 @@ const SkillArea = styled.h3`
   }
 
   @media (max-width: 768px) {
-    font-size: 10px;
+    font-size: 2rem;
   }
 `;
 
