@@ -21,12 +21,20 @@ const Section = styled.section`
   flex-direction: column;
   align-items: ${props => props.align};
   justify-content: space-between;
-  margin-left: ${props => props.marginLeft ? props.marginLeft : '0px'};
+  margin-left: ${props => props.marginHorizontal ? props.marginHorizontal : '0px'};
+  margin-right: ${props => props.marginHorizontal ? props.marginHorizontal : '0px'};
 `;
 
 const SplashSection = Section.extend`
+  height: 100vh;
+  min-height: 600px;
   transition: background .5s ease;
   margin: 0px;
+
+  @media (max-width: 768px) {
+    height: 70vh;
+    min-height: 300px;
+  }
 `;
 
 const ContentContainer = styled.section`
@@ -41,10 +49,7 @@ const ContentContainer = styled.section`
 const Introduction = ContentContainer.extend`
   display: flex;
   flex-direction: column;
-  @media (max-width: 768px) {
-    margin: 0px 20px;
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 const Title = styled.h1`
@@ -103,7 +108,7 @@ const ProjectContainer = styled.div`
   @media (max-width: 768px) {
     display: block;
     width: 100%;
-}
+  }
 `;
 
 const ProjectContent = styled.div`
@@ -150,6 +155,17 @@ const Divider = styled.span`
 
 const ProjectRole = Body.extend`
   margin-top: 20px;
+`;
+
+const Outro = Introduction.extend`
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+
+  @media (max-width: 768px) {
+    max-width: none;
+  }
 `;
 
 const features = {
@@ -262,9 +278,6 @@ class HomePage extends React.Component {
       <div>
         <SplashSection
           bgColor="white"
-          textColor="white"
-          sectionHeight="100vh"
-          minHeight="600px"
           id="splash"
         >
           <Introduction horizontalCenter verticalCenter>
@@ -298,7 +311,7 @@ class HomePage extends React.Component {
           align="normal"
           sectionHeight="auto"
           minHeight={`${(this.state.content.length * 250) + 200}px`}
-          marginLeft="20px"
+          marginHorizontal="20px"
         >
           <ContentContainer horizontalCenter containerHeight="auto" marginTop="24px">
             <Title>Projects</Title>
@@ -321,13 +334,16 @@ class HomePage extends React.Component {
           sectionHeight="100vh"
           minHeight="600px"
         >
-          <Introduction horizontalCenter verticalCenter>
+          <Outro horizontalCenter verticalCenter>
             <Body>
-              During the day, Bomani works on news products at Facebok.
-              He has previously interned at IDEO, Grubhub, and Boeing. See his
-              full resume <Link href="/resume">here</Link>.
+              During the day, Bomani works on news products at Facebook.
+              He has previously interned at IDEO, Grubhub, and Boeing.
+              <br />
+              <br />
+              <br />
+              See his full resume <Link href="/resume">here</Link>.
             </Body>
-          </Introduction>
+          </Outro>
         </Section>
         <Gallery
           isGalleryOpen={this.state.showGallery}
@@ -357,7 +373,7 @@ const ProjectSection = (section) => {
         <ProjectTitle>{section.content.title}</ProjectTitle>
         <ProjectDetail>
           {tagsContent}
-          <Divider spacing="4px">|</Divider>
+          <Divider spacing="4px">{'\u2022'}</Divider>
           <Link onClick={() => section.openGallery(section.content.images)}>
             View
           </Link>
