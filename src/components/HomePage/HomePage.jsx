@@ -6,6 +6,12 @@ import styled from 'styled-components';
 import shortid from 'shortid';
 import Gallery from '../partials/LightboxGallery';
 
+const skillAreaColors = {
+  software: '#f1c40f',
+  design: '#3498db',
+  art: '#e74c3c',
+};
+
 const Section = styled.section`
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
@@ -15,14 +21,10 @@ const Section = styled.section`
   flex-direction: column;
   align-items: ${props => props.align};
   justify-content: space-between;
-  margin: 0px 20px;
+  margin-left: ${props => props.marginLeft ? props.marginLeft : '0px'};
 `;
 
 const SplashSection = Section.extend`
-  align-items: flex-start;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   transition: background .5s ease;
   margin: 0px;
 `;
@@ -37,7 +39,8 @@ const ContentContainer = styled.section`
 `;
 
 const Introduction = ContentContainer.extend`
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
   @media (max-width: 768px) {
     margin: 0px 20px;
     width: 100%;
@@ -55,7 +58,10 @@ const Name = styled.h1`
   color: black;
   font-size: 180px;
   line-height: 0.80;
-  margin-top: 30vh;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const Body = styled.p`
@@ -70,6 +76,10 @@ const SkillArea = styled.h3`
 
   &:hover {
     color: #000000;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
   }
 `;
 
@@ -126,9 +136,16 @@ const ProjectDetail = Body.extend`
   margin: 5px 0px 15px 0px;
 `;
 
-const ProjectTags = styled.span`
+const ProjectTag = styled.span`
   font-style: italic;
-  text-transform: capitalize;
+  background-color: ${props => props.color};
+  padding: 0px 4px;
+  margin-right: ${props => props.marginRight ? props.marginRight : '4px'};
+`;
+
+const Divider = styled.span`
+  margin-left: ${props => props.spacing};
+  margin-right: ${props => props.spacing};
 `;
 
 const ProjectRole = Body.extend`
@@ -250,24 +267,24 @@ class HomePage extends React.Component {
           minHeight="600px"
           id="splash"
         >
-          <Introduction>
+          <Introduction horizontalCenter verticalCenter>
             <Name>BOMANI</Name>
             <SkillArea
-              data-color="#f1c40f"
+              data-color={skillAreaColors.software}
               data-feature="dialup"
               onMouseEnter={e => this.revealFeature(e)}
             >
               SOFTWARE
             </SkillArea>
             <SkillArea
-              data-color="#3498db"
+              data-color={skillAreaColors.design}
               data-feature="urgentaction"
               onMouseEnter={e => this.revealFeature(e)}
             >
               DESIGN
             </SkillArea>
             <SkillArea
-              data-color="#e74c3c"
+              data-color={skillAreaColors.art}
               data-feature="shrumenlumen"
               onMouseEnter={e => this.revealFeature(e)}
             >
@@ -281,6 +298,7 @@ class HomePage extends React.Component {
           align="normal"
           sectionHeight="auto"
           minHeight={`${(this.state.content.length * 250) + 200}px`}
+          marginLeft="20px"
         >
           <ContentContainer horizontalCenter containerHeight="auto" marginTop="24px">
             <Title>Projects</Title>
@@ -322,13 +340,13 @@ class HomePage extends React.Component {
 }
 
 const ProjectSection = (section) => {
-  let tagString = '';
+  const tagsContent = [];
   section.content.tags.map((tag, idx) => {
     if (tag !== 'featured') {
-      tagString += tag;
-      if (idx !== (section.content.tags.length - 1)) {
-        tagString += ' • ';
-      }
+      const newTag = idx === (section.content.tags.length - 1)
+        ? <ProjectTag color={skillAreaColors[tag]} marginRight="0px">{tag}</ProjectTag>
+        : <ProjectTag color={skillAreaColors[tag]}>{tag}</ProjectTag>;
+      tagsContent.push(newTag);
     }
   });
 
@@ -338,7 +356,8 @@ const ProjectSection = (section) => {
       <ProjectContent order={2}>
         <ProjectTitle>{section.content.title}</ProjectTitle>
         <ProjectDetail>
-          <ProjectTags>{tagString}</ProjectTags> |
+          {tagsContent}
+          <Divider spacing="4px">|</Divider>
           <Link onClick={() => section.openGallery(section.content.images)}>
             View
           </Link>
