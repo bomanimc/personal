@@ -2,8 +2,9 @@
 /* eslint array-callback-return: 0 */
 
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import shortid from 'shortid';
+import ReactMarkdown from 'react-markdown';
 import Gallery from '../partials/LightboxGallery';
 
 const skillAreaColors = {
@@ -69,9 +70,25 @@ const Name = styled.h1`
   }
 `;
 
+const linkStyle = css`
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const Body = styled.p`
   font-size: 15px;
   font-weight: lighter;
+`;
+
+const TextContent = Body.extend`
+  a {
+    ${linkStyle}
+    background-color: rgba(255, 255, 255, 0.3);
+  }
 `;
 
 const SkillArea = styled.h3`
@@ -89,13 +106,12 @@ const SkillArea = styled.h3`
 `;
 
 const Link = styled.a`
-  text-decoration: none;
-  color: white;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  ${linkStyle}
 `;
+
+// const HighlightedLink = Link.extend`
+//   background-color: rgba(255, 255, 255, 0.3);
+// `;
 
 const ProjectContainer = styled.div`
   display: flex;
@@ -197,8 +213,7 @@ class HomePage extends React.Component {
         tags: ['featured', 'software', 'art'],
         body: `Interactive art installation made up of five glowing mushrooms
         that react to the presence of people. Presented at Burning Man 2016
-        and Meet D3 Festival in Dubai. On diplay at the Smithsonian Museum
-        in 2018.`,
+        and [Meet D3 Festival](https://www.theluxediary.com/guide-meet-d3-2016/) in Dubai. On diplay at the [Smithsonian Museum](https://americanart.si.edu/exhibitions/burning-man) in 2018.`,
         roles: `Lead Software Developer (First Showings),
         Hardware-Software Integration.`,
         media: 'img/shrumenlumen/shrumenlumen_main.png',
@@ -335,14 +350,14 @@ class HomePage extends React.Component {
           minHeight="600px"
         >
           <Outro horizontalCenter verticalCenter>
-            <Body>
+            <TextContent>
               During the day, Bomani works on news products at Facebook.
               He has previously interned at IDEO, Grubhub, and Boeing.
               <br />
               <br />
               <br />
               See his full resume <Link href="/resume">here</Link>.
-            </Body>
+            </TextContent>
           </Outro>
         </Section>
         <Gallery
@@ -378,7 +393,7 @@ const ProjectSection = (section) => {
             View
           </Link>
         </ProjectDetail>
-        <Body>{section.content.body}</Body>
+        <TextContent><ReactMarkdown source={section.content.body} /></TextContent>
         <ProjectRole>Roles: {section.content.roles}</ProjectRole>
       </ProjectContent>
     </ProjectContainer>
