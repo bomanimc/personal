@@ -53,6 +53,12 @@ const Introduction = ContentContainer.extend`
   width: 100%;
 `;
 
+const Diagram = styled.img`
+  height: 200px;
+  width: 200px;
+  margin: 30px;
+`;
+
 const Title = styled.h1`
   font-size: 30px;
   font-weight: bold;
@@ -108,10 +114,6 @@ const SkillArea = styled.h3`
 const Link = styled.a`
   ${linkStyle}
 `;
-
-// const HighlightedLink = Link.extend`
-//   background-color: rgba(255, 255, 255, 0.3);
-// `;
 
 const ProjectContainer = styled.div`
   display: flex;
@@ -182,6 +184,10 @@ const Outro = Introduction.extend`
   @media (max-width: 768px) {
     max-width: none;
   }
+`;
+
+const Bio = Outro.extend`
+  height: auto;
 `;
 
 const features = {
@@ -328,8 +334,26 @@ class HomePage extends React.Component {
           minHeight={`${(this.state.content.length * 250) + 200}px`}
           marginHorizontal="20px"
         >
-          <ContentContainer horizontalCenter containerHeight="auto" marginTop="24px">
-            <Title>Projects</Title>
+          <ContentContainer horizontalCenter containerHeight="auto" marginTop="120px">
+            <Bio>
+              <Body>
+              Bomani McClendon is a software engineer, designer, and
+              freelancer based in New York City.
+            </Body>
+              <br />
+              <Body>
+              His interests lay at the intersection of software, design, and
+              art.
+            </Body>
+              <br />
+              <Diagram src="/img/diagram.png" />
+              <Body>
+              See his work below.
+            </Body>
+            </Bio>
+          </ContentContainer>
+          <ContentContainer horizontalCenter containerHeight="auto" marginTop="120px">
+            {/* <Title>Projects</Title> */}
             {
               this.state.content.map(
                 section =>
