@@ -2,10 +2,11 @@
 /* eslint array-callback-return: 0 */
 
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import shortid from 'shortid';
-import ReactMarkdown from 'react-markdown';
 import Gallery from '../partials/LightboxGallery';
+import Project from '../partials/Project';
+import { Link, Body, TextContent } from '../commonComponents';
 
 const skillAreaColors = {
   name: '#ffffff',
@@ -27,6 +28,15 @@ const Section = styled.section`
   margin-right: ${props => props.marginHorizontal ? props.marginHorizontal : '0px'};
 `;
 
+const ContentContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: ${props => props.horizontalCenter ? 'center' : 'normal'};
+  justify-content: ${props => props.verticalCenter ? 'center' : 'normal'};
+  height: ${props => props.containerHeight ? props.containerHeight : '100%'};
+  margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
+`;
+
 const SplashSection = Section.extend`
   height: 100vh;
   min-height: 600px;
@@ -37,15 +47,6 @@ const SplashSection = Section.extend`
     height: 70vh;
     min-height: 300px;
   }
-`;
-
-const ContentContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: ${props => props.horizontalCenter ? 'center' : 'normal'};
-  justify-content: ${props => props.verticalCenter ? 'center' : 'normal'};
-  height: ${props => props.containerHeight ? props.containerHeight : '100%'};
-  margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
 `;
 
 const Introduction = ContentContainer.extend`
@@ -60,12 +61,6 @@ const Diagram = styled.img`
   margin: 30px;
 `;
 
-const Title = styled.h1`
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 32px;
-`;
-
 const Name = styled.h1`
   font-family: Helvetica;
   color: black;
@@ -75,27 +70,6 @@ const Name = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 5rem;
-  }
-`;
-
-const linkStyle = css`
-  text-decoration: none;
-  color: white;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const Body = styled.p`
-  font-size: 15px;
-  font-weight: lighter;
-`;
-
-const TextContent = Body.extend`
-  a {
-    ${linkStyle}
-    background-color: rgba(255, 255, 255, 0.3);
   }
 `;
 
@@ -113,70 +87,6 @@ const SkillArea = styled.h3`
   @media (max-width: 768px) {
     font-size: 2rem;
   }
-`;
-
-const Link = styled.a`
-  ${linkStyle}
-`;
-
-const ProjectContainer = styled.div`
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: center;
-  margin-bottom: 40px;
-  flex-wrap: nowrap;
-  max-width: 100%;
-
-  @media (max-width: 768px) {
-    display: block;
-    width: 100%;
-  }
-`;
-
-const ProjectContent = styled.div`
-  flex-basis: 500px;
-`;
-
-const ProjectImage = styled.img`
-  height: 250px;
-  width: 400px;
-  flex-basis: 400px;
-  min-height: 250px;
-  margin-right: 10px;
-  border: 1px solid white;
-
-  @media (max-width: 768px) {
-    display: block;
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    min-width: auto;
-  }
-`;
-
-const ProjectTitle = Title.extend`
-  text-transform: uppercase;
-  margin-bottom: 0px;
-`;
-
-const ProjectDetail = Body.extend`
-  margin: 5px 0px 15px 0px;
-`;
-
-const ProjectTag = styled.span`
-  font-style: italic;
-  background-color: ${props => props.color};
-  padding: 0px 4px;
-  margin-right: ${props => props.marginRight ? props.marginRight : '4px'};
-`;
-
-const Divider = styled.span`
-  margin-left: ${props => props.spacing};
-  margin-right: ${props => props.spacing};
-`;
-
-const ProjectRole = Body.extend`
-  margin-top: 20px;
 `;
 
 const Outro = Introduction.extend`
@@ -386,9 +296,10 @@ class HomePage extends React.Component {
             {
               this.state.content.map(
                 section =>
-                  (<ProjectSection
+                  (<Project
                     key={section.id}
                     content={section}
+                    skillAreaColors={skillAreaColors}
                     openGallery={this.openGallery}
                   />),
               )
@@ -428,35 +339,5 @@ class HomePage extends React.Component {
     );
   }
 }
-
-const ProjectSection = (section) => {
-  const tagsContent = [];
-  section.content.tags.map((tag, idx) => {
-    if (tag !== 'featured') {
-      const newTag = idx === (section.content.tags.length - 1)
-        ? <ProjectTag color={skillAreaColors[tag]} marginRight="0px">{tag}</ProjectTag>
-        : <ProjectTag color={skillAreaColors[tag]}>{tag}</ProjectTag>;
-      tagsContent.push(newTag);
-    }
-  });
-
-  return (
-    <ProjectContainer>
-      <ProjectImage order={1} src={section.content.media} />
-      <ProjectContent order={2}>
-        <ProjectTitle>{section.content.title}</ProjectTitle>
-        <ProjectDetail>
-          {tagsContent}
-          <Divider spacing="4px">{'\u2022'}</Divider>
-          <Link onClick={() => section.openGallery(section.content.images)}>
-            View
-          </Link>
-        </ProjectDetail>
-        <TextContent><ReactMarkdown source={section.content.body} /></TextContent>
-        <ProjectRole>Roles: {section.content.roles}</ProjectRole>
-      </ProjectContent>
-    </ProjectContainer>
-  );
-};
 
 export default HomePage;
