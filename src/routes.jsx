@@ -5,7 +5,7 @@ import HomePage from './components/HomePage/HomePage';
 import NotFoundPage from './components/NotFoundPage';
 
 const routes = (
-  <Route path="/" component={App}>
+  <Route path={`${process.env.PUBLIC_URL}/`} component={App}>
     <IndexRoute component={HomePage} />
     <Route path="*" component={NotFoundPage} />
   </Route>
