@@ -190,6 +190,23 @@ const Bio = Outro.extend`
   height: auto;
 `;
 
+const SocialLinksBar = styled.div`
+  background-color: blue;
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const SocialLink = Link.extend`
+  display: inline-block;
+  text-align: center;
+  padding: 0px 10px;
+  text-transform: lowercase;
+`;
+
 const features = {
   dialup: {
     name: 'DIAL UP',
@@ -268,8 +285,32 @@ class HomePage extends React.Component {
       },
     ];
 
+    const socialLinks = [
+      {
+        name: 'Twitter',
+        link: 'https://twitter.com/bxmani',
+      },
+      {
+        name: 'Instagram',
+        link: 'https://www.instagram.com/bxmani/',
+      },
+      {
+        name: 'SoundCloud',
+        link: 'https://soundcloud.com/bxmani',
+      },
+      {
+        name: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/bomanimc/',
+      },
+      {
+        name: 'GitHub',
+        link: 'https://github.com/bomanimc',
+      },
+    ];
+
     this.state = {
       content,
+      socialLinks,
       showGallery: false,
       currentMedia: [],
       feature: { name: '', body: '', roles: '' },
@@ -353,7 +394,6 @@ class HomePage extends React.Component {
             </Bio>
           </ContentContainer>
           <ContentContainer horizontalCenter containerHeight="auto" marginTop="120px">
-            {/* <Title>Projects</Title> */}
             {
               this.state.content.map(
                 section =>
@@ -384,6 +424,12 @@ class HomePage extends React.Component {
             </TextContent>
           </Outro>
         </Section>
+        <SocialLinksBar>
+          {
+            this.state.socialLinks.map(item =>
+              <SocialLink href={item.link}>{item.name}</SocialLink>)
+          }
+        </SocialLinksBar>
         <Gallery
           isGalleryOpen={this.state.showGallery}
           onCloseHandler={() => this.setState({ showGallery: false })}
