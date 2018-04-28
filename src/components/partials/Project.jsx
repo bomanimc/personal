@@ -2,6 +2,7 @@
 /* eslint no-confusing-arrow: 0 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
@@ -70,34 +71,41 @@ const ProjectRole = Body.extend`
   margin-top: 20px;
 `;
 
-const Project = (section, skillAreaColors) => {
+const Project = (props) => {
   const tagsContent = [];
-  section.content.tags.map((tag, idx) => {
+  props.content.tags.map((tag, idx) => {
     if (tag !== 'featured') {
-      const newTag = idx === (section.content.tags.length - 1)
-        ? <ProjectTag color={skillAreaColors[tag]} marginRight="0px">{tag}</ProjectTag>
-        : <ProjectTag color={skillAreaColors[tag]}>{tag}</ProjectTag>;
+      const newTag = idx === (props.content.tags.length - 1)
+        ? <ProjectTag color={props.skillAreaColors[tag]} marginRight="0px">{tag}</ProjectTag>
+        : <ProjectTag color={props.skillAreaColors[tag]}>{tag}</ProjectTag>;
       tagsContent.push(newTag);
     }
   });
 
   return (
     <ProjectContainer>
-      <ProjectImage order={1} src={section.content.media} />
+      <ProjectImage order={1} src={props.content.media} />
       <ProjectContent order={2}>
-        <ProjectTitle>{section.content.title}</ProjectTitle>
+        <ProjectTitle>{props.content.title}</ProjectTitle>
         <ProjectDetail>
           {tagsContent}
           <Divider spacing="4px">{'\u2022'}</Divider>
-          <Link onClick={() => section.openGallery(section.content.images)}>
+          <Link onClick={() => props.openGallery(props.content.images)}>
             View
           </Link>
         </ProjectDetail>
-        <TextContent><ReactMarkdown source={section.content.body} /></TextContent>
-        <ProjectRole>Roles: {section.content.roles}</ProjectRole>
+        <TextContent><ReactMarkdown source={props.content.body} /></TextContent>
+        <ProjectRole>Roles: {props.content.roles}</ProjectRole>
       </ProjectContent>
     </ProjectContainer>
   );
+};
+
+
+Project.propTypes = {
+  skillAreaColors: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  content: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  openGallery: PropTypes.func.isRequired,
 };
 
 export default Project;
