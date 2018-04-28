@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import Gallery from '../partials/LightboxGallery';
 
 const skillAreaColors = {
+  name: '#ffffff',
   software: '#f1c40f',
   design: '#3498db',
   art: '#e74c3c',
@@ -70,6 +71,7 @@ const Name = styled.h1`
   color: black;
   font-size: 180px;
   line-height: 0.80;
+  transition: color .5s ease;
 
   @media (max-width: 768px) {
     font-size: 5rem;
@@ -101,6 +103,8 @@ const SkillArea = styled.h3`
   color: rgba(0, 0, 0, 0.3);
   font-family: Helvetica;
   font-size: 64px;
+  transition: color .5s ease;
+  z-index: 2;
 
   &:hover {
     color: #000000;
@@ -327,8 +331,15 @@ class HomePage extends React.Component {
     });
   }
 
-  revealFeature(e) {
+  changeColor(e) {
     document.getElementById('splash').style.backgroundColor = e.target.getAttribute('data-color');
+
+    if (e.target.id !== 'name') {
+      document.getElementById('name').style.opacity = 0.3;
+    } else {
+      document.getElementById('name').style.opacity = 1;
+    }
+
     this.setState({
       feature: features[e.target.getAttribute('data-feature')],
       featureShow: true,
@@ -343,25 +354,31 @@ class HomePage extends React.Component {
           id="splash"
         >
           <Introduction horizontalCenter verticalCenter>
-            <Name>BOMANI</Name>
+            <Name
+              id="name"
+              data-color={skillAreaColors.name}
+              onMouseEnter={e => this.changeColor(e)}
+            >
+              BOMANI
+            </Name>
             <SkillArea
               data-color={skillAreaColors.software}
               data-feature="dialup"
-              onMouseEnter={e => this.revealFeature(e)}
+              onMouseEnter={e => this.changeColor(e)}
             >
               SOFTWARE
             </SkillArea>
             <SkillArea
               data-color={skillAreaColors.design}
               data-feature="urgentaction"
-              onMouseEnter={e => this.revealFeature(e)}
+              onMouseEnter={e => this.changeColor(e)}
             >
               DESIGN
             </SkillArea>
             <SkillArea
               data-color={skillAreaColors.art}
               data-feature="shrumenlumen"
-              onMouseEnter={e => this.revealFeature(e)}
+              onMouseEnter={e => this.changeColor(e)}
             >
               ART
             </SkillArea>
