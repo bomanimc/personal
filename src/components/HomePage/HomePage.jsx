@@ -211,22 +211,14 @@ const SocialLink = Link.extend`
   text-transform: lowercase;
 `;
 
-const features = {
-  dialup: {
-    name: 'DIAL UP',
-    body: 'CREATIVE COLLECTIVE THAT CREATES MUSIC, VIDEOS, MAGAZINES, AND TECHNOLOGY. WEBSITE FEATURED ON BRUTALIST WEBSITES.',
-    roles: 'ROLES: WEBSITE DESIGN/DEVELOMENT, DJ, WRITER.',
-  },
-  urgentaction: {
-    name: 'URGENT ACTION',
-    body: 'REDESIGN OF AMNESTY INTERNATIONAL’S URGENT SERVICE. REIMPLEMENT IN REACT NATIVE.',
-    roles: 'ROLES: UI/UX DESIGN, SOFTWARE DEVELOPMENT.',
-  },
-  shrumenlumen: {
-    name: 'SHRUMEN LUMEN',
-    body: 'INTERACTIVE ART INSTALLATION MADE UP OF FIVE GLOWING MUSHROOMS THAT REACT TO THE PRESENCE OF PEOPLE.',
-    roles: 'ROLES: LEAD SOFTWARE DEVELOPER (FIRST SHOWINGS), HARDWARE-SOFTWARE INTEGRATION.',
-  },
+const changeColor = (e) => {
+  document.getElementById('splash').style.backgroundColor = e.target.getAttribute('data-color');
+
+  if (e.target.id !== 'name') {
+    document.getElementById('name').style.opacity = 0.3;
+  } else {
+    document.getElementById('name').style.opacity = 1;
+  }
 };
 
 class HomePage extends React.Component {
@@ -317,8 +309,6 @@ class HomePage extends React.Component {
       socialLinks,
       showGallery: false,
       currentMedia: [],
-      feature: { name: '', body: '', roles: '' },
-      featureShow: false,
     };
 
     this.openGallery = this.openGallery.bind(this);
@@ -328,21 +318,6 @@ class HomePage extends React.Component {
     this.setState({
       showGallery: true,
       currentMedia: images,
-    });
-  }
-
-  changeColor(e) {
-    document.getElementById('splash').style.backgroundColor = e.target.getAttribute('data-color');
-
-    if (e.target.id !== 'name') {
-      document.getElementById('name').style.opacity = 0.3;
-    } else {
-      document.getElementById('name').style.opacity = 1;
-    }
-
-    this.setState({
-      feature: features[e.target.getAttribute('data-feature')],
-      featureShow: true,
     });
   }
 
@@ -357,28 +332,25 @@ class HomePage extends React.Component {
             <Name
               id="name"
               data-color={skillAreaColors.name}
-              onMouseEnter={e => this.changeColor(e)}
+              onMouseEnter={e => changeColor(e)}
             >
               BOMANI
             </Name>
             <SkillArea
               data-color={skillAreaColors.software}
-              data-feature="dialup"
-              onMouseEnter={e => this.changeColor(e)}
+              onMouseEnter={e => changeColor(e)}
             >
               SOFTWARE
             </SkillArea>
             <SkillArea
               data-color={skillAreaColors.design}
-              data-feature="urgentaction"
-              onMouseEnter={e => this.changeColor(e)}
+              onMouseEnter={e => changeColor(e)}
             >
               DESIGN
             </SkillArea>
             <SkillArea
               data-color={skillAreaColors.art}
-              data-feature="shrumenlumen"
-              onMouseEnter={e => this.changeColor(e)}
+              onMouseEnter={e => changeColor(e)}
             >
               ART
             </SkillArea>
