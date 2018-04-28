@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import shortid from 'shortid';
 import Gallery from '../partials/LightboxGallery';
 import Project from '../partials/Project';
+import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
 
 const skillAreaColors = {
@@ -102,23 +103,6 @@ const Outro = Introduction.extend`
 
 const Bio = Outro.extend`
   height: auto;
-`;
-
-const SocialLinksBar = styled.div`
-  background-color: blue;
-  padding: 10px;
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const SocialLink = Link.extend`
-  display: inline-block;
-  text-align: center;
-  padding: 0px 10px;
-  text-transform: lowercase;
 `;
 
 const changeColor = (e) => {
@@ -324,12 +308,7 @@ class HomePage extends React.Component {
             </TextContent>
           </Outro>
         </Section>
-        <SocialLinksBar>
-          {
-            this.state.socialLinks.map(item =>
-              <SocialLink href={item.link}>{item.name}</SocialLink>)
-          }
-        </SocialLinksBar>
+        <SocialLinksBar links={this.state.socialLinks} />
         <Gallery
           isGalleryOpen={this.state.showGallery}
           onCloseHandler={() => this.setState({ showGallery: false })}
