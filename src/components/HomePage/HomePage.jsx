@@ -7,14 +7,7 @@ import Gallery from '../partials/LightboxGallery';
 import Project from '../partials/Project';
 import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
-import { ProjectContent, SocialLinks } from '../../constants';
-
-const skillAreaColors = {
-  name: '#ffffff',
-  software: '#f1c40f',
-  design: '#3498db',
-  art: '#e74c3c',
-};
+import { SkillAreaColors, ProjectContent, SocialLinks } from '../../constants';
 
 const Section = styled.section`
   background-color: ${props => props.bgColor};
@@ -144,25 +137,25 @@ class HomePage extends React.Component {
           <Introduction horizontalCenter verticalCenter>
             <Name
               id="name"
-              data-color={skillAreaColors.name}
+              data-color={SkillAreaColors.name}
               onMouseEnter={e => changeColor(e)}
             >
               BOMANI
             </Name>
             <SkillArea
-              data-color={skillAreaColors.software}
+              data-color={SkillAreaColors.software}
               onMouseEnter={e => changeColor(e)}
             >
               SOFTWARE
             </SkillArea>
             <SkillArea
-              data-color={skillAreaColors.design}
+              data-color={SkillAreaColors.design}
               onMouseEnter={e => changeColor(e)}
             >
               DESIGN
             </SkillArea>
             <SkillArea
-              data-color={skillAreaColors.art}
+              data-color={SkillAreaColors.art}
               onMouseEnter={e => changeColor(e)}
             >
               ART
@@ -202,7 +195,7 @@ class HomePage extends React.Component {
                   (<Project
                     key={section.id}
                     content={section}
-                    skillAreaColors={skillAreaColors}
+                    skillAreaColors={SkillAreaColors}
                     openGallery={this.openGallery}
                   />),
               )

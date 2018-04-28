@@ -1,5 +1,11 @@
 import shortid from 'shortid';
 
+export const SkillAreaColors = {
+  name: '#ffffff',
+  software: '#f1c40f',
+  design: '#3498db',
+  art: '#e74c3c',
+};
 
 export const ProjectContent = [
   {
