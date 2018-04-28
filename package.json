@@ -1,5 +1,6 @@
 {
   "name": "personal",
+  "homepage": "http://bomanimc.github.io/personal",
   "private": true,
   "version": "1.0.0",
   "author": "Bomani McClendon",
@@ -8,6 +9,8 @@
     "start": "node scripts/build.js && NODE_ENV=production node server.js",
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint --ext .jsx --ext .js src/ server.js --ignore-path .gitignore; exit 0",
     "fix": "eslint --ext .jsx --ext .js src/ server.js --ignore-path .gitignore --fix; exit 0",
     "test": "node scripts/test.js --env=jsdom"
@@ -55,6 +58,7 @@
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.11.1",
     "fs-extra": "3.0.1",
+    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "2.28.0",
     "jest": "20.0.3",
     "node-sass": "4.5.3",
