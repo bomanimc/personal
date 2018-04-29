@@ -84,7 +84,11 @@ const Project = (props) => {
 
   return (
     <ProjectContainer>
-      <ProjectImage order={1} src={props.content.media} />
+      <ProjectImage
+        order={1}
+        src={props.content.media}
+        onClick={() => props.openGallery(props.content.images)}
+      />
       <ProjectContent order={2}>
         <ProjectTitle>{props.content.title}</ProjectTitle>
         <ProjectDetail>
