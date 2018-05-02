@@ -2,8 +2,8 @@ import shortid from 'shortid';
 
 export const SkillAreaColors = {
   name: '#ffffff',
-  software: '#f1c40f',
-  design: '#3498db',
+  software: '#009432',
+  design: '#0652dd',
   art: '#e74c3c',
 };
 
