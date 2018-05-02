@@ -60,7 +60,10 @@ export const ProjectContent = [
     media: 'img/dialup/dialup_main.png',
     images: [
       {
-        src: 'img/dialup/gallery/dialup_screen.png',
+        src: 'img/dialup/gallery/dialup_magazine.png',
+      },
+      {
+        src: 'img/dialup/gallery/dialup_chatroom.png',
       },
     ],
   },
