@@ -49,12 +49,6 @@ const Introduction = ContentContainer.extend`
   width: 100%;
 `;
 
-const Diagram = styled.img`
-  height: 200px;
-  width: 200px;
-  margin: 30px;
-`;
-
 const Name = styled.h1`
   font-family: Helvetica;
   color: black;
@@ -173,19 +167,14 @@ class HomePage extends React.Component {
           <ContentContainer horizontalCenter containerHeight="auto" marginTop="120px">
             <Bio>
               <Body>
-              Bomani McClendon is a software engineer, designer, and
-              freelancer based in New York City.
-            </Body>
+                Bomani McClendon is a software engineer, designer, and
+                freelancer based in New York City. His interests lay at the
+                intersection of software, design, and art.
+              </Body>
               <br />
               <Body>
-              His interests lay at the intersection of software, design, and
-              art.
-            </Body>
-              <br />
-              <Diagram src="/img/diagram.png" />
-              <Body>
-              See his work below.
-            </Body>
+                See his work below.
+              </Body>
             </Bio>
           </ContentContainer>
           <ContentContainer horizontalCenter containerHeight="auto" marginTop="120px">
