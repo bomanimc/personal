@@ -19,10 +19,13 @@ export const ProjectContent = [
     until January '19.`,
     roles: `Lead Software Developer,
     Hardware-Software Integration.`,
-    media: 'img/shrumenlumen/shrumenlumen_main.png',
+    media: 'img/shrumenlumen/shrumen_main.jpg',
     images: [
       {
         src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
+      },
+      {
+        src: 'img/shrumenlumen/gallery/shrumen_night.png',
       },
       {
         src: 'img/shrumenlumen/gallery/shrumen_solo.JPG',
@@ -72,12 +75,16 @@ export const ProjectContent = [
     title: 'NegativeReel',
     tags: ['software', 'art'],
     body: `Projection mapping installation that displays negative thoughts
-    people have about themselves as an expression of vulnerability.`,
+    people have about themselves as an expression of vulnerability. The
+    installation reacts to gestures made by the viewer.`,
     roles: 'Creative Lead, Projection Mapping, Software Development.',
     media: 'img/negativereel/negativereel_main.png',
     images: [
       {
         src: 'img/negativereel/gallery/negativereel_front.gif',
+      },
+      {
+        src: 'img/negativereel/gallery/negativereel_interaction.gif',
       },
     ],
   },
