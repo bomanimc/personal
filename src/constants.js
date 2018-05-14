@@ -101,21 +101,21 @@ export const ProjectContent = [
       },
     ],
   },
-  {
-    id: shortid.generate(),
-    title: 'Freelance',
-    tags: ['software', 'design'],
-    body: `Custom websites created for music artists and organizations, such as
-    Cakes Da Killa, Machine Girl, and Lyrical
-    Lemonade (in progress).`,
-    roles: 'Design, Website Development',
-    media: 'img/freelance/freelance_main.png',
-    images: [
-      {
-        src: 'img/topolamp/gallery/topolamp_lasercut.png',
-      },
-    ],
-  },
+  // {
+  //   id: shortid.generate(),
+  //   title: 'Freelance',
+  //   tags: ['software', 'design'],
+  //   body: `Custom websites created for music artists and organizations, such as
+  //   Cakes Da Killa, Machine Girl, and Lyrical
+  //   Lemonade (in progress).`,
+  //   roles: 'Design, Website Development',
+  //   media: 'img/freelance/freelance_main.png',
+  //   images: [
+  //     {
+  //       src: 'img/topolamp/gallery/topolamp_lasercut.png',
+  //     },
+  //   ],
+  // },
 ];
 
 export const SocialLinks = [

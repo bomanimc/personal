@@ -172,8 +172,7 @@ class HomePage extends React.Component {
             <Bio>
               <Body>
                 Bomani McClendon is a software engineer, designer, and
-                freelancer based in New York City. His interests lay at the
-                intersection of software, design, and art.
+                aspiring artist based in New York City.
               </Body>
               <br />
               <Body>
