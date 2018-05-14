@@ -37,7 +37,7 @@ const SplashSection = Section.extend`
   height: 80vh;
   min-height: 600px;
   background-color: white;
-  transition: background-color ${hoverNameAnimationSpeed}s ease, height ${hoverNameAnimationSpeed}s ease;
+  transition: background-color ${hoverNameAnimationSpeed}s ease;
   margin: 0px;
 
   @media (max-width: 768px) {

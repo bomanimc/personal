@@ -49,6 +49,10 @@ const ProjectTitle = styled.h1`
   margin-bottom: 32px;
   text-transform: uppercase;
   margin-bottom: 0px;
+
+  @media (max-width: 768px) {
+    margin: 5px 0px 5px 0px;
+  }
 `;
 
 const ProjectDetail = Body.extend`
