@@ -9,6 +9,8 @@ import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
 import { SkillAreaColors, ProjectContent, SocialLinks } from '../../constants';
 
+const hoverNameAnimationSpeed = 1.5;
+
 const Section = styled.section`
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
@@ -34,7 +36,8 @@ const ContentContainer = styled.section`
 const SplashSection = Section.extend`
   height: 100vh;
   min-height: 600px;
-  transition: background .5s ease;
+  background-color: white;
+  transition: background-color ${hoverNameAnimationSpeed}s ease, height ${hoverNameAnimationSpeed}s ease;
   margin: 0px;
 
   @media (max-width: 768px) {
@@ -54,7 +57,7 @@ const Name = styled.h1`
   color: black;
   font-size: 180px;
   line-height: 0.80;
-  transition: color .5s ease;
+  transition: color ${hoverNameAnimationSpeed}s ease;
 
   @media (max-width: 768px) {
     font-size: 5rem;
@@ -65,7 +68,7 @@ const SkillArea = styled.h3`
   color: rgba(0, 0, 0, 0.3);
   font-family: Helvetica;
   font-size: 64px;
-  transition: color .5s ease;
+  transition: color ${hoverNameAnimationSpeed}s ease;
   z-index: 2;
 
   &:hover {
@@ -93,7 +96,9 @@ const Bio = Outro.extend`
 `;
 
 const changeColor = (e) => {
-  document.getElementById('splash').style.backgroundColor = e.target.getAttribute('data-color');
+  const splash = document.getElementById('splash');
+  splash.style.backgroundColor = e.target.getAttribute('data-color');
+  splash.style.height = '80vh';
 
   if (e.target.id !== 'name') {
     document.getElementById('name').style.opacity = 0.3;
@@ -160,11 +165,10 @@ class HomePage extends React.Component {
           bgColor="black"
           textColor="white"
           align="normal"
-          sectionHeight="auto"
-          minHeight={`${(ProjectContent.length * 250) + 200}px`}
+          sectionHeight="20vh"
           marginHorizontal="20px"
         >
-          <ContentContainer horizontalCenter containerHeight="auto" marginTop="120px">
+          <ContentContainer horizontalCenter containerHeight="auto" marginTop="48px">
             <Bio>
               <Body>
                 Bomani McClendon is a software engineer, designer, and
@@ -177,7 +181,16 @@ class HomePage extends React.Component {
               </Body>
             </Bio>
           </ContentContainer>
-          <ContentContainer horizontalCenter containerHeight="auto" marginTop="120px">
+        </Section>
+        <Section
+          bgColor="black"
+          textColor="white"
+          align="normal"
+          sectionHeight="auto"
+          minHeight={`${(ProjectContent.length * 250) + 200}px`}
+          marginHorizontal="20px"
+        >
+          <ContentContainer horizontalCenter containerHeight="auto" marginTop="48px">
             {
               ProjectContent.map(
                 section =>

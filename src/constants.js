@@ -2,9 +2,9 @@ import shortid from 'shortid';
 
 export const SkillAreaColors = {
   name: '#ffffff',
-  software: '#009432',
-  design: '#0652dd',
-  art: '#e74c3c',
+  software: '#ff0000',
+  design: '#0000ff',
+  art: '#20bf6b',
 };
 
 export const ProjectContent = [
@@ -112,7 +112,7 @@ export const ProjectContent = [
     media: 'img/freelance/freelance_main.png',
     images: [
       {
-        src: 'img/dialup/gallery/dialup_screen.png',
+        src: 'img/topolamp/gallery/topolamp_lasercut.png',
       },
     ],
   },
