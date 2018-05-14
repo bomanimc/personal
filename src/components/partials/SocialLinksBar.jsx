@@ -23,7 +23,7 @@ const SocialLink = Link.extend`
 
 const SocialLinksBar = (props) => {
   const socialLinks = props.links.map(item =>
-    <SocialLink href={item.link}>{item.name}</SocialLink>);
+    <SocialLink href={item.link} key={item.name}>{item.name}</SocialLink>);
 
   return (
     <SocialLinksContainer>{socialLinks}</SocialLinksContainer>

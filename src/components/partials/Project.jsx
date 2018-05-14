@@ -76,8 +76,10 @@ const Project = (props) => {
   props.content.tags.map((tag, idx) => {
     if (tag !== 'featured') {
       const newTag = idx === (props.content.tags.length - 1)
-        ? <ProjectTag color={props.skillAreaColors[tag]} marginRight="0px">{tag}</ProjectTag>
-        : <ProjectTag color={props.skillAreaColors[tag]}>{tag}</ProjectTag>;
+        ? (<ProjectTag key={tag} color={props.skillAreaColors[tag]} marginRight="0px">
+          {tag}
+        </ProjectTag>)
+        : <ProjectTag key={tag} color={props.skillAreaColors[tag]}>{tag}</ProjectTag>;
       tagsContent.push(newTag);
     }
   });
@@ -107,8 +109,8 @@ const Project = (props) => {
 
 
 Project.propTypes = {
-  skillAreaColors: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  content: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  skillAreaColors: PropTypes.shape().isRequired,
+  content: PropTypes.shape().isRequired,
   openGallery: PropTypes.func.isRequired,
 };
 
