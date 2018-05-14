@@ -34,7 +34,7 @@ const ContentContainer = styled.section`
 `;
 
 const SplashSection = Section.extend`
-  height: 100vh;
+  height: 80vh;
   min-height: 600px;
   background-color: white;
   transition: background-color ${hoverNameAnimationSpeed}s ease, height ${hoverNameAnimationSpeed}s ease;
@@ -98,7 +98,6 @@ const Bio = Outro.extend`
 const changeColor = (e) => {
   const splash = document.getElementById('splash');
   splash.style.backgroundColor = e.target.getAttribute('data-color');
-  splash.style.height = '80vh';
 
   if (e.target.id !== 'name') {
     document.getElementById('name').style.opacity = 0.3;
