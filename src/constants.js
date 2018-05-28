@@ -81,6 +81,7 @@ export const ProjectContent = [
     installation reacts to gestures made by the viewer.`,
     roles: 'Creative Lead, Projection Mapping, Software Development.',
     media: 'img/negativereel/negativereel_main.png',
+    videoURL: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
     images: [
       {
         src: 'img/negativereel/gallery/negativereel_front.gif',
@@ -98,6 +99,7 @@ export const ProjectContent = [
     laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
     roles: 'Creative Lead, Design, Software, Hardware.',
     media: 'img/topolamp/topolamp_main.jpg',
+    videoURL: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
     images: [
       {
         src: 'img/topolamp/gallery/topolamp_topview.png',
