@@ -92,9 +92,9 @@ const Project = (props) => {
     (props.content.videoURL !== undefined && props.content.videoURL !== null)
       ? [
         <Divider spacing="4px">{'\u2022'}</Divider>,
-        <Link href={props.content.videoURL}>
-            Video
-          </Link>,
+        <Link href={props.content.videoURL} target="_blank" rel="noopener noreferrer">
+          Video
+        </Link>,
       ]
       : null;
 
