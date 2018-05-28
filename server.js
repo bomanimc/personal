@@ -9,11 +9,10 @@ app.set('env', (process.env.NODE_ENV || 'production'));
 app.use(Express.static(path.join(__dirname, 'build')));
 app.use(robots(`${__dirname}/robots.txt`));
 
-// Google verification code
-// TODO: Add Verification Code
-// app.get('', function(req, res) {
-//     res.render('');
-// });
+//Google verification code
+app.get('/google74afddeb570fba09.html', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'google74afddeb570fba09.html'));
+});
 
 // Serve resume
 app.get('/resume', (req, res) => {
