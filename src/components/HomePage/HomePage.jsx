@@ -59,6 +59,10 @@ const Name = styled.h1`
   line-height: 0.80;
   transition: color ${hoverNameAnimationSpeed}s ease;
 
+  &:hover {
+    color: #000000;
+  }
+
   @media (max-width: 768px) {
     font-size: 5rem;
   }
