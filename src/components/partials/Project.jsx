@@ -88,6 +88,16 @@ const Project = (props) => {
     }
   });
 
+  const videoLink =
+    (props.content.videoURL !== undefined && props.content.videoURL !== null)
+      ? [
+        <Divider spacing="4px">{'\u2022'}</Divider>,
+        <Link href={props.content.videoURL}>
+            Video
+          </Link>,
+      ]
+      : null;
+
   return (
     <ProjectContainer>
       <ProjectImage
@@ -101,8 +111,9 @@ const Project = (props) => {
           {tagsContent}
           <Divider spacing="4px">{'\u2022'}</Divider>
           <Link onClick={() => props.openGallery(props.content.images)}>
-            View
+            Gallery
           </Link>
+          {videoLink}
         </ProjectDetail>
         <TextContent><ReactMarkdown source={props.content.body} /></TextContent>
         <ProjectRole>Roles: {props.content.roles}</ProjectRole>

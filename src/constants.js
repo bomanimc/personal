@@ -20,6 +20,7 @@ export const ProjectContent = [
     roles: `Lead Software Developer,
     Hardware-Software Integration.`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
+    videoURL: 'https://www.instagram.com/p/BggndLoDl2l/?taken-by=foldhauscollective',
     images: [
       {
         src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
@@ -43,6 +44,7 @@ export const ProjectContent = [
     official Raspberry Pi magazine. Presented at Segal Design Expo '17.`,
     roles: 'Design, Software, Electronics.',
     media: 'img/waves/waves_main.png',
+    videoURL: 'https://vimeo.com/220101786',
     images: [
       {
         src: 'img/waves/gallery/waves_showing.png',
