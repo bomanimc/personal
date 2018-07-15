@@ -12,7 +12,8 @@ export const ProjectContent = [
     id: shortid.generate(),
     title: 'Shrumen Lumen',
     tags: ['software', 'art'],
-    body: `Interactive art installation made up of five glowing mushrooms
+    body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
+    interactive art installation made up of five glowing mushrooms
     that react to the presence of people. Presented at Burning Man 2016
     and Meet D3 Festival in Dubai. Currently on diplay at the
     [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man)
