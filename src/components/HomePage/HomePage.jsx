@@ -57,7 +57,7 @@ const Name = styled.h1`
   color: black;
   font-size: 180px;
   line-height: 0.80;
-  transition: color ${hoverNameAnimationSpeed}s ease;
+  transition: opacity ${hoverNameAnimationSpeed}s ease;
 
   &:hover {
     color: #000000;
