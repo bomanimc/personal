@@ -31,7 +31,11 @@ const ProjectContainer = styled.div`
 
 const ProjectContent = styled.div`
   padding: 8px;
-  height: 64px;
+  min-height: 64px;
+
+  @media (max-width: 768px) {
+    min-height: auto;
+  }
 `;
 
 const ProjectImage = styled.img`
