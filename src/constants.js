@@ -53,6 +53,22 @@ export const ProjectContent = [
   },
   {
     id: shortid.generate(),
+    title: 'GitRocket',
+    tags: ['software'],
+    body: `A fun plugin for the [Hyper](https://hyper.is/) terminal that launches
+    a rocket ship when you push code with Git. It has received 38 GitHub stars and
+    [over 9000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
+    via NPM.`,
+    media: 'img/gitrocket/gitrocket.gif',
+    primaryLink: 'https://www.npmjs.com/package/gitrocket',
+    images: [
+      {
+        src: 'img/gitrocket/gitrocket.gif',
+      },
+    ],
+  },
+  {
+    id: shortid.generate(),
     title: 'Dial Up',
     tags: ['software', 'design'],
     body: `Creative collective that creates music, videos, magazines, and
