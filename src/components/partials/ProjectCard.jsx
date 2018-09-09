@@ -26,7 +26,7 @@ const ProjectContainer = styled.div`
 
 const ProjectContent = styled.div`
   padding: 8px;
-  height: 48px;
+  height: 64px;
 `;
 
 const ProjectImage = styled.img`
@@ -58,6 +58,15 @@ const ProjectTitle = styled.div`
   line-height: 20px;
 `;
 
+const ProjectCardSectionTitle = styled.div`
+  background: white;
+  color: black;
+  padding: 6px;
+  font-size: 12px;
+  line-height: 6px;
+  font-weight: bold;
+`;
+
 const ProjectDetail = Body.extend``;
 
 const ProjectTag = styled.span`
@@ -66,12 +75,6 @@ const ProjectTag = styled.span`
   padding: 0px 4px;
   margin-right: ${props => props.marginRight ? props.marginRight : '4px'};
   opacity: 0.5;
-`;
-
-const ProjectRole = Body.extend`
-  margin-top: 20px;
-  border-top: 1px solid white;
-  padding: 8px;
 `;
 
 const Project = (props) => {
@@ -98,10 +101,10 @@ const Project = (props) => {
         src={props.content.media}
         onClick={() => props.openGallery(props.content.images)}
       />
+      <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
       <ProjectContent order={2}>
         <TextContent><ReactMarkdown source={props.content.body} /></TextContent>
       </ProjectContent>
-      <ProjectRole>{props.content.roles}</ProjectRole>
     </ProjectContainer>
   );
 };

@@ -17,8 +17,6 @@ export const ProjectContent = [
     and Meet D3 Festival in Dubai. Currently on diplay at the
     [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man)
     until January '19.`,
-    roles: `Lead Software Developer,
-    Hardware-Software Integration.`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
     videoURL: 'https://www.instagram.com/p/BggndLoDl2l/?taken-by=foldhauscollective',
     images: [
@@ -42,7 +40,6 @@ export const ProjectContent = [
     [Raspberry Pi blog](https://www.raspberrypi.org/blog/printed-sound-wave/)
     and [MagPi](https://www.raspberrypi.org/magpi-issues/MagPi61.pdf) (p.31 - p.32), the
     official Raspberry Pi magazine. Presented at Segal Design Expo '17.`,
-    roles: 'Design, Software, Electronics.',
     media: 'img/waves/waves_main.png',
     videoURL: 'https://vimeo.com/220101786',
     images: [
@@ -61,7 +58,6 @@ export const ProjectContent = [
     body: `Creative collective that creates music, videos, magazines, and
     technology. Website featured on
     [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
-    roles: 'Design, Website Development, DJ, Writer.',
     media: 'img/dialup/dialup_main.png',
     images: [
       {
@@ -79,7 +75,6 @@ export const ProjectContent = [
     body: `Projection mapping installation that displays negative thoughts
     people have about themselves as an expression of vulnerability. The
     installation reacts to gestures made by the viewer.`,
-    roles: 'Creative Lead, Projection Mapping, Software Development.',
     media: 'img/negativereel/negativereel_main.png',
     videoURL: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
     images: [
@@ -97,7 +92,6 @@ export const ProjectContent = [
     tags: ['software', 'design'],
     body: `A topographic lamp based on an imaginary mountain. Made with stacked
     laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
-    roles: 'Creative Lead, Design, Software, Hardware.',
     media: 'img/topolamp/topolamp_main.jpg',
     videoURL: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
     images: [
