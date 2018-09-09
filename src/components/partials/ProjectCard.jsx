@@ -86,6 +86,27 @@ const ProjectTag = styled.span`
   opacity: 0.5;
 `;
 
+const ProjectCTA = styled.a`
+  border-top: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  transition: background 0.3s ease, filter 0.3s ease;
+
+  &:hover {
+    background: white;
+
+    > img {
+      filter: invert(100%);
+    }
+  }
+`;
+
+const EyeIcon = styled.img`
+  height: 16px;
+`;
+
 const Project = (props) => {
   const tagsContent = [];
   props.content.tags.map((tag, idx) => {
@@ -114,6 +135,9 @@ const Project = (props) => {
       <ProjectContent order={2}>
         <TextContent><ReactMarkdown source={props.content.body} /></TextContent>
       </ProjectContent>
+      <ProjectCTA href={props.content.primaryLink} target="_blank" rel="noopener noreferrer">
+        <EyeIcon src="img/icons/view.svg" />
+      </ProjectCTA>
     </ProjectContainer>
   );
 };

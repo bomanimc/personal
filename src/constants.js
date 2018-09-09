@@ -18,7 +18,7 @@ export const ProjectContent = [
     [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man)
     until January '19.`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
-    videoURL: 'https://www.instagram.com/p/BggndLoDl2l/?taken-by=foldhauscollective',
+    primaryLink: 'https://www.foldhaus.com/shrumen-lumen',
     images: [
       {
         src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
@@ -41,7 +41,7 @@ export const ProjectContent = [
     and [MagPi](https://www.raspberrypi.org/magpi-issues/MagPi61.pdf) (p.31 - p.32), the
     official Raspberry Pi magazine. Presented at Segal Design Expo '17.`,
     media: 'img/waves/waves_main.png',
-    videoURL: 'https://vimeo.com/220101786',
+    primaryLink: 'https://vimeo.com/220101786',
     images: [
       {
         src: 'img/waves/gallery/waves_showing.png',
@@ -59,6 +59,7 @@ export const ProjectContent = [
     technology. Website featured on
     [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
     media: 'img/dialup/dialup_main.png',
+    primaryLink: 'http://dialupstuff.com/home',
     images: [
       {
         src: 'img/dialup/gallery/dialup_magazine.png',
@@ -76,7 +77,7 @@ export const ProjectContent = [
     people have about themselves as an expression of vulnerability. The
     installation reacts to gestures made by the viewer.`,
     media: 'img/negativereel/negativereel_main.png',
-    videoURL: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
+    primaryLink: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
     images: [
       {
         src: 'img/negativereel/gallery/negativereel_front.gif',
@@ -93,7 +94,7 @@ export const ProjectContent = [
     body: `A topographic lamp based on an imaginary mountain. Made with stacked
     laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
     media: 'img/topolamp/topolamp_main.jpg',
-    videoURL: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
+    primaryLink: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
     images: [
       {
         src: 'img/topolamp/gallery/topolamp_topview.png',
