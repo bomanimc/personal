@@ -15,7 +15,7 @@ const ProjectContainer = styled.div`
   flex: 0 0 auto;
   justify-content: center;
   flex-wrap: nowrap;
-  width: 500px;
+  max-width: 500px;
   font-size: 16px;
   transition: box-shadow 0.3s ease;
 

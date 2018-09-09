@@ -36,11 +36,11 @@ const ContentContainer = styled.section`
 const ProjectGridContainer = styled.div`
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: 500px 500px;
+  grid-template-columns: repeat(2, 1fr);
   height: ${props => props.containerHeight ? props.containerHeight : '100%'};
-  
+
   @media (max-width: 1100px) {
-    grid-template-columns: 500px;
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
