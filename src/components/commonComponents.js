@@ -12,7 +12,7 @@ const linkStyle = css`
 `;
 
 export const Body = styled.p`
-  font-size: 15px;
+  font-size: 12px;
   font-weight: lighter;
 `;
 
