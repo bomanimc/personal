@@ -4,7 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Gallery from '../partials/LightboxGallery';
-import Project from '../partials/Project';
+import ProjectCard from '../partials/ProjectCard';
 import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
 import { SkillAreaColors, ProjectContent, SocialLinks } from '../../constants';
@@ -31,6 +31,17 @@ const ContentContainer = styled.section`
   justify-content: ${props => props.verticalCenter ? 'center' : 'normal'};
   height: ${props => props.containerHeight ? props.containerHeight : '100%'};
   margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
+`;
+
+const ProjectGridContainer = styled.div`
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  height: ${props => props.containerHeight ? props.containerHeight : '100%'};
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const SplashSection = Section.extend`
@@ -192,18 +203,20 @@ class HomePage extends React.Component {
           minHeight={`${(ProjectContent.length * 250) + 200}px`}
           marginHorizontal="20px"
         >
-          <ContentContainer horizontalCenter containerHeight="auto" marginTop="48px">
-            {
-              ProjectContent.map(
-                section =>
-                  (<Project
-                    key={section.id}
-                    content={section}
-                    skillAreaColors={SkillAreaColors}
-                    openGallery={this.openGallery}
-                  />),
-              )
-            }
+          <ContentContainer horizontalCenter containerHeight="auto">
+            <ProjectGridContainer containerHeight="auto">
+              {
+                ProjectContent.map(
+                  section =>
+                    (<ProjectCard
+                      key={section.id}
+                      content={section}
+                      skillAreaColors={SkillAreaColors}
+                      openGallery={this.openGallery}
+                    />),
+                )
+              }
+            </ProjectGridContainer>
           </ContentContainer>
         </Section>
         <Section
