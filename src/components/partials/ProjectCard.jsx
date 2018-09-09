@@ -40,6 +40,7 @@ const ProjectContent = styled.div`
 
 const ProjectImage = styled.img`
   width: 100%;
+  height: 315px;
   border-bottom: 1px solid white;
 
   @media (max-width: 768px) {
