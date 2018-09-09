@@ -124,6 +124,20 @@ export const ProjectContent = [
       },
     ],
   },
+  {
+    id: shortid.generate(),
+    title: 'Reflections \'16',
+    tags: ['design'],
+    body: `A few pithy reflections from a summer working as a Software Design
+    intern at IDEO Palo Alto. Documented and design for sharing.`,
+    media: 'img/reflections/reflections_cover.png',
+    primaryLink: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
+    images: [
+      {
+        src: 'img/reflections/reflections_cover.png',
+      },
+    ],
+  },
   // {
   //   id: shortid.generate(),
   //   title: 'Freelance',
