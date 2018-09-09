@@ -38,8 +38,7 @@ const ProjectGridContainer = styled.div`
   grid-gap: 16px;
   grid-template-columns: 500px 500px;
   height: ${props => props.containerHeight ? props.containerHeight : '100%'};
-  margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
-
+  
   @media (max-width: 1100px) {
     grid-template-columns: 500px;
   }
@@ -204,8 +203,8 @@ class HomePage extends React.Component {
           minHeight={`${(ProjectContent.length * 250) + 200}px`}
           marginHorizontal="20px"
         >
-          <ContentContainer horizontalCenter containerHeight="auto" marginTop="48px">
-            <ProjectGridContainer containerHeight="auto" marginTop="48px">
+          <ContentContainer horizontalCenter containerHeight="auto">
+            <ProjectGridContainer containerHeight="auto">
               {
                 ProjectContent.map(
                   section =>
