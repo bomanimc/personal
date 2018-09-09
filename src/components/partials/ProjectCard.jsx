@@ -17,6 +17,11 @@ const ProjectContainer = styled.div`
   flex-wrap: nowrap;
   width: 500px;
   font-size: 16px;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.5);
+  }
 
   @media (max-width: 768px) {
     display: block;
