@@ -85,6 +85,11 @@ const ProjectTag = styled.span`
   padding: 0px 4px;
   margin-right: ${props => props.marginRight ? props.marginRight : '4px'};
   opacity: 0.5;
+  transition: opacity 0.3s ease;
+
+  ${ProjectContainer}:hover & {
+    opacity: 1;
+  }
 `;
 
 const ProjectCTA = styled.a`
