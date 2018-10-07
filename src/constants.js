@@ -34,6 +34,30 @@ export const ProjectContent = [
   },
   {
     id: shortid.generate(),
+    title: 'News Page Registration',
+    tags: ['software'],
+    body: `Facebook's new product for indexing News pages to
+    support the [Political Ads Archive project](https://newsroom.fb.com/news/2018/05/ads-with-political-content/).
+    Publishers can also submit links
+    to policies, info, and logos in alignment with [The Trust Project's](https://thetrustproject.org/)
+    best practices. Covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html)
+    and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).`,
+    media: 'img/npr/npr.gif',
+    primaryLink: 'https://www.facebook.com/facebookmedia/blog/indexing-news-pages-on-facebook-for-the-ad-archive',
+    images: [
+      {
+        src: 'img/npr/gallery/npr_main_section.png',
+      },
+      {
+        src: 'img/npr/gallery/npr_policies_section.png',
+      },
+      {
+        src: 'img/npr/gallery/npr_logos_section.png',
+      },
+    ],
+  },
+  {
+    id: shortid.generate(),
     title: 'Waves',
     tags: ['software', 'art'],
     body: `Prototype device that encodes responses to personal questions as
