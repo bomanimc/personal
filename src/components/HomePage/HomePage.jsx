@@ -35,7 +35,7 @@ const ContentContainer = styled.section`
 
 const ProjectGridContainer = styled.div`
   display: grid;
-  grid-gap: 16px;
+  grid-gap: 48px;
   grid-template-columns: repeat(2, 1fr);
   height: ${props => props.containerHeight ? props.containerHeight : '100%'};
 
