@@ -3,6 +3,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Gallery from '../partials/LightboxGallery';
 import ProjectCard from '../partials/ProjectCard';
 import SocialLinksBar from '../partials/SocialLinksBar';
@@ -35,7 +36,7 @@ const ContentContainer = styled.section`
 
 const ProjectGridContainer = styled.div`
   display: grid;
-  grid-gap: 48px;
+  grid-gap: 36px;
   grid-template-columns: repeat(2, 1fr);
   height: ${props => props.containerHeight ? props.containerHeight : '100%'};
 
@@ -44,7 +45,7 @@ const ProjectGridContainer = styled.div`
   }
 `;
 
-const SplashSection = Section.extend`
+const Splash = Section.extend`
   height: 80vh;
   min-height: 600px;
   background-color: white;
@@ -108,6 +109,7 @@ const Outro = Introduction.extend`
 
 const Bio = Outro.extend`
   height: auto;
+  text-align: center;
 `;
 
 const changeColor = (e) => {
@@ -143,100 +145,10 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <SplashSection
-          bgColor="white"
-          id="splash"
-        >
-          <Introduction horizontalCenter verticalCenter>
-            <Name
-              id="name"
-              data-color={SkillAreaColors.name}
-              onMouseEnter={e => changeColor(e)}
-            >
-              BOMANI
-            </Name>
-            <SkillArea
-              data-color={SkillAreaColors.software}
-              onMouseEnter={e => changeColor(e)}
-            >
-              SOFTWARE
-            </SkillArea>
-            <SkillArea
-              data-color={SkillAreaColors.design}
-              onMouseEnter={e => changeColor(e)}
-            >
-              DESIGN
-            </SkillArea>
-            <SkillArea
-              data-color={SkillAreaColors.art}
-              onMouseEnter={e => changeColor(e)}
-            >
-              ART
-            </SkillArea>
-          </Introduction>
-        </SplashSection>
-        <Section
-          bgColor="black"
-          textColor="white"
-          align="normal"
-          sectionHeight="20vh"
-          marginHorizontal="20px"
-        >
-          <ContentContainer horizontalCenter containerHeight="auto" marginTop="48px">
-            <Bio>
-              <Body>
-                Bomani McClendon is a software engineer, designer, and
-                aspiring artist based in New York City.
-              </Body>
-              <br />
-              <Body>
-                See his work below.
-              </Body>
-            </Bio>
-          </ContentContainer>
-        </Section>
-        <Section
-          bgColor="black"
-          textColor="white"
-          align="normal"
-          sectionHeight="auto"
-          minHeight={`${(ProjectContent.length * 250) + 200}px`}
-          marginHorizontal="20px"
-        >
-          <ContentContainer horizontalCenter containerHeight="auto">
-            <ProjectGridContainer containerHeight="auto">
-              {
-                ProjectContent.map(
-                  section =>
-                    (<ProjectCard
-                      key={section.id}
-                      content={section}
-                      skillAreaColors={SkillAreaColors}
-                      openGallery={this.openGallery}
-                    />),
-                )
-              }
-            </ProjectGridContainer>
-          </ContentContainer>
-        </Section>
-        <Section
-          bgColor="black"
-          textColor="white"
-          align="center"
-          sectionHeight="100vh"
-          minHeight="600px"
-        >
-          <Outro horizontalCenter verticalCenter>
-            <TextContent>
-              During the day, Bomani works on news products at Facebook.
-              He has previously interned at IDEO, Grubhub, and Boeing.
-              <br />
-              <br />
-              <br />
-              See his full resume <Link href="/resume">here</Link>.
-            </TextContent>
-          </Outro>
-        </Section>
+        <SplashSection onChangeColor={changeColor} />
+        <IntroSection />
+        <ProjectSection />
+        <OutroSection />
         <SocialLinksBar links={SocialLinks} />
         <Gallery
           isGalleryOpen={this.state.showGallery}
@@ -247,5 +159,115 @@ class HomePage extends React.Component {
     );
   }
 }
+
+const SplashSection = ({ onChangeColor }) => (
+  <Splash
+    bgColor="white"
+    id="splash"
+  >
+    <Introduction horizontalCenter verticalCenter>
+      <Name
+        id="name"
+        data-color={SkillAreaColors.name}
+        onMouseEnter={e => onChangeColor(e)}
+      >
+        BOMANI
+      </Name>
+      <SkillArea
+        data-color={SkillAreaColors.software}
+        onMouseEnter={e => onChangeColor(e)}
+      >
+        SOFTWARE
+      </SkillArea>
+      <SkillArea
+        data-color={SkillAreaColors.design}
+        onMouseEnter={e => onChangeColor(e)}
+      >
+        DESIGN
+      </SkillArea>
+      <SkillArea
+        data-color={SkillAreaColors.art}
+        onMouseEnter={e => onChangeColor(e)}
+      >
+        ART
+      </SkillArea>
+    </Introduction>
+  </Splash>
+);
+
+const IntroSection = () => (
+  <Section
+    bgColor="black"
+    textColor="white"
+    align="normal"
+    sectionHeight="20vh"
+    marginHorizontal="20px"
+  >
+    <ContentContainer horizontalCenter containerHeight="auto" marginTop="48px">
+      <Bio>
+        <Body>
+          Bomani McClendon is a software engineer, designer, and
+          aspiring artist based in New York City.
+        </Body>
+        <br />
+        <Body>
+          See his work below.
+        </Body>
+      </Bio>
+    </ContentContainer>
+  </Section>
+);
+
+const ProjectSection = () => (
+  <Section
+    bgColor="black"
+    textColor="white"
+    align="normal"
+    sectionHeight="auto"
+    minHeight={`${(ProjectContent.length * 250) + 200}px`}
+    marginHorizontal="20px"
+  >
+    <ContentContainer horizontalCenter containerHeight="auto">
+      <ProjectGridContainer containerHeight="auto">
+        {
+          ProjectContent.map(
+            section =>
+              (<ProjectCard
+                key={section.id}
+                content={section}
+                skillAreaColors={SkillAreaColors}
+                openGallery={this.openGallery}
+              />),
+          )
+        }
+      </ProjectGridContainer>
+    </ContentContainer>
+  </Section>
+);
+
+const OutroSection = () => (
+  <Section
+    bgColor="black"
+    textColor="white"
+    align="center"
+    sectionHeight="100vh"
+    minHeight="600px"
+  >
+    <Outro horizontalCenter verticalCenter>
+      <TextContent>
+        During the day, Bomani works on news products at Facebook.
+        He has previously interned at IDEO, Grubhub, and Boeing.
+        <br />
+        <br />
+        <br />
+        See his full resume <Link href="/resume">here</Link>.
+      </TextContent>
+    </Outro>
+  </Section>
+);
+
+SplashSection.propTypes = {
+  onChangeColor: PropTypes.func.isRequired,
+};
 
 export default HomePage;
