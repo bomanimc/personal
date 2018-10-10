@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
-import { Body, TextContent } from '../commonComponents';
+import { Body, TextContent, ProjectTags } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -77,13 +77,7 @@ const ProjectCardSectionTitle = styled.div`
   font-weight: bold;
 `;
 
-const ProjectDetail = Body.extend``;
-
-const ProjectTag = styled.span`
-  font-style: italic;
-  background-color: ${props => props.color};
-  padding: 0px 4px;
-  margin-right: ${props => props.marginRight ? props.marginRight : '4px'};
+const ProjectDetail = Body.extend`
   opacity: 0.5;
   transition: opacity 0.3s ease;
 
@@ -113,44 +107,31 @@ const EyeIcon = styled.img`
   height: 16px;
 `;
 
-const Project = (props) => {
-  const tagsContent = [];
-  props.content.tags.map((tag, idx) => {
-    if (tag !== 'featured') {
-      const newTag = idx === (props.content.tags.length - 1)
-        ? (<ProjectTag key={tag} color={props.skillAreaColors[tag]} marginRight="0px">
-          {tag}
-        </ProjectTag>)
-        : <ProjectTag key={tag} color={props.skillAreaColors[tag]}>{tag}</ProjectTag>;
-      tagsContent.push(newTag);
-    }
-  });
-
-  return (
-    <ProjectContainer>
-      <ProjectHeader>
-        <ProjectTitle>{props.content.title}</ProjectTitle>
-        <ProjectDetail>{tagsContent}</ProjectDetail>
-      </ProjectHeader>
-      <ProjectImage
-        order={1}
-        src={props.content.media}
-        onClick={() => props.openGallery(props.content.images)}
-      />
-      <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
-      <ProjectContent order={2}>
-        <TextContent><ReactMarkdown source={props.content.body} /></TextContent>
-      </ProjectContent>
-      <ProjectCTA href={props.content.primaryLink} target="_blank" rel="noopener noreferrer">
-        <EyeIcon src="img/icons/view.svg" />
-      </ProjectCTA>
-    </ProjectContainer>
-  );
-};
+const Project = ({ content, openGallery }) => (
+  <ProjectContainer>
+    <ProjectHeader>
+      <ProjectTitle>{content.title}</ProjectTitle>
+      <ProjectDetail>
+        <ProjectTags tags={content.tags} />
+      </ProjectDetail>
+    </ProjectHeader>
+    <ProjectImage
+      order={1}
+      src={content.media}
+      onClick={() => openGallery(content.images)}
+    />
+    <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
+    <ProjectContent order={2}>
+      <TextContent><ReactMarkdown source={content.body} /></TextContent>
+    </ProjectContent>
+    <ProjectCTA href={content.primaryLink} target="_blank" rel="noopener noreferrer">
+      <EyeIcon src="img/icons/view.svg" />
+    </ProjectCTA>
+  </ProjectContainer>
+);
 
 
 Project.propTypes = {
-  skillAreaColors: PropTypes.shape().isRequired,
   content: PropTypes.shape().isRequired,
   openGallery: PropTypes.func.isRequired,
 };

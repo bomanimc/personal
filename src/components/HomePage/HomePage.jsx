@@ -235,7 +235,6 @@ const ProjectSection = () => (
               (<ProjectCard
                 key={section.id}
                 content={section}
-                skillAreaColors={SkillAreaColors}
                 openGallery={this.openGallery}
               />),
           )
