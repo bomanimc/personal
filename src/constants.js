@@ -28,7 +28,7 @@ export const ProjectContent = [
     [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man)
     until January '19.`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
-    primaryLink: 'https://www.foldhaus.com/shrumen-lumen',
+    primaryLink: `/${ProjectSlug.shrumen}`,
     images: [
       {
         src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
@@ -52,7 +52,7 @@ export const ProjectContent = [
     best practices. Covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html)
     and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).`,
     media: 'img/npr/npr.gif',
-    primaryLink: 'https://www.facebook.com/facebookmedia/blog/indexing-news-pages-on-facebook-for-the-ad-archive',
+    primaryLink: `/${ProjectSlug.npr}`,
     images: [
       {
         src: 'img/npr/gallery/npr_main_section.png',
