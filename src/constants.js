@@ -1,5 +1,3 @@
-import shortid from 'shortid';
-
 export const SkillAreaColors = {
   name: '#ffffff',
   software: '#ff0000',
@@ -7,9 +5,20 @@ export const SkillAreaColors = {
   art: '#20bf6b',
 };
 
+export const ProjectSlug = {
+  shrumen: 'shrumen-lumen',
+  npr: 'news-page-registration',
+  waves: 'waves',
+  gitrocket: 'gitrocket',
+  dialup: 'dial-up',
+  negativereel: 'negativereel',
+  topolamp: 'topolamp',
+  reflections: 'reflections',
+};
+
 export const ProjectContent = [
   {
-    id: shortid.generate(),
+    id: ProjectSlug.shrumen,
     title: 'Shrumen Lumen',
     tags: ['software', 'art'],
     body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
@@ -33,7 +42,7 @@ export const ProjectContent = [
     ],
   },
   {
-    id: shortid.generate(),
+    id: ProjectSlug.npr,
     title: 'News Page Registration',
     tags: ['software'],
     body: `Facebook's new product for indexing News pages to
@@ -57,7 +66,7 @@ export const ProjectContent = [
     ],
   },
   {
-    id: shortid.generate(),
+    id: ProjectSlug.waves,
     title: 'Waves',
     tags: ['software', 'art'],
     body: `Prototype device that encodes responses to personal questions as
@@ -77,7 +86,7 @@ export const ProjectContent = [
     ],
   },
   {
-    id: shortid.generate(),
+    id: ProjectSlug.gitrocket,
     title: 'GitRocket',
     tags: ['software'],
     body: `A fun plugin for the [Hyper](https://hyper.is/) terminal that launches
@@ -93,7 +102,7 @@ export const ProjectContent = [
     ],
   },
   {
-    id: shortid.generate(),
+    id: ProjectSlug.dialup,
     title: 'Dial Up',
     tags: ['software', 'design'],
     body: `Creative collective that creates music, videos, magazines, and
@@ -111,7 +120,7 @@ export const ProjectContent = [
     ],
   },
   {
-    id: shortid.generate(),
+    id: ProjectSlug.negativereel,
     title: 'NegativeReel',
     tags: ['software', 'art'],
     body: `Projection mapping installation that displays negative thoughts
@@ -129,7 +138,7 @@ export const ProjectContent = [
     ],
   },
   {
-    id: shortid.generate(),
+    id: ProjectSlug.topolamp,
     title: 'TopoLamp',
     tags: ['software', 'design'],
     body: `A topographic lamp based on an imaginary mountain. Made with stacked
@@ -149,7 +158,7 @@ export const ProjectContent = [
     ],
   },
   {
-    id: shortid.generate(),
+    id: ProjectSlug.reflections,
     title: 'Reflections \'16',
     tags: ['design'],
     body: `A few pithy reflections from a summer working as a Software Design

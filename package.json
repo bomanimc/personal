@@ -27,7 +27,6 @@
     "react-images": "git://github.com/lkazberova/react-images.git#libs",
     "react-markdown": "^3.3.0",
     "react-router": "^2.6.1",
-    "shortid": "^2.2.8",
     "styled-components": "^2.0.1"
   },
   "devDependencies": {
