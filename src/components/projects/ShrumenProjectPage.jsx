@@ -6,12 +6,16 @@ import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
 import ShrumenContentPath from './shrumen.md';
 import { ProjectContent } from '../../constants';
-import { Body, TextContent } from '../commonComponents';
+import { Body, TextContent, Link } from '../commonComponents';
 
 const project = ProjectContent[0];
 
 const ProjectPage = styled.div`
   padding: 48px;
+`;
+
+const BackButton = styled.span`
+  font-weight: bold;
 `;
 
 const ProjectPageTitle = styled.p`
@@ -22,7 +26,7 @@ const ProjectPageTitle = styled.p`
 
 const MetadataSection = styled.div`
   display: flex;
-  margin-top: 48px;
+  margin-top: 16px;
 `;
 
 const MetadataItem = styled.div`
@@ -65,6 +69,7 @@ class ShrumenProjectPage extends React.Component {
     const { introContent } = this.state;
     return (
       <ProjectPage>
+        <BackButton><Link href="/">Back</Link></BackButton>
         <ProjectPageTitle>{project.title}</ProjectPageTitle>
         <Metadata />
         <Divider />
