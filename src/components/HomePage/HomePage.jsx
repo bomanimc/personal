@@ -53,7 +53,7 @@ const Splash = Section.extend`
   margin: 0px;
 
   @media (max-width: 768px) {
-    height: 70vh;
+    height: 400px;
     min-height: 300px;
   }
 `;
@@ -173,10 +173,10 @@ const IntroSection = () => (
     bgColor="black"
     textColor="white"
     align="normal"
-    sectionHeight="20vh"
+    sectionHeight="20%"
     marginHorizontal="20px"
   >
-    <ContentContainer horizontalCenter containerHeight="auto" marginTop="48px">
+    <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
       <Bio>
         <Body>
           Bomani McClendon is a software engineer, designer, and
@@ -200,7 +200,7 @@ const ProjectSection = () => (
     minHeight={`${(ProjectContent.length * 250) + 200}px`}
     marginHorizontal="20px"
   >
-    <ContentContainer horizontalCenter containerHeight="auto" marginTop="16px">
+    <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
       <ProjectGridContainer containerHeight="auto">
         {
           Map(ProjectContent).map(section =>
