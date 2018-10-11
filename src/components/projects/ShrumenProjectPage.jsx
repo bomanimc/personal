@@ -41,7 +41,7 @@ const MetadataTitle = Body.extend`
   margin-bottom: 8px;
 `;
 
-const MetadataContent = Body.extend``;
+const MetadataContent = TextContent.extend``;
 
 const Divider = styled.div`
   width: 60vw;
@@ -84,23 +84,16 @@ const Metadata = () => (
   <MetadataSection>
     <MetadataItem>
       <MetadataTitle>Tools</MetadataTitle>
-      <MetadataContent>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </MetadataContent>
+      <MetadataContent><ReactMarkdown source={project.tools} /></MetadataContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Role</MetadataTitle>
-      <MetadataContent>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </MetadataContent>
+      <MetadataContent><ReactMarkdown source={project.role} /></MetadataContent>
     </MetadataItem>
     <MetadataItem>
-      <MetadataTitle>Duration</MetadataTitle>
+      <MetadataTitle>External Site</MetadataTitle>
       <MetadataContent>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <Link href="https://www.foldhaus.com/shrumen-lumen">foldhaus.com/shrumen-lumen</Link>
       </MetadataContent>
     </MetadataItem>
   </MetadataSection>

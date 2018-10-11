@@ -27,6 +27,9 @@ export const ProjectContent = [
     and Meet D3 Festival in Dubai. Currently on diplay at the
     [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man)
     until January '19.`,
+    tools: 'Arduino, NeoPixel, MadMapper, PixelPusher, Raspberry Pi, Node, Processing, Python, C',
+    role: `Lead Software Developer. Hardware-Software Integration. In
+    collaboration with the [Foldhaus Collective](https://www.foldhaus.com) team.`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
     primaryLink: `/${ProjectSlug.shrumen}`,
     images: [
