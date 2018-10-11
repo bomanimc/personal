@@ -200,7 +200,7 @@ const ProjectSection = () => (
     minHeight={`${(ProjectContent.length * 250) + 200}px`}
     marginHorizontal="20px"
   >
-    <ContentContainer horizontalCenter containerHeight="auto">
+    <ContentContainer horizontalCenter containerHeight="auto" marginTop="16px">
       <ProjectGridContainer containerHeight="auto">
         {
           Map(ProjectContent).map(section =>
