@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import HomePage from './components/HomePage/HomePage';
 import NotFoundPage from './components/NotFoundPage';
-import ShrumenProjectPage from './components/projects/ShrumenProjectPage';
+import ShrumenProjectPage from './components/projects/Shrumen/ShrumenProjectPage';
 import NPRProjectPage from './components/projects/NPRProjectPage';
 import { ProjectSlug } from './constants';
 

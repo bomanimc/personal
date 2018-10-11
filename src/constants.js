@@ -16,8 +16,8 @@ export const ProjectSlug = {
   reflections: 'reflections',
 };
 
-export const ProjectContent = [
-  {
+export const ProjectContent = {
+  shrumen: {
     id: ProjectSlug.shrumen,
     title: 'Shrumen Lumen',
     tags: ['software', 'art'],
@@ -32,6 +32,7 @@ export const ProjectContent = [
     collaboration with the [Foldhaus Collective](https://www.foldhaus.com) team.`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
     primaryLink: `/${ProjectSlug.shrumen}`,
+    site: 'https://www.foldhaus.com/shrumen-lumen',
     images: [
       {
         src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
@@ -41,7 +42,7 @@ export const ProjectContent = [
       },
     ],
   },
-  {
+  npr: {
     id: ProjectSlug.npr,
     title: 'News Page Registration',
     tags: ['software'],
@@ -65,7 +66,7 @@ export const ProjectContent = [
       },
     ],
   },
-  {
+  waves: {
     id: ProjectSlug.waves,
     title: 'Waves',
     tags: ['software', 'art'],
@@ -85,7 +86,7 @@ export const ProjectContent = [
       },
     ],
   },
-  {
+  gitrocket: {
     id: ProjectSlug.gitrocket,
     title: 'GitRocket',
     tags: ['software'],
@@ -101,7 +102,7 @@ export const ProjectContent = [
       },
     ],
   },
-  {
+  dialup: {
     id: ProjectSlug.dialup,
     title: 'Dial Up',
     tags: ['software', 'design'],
@@ -119,7 +120,7 @@ export const ProjectContent = [
       },
     ],
   },
-  {
+  negativereel: {
     id: ProjectSlug.negativereel,
     title: 'NegativeReel',
     tags: ['software', 'art'],
@@ -137,7 +138,7 @@ export const ProjectContent = [
       },
     ],
   },
-  {
+  topolamp: {
     id: ProjectSlug.topolamp,
     title: 'TopoLamp',
     tags: ['software', 'design'],
@@ -157,7 +158,7 @@ export const ProjectContent = [
       },
     ],
   },
-  {
+  reflections: {
     id: ProjectSlug.reflections,
     title: 'Reflections \'16',
     tags: ['design'],
@@ -171,22 +172,7 @@ export const ProjectContent = [
       },
     ],
   },
-  // {
-  //   id: shortid.generate(),
-  //   title: 'Freelance',
-  //   tags: ['software', 'design'],
-  //   body: `Custom websites created for music artists and organizations, such as
-  //   Cakes Da Killa, Machine Girl, and Lyrical
-  //   Lemonade (in progress).`,
-  //   roles: 'Design, Website Development',
-  //   media: 'img/freelance/freelance_main.png',
-  //   images: [
-  //     {
-  //       src: 'img/topolamp/gallery/topolamp_lasercut.png',
-  //     },
-  //   ],
-  // },
-];
+};
 
 export const SocialLinks = [
   {

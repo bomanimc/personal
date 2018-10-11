@@ -230,7 +230,7 @@ const ProjectSection = ({ onOpenGallery }) => (
     <ContentContainer horizontalCenter containerHeight="auto">
       <ProjectGridContainer containerHeight="auto">
         {
-          ProjectContent.map(
+          Object.values(ProjectContent).map(
             section =>
               (<ProjectCard
                 key={section.id}
