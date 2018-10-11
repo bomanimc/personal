@@ -24,10 +24,10 @@ export const ProjectContent = [
     body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
     interactive art installation made up of five glowing mushrooms
     that react to the presence of people. Presented at Burning Man 2016
-    and Meet D3 Festival in Dubai. Currently on diplay at the
+    and Meet D3 Festival in Dubai. Currently on display at the
     [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man)
     until January '19.`,
-    tools: 'Arduino, NeoPixel, MadMapper, PixelPusher, Raspberry Pi, Node, Processing, Python, C',
+    tools: 'Arduino, NeoPixel, MadMapper, PixelPusher, Raspberry Pi, Node, Processing, Python, C.',
     role: `Lead Software Developer. Hardware-Software Integration. In
     collaboration with the [Foldhaus Collective](https://www.foldhaus.com) team.`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
@@ -38,9 +38,6 @@ export const ProjectContent = [
       },
       {
         src: 'img/shrumenlumen/gallery/shrumen_night.png',
-      },
-      {
-        src: 'img/shrumenlumen/gallery/shrumen_solo.JPG',
       },
     ],
   },

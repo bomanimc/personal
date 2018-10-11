@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown/with-html';
 import PropTypes from 'prop-types';
 import ShrumenContentPath from './shrumen.md';
 import { ProjectContent } from '../../constants';
@@ -12,6 +12,12 @@ const project = ProjectContent[0];
 
 const ProjectPage = styled.div`
   padding: 48px;
+  display: flex;
+  justify-content: center;
+`;
+
+const ProjectCenteringContainer = styled.div`
+  width: 1000px;
 `;
 
 const BackButton = styled.span`
@@ -44,12 +50,30 @@ const MetadataTitle = Body.extend`
 const MetadataContent = TextContent.extend``;
 
 const Divider = styled.div`
-  width: 60vw;
+  width: 200px;
   border-top: 1px dashed white;
   margin: 48px 0px;
 `;
 
+const HiddenDivider = styled.div`
+  margin: 48px 0px;
+`;
+
 const BodySection = Body.extend``;
+
+const ProjectPageImage = styled.div`
+  width: 100%;
+  margin-bottom: 16px;
+`;
+
+const ProjectPageImageSource = styled.img`
+  border: 1px solid white;
+  width: 100%;
+`;
+
+const getProjectImages = projectData => [projectData.media].concat(
+  projectData.images.map(image => image.src),
+);
 
 class ShrumenProjectPage extends React.Component {
   constructor() {
@@ -70,11 +94,13 @@ class ShrumenProjectPage extends React.Component {
     const { introContent } = this.state;
     return (
       <ProjectPage>
-        <BackButton><Link href="/">Back</Link></BackButton>
-        <ProjectPageTitle>{project.title}</ProjectPageTitle>
-        <Metadata />
-        <Divider />
-        <BodyContent introContent={introContent} />
+        <ProjectCenteringContainer>
+          <BackButton><Link href="/">Back</Link></BackButton>
+          <ProjectPageTitle>{project.title}</ProjectPageTitle>
+          <Metadata />
+          <Divider />
+          <BodyContent introContent={introContent} />
+        </ProjectCenteringContainer>
       </ProjectPage>
     );
   }
@@ -101,7 +127,17 @@ const Metadata = () => (
 
 const BodyContent = ({ introContent }) => (
   <BodySection>
-    <TextContent><ReactMarkdown source={introContent} /></TextContent>
+    <TextContent>
+      <ReactMarkdown source={introContent} escapeHtml={false} />
+    </TextContent>
+    <HiddenDivider />
+    {
+      getProjectImages(project).map(image => (
+        <ProjectPageImage>
+          <ProjectPageImageSource src={image} />
+        </ProjectPageImage>
+      ))
+    }
   </BodySection>
 );
 
