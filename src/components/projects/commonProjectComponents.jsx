@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown/with-html';
+import { browserHistory } from 'react-router';
 import { Link, Body, TextContent } from '../commonComponents';
 
 const PROJECT_PAGE_WIDTH = '1000px';
@@ -26,7 +27,7 @@ export const ProjectCenteringContainer = styled.div`
   }
 `;
 
-export const BackButton = styled.span`
+export const BackButton = Link.extend`
   font-weight: bold;
 `;
 
@@ -118,7 +119,7 @@ export const getProjectImages = projectData => [projectData.media].concat(
 export const BaseProjectPage = ({ title, tools, role, site, body }) => (
   <ProjectPage>
     <ProjectCenteringContainer>
-      <BackButton><Link href="/">Back</Link></BackButton>
+      <BackButton onClick={browserHistory.goBack}>Back</BackButton>
       <ProjectPageTitle>{title}</ProjectPageTitle>
       <Metadata tools={tools} role={role} site={site} />
       <Divider />
