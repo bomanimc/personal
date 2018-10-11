@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
-import { Body, TextContent, ProjectTags } from '../commonComponents';
+import { Body, TextContent, ProjectTags, Link } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -20,7 +20,7 @@ const ProjectContainer = styled.div`
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.5);
+    box-shadow: 4px 4px 3px rgba(255, 255, 255, 0.5);
   }
 
   @media (max-width: 768px) {
@@ -86,27 +86,6 @@ const ProjectDetail = Body.extend`
   }
 `;
 
-const ProjectCTA = styled.a`
-  border-top: 1px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  transition: background 0.3s ease, filter 0.3s ease;
-
-  &:hover {
-    background: white;
-
-    > img {
-      filter: invert(100%);
-    }
-  }
-`;
-
-const EyeIcon = styled.img`
-  height: 16px;
-`;
-
 const getIsExternalLink = link => link[0] !== '/';
 
 const Project = ({ content }) => (
@@ -117,25 +96,25 @@ const Project = ({ content }) => (
         <ProjectTags tags={content.tags} />
       </ProjectDetail>
     </ProjectHeader>
-    <a href={content.primaryLink}>
-      <ProjectImage
-        order={1}
-        src={content.media}
-      />
-    </a>
+    {
+      getIsExternalLink(content.primaryLink)
+      ? <Link href={content.primaryLink} target="_blank" rel="noopener noreferrer">
+        <ProjectImage
+          order={1}
+          src={content.media}
+        />
+      </Link>
+      : <Link href={content.primaryLink}>
+        <ProjectImage
+          order={1}
+          src={content.media}
+        />
+      </Link>
+    }
     <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
     <ProjectContent order={2}>
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
     </ProjectContent>
-    {
-      getIsExternalLink(content.primaryLink)
-      ? <ProjectCTA href={content.primaryLink} target="_blank" rel="noopener noreferrer">
-        <EyeIcon src="img/icons/view.svg" />
-      </ProjectCTA>
-      : <ProjectCTA href={content.primaryLink}>
-        <EyeIcon src="img/icons/view.svg" />
-      </ProjectCTA>
-    }
   </ProjectContainer>
 );
 
