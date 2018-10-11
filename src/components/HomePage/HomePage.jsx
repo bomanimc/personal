@@ -147,7 +147,7 @@ class HomePage extends React.Component {
       <div>
         <SplashSection onChangeColor={changeColor} />
         <IntroSection />
-        <ProjectSection />
+        <ProjectSection onOpenGallery={this.openGallery} />
         <OutroSection />
         <SocialLinksBar links={SocialLinks} />
         <Gallery
@@ -218,7 +218,7 @@ const IntroSection = () => (
   </Section>
 );
 
-const ProjectSection = () => (
+const ProjectSection = ({ onOpenGallery }) => (
   <Section
     bgColor="black"
     textColor="white"
@@ -235,7 +235,7 @@ const ProjectSection = () => (
               (<ProjectCard
                 key={section.id}
                 content={section}
-                openGallery={this.openGallery}
+                openGallery={onOpenGallery}
               />),
           )
         }
@@ -264,6 +264,10 @@ const OutroSection = () => (
     </Outro>
   </Section>
 );
+
+ProjectSection.propTypes = {
+  onOpenGallery: PropTypes.func.isRequired,
+};
 
 SplashSection.propTypes = {
   onChangeColor: PropTypes.func.isRequired,
