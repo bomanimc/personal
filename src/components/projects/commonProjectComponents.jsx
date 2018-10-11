@@ -138,7 +138,13 @@ export class BaseBodyContent extends React.Component {
   }
 
   componentWillMount() {
-    fetch(this.props.introContentPath).then(response => response.text()).then(text =>
+    const { introContentPath, project } = this.props;
+    if (introContentPath === null || introContentPath === undefined) {
+      this.setState({ introContent: project.body });
+      return;
+    }
+
+    fetch(introContentPath).then(response => response.text()).then(text =>
       this.setState({ introContent: text }),
     );
   }
