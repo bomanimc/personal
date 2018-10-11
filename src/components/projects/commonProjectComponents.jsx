@@ -116,10 +116,27 @@ export const getProjectImages = projectData => [projectData.media].concat(
   projectData.images.map(image => image.src),
 );
 
+const goBackBackup = (currentPath) => {
+  const newPath = window.location.pathname;
+  if (currentPath === newPath) {
+    browserHistory.push('/');
+  }
+};
+
+const goBackRetry = () => {
+  const currentPath = window.location.pathname;
+  browserHistory.goBack();
+  setInterval(
+    goBackBackup,
+    500,
+    currentPath,
+  );
+};
+
 export const BaseProjectPage = ({ title, tools, role, site, body }) => (
   <ProjectPage>
     <ProjectCenteringContainer>
-      <BackButton onClick={browserHistory.goBack}>Back</BackButton>
+      <BackButton onClick={goBackRetry}>Back</BackButton>
       <ProjectPageTitle>{title}</ProjectPageTitle>
       <Metadata tools={tools} role={role} site={site} />
       <Divider />
