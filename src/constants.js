@@ -30,9 +30,9 @@ export const ProjectContent = {
     tools: 'Arduino, NeoPixel, MadMapper, PixelPusher, Raspberry Pi, Node, Processing, Python, C.',
     role: `Lead Software Developer. Hardware-Software Integration. In
     collaboration with the [Foldhaus Collective](https://www.foldhaus.com) team.`,
-    media: 'img/shrumenlumen/shrumen_main.jpg',
-    primaryLink: `/${ProjectSlug.shrumen}`,
     site: 'https://www.foldhaus.com/shrumen-lumen',
+    primaryLink: `/${ProjectSlug.shrumen}`,
+    media: 'img/shrumenlumen/shrumen_main.jpg',
     images: [
       {
         src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
@@ -55,8 +55,11 @@ export const ProjectContent = {
     to policies, info, and logos in alignment with [The Trust Project's](https://thetrustproject.org/)
     best practices. Covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html)
     and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).`,
-    media: 'img/npr/npr.gif',
+    tools: 'React, PHP (Hack), Relay, GraphQL.',
+    role: `Software Engineer focused on internal review processes and
+    infrastructure. In collaboration with the other engineers on my team.`,
     primaryLink: `/${ProjectSlug.npr}`,
+    media: 'img/npr/npr.gif',
     images: [
       {
         src: 'img/npr/gallery/npr_main_section.png',
@@ -78,6 +81,9 @@ export const ProjectContent = {
     [Raspberry Pi blog](https://www.raspberrypi.org/blog/printed-sound-wave/)
     and [MagPi](https://www.raspberrypi.org/magpi-issues/MagPi61.pdf) (p.31 - p.32), the
     official Raspberry Pi magazine. Presented at Segal Design Expo '17.`,
+    tools: 'Raspberry Pi, Python, JavaScript.',
+    role: `Software Engineer focused on internal review processes and infrastructure. In
+    collaboration with [Eunice Lee](https://euniceylee.github.io/) and Matt Zhang.`,
     media: 'img/waves/waves_main.png',
     primaryLink: `/${ProjectSlug.waves}`,
     // primaryLink: 'https://vimeo.com/220101786',
@@ -98,9 +104,11 @@ export const ProjectContent = {
     a rocket ship when you push code with Git. It has received 38 GitHub stars and
     [over 9000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
     via NPM.`,
+    tools: 'React, Redux, Hyper.',
+    role: 'Solo',
+    site: 'https://www.npmjs.com/package/gitrocket',
     media: 'img/gitrocket/gitrocket.gif',
     primaryLink: `/${ProjectSlug.gitrocket}`,
-    // primaryLink: 'https://www.npmjs.com/package/gitrocket',
     images: [
       {
         src: 'img/gitrocket/gitrocket.gif',
@@ -114,9 +122,12 @@ export const ProjectContent = {
     body: `Creative collective that creates music, videos, magazines, and
     technology. Website featured on
     [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
+    tools: 'Node, React, SASS, Sketch.',
+    role: `Developer, Designer, Writer, DJ. In collaboration with other members
+    of Dial Up.`,
+    site: 'http://dialupstuff.com/home',
     media: 'img/dialup/dialup_main.png',
     primaryLink: `/${ProjectSlug.dialup}`,
-    // primaryLink: 'http://dialupstuff.com/home',
     images: [
       {
         src: 'img/dialup/gallery/dialup_magazine.png',
@@ -151,6 +162,8 @@ export const ProjectContent = {
     tags: ['software', 'design'],
     body: `A topographic lamp based on an imaginary mountain. Made with stacked
     laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
+    tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
+    role: 'Solo',
     media: 'img/topolamp/topolamp_main.jpg',
     primaryLink: `/${ProjectSlug.topolamp}`,
     // primaryLink: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
@@ -172,9 +185,11 @@ export const ProjectContent = {
     tags: ['design'],
     body: `A few pithy reflections from a summer working as a Software Design
     intern at IDEO Palo Alto. Documented and design for sharing.`,
+    tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
+    role: 'Solo',
+    site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
     media: 'img/reflections/reflections_cover.png',
     primaryLink: `/${ProjectSlug.reflections}`,
-    // primaryLink: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
     images: [
       {
         src: 'img/reflections/reflections_cover.png',
