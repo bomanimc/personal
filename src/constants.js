@@ -141,13 +141,12 @@ export const ProjectContent = {
     body: `Projection mapping installation that displays negative thoughts
     people have about themselves as an expression of vulnerability. The
     installation reacts to gestures made by the viewer.`,
-    media: 'img/negativereel/negativereel_main.png',
+    tools: 'Node, Processing, Leap Motion, MadMapper.',
+    role: 'Solo',
+    media: 'img/negativereel/negativereel_main.gif',
     primaryLink: `/${ProjectSlug.negativereel}`,
     // primaryLink: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
     images: [
-      {
-        src: 'img/negativereel/gallery/negativereel_front.gif',
-      },
       {
         src: 'img/negativereel/gallery/negativereel_interaction.gif',
       },
