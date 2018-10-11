@@ -6,14 +6,24 @@ import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Link, Body, TextContent } from '../commonComponents';
 
+const PROJECT_PAGE_WIDTH = '1000px';
+
 export const ProjectPage = styled.div`
-  padding: 48px;
+  margin: 48px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
+    margin: 20px;
+  }
 `;
 
 export const ProjectCenteringContainer = styled.div`
-  width: 1000px;
+  width: ${PROJECT_PAGE_WIDTH};
+
+  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
+    width: 100%;
+  }
 `;
 
 export const BackButton = styled.span`
@@ -30,11 +40,24 @@ export const ProjectPageTitle = styled.p`
 export const MetadataSection = styled.div`
   display: flex;
   margin-top: 16px;
+
+  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
+    flex-direction: column;
+  }
 `;
 
 export const MetadataItem = styled.div`
   margin-right: 48px;
   width: 300px;
+
+  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
+    width: 100%;
+    margin-bottom: 16px;
+
+    :last-child {
+      margin-bottom: 0px;
+    }
+  }
 `;
 
 export const MetadataTitle = Body.extend`
