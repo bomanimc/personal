@@ -4,7 +4,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Gallery from '../partials/LightboxGallery';
 import ProjectCard from '../partials/ProjectCard';
 import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
@@ -123,42 +122,15 @@ const changeColor = (e) => {
   }
 };
 
-class HomePage extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      showGallery: false,
-      currentMedia: [],
-    };
-
-    this.openGallery = this.openGallery.bind(this);
-  }
-
-  openGallery(images) {
-    this.setState({
-      showGallery: true,
-      currentMedia: images,
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <SplashSection onChangeColor={changeColor} />
-        <IntroSection />
-        <ProjectSection onOpenGallery={this.openGallery} />
-        <OutroSection />
-        <SocialLinksBar links={SocialLinks} />
-        <Gallery
-          isGalleryOpen={this.state.showGallery}
-          onCloseHandler={() => this.setState({ showGallery: false })}
-          media={this.state.currentMedia}
-        />
-      </div>
-    );
-  }
-}
+const HomePage = () => (
+  <div>
+    <SplashSection onChangeColor={changeColor} />
+    <IntroSection />
+    <ProjectSection />
+    <OutroSection />
+    <SocialLinksBar links={SocialLinks} />
+  </div>
+);
 
 const SplashSection = ({ onChangeColor }) => (
   <Splash
@@ -218,7 +190,7 @@ const IntroSection = () => (
   </Section>
 );
 
-const ProjectSection = ({ onOpenGallery }) => (
+const ProjectSection = () => (
   <Section
     bgColor="black"
     textColor="white"
@@ -235,7 +207,6 @@ const ProjectSection = ({ onOpenGallery }) => (
               (<ProjectCard
                 key={section.id}
                 content={section}
-                openGallery={onOpenGallery}
               />),
           )
         }
@@ -264,10 +235,6 @@ const OutroSection = () => (
     </Outro>
   </Section>
 );
-
-ProjectSection.propTypes = {
-  onOpenGallery: PropTypes.func.isRequired,
-};
 
 SplashSection.propTypes = {
   onChangeColor: PropTypes.func.isRequired,

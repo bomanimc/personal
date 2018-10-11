@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
-import { Body, TextContent, ProjectTags } from '../commonComponents';
+import { Body, TextContent, ProjectTags, Link } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -109,7 +109,7 @@ const EyeIcon = styled.img`
 
 const getIsExternalLink = link => link[0] !== '/';
 
-const Project = ({ content, openGallery }) => (
+const Project = ({ content }) => (
   <ProjectContainer>
     <ProjectHeader>
       <ProjectTitle>{content.title}</ProjectTitle>
@@ -117,11 +117,12 @@ const Project = ({ content, openGallery }) => (
         <ProjectTags tags={content.tags} />
       </ProjectDetail>
     </ProjectHeader>
-    <ProjectImage
-      order={1}
-      src={content.media}
-      onClick={() => openGallery(content.images)}
-    />
+    <Link href={content.primaryLink}>
+      <ProjectImage
+        order={1}
+        src={content.media}
+      />
+    </Link>
     <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
     <ProjectContent order={2}>
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
@@ -138,10 +139,8 @@ const Project = ({ content, openGallery }) => (
   </ProjectContainer>
 );
 
-
 Project.propTypes = {
   content: PropTypes.shape().isRequired,
-  openGallery: PropTypes.func.isRequired,
 };
 
 export default Project;
