@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-
+import { SkillAreaColors } from '../../constants';
 import { Body, TextContent, ProjectTags, Link } from '../commonComponents';
 
 const ProjectContainer = styled.div`
@@ -20,7 +20,7 @@ const ProjectContainer = styled.div`
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 4px 4px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 3px 3px 3px ${props => props.shadowColor};
   }
 
   @media (max-width: 768px) {
@@ -114,7 +114,11 @@ const EyeIcon = styled.img`
 const getIsExternalLink = link => link[0] !== '/';
 
 const Project = ({ content }) => (
-  <ProjectContainer>
+  <ProjectContainer
+    shadowColor={SkillAreaColors[
+      content.tags[Math.floor(Math.random() * content.tags.length)]
+    ]}
+  >
     <ProjectHeader>
       <ProjectTitle>{content.title}</ProjectTitle>
       <ProjectDetail>
