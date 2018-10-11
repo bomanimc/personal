@@ -102,7 +102,7 @@ export const ProjectContent = {
     [over 9000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
     via NPM.`,
     tools: 'React, Redux, Hyper.',
-    role: 'Solo',
+    role: 'Individual Project',
     site: 'https://www.npmjs.com/package/gitrocket',
     media: 'img/gitrocket/gitrocket.gif',
     primaryLink: `/${ProjectSlug.gitrocket}`,
@@ -142,7 +142,7 @@ export const ProjectContent = {
     people have about themselves as an expression of vulnerability. The
     installation reacts to gestures made by the viewer.`,
     tools: 'Node, Processing, Leap Motion, MadMapper.',
-    role: 'Solo',
+    role: 'Individual Project',
     media: 'img/negativereel/negativereel_main.gif',
     primaryLink: `/${ProjectSlug.negativereel}`,
     // primaryLink: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
@@ -159,7 +159,7 @@ export const ProjectContent = {
     body: `A topographic lamp based on an imaginary mountain. Made with stacked
     laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
     tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
-    role: 'Solo',
+    role: 'Individual Project',
     media: 'img/topolamp/topolamp_main.jpg',
     primaryLink: `/${ProjectSlug.topolamp}`,
     // primaryLink: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
@@ -182,7 +182,7 @@ export const ProjectContent = {
     body: `A few pithy reflections from a summer working as a Software Design
     intern at IDEO Palo Alto. Documented and design for sharing.`,
     tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
-    role: 'Solo',
+    role: 'Individual Project',
     site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
     media: 'img/reflections/reflections_cover.png',
     primaryLink: `/${ProjectSlug.reflections}`,
