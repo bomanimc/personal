@@ -86,6 +86,31 @@ const ProjectDetail = Body.extend`
   }
 `;
 
+const ProjectCTA = styled.a`
+  border-top: 1px solid white;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  transition: background 0.3s ease, filter 0.3s ease;
+
+  &:hover {
+    background: white;
+
+    > img {
+      filter: invert(100%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+const EyeIcon = styled.img`
+  height: 16px;
+`;
+
 const getIsExternalLink = link => link[0] !== '/';
 
 const Project = ({ content }) => (
@@ -115,6 +140,9 @@ const Project = ({ content }) => (
     <ProjectContent order={2}>
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
     </ProjectContent>
+    <ProjectCTA href={content.primaryLink} target="_blank" rel="noopener noreferrer">
+      <EyeIcon src="img/icons/view.svg" />
+    </ProjectCTA>
   </ProjectContainer>
 );
 
