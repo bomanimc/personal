@@ -40,9 +40,6 @@ export const ProjectContent = {
       {
         src: 'img/shrumenlumen/gallery/shrumen_night.png',
       },
-      {
-        src: 'img/shrumenlumen/gallery/shrumen_solo.jpg',
-      },
     ],
   },
   npr: {
