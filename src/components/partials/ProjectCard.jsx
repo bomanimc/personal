@@ -144,9 +144,15 @@ const Project = ({ content }) => (
     <ProjectContent order={2}>
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
     </ProjectContent>
-    <ProjectCTA href={content.primaryLink} target="_blank" rel="noopener noreferrer">
-      <EyeIcon src="img/icons/view.svg" />
-    </ProjectCTA>
+    {
+      getIsExternalLink(content.primaryLink)
+      ? <ProjectCTA href={content.primaryLink} target="_blank" rel="noopener noreferrer">
+        <EyeIcon src="img/icons/view.svg" />
+      </ProjectCTA>
+      : <ProjectCTA href={content.primaryLink}>
+        <EyeIcon src="img/icons/view.svg" />
+      </ProjectCTA>
+    }
   </ProjectContainer>
 );
 
