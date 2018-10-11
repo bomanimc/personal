@@ -102,7 +102,7 @@ const Outro = Introduction.extend`
   max-width: 500px;
 
   @media (max-width: 768px) {
-    max-width: none;
+    width: 100%;
   }
 `;
 
@@ -222,6 +222,7 @@ const OutroSection = () => (
     align="center"
     sectionHeight="100vh"
     minHeight="600px"
+    marginHorizontal="20px"
   >
     <Outro horizontalCenter verticalCenter>
       <TextContent>
