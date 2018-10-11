@@ -22,6 +22,7 @@ const ProjectPageTitle = styled.p`
   font-size: 48px;
   font-weight: bold;
   text-transform: uppercase;
+  margin-top: 16px;
 `;
 
 const MetadataSection = styled.div`
