@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
-import { Body, TextContent, ProjectTags, Link } from '../commonComponents';
+import { Body, TextContent, ProjectTags } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -42,9 +42,9 @@ const ProjectImage = styled.img`
   width: 100%;
   height: 315px;
   border-bottom: 1px solid white;
+  display: block;
 
   @media (max-width: 768px) {
-    display: block;
     width: 100%;
     height: auto;
     min-height: auto;
@@ -117,12 +117,12 @@ const Project = ({ content }) => (
         <ProjectTags tags={content.tags} />
       </ProjectDetail>
     </ProjectHeader>
-    <Link href={content.primaryLink}>
+    <a href={content.primaryLink}>
       <ProjectImage
         order={1}
         src={content.media}
       />
-    </Link>
+    </a>
     <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
     <ProjectContent order={2}>
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
