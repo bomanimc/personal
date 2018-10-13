@@ -269,8 +269,8 @@ export const SocialLinks = [
     link: 'https://www.instagram.com/bxmani/',
   },
   {
-    name: 'SoundCloud',
-    link: 'https://soundcloud.com/bxmani',
+    name: 'Medium',
+    link: 'https://medium.com/@bomani',
   },
   {
     name: 'LinkedIn',
