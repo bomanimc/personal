@@ -3,7 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import YouTube from 'react-youtube';
+import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { browserHistory } from 'react-router';
 import { Link, Body, TextContent } from '../commonComponents';
@@ -100,6 +100,7 @@ export const VideoWrapper = styled.div`
   border-width: 1px 1px 2px 1px;
   border-color: white;
   width: 100%;
+  margin-bottom: 16px;
 
   iframe {
     position: absolute;
@@ -202,9 +203,9 @@ export class BaseBodyContent extends React.Component {
           ))
         }
         {
-          project.youtube && project.youtube.map(videoId => (
-            <VideoWrapper>
-              <YouTube videoId={videoId} />
+          project.videos && project.videos.map(videoUrl => (
+            <VideoWrapper key={videoUrl}>
+              <ReactPlayer url={videoUrl} />
             </VideoWrapper>
           ))
         }

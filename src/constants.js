@@ -41,8 +41,8 @@ export const ProjectContent = {
         src: 'img/shrumenlumen/gallery/shrumen_night.png',
       },
     ],
-    youtube: [
-      'T75FvUDirNM', // Making Mushrooms Glow
+    videos: [
+      'https://www.youtube.com/watch?v=T75FvUDirNM', // Making Mushrooms Glow
     ],
   },
   npr: {
@@ -86,7 +86,6 @@ export const ProjectContent = {
     collaboration with [Eunice Lee](https://euniceylee.github.io/) and Matt Zhang.`,
     media: 'img/waves/waves_main.png',
     primaryLink: `/${ProjectSlug.waves}`,
-    // primaryLink: 'https://vimeo.com/220101786',
     images: [
       {
         src: 'img/waves/gallery/waves_showing.png',
@@ -94,6 +93,10 @@ export const ProjectContent = {
       {
         src: 'img/waves/gallery/waves_prints.png',
       },
+    ],
+    videos: [
+      'https://vimeo.com/220101786', // Waves Demo
+      'https://vimeo.com/220102610', // Eunice Testing Waves
     ],
   },
   gitrocket: {
