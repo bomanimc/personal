@@ -241,6 +241,9 @@ export const ProjectContent = {
       },
     ],
   },
+};
+
+export const DeprecatedProjectContent = {
   cakes: {
     id: ProjectSlug.cakes,
     title: 'Cakes Da Killa Site',

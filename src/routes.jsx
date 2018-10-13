@@ -13,7 +13,6 @@ import DrawAChartProjectPage from './components/projects/DrawAChart/DrawAChartPr
 import NegativeReelProjectPage from './components/projects/NegativeReel/NegativeReelProjectPage';
 import TopolampProjectPage from './components/projects/Topolamp/TopolampProjectPage';
 import ReflectionsProjectPage from './components/projects/Reflections/ReflectionsProjectPage';
-import CakesProjectPage from './components/projects/Cakes/CakesProjectPage';
 import { ProjectSlug } from './constants';
 
 const routes = (
@@ -29,7 +28,6 @@ const routes = (
     <Route path={ProjectSlug.negativereel} component={NegativeReelProjectPage} />
     <Route path={ProjectSlug.topolamp} component={TopolampProjectPage} />
     <Route path={ProjectSlug.reflections} component={ReflectionsProjectPage} />
-    <Route path={ProjectSlug.cakes} component={CakesProjectPage} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );
