@@ -41,6 +41,9 @@ export const ProjectContent = {
         src: 'img/shrumenlumen/gallery/shrumen_night.png',
       },
     ],
+    youtube: [
+      'T75FvUDirNM', // Making Mushrooms Glow
+    ],
   },
   npr: {
     id: ProjectSlug.npr,

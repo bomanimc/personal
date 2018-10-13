@@ -28,6 +28,7 @@
     "react-images": "git://github.com/lkazberova/react-images.git#libs",
     "react-markdown": "^4.0.2",
     "react-router": "^2.6.1",
+    "react-youtube": "^7.8.0",
     "styled-components": "^2.0.1"
   },
   "devDependencies": {

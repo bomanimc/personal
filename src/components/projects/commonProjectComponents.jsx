@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import YouTube from 'react-youtube';
 import ReactMarkdown from 'react-markdown/with-html';
 import { browserHistory } from 'react-router';
 import { Link, Body, TextContent } from '../commonComponents';
@@ -89,6 +90,24 @@ export const ProjectPageImage = styled.div`
 export const ProjectPageImageSource = styled.img`
   border: 1px solid white;
   width: 100%;
+`;
+
+export const VideoWrapper = styled.div`
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  border-style: solid;
+  border-width: 1px 1px 2px 1px;
+  border-color: white;
+  width: 100%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Metadata = ({ tools, role, site }) => (
@@ -180,6 +199,13 @@ export class BaseBodyContent extends React.Component {
             <ProjectPageImage key={image}>
               <ProjectPageImageSource src={image} />
             </ProjectPageImage>
+          ))
+        }
+        {
+          project.youtube && project.youtube.map(videoId => (
+            <VideoWrapper>
+              <YouTube videoId={videoId} />
+            </VideoWrapper>
           ))
         }
       </BodySection>
