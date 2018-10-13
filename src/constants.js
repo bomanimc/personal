@@ -15,6 +15,7 @@ export const ProjectSlug = {
   negativereel: 'negativereel',
   topolamp: 'topolamp',
   reflections: 'reflections',
+  cakes: 'cakes-da-killa-site',
 };
 
 export const ProjectContent = {
@@ -224,6 +225,19 @@ export const ProjectContent = {
         src: 'img/reflections/reflections_cover.png',
       },
     ],
+  },
+  cakes: {
+    id: ProjectSlug.cakes,
+    title: 'Cakes Da Killa Site',
+    tags: ['software', 'design'],
+    body: `A website for rapper [Cakes Da Killa](https://en.wikipedia.org/wiki/Cakes_da_Killa)
+    in preparation for his 'Hunger Pangs' deluxe album release and European
+    tour. This site was public from late 2015 through 2016.`,
+    tools: 'Node, Handlebars.',
+    role: 'Developer & Designer. In collaboration with Greg Kim and Rogue Agency.',
+    media: 'img/cakes/cakes_main.png',
+    primaryLink: `/${ProjectSlug.cakes}`,
+    images: [],
   },
 };
 
