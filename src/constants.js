@@ -10,6 +10,7 @@ export const ProjectSlug = {
   npr: 'news-page-registration',
   waves: 'waves',
   gitrocket: 'gitrocket',
+  versions: 'versions-jasper-lotti',
   dialup: 'dial-up',
   negativereel: 'negativereel',
   topolamp: 'topolamp',
@@ -115,6 +116,32 @@ export const ProjectContent = {
     images: [
       {
         src: 'img/gitrocket/gitrocket.gif',
+      },
+    ],
+  },
+  versions: {
+    id: ProjectSlug.versions,
+    title: "Visuals for 'Versions'",
+    tags: ['design', 'art'],
+    body: `A live-mixed VJ (video jockey) set for [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl)
+    project. These visuals were a backdrop for Jasper Lotti's live performances
+    at Elsewhere, H0L0, and Playground Cofee.`,
+    tools: 'CoGe, Giphy, AKAI MP32.',
+    role: 'Individual Project',
+    media: 'img/versions/versions_main.jpg',
+    primaryLink: `/${ProjectSlug.versions}`,
+    images: [
+      {
+        src: 'img/versions/gallery/versions_wings.jpg',
+      },
+      {
+        src: 'img/versions/gallery/versions_dark_rose.jpg',
+      },
+      {
+        src: 'img/versions/gallery/versions_white_hex.jpg',
+      },
+      {
+        src: 'img/versions/gallery/versions_pillow.jpg',
       },
     ],
   },

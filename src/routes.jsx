@@ -7,6 +7,7 @@ import ShrumenProjectPage from './components/projects/Shrumen/ShrumenProjectPage
 import NPRProjectPage from './components/projects/NPR/NPRProjectPage';
 import WavesProjectPage from './components/projects/Waves/WavesProjectPage';
 import GitRocketProjectPage from './components/projects/GitRocket/GitRocketProjectPage';
+import VersionsProjectPage from './components/projects/Versions/VersionsProjectPage';
 import DialUpProjectPage from './components/projects/DialUp/DialUpProjectPage';
 import NegativeReelProjectPage from './components/projects/NegativeReel/NegativeReelProjectPage';
 import TopolampProjectPage from './components/projects/Topolamp/TopolampProjectPage';
@@ -20,6 +21,7 @@ const routes = (
     <Route path={ProjectSlug.npr} component={NPRProjectPage} />
     <Route path={ProjectSlug.waves} component={WavesProjectPage} />
     <Route path={ProjectSlug.gitrocket} component={GitRocketProjectPage} />
+    <Route path={ProjectSlug.versions} component={VersionsProjectPage} />
     <Route path={ProjectSlug.dialup} component={DialUpProjectPage} />
     <Route path={ProjectSlug.negativereel} component={NegativeReelProjectPage} />
     <Route path={ProjectSlug.topolamp} component={TopolampProjectPage} />
