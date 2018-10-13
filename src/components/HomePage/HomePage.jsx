@@ -4,7 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Map } from 'immutable';
+import { OrderedMap } from 'immutable';
 import ProjectCard from '../partials/ProjectCard';
 import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
@@ -203,7 +203,7 @@ const ProjectSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
       <ProjectGridContainer containerHeight="auto">
         {
-          Map(ProjectContent).map(section =>
+          OrderedMap(ProjectContent).map(section =>
             (<ProjectCard
               key={section.id}
               content={section}
