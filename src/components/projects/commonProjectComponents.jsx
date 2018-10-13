@@ -97,10 +97,11 @@ export const VideoWrapper = styled.div`
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   border-style: solid;
-  border-width: 1px 1px 2px 1px;
+  border-width: 1px 1px 1px 1px;
   border-color: white;
   width: 100%;
   margin-bottom: 16px;
+  overflow: hidden;
 
   iframe {
     position: absolute;
