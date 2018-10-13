@@ -9,6 +9,7 @@ import WavesProjectPage from './components/projects/Waves/WavesProjectPage';
 import GitRocketProjectPage from './components/projects/GitRocket/GitRocketProjectPage';
 import VersionsProjectPage from './components/projects/Versions/VersionsProjectPage';
 import DialUpProjectPage from './components/projects/DialUp/DialUpProjectPage';
+import DrawAChartProjectPage from './components/projects/DrawAChart/DrawAChartProjectPage';
 import NegativeReelProjectPage from './components/projects/NegativeReel/NegativeReelProjectPage';
 import TopolampProjectPage from './components/projects/Topolamp/TopolampProjectPage';
 import ReflectionsProjectPage from './components/projects/Reflections/ReflectionsProjectPage';
@@ -24,6 +25,7 @@ const routes = (
     <Route path={ProjectSlug.gitrocket} component={GitRocketProjectPage} />
     <Route path={ProjectSlug.versions} component={VersionsProjectPage} />
     <Route path={ProjectSlug.dialup} component={DialUpProjectPage} />
+    <Route path={ProjectSlug.drawachart} component={DrawAChartProjectPage} />
     <Route path={ProjectSlug.negativereel} component={NegativeReelProjectPage} />
     <Route path={ProjectSlug.topolamp} component={TopolampProjectPage} />
     <Route path={ProjectSlug.reflections} component={ReflectionsProjectPage} />

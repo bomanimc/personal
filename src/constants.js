@@ -15,6 +15,7 @@ export const ProjectSlug = {
   negativereel: 'negativereel',
   topolamp: 'topolamp',
   reflections: 'reflections',
+  drawachart: 'draw-a-chart',
   cakes: 'cakes-da-killa-site',
 };
 
@@ -208,6 +209,20 @@ export const ProjectContent = {
         src: 'img/topolamp/gallery/topolamp_lasercut.png',
       },
     ],
+  },
+  drawachart: {
+    id: ProjectSlug.drawachart,
+    title: 'Draw-A-Chart',
+    tags: ['software', 'design'],
+    body: `A prototype interactive web app that allows students to practice
+    drawing graphical relationships based on real-world prompts. Created at the
+    2016 Hack To The Future ed-tech hackathon, where it won "Most Likely To Be
+    Used In A Classroom".`,
+    tools: 'jQuery, Highcharts',
+    role: 'Developer & Designer. In collaboration with Rebecca Wei and Justin Holzmann.',
+    media: 'img/drawachart/drawachart_main.gif',
+    primaryLink: `/${ProjectSlug.drawachart}`,
+    images: [],
   },
   reflections: {
     id: ProjectSlug.reflections,
