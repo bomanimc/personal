@@ -5,6 +5,12 @@ export const SkillAreaColors = {
   art: '#20bf6b',
 };
 
+const Tags = {
+  software: 'software',
+  design: 'design',
+  art: 'art',
+};
+
 export const ProjectSlug = {
   shrumen: 'shrumen-lumen',
   npr: 'news-page-index',
@@ -23,7 +29,7 @@ export const ProjectContent = {
   shrumen: {
     id: ProjectSlug.shrumen,
     title: 'Shrumen Lumen',
-    tags: ['software', 'art'],
+    tags: [Tags.software, Tags.art],
     body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
     interactive art installation made up of five glowing mushrooms
     that react to the presence of people. Presented at Burning Man 2016
@@ -51,7 +57,7 @@ export const ProjectContent = {
   npr: {
     id: ProjectSlug.npr,
     title: 'News Page Index',
-    tags: ['software'],
+    tags: [Tags.software],
     body: `Facebook's new product for indexing News pages to
     support the [Political Ads Archive project](https://newsroom.fb.com/news/2018/05/ads-with-political-content/).
     Publishers can also submit links
@@ -78,7 +84,7 @@ export const ProjectContent = {
   waves: {
     id: ProjectSlug.waves,
     title: 'Waves',
-    tags: ['software', 'art'],
+    tags: [Tags.software, Tags.art],
     body: `Prototype device that encodes responses to personal questions as
     printed sound waves. Featured in the
     [Raspberry Pi blog](https://www.raspberrypi.org/blog/printed-sound-wave/)
@@ -105,7 +111,7 @@ export const ProjectContent = {
   gitrocket: {
     id: ProjectSlug.gitrocket,
     title: 'GitRocket',
-    tags: ['software'],
+    tags: [Tags.software],
     body: `A fun plugin for the [Hyper](https://hyper.is/) terminal that launches
     a rocket ship when you push code with Git. It has received 38 GitHub stars and
     [over 9000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
@@ -124,7 +130,7 @@ export const ProjectContent = {
   versions: {
     id: ProjectSlug.versions,
     title: "Visuals for 'Versions'",
-    tags: ['design', 'art'],
+    tags: [Tags.design, Tags.art],
     body: `A live-mixed VJ (video jockey) set for [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl)
     project. These visuals were a backdrop for Jasper Lotti's live performances
     at Elsewhere, H0L0, and Playground Coffee.`,
@@ -150,7 +156,7 @@ export const ProjectContent = {
   dialup: {
     id: ProjectSlug.dialup,
     title: 'Dial Up',
-    tags: ['software', 'design'],
+    tags: [Tags.software, Tags.design],
     body: `Creative collective that creates music, videos, magazines, and
     technology. Website featured on
     [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
@@ -172,7 +178,7 @@ export const ProjectContent = {
   negativereel: {
     id: ProjectSlug.negativereel,
     title: 'NegativeReel',
-    tags: ['software', 'art'],
+    tags: [Tags.software, Tags.art],
     body: `Projection mapping installation that displays negative thoughts
     people have about themselves as an expression of vulnerability. The
     installation reacts to gestures made by the viewer.`,
@@ -190,7 +196,7 @@ export const ProjectContent = {
   topolamp: {
     id: ProjectSlug.topolamp,
     title: 'TopoLamp',
-    tags: ['software', 'design'],
+    tags: [Tags.software, Tags.design],
     body: `A topographic lamp based on an imaginary mountain. Made with stacked
     laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
     tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
@@ -213,7 +219,7 @@ export const ProjectContent = {
   drawachart: {
     id: ProjectSlug.drawachart,
     title: 'Draw-A-Chart',
-    tags: ['software', 'design'],
+    tags: [Tags.software, Tags.design],
     body: `A prototype interactive web app that allows students to practice
     drawing graphical relationships based on real-world prompts. Created at the
     2016 Hack To The Future ed-tech hackathon, where it won "Most Likely To Be
@@ -227,7 +233,7 @@ export const ProjectContent = {
   reflections: {
     id: ProjectSlug.reflections,
     title: 'Reflections \'16',
-    tags: ['design'],
+    tags: [Tags.design],
     body: `A few pithy reflections from a summer working as a Software Design
     intern at IDEO Palo Alto. Documented and design for sharing.`,
     tools: 'Sketch, Adobe Photoshop.',
@@ -243,7 +249,7 @@ export const DeprecatedProjectContent = {
   cakes: {
     id: ProjectSlug.cakes,
     title: 'Cakes Da Killa Site',
-    tags: ['software', 'design'],
+    tags: [Tags.software, Tags.design],
     body: `A website for rapper [Cakes Da Killa](https://en.wikipedia.org/wiki/Cakes_da_Killa)
     in preparation for his 'Hunger Pangs' deluxe album release and European
     tour. This site was public from late 2015 through 2016.`,
@@ -256,7 +262,7 @@ export const DeprecatedProjectContent = {
   authorcontext: {
     id: ProjectSlug.authorcontext,
     title: 'Author Context',
-    tags: ['software'],
+    tags: [Tags.software],
     body: `An experiment that allows news consumers to find more details about an
     article's author while reading news on an Instant Article (Facebook's native
     article format). Covered by [TechCrunch](https://techcrunch.com/2018/04/03/facebook-author-info/).`,
