@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
+import { Helmet } from 'react-helmet';
 import { browserHistory } from 'react-router';
 import { Link, Body, TextContent } from '../commonComponents';
 
@@ -155,15 +156,20 @@ const goBackRetry = () => {
 };
 
 export const BaseProjectPage = ({ title, tools, role, site, body }) => (
-  <ProjectPage>
-    <ProjectCenteringContainer>
-      <BackButton onClick={goBackRetry}>Back</BackButton>
-      <ProjectPageTitle>{title}</ProjectPageTitle>
-      <Metadata tools={tools} role={role} site={site} />
-      <Divider />
-      {body}
-    </ProjectCenteringContainer>
-  </ProjectPage>
+  <div>
+    <Helmet>
+      <title>{`${title} – BOMANI`}</title>
+    </Helmet>
+    <ProjectPage>
+      <ProjectCenteringContainer>
+        <BackButton onClick={goBackRetry}>Back</BackButton>
+        <ProjectPageTitle>{title}</ProjectPageTitle>
+        <Metadata tools={tools} role={role} site={site} />
+        <Divider />
+        {body}
+      </ProjectCenteringContainer>
+    </ProjectPage>
+  </div>
 );
 
 export class BaseBodyContent extends React.Component {

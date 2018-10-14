@@ -25,6 +25,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-flexbox-grid": "^1.1.3",
+    "react-helmet": "^5.2.0",
     "react-images": "git://github.com/lkazberova/react-images.git#libs",
     "react-markdown": "^4.0.2",
     "react-player": "^1.6.6",
