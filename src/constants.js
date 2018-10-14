@@ -230,8 +230,7 @@ export const ProjectContent = {
     tags: ['design'],
     body: `A few pithy reflections from a summer working as a Software Design
     intern at IDEO Palo Alto. Documented and design for sharing.`,
-    tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
-    role: 'Individual Project',
+    tools: 'Sketch, Adobe Photoshop.',
     site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
     media: 'img/reflections/reflections_cover.png',
     primaryLink: `/${ProjectSlug.reflections}`,

@@ -1,6 +1,7 @@
 /* eslint no-confusing-arrow: 0 */
 
 import React from 'react';
+import ReflectionsContentPath from './reflections.md';
 import { ProjectContent } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
@@ -15,6 +16,7 @@ const ReflectionsProjectPage = () => (
     body={
       <BaseBodyContent
         project={project}
+        introContentPath={ReflectionsContentPath}
       />
     }
   />

@@ -1,6 +1,7 @@
 /* eslint no-confusing-arrow: 0 */
 
 import React from 'react';
+import DrawAChartContentPath from './drawachart.md';
 import { ProjectContent } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
@@ -15,6 +16,7 @@ const DrawAChartProjectPage = () => (
     body={
       <BaseBodyContent
         project={project}
+        introContentPath={DrawAChartContentPath}
       />
     }
   />

@@ -1,6 +1,7 @@
 /* eslint no-confusing-arrow: 0 */
 
 import React from 'react';
+import NegativeReelContentPath from './negativereel.md';
 import { ProjectContent } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
@@ -15,6 +16,7 @@ const NegativeReelProjectPage = () => (
     body={
       <BaseBodyContent
         project={project}
+        introContentPath={NegativeReelContentPath}
       />
     }
   />
