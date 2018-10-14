@@ -85,7 +85,7 @@ export const ProjectContent = {
     and [MagPi](https://www.raspberrypi.org/magpi-issues/MagPi61.pdf) (p.31 - p.32), the
     official Raspberry Pi magazine. Presented at Segal Design Expo '17.`,
     tools: 'Raspberry Pi, Python, JavaScript.',
-    role: `Software Engineer focused on internal review processes and infrastructure. In
+    role: `Developer and Designer. In
     collaboration with [Eunice Lee](https://euniceylee.github.io/) and Matt Zhang.`,
     media: 'img/waves/waves_main.png',
     primaryLink: `/${ProjectSlug.waves}`,
