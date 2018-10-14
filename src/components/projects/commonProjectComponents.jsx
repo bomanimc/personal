@@ -224,7 +224,7 @@ export class BaseBodyContent extends React.Component {
 Metadata.propTypes = {
   tools: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  site: PropTypes.string.isRequired,
+  site: PropTypes.string,
 };
 
 BaseProjectPage.propTypes = {
@@ -232,10 +232,22 @@ BaseProjectPage.propTypes = {
   body: PropTypes.node.isRequired,
   tools: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  site: PropTypes.string.isRequired,
+  site: PropTypes.string,
 };
 
 BaseBodyContent.propTypes = {
-  introContentPath: PropTypes.string.isRequired,
+  introContentPath: PropTypes.string,
   project: PropTypes.object.isRequired,
+};
+
+BaseBodyContent.defaultProps = {
+  introContentPath: null,
+};
+
+BaseProjectPage.defaultProps = {
+  site: null,
+};
+
+Metadata.defaultProps = {
+  site: null,
 };
