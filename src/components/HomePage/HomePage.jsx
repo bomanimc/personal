@@ -76,7 +76,7 @@ const Name = styled.h1`
   }
 
   @media (max-width: 768px) {
-    font-size: 5rem;
+    font-size: 5.5rem;
   }
 `;
 
@@ -92,7 +92,7 @@ const SkillArea = styled.h3`
   }
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 `;
 
