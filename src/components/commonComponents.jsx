@@ -18,7 +18,9 @@ export const Body = styled.p`
   font-weight: lighter;
 `;
 
-export const TextContent = Body.extend`
+export const TextContent = styled.span`
+  font-weight: lighter;
+
   a {
     ${linkStyle}
     background-color: rgba(255, 255, 255, 0.3);

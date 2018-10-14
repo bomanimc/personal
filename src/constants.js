@@ -231,12 +231,13 @@ export const ProjectContent = {
     body: `A few pithy reflections from a summer working as a Software Design
     intern at IDEO Palo Alto. Documented and design for sharing.`,
     tools: 'Sketch, Adobe Photoshop.',
+    role: 'Individual Project',
     site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
-    media: 'img/reflections/reflections_cover.png',
+    media: 'img/reflections/reflections_main.png',
     primaryLink: `/${ProjectSlug.reflections}`,
     images: [
       {
-        src: 'img/reflections/reflections_cover.png',
+        src: 'img/reflections/reflections_main.png',
       },
     ],
   },

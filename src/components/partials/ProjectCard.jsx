@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { SkillAreaColors } from '../../constants';
-import { Body, TextContent, ProjectTags, Link } from '../commonComponents';
+import { TextContent, ProjectTags, Link } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -16,7 +16,6 @@ const ProjectContainer = styled.div`
   justify-content: center;
   flex-wrap: nowrap;
   max-width: 500px;
-  font-size: 16px;
   transition: box-shadow 0.3s ease;
 
   &:hover {
@@ -76,7 +75,7 @@ const ProjectCardSectionTitle = styled.div`
   font-weight: bold;
 `;
 
-const ProjectDetail = Body.extend`
+const ProjectDetail = TextContent.extend`
   opacity: 0.5;
   transition: opacity 0.3s ease;
 

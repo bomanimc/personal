@@ -81,7 +81,7 @@ export const HiddenDivider = styled.div`
   margin: 48px 0px;
 `;
 
-export const BodySection = Body.extend``;
+export const BodySection = TextContent.extend``;
 
 export const ProjectPageImage = styled.div`
   width: 100%;
