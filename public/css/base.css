@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Montserrat');
+
 html, body, h1, h2, h3, h4, h5, h6, p,
 blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q,
 samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset,
@@ -8,7 +10,7 @@ video {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 12px;
+  font-size: 13px;
   vertical-align: baseline;
   background: transparent;
 }

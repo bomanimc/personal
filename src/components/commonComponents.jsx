@@ -15,7 +15,6 @@ const linkStyle = css`
 `;
 
 export const Body = styled.p`
-  font-size: 12px;
   font-weight: lighter;
 `;
 

@@ -31,7 +31,7 @@ const ProjectContainer = styled.div`
 
 const ProjectContent = styled.div`
   padding: 8px;
-  min-height: 64px;
+  min-height: 76px;
 
   @media (max-width: 768px) {
     min-height: auto;
@@ -72,7 +72,6 @@ const ProjectCardSectionTitle = styled.div`
   background: white;
   color: black;
   padding: 6px;
-  font-size: 12px;
   line-height: 6px;
   font-weight: bold;
 `;
