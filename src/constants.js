@@ -235,11 +235,7 @@ export const ProjectContent = {
     site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
     media: 'img/reflections/reflections_main.png',
     primaryLink: `/${ProjectSlug.reflections}`,
-    images: [
-      {
-        src: 'img/reflections/reflections_main.png',
-      },
-    ],
+    images: [],
   },
 };
 
@@ -255,6 +251,19 @@ export const DeprecatedProjectContent = {
     role: 'Developer & Designer. In collaboration with Greg Kim and Rogue Agency.',
     media: 'img/cakes/cakes_main.png',
     primaryLink: `/${ProjectSlug.cakes}`,
+    images: [],
+  },
+  authorcontext: {
+    id: ProjectSlug.authorcontext,
+    title: 'Author Context',
+    tags: ['software'],
+    body: `An experiment that allows news consumers to find more details about an
+    article's author while reading news on an Instant Article (Facebook's native
+    article format). Covered by [TechCrunch](https://techcrunch.com/2018/04/03/facebook-author-info/).`,
+    tools: 'Native Templates, Android, Litho, PHP (Hack).',
+    role: 'Software Engineer. In collaboration with one other engineer.',
+    media: 'img/dialup/dialup_main.png',
+    primaryLink: `/${ProjectSlug.authorcontext}`,
     images: [],
   },
 };
