@@ -7,7 +7,7 @@ export const SkillAreaColors = {
 
 export const ProjectSlug = {
   shrumen: 'shrumen-lumen',
-  npr: 'news-page-registration',
+  npr: 'news-page-index',
   waves: 'waves',
   gitrocket: 'gitrocket',
   versions: 'versions-jasper-lotti',
@@ -50,7 +50,7 @@ export const ProjectContent = {
   },
   npr: {
     id: ProjectSlug.npr,
-    title: 'News Page Registration',
+    title: 'News Page Index',
     tags: ['software'],
     body: `Facebook's new product for indexing News pages to
     support the [Political Ads Archive project](https://newsroom.fb.com/news/2018/05/ads-with-political-content/).
@@ -59,8 +59,8 @@ export const ProjectContent = {
     best practices. Covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html)
     and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).`,
     tools: 'React, PHP (Hack), Relay, GraphQL.',
-    role: `Software Engineer focused on internal review processes and
-    infrastructure. In collaboration with the other engineers on my team.`,
+    role: `Software Engineer focused on internal review processes. In collaboration
+    with the other engineers on my team.`,
     primaryLink: `/${ProjectSlug.npr}`,
     media: 'img/npr/npr.gif',
     images: [

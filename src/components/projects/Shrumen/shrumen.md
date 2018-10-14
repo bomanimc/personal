@@ -2,4 +2,8 @@ Shrumen Lumen is [Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/
 
 <br /> <br />
 
+The initial version of the software was built with Node and C running on a Raspberry Pi, which I spoke about in more detail in my [!!Con](http://bangbangcon.com/) 2017 talk on [Making Mushrooms Glow](https://www.youtube.com/watch?v=T75FvUDirNM). Prior to the most recent presentation, we refactored the implementation of the project. The LEDs are now driven with a PixLite ArtNET controller and MadMapper sketches exported to a MiniMad. I rewrote the code so that we could use Arduino to control the weight-sensing pad, pad LED interactions, and linear actuator. This setup has proved to be more reliable than Raspberry Pi for long-term installments.
+
+<br /> <br />
+
 Following Burning Man 2016, Shrumen Lumen has been presented at Dubai’s Meet D3 Festival and currently on display at the [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man) until January '19.
