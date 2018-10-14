@@ -127,7 +127,7 @@ export const ProjectContent = {
     tags: ['design', 'art'],
     body: `A live-mixed VJ (video jockey) set for [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl)
     project. These visuals were a backdrop for Jasper Lotti's live performances
-    at Elsewhere, H0L0, and Playground Cofee.`,
+    at Elsewhere, H0L0, and Playground Coffee.`,
     tools: 'CoGe, Giphy, AKAI MP32.',
     role: 'Individual Project',
     media: 'img/versions/versions_main.jpg',
