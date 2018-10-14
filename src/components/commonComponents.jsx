@@ -53,5 +53,5 @@ export const ProjectTags = ({ tags }) => {
 };
 
 ProjectTags.propTypes = {
-  tags: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
