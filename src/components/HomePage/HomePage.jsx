@@ -230,6 +230,12 @@ const OutroSection = () => (
         He has previously interned at IDEO, Grubhub, and Boeing.
         <br />
         <br />
+        Bomani has conducted HCI & Learning Sciences research
+        with <Link href="http://delta.northwestern.edu/">Delta Lab</Link>, and
+        has contributed to journalism innovation projects as a Fellow
+        at <Link href="https://knightlab.northwestern.edu/">Knight Lab</Link>.
+        <br />
+        <br />
         <br />
         See his full resume <Link href="/resume">here</Link>.
       </TextContent>
