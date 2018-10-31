@@ -6,4 +6,4 @@ The review processes for applications, logos, and policies are evaluated using a
 
 <br /><br />
 
-See the official release on the News Page Index [here](https://www.facebook.com/facebookmedia/blog/indexing-news-pages-on-facebook-for-the-ad-archive). The project has been covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html) and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).
+See the official release statement on the News Page Index [here](https://www.facebook.com/facebookmedia/blog/indexing-news-pages-on-facebook-for-the-ad-archive). The project has also been covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html) and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).
