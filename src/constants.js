@@ -32,7 +32,7 @@ export const ProjectContent = {
     tags: [Tags.software, Tags.art],
     body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
     interactive art installation made up of five glowing mushrooms
-    that react to the presence of people. Presented at Burning Man 2016
+    that react to the presence of people. Presented at Burning Man '16
     and Meet D3 Festival in Dubai. Currently on display at the
     [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man)
     until January '19.`,
@@ -180,7 +180,7 @@ export const ProjectContent = {
     title: 'NegativeReel',
     tags: [Tags.software, Tags.art],
     body: `Projection mapping installation that displays negative thoughts
-    people have about themselves as an expression of vulnerability. The
+    as an expression of vulnerability. The
     installation reacts to gestures made by the viewer.`,
     tools: 'Node, Processing, Leap Motion, MadMapper.',
     role: 'Individual Project',
@@ -222,7 +222,7 @@ export const ProjectContent = {
     tags: [Tags.software, Tags.design],
     body: `A prototype interactive web app that allows students to practice
     drawing graphical relationships based on real-world prompts. Created at the
-    2016 Hack To The Future ed-tech hackathon, where it won "Most Likely To Be
+    Hack To The Future '16 ed-tech hackathon, where it won "Most Likely To Be
     Used In A Classroom".`,
     tools: 'jQuery, Highcharts',
     role: 'Developer & Designer. In collaboration with Rebecca Wei and Justin Holzmann.',
@@ -235,7 +235,7 @@ export const ProjectContent = {
     title: 'Reflections \'16',
     tags: [Tags.design],
     body: `A few pithy reflections from a summer working as a Software Design
-    intern at IDEO Palo Alto. Documented and design for sharing.`,
+    intern at IDEO Palo Alto. Documented and designed for sharing.`,
     tools: 'Sketch, Adobe Photoshop.',
     role: 'Individual Project',
     site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
