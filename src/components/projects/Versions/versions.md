@@ -2,7 +2,7 @@ To support friend and musical artist [Jasper Lotti's 'Versions'](https://open.sp
 
 <br /><br />
 
-Jasper gave me an initial specification on the visual direction she was aiming for: “As for aesthetics, im rlly into like optical illusion type stuff”. Using her guidance, I found an array of visual inspiration, GIFs, and clips, which were primarily sourced from Giphy. To create the performance visuals, I import all of the clips into [CoGe Vj](https://imimot.com/cogevj/), setup visual effects and multi-clip outputs, and used mapped all of the controls to an AKAI MPD32. This allowed be to change effect intensity and clip combinations in accordance with the dynamics of the performance.
+Jasper gave me an initial specification on the visual direction she was aiming for: “As for aesthetics, im rlly into like optical illusion type stuff”. Using her guidance, I found an array of GIFs and clips, which were primarily sourced from Giphy. To create the performance visuals, I imported all of the clips into [CoGe Vj](https://imimot.com/cogevj/), setup visual effects and multi-clip outputs, and mapped all of the controls to an AKAI MPD32. This allowed me to control effects and combine clips in accordance with the dynamics of the performance.
 
 <br /><br />
 
