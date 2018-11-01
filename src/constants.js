@@ -224,7 +224,7 @@ export const ProjectContent = {
     drawing graphical relationships based on real-world prompts. Created at the
     Hack To The Future '16 ed-tech hackathon, where it won "Most Likely To Be
     Used In A Classroom".`,
-    tools: 'jQuery, Highcharts',
+    tools: 'jQuery, Highcharts.',
     role: 'Developer & Designer. In collaboration with Rebecca Wei and Justin Holzmann.',
     media: 'img/drawachart/drawachart_main.gif',
     primaryLink: `/${ProjectSlug.drawachart}`,
