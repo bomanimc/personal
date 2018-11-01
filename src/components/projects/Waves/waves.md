@@ -1,4 +1,4 @@
-As put by my project partner Matt Zhang, “Waves is a Raspberry Pi project centered around transforming the transience of the spoken word into something concrete and physical. In our setup, a user presses a button corresponding to a question, answers it into a microphone while pressing down on the button, and then receives a receipt of the audio waveform in return. The audio waveform is also sent to a webpage, where it is displayed among the other responses that have been collected so far.”
+Matt Zhang said it best: “Waves is a Raspberry Pi project centered around transforming the transience of the spoken word into something concrete and physical. In our setup, a user presses a button corresponding to a question, answers it into a microphone while pressing down on the button, and then receives a receipt of the audio waveform in return. The audio waveform is also sent to a webpage, where it is displayed among the other responses that have been collected so far.”
 
 <br /><br />
 
