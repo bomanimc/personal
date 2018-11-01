@@ -2,7 +2,7 @@ GitRocket is a fun plugin for the Hyper terminal that launches a rocket ship whe
 
 <br /><br />
 
-After learning about Next’s Hyper terminal, I was immediately excited by the customizability. Hyper is an Electron app built with React and Redux, so it’s easy to build new React components for your personalized Hyper terminal. This unlocks a world of possibilities for contextual informational displays built directly into the terminal. To begin exploring the technology, I decided to build and publish GitRocket over the course of a summer day.
+After learning about Next’s [Hyper](https://hyper.is/) terminal, I was immediately excited by the customizability. Hyper is an Electron app built with React and Redux, so it’s easy to build new React components for your personalized Hyper terminal. This unlocks a world of possibilities for contextual informational displays built directly into the terminal. To begin exploring the technology, I decided to build and publish GitRocket over the course of a summer day.
 
 <br /><br />
 
