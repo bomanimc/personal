@@ -23,6 +23,7 @@ export const ProjectSlug = {
   reflections: 'reflections',
   drawachart: 'draw-a-chart',
   cakes: 'cakes-da-killa-site',
+  bikewheelsynth: 'bike-wheel-synth',
 };
 
 export const ProjectContent = {
@@ -242,6 +243,22 @@ export const ProjectContent = {
     media: 'img/reflections/reflections_main.png',
     primaryLink: `/${ProjectSlug.reflections}`,
     images: [],
+  },
+  bikewheelsynth: {
+    id: ProjectSlug.bikewheelsynth,
+    title: 'Bike Wheel Synth',
+    tags: [Tags.software, Tags.design],
+    body: `A few pithy reflections from a summer working as a Software Design
+    intern at IDEO Palo Alto. Documented and designed for sharing.`,
+    tools: 'Arduino, Ableton, Reed Switches.',
+    role: 'Individual Project',
+    site: 'https://youtu.be/w4CTSO9HesA',
+    media: 'img/reflections/reflections_main.png',
+    primaryLink: `/${ProjectSlug.bikewheelsynth}`,
+    images: [],
+    videos: [
+      'https://youtu.be/w4CTSO9HesA', // Tutorial Video
+    ],
   },
 };
 
