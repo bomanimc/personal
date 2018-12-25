@@ -253,7 +253,7 @@ export const ProjectContent = {
     tools: 'Arduino, Ableton, Reed Switches.',
     role: 'Individual Project',
     site: 'https://youtu.be/w4CTSO9HesA',
-    media: 'img/reflections/reflections_main.png',
+    media: 'img/bikewheelsynth/bikewheelsynth_main.gif',
     primaryLink: `/${ProjectSlug.bikewheelsynth}`,
     images: [],
     videos: [
