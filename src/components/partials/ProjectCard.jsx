@@ -113,6 +113,7 @@ const getIsExternalLink = link => link[0] !== '/';
 
 const Project = ({ content }) => (
   <ProjectContainer
+    id={content.id}
     shadowColor={SkillAreaColors[
       content.tags[Math.floor(Math.random() * content.tags.length)]
     ]}

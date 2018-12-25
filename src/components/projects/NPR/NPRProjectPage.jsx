@@ -9,6 +9,7 @@ const project = ProjectContent.npr;
 
 const NPRProjectPage = () => (
   <BaseProjectPage
+    id={project.id}
     title={project.title}
     tools={project.tools}
     role={project.role}

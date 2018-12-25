@@ -9,6 +9,7 @@ const project = ProjectContent.shrumen;
 
 const ShrumenProjectPage = () => (
   <BaseProjectPage
+    id={project.id}
     title={project.title}
     tools={project.tools}
     role={project.role}

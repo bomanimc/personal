@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Helmet } from 'react-helmet';
-import { browserHistory } from 'react-router';
 import { Link, Body, TextContent } from '../commonComponents';
 
 const PROJECT_PAGE_WIDTH = '1000px';
@@ -138,31 +137,14 @@ export const getProjectImages = projectData => [projectData.media].concat(
   projectData.images.map(image => image.src),
 );
 
-const goBackBackup = (currentPath) => {
-  const newPath = window.location.pathname;
-  if (currentPath === newPath) {
-    browserHistory.push('/');
-  }
-};
-
-const goBackRetry = () => {
-  const currentPath = window.location.pathname;
-  browserHistory.goBack();
-  setInterval(
-    goBackBackup,
-    500,
-    currentPath,
-  );
-};
-
-export const BaseProjectPage = ({ title, tools, role, site, body }) => (
+export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
   <div>
     <Helmet>
       <title>{`${title} – BOMANI`}</title>
     </Helmet>
     <ProjectPage>
       <ProjectCenteringContainer>
-        <BackButton onClick={goBackRetry}>Back</BackButton>
+        <BackButton href={`/#${id}`}>Back</BackButton>
         <ProjectPageTitle>{title}</ProjectPageTitle>
         <Metadata tools={tools} role={role} site={site} />
         <Divider />
@@ -228,6 +210,7 @@ Metadata.propTypes = {
 };
 
 BaseProjectPage.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.node.isRequired,
   tools: PropTypes.string.isRequired,

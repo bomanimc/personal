@@ -8,6 +8,7 @@ const project = ProjectContent.cakes;
 
 const CakesProjectPage = () => (
   <BaseProjectPage
+    id={project.id}
     title={project.title}
     tools={project.tools}
     role={project.role}

@@ -9,6 +9,7 @@ const project = ProjectContent.versions;
 
 const VersionsProjectPage = () => (
   <BaseProjectPage
+    id={project.id}
     title={project.title}
     tools={project.tools}
     role={project.role}
