@@ -248,9 +248,10 @@ export const ProjectContent = {
     id: ProjectSlug.bikewheelsynth,
     title: 'Bike Wheel Synth',
     tags: [Tags.software, Tags.design],
-    body: `A few pithy reflections from a summer working as a Software Design
-    intern at IDEO Palo Alto. Documented and designed for sharing.`,
-    tools: 'Arduino, Ableton, Reed Switches.',
+    body: `Experiemental project and [tutorial video](https://youtu.be/w4CTSO9HesA)
+    that explains how control sound effects in Ableton using the speed of a bike
+    wheel.`,
+    tools: 'Arduino, Ableton, Max For Live, Reed Switches.',
     role: 'Individual Project',
     site: 'https://youtu.be/w4CTSO9HesA',
     media: 'img/bikewheelsynth/bikewheelsynth_main.gif',
