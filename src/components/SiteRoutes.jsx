@@ -13,6 +13,7 @@ function hashLinkScroll() {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) element.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
     }, 0);
   }
 }
