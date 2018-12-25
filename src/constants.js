@@ -251,7 +251,7 @@ export const ProjectContent = {
     body: `Experiemental project and [tutorial video](https://youtu.be/w4CTSO9HesA)
     that explains how control sound effects in Ableton using the speed of a bike
     wheel.`,
-    tools: 'Arduino, Ableton, Max For Live, Reed Switches.',
+    tools: 'Arduino, Ableton, Max for Live, Reed Switches.',
     role: 'Individual Project',
     site: 'https://youtu.be/w4CTSO9HesA',
     media: 'img/bikewheelsynth/bikewheelsynth_main.gif',
