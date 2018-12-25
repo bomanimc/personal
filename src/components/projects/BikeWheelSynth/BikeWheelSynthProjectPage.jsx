@@ -16,6 +16,7 @@ const BikeWheelSynthProjectPage = () => (
     body={
       <BaseBodyContent
         project={project}
+        showMainMedia={false}
         introContentPath={BikeWheelSynthContentPath}
       />
     }

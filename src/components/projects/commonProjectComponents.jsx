@@ -133,9 +133,12 @@ const Metadata = ({ tools, role, site }) => (
   </MetadataSection>
 );
 
-export const getProjectImages = projectData => [projectData.media].concat(
-  projectData.images.map(image => image.src),
-);
+export const getProjectImages = (projectData, showMainMedia) => {
+  const projectImages = projectData.images.map(image => image.src);
+  return showMainMedia
+    ? [projectData.media].concat(projectImages)
+    : projectImages;
+};
 
 export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
   <div>
@@ -176,8 +179,9 @@ export class BaseBodyContent extends React.Component {
   }
 
   render() {
-    const { project } = this.props;
+    const { project, showMainMedia } = this.props;
     const { introContent } = this.state;
+
     return (
       <BodySection>
         <TextContent>
@@ -185,7 +189,7 @@ export class BaseBodyContent extends React.Component {
         </TextContent>
         <HiddenDivider />
         {
-          getProjectImages(project).map(image => (
+          getProjectImages(project, showMainMedia).map(image => (
             <ProjectPageImage key={image}>
               <ProjectPageImageSource src={image} />
             </ProjectPageImage>
@@ -221,10 +225,12 @@ BaseProjectPage.propTypes = {
 BaseBodyContent.propTypes = {
   introContentPath: PropTypes.string,
   project: PropTypes.object.isRequired,
+  showMainMedia: PropTypes.boolean,
 };
 
 BaseBodyContent.defaultProps = {
   introContentPath: null,
+  showMainMedia: true,
 };
 
 BaseProjectPage.defaultProps = {
