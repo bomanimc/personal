@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router, browserHistory } from 'react-router';
+import zenscroll from 'zenscroll';
 import routes from '../routes';
 
 // Taken from https://github.com/rafrex/react-router-hash-link/tree/react-router-v2/3.
@@ -12,7 +13,7 @@ function hashLinkScroll() {
     setTimeout(() => {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
+      if (element) zenscroll.to(element, 500);
       history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
     }, 0);
   }
