@@ -113,8 +113,8 @@ export const ProjectContent = {
     title: 'GitRocket',
     tags: [Tags.software],
     body: `A fun plugin for the [Hyper](https://hyper.is/) terminal that launches
-    a rocket ship when you push code with Git. It has received 38 GitHub stars and
-    [over 9000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
+    a rocket ship when you push code with Git. It has received 40+ GitHub stars and
+    [over 12,000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
     via NPM.`,
     tools: 'React, Redux, Hyper.',
     role: 'Individual Project',
