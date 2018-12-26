@@ -24,6 +24,7 @@ export const ProjectSlug = {
   drawachart: 'draw-a-chart',
   cakes: 'cakes-da-killa-site',
   bikewheelsynth: 'bike-wheel-synth',
+  codeasart: 'code-as-art',
 };
 
 export const ProjectContent = {
@@ -194,6 +195,39 @@ export const ProjectContent = {
       },
     ],
   },
+  codeasart: {
+    id: ProjectSlug.codeasart,
+    title: 'Code As Art',
+    tags: [Tags.software, Tags.art],
+    body: `Re-representing code in order to explore its potential as a
+    standalone medium. The unique structure of the code is used to produce
+    dynamic visualizations.`,
+    tools: 'p5.js, Atom, Socket.io, Node.',
+    role: 'Individual Project',
+    media: 'img/codeasart/codeasart_main.gif',
+    primaryLink: `/${ProjectSlug.codeasart}`,
+    images: [],
+    videos: [
+      'https://vimeo.com/307190485', // Demo Video
+    ],
+  },
+  bikewheelsynth: {
+    id: ProjectSlug.bikewheelsynth,
+    title: 'Bike Wheel Synth',
+    tags: [Tags.software, Tags.design],
+    body: `Experiemental project and [tutorial video](https://youtu.be/w4CTSO9HesA)
+    that explains how control sound effects in Ableton using the speed of a bike
+    wheel.`,
+    tools: 'Arduino, Ableton, Max for Live, Reed Switches.',
+    role: 'Individual Project',
+    site: 'https://youtu.be/w4CTSO9HesA',
+    media: 'img/bikewheelsynth/bikewheelsynth_main.gif',
+    primaryLink: `/${ProjectSlug.bikewheelsynth}`,
+    images: [],
+    videos: [
+      'https://youtu.be/w4CTSO9HesA', // Tutorial Video
+    ],
+  },
   topolamp: {
     id: ProjectSlug.topolamp,
     title: 'TopoLamp',
@@ -243,23 +277,6 @@ export const ProjectContent = {
     media: 'img/reflections/reflections_main.png',
     primaryLink: `/${ProjectSlug.reflections}`,
     images: [],
-  },
-  bikewheelsynth: {
-    id: ProjectSlug.bikewheelsynth,
-    title: 'Bike Wheel Synth',
-    tags: [Tags.software, Tags.design],
-    body: `Experiemental project and [tutorial video](https://youtu.be/w4CTSO9HesA)
-    that explains how control sound effects in Ableton using the speed of a bike
-    wheel.`,
-    tools: 'Arduino, Ableton, Max for Live, Reed Switches.',
-    role: 'Individual Project',
-    site: 'https://youtu.be/w4CTSO9HesA',
-    media: 'img/bikewheelsynth/bikewheelsynth_main.gif',
-    primaryLink: `/${ProjectSlug.bikewheelsynth}`,
-    images: [],
-    videos: [
-      'https://youtu.be/w4CTSO9HesA', // Tutorial Video
-    ],
   },
 };
 
