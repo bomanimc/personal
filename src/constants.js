@@ -25,6 +25,7 @@ export const ProjectSlug = {
   cakes: 'cakes-da-killa-site',
   bikewheelsynth: 'bike-wheel-synth',
   codeasart: 'code-as-art',
+  futurecity: 'future-city',
 };
 
 export const ProjectContent = {
@@ -152,6 +153,26 @@ export const ProjectContent = {
       },
       {
         src: 'img/versions/gallery/versions_pillow.jpg',
+      },
+    ],
+  },
+  futurecity: {
+    id: ProjectSlug.futurecity,
+    title: 'Future City',
+    tags: [Tags.software, Tags.design],
+    body: `Creative collective that creates music, videos, magazines, and
+    technology. Website featured on
+    [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
+    tools: 'Three.js, TopCodes',
+    role: 'Design Collaborator and Prototype Developer.',
+    media: 'img/dialup/dialup_main.png',
+    primaryLink: `/${ProjectSlug.futurecity}`,
+    images: [
+      {
+        src: 'img/dialup/gallery/dialup_magazine.png',
+      },
+      {
+        src: 'img/dialup/gallery/dialup_chatroom.png',
       },
     ],
   },

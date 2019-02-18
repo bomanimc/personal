@@ -15,6 +15,7 @@ import TopolampProjectPage from './components/projects/Topolamp/TopolampProjectP
 import ReflectionsProjectPage from './components/projects/Reflections/ReflectionsProjectPage';
 import BikeWheelSynthProjectPage from './components/projects/BikeWheelSynth/BikeWheelSynthProjectPage';
 import CodeAsArtProjectPage from './components/projects/CodeAsArt/CodeAsArtProjectPage';
+import FutureCityProjectPage from './components/projects/FutureCity/FutureCityProjectPage';
 import { ProjectSlug } from './constants';
 
 const routes = (
@@ -32,6 +33,7 @@ const routes = (
     <Route path={ProjectSlug.reflections} component={ReflectionsProjectPage} />
     <Route path={ProjectSlug.bikewheelsynth} component={BikeWheelSynthProjectPage} />
     <Route path={ProjectSlug.codeasart} component={CodeAsArtProjectPage} />
+    <Route path={ProjectSlug.futurecity} component={FutureCityProjectPage} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );
