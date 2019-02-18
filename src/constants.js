@@ -163,9 +163,9 @@ export const ProjectContent = {
     body: `Creative collective that creates music, videos, magazines, and
     technology. Website featured on
     [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
-    tools: 'Three.js, TopCodes',
+    tools: 'Three.js, TopCodes.',
     role: 'Design Collaborator and Prototype Developer.',
-    media: 'img/dialup/dialup_main.png',
+    media: 'img/futurecity/futurecity_main.gif',
     primaryLink: `/${ProjectSlug.futurecity}`,
     videos: ['https://www.youtube.com/watch?v=20Jf0CrJreo'],
     images: [
