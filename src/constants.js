@@ -167,12 +167,16 @@ export const ProjectContent = {
     role: 'Design Collaborator and Prototype Developer.',
     media: 'img/dialup/dialup_main.png',
     primaryLink: `/${ProjectSlug.futurecity}`,
+    videos: ['https://www.youtube.com/watch?v=20Jf0CrJreo'],
     images: [
       {
-        src: 'img/dialup/gallery/dialup_magazine.png',
+        src: 'img/futurecity/gallery/futurecity_description.png',
       },
       {
-        src: 'img/dialup/gallery/dialup_chatroom.png',
+        src: 'img/futurecity/gallery/futurecity_process.jpg',
+      },
+      {
+        src: 'img/futurecity/gallery/futurecity_mobileviewer.jpg',
       },
     ],
   },
