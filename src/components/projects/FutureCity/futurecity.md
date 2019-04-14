@@ -1,8 +1,8 @@
-During a 7-day IDEO CoLab Fellowship, my team and I designed and prototyped "FutureCity," an on-site augmented reality pop-up that invites residents to redesign a public space.
+During a 7-day IDEO CoLab Fellowship, my team and I designed and prototyped Future City, an on-site augmented reality pop-up that invites residents to redesign a public space.
 
 <br /><br />
 
-We built FutureCity because we wanted to invite residents into the design process of public spaces. FutureCity is meant to allow for collaboration between city planners and local residents and to facilitate conversations between both parties when it comes to developing a shared vision for the developing a new space in the city. 
+We built Future City because we wanted to invite residents into the design process of public spaces. Future City is meant to allow for collaboration between city planners and local residents and to facilitate conversations between both parties when it comes to developing a shared vision for the developing a new space in the city. 
 
 <br /><br />
 
