@@ -199,9 +199,8 @@ ProjectContent[ProjectSlug.futurecity] = {
   id: ProjectSlug.futurecity,
   title: 'Future City',
   tags: [Tags.software, Tags.design],
-  body: `Creative collective that creates music, videos, magazines, and
-  technology. Website featured on
-  [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
+  body: `A prototype for an on-site augmented reality pop-up that invites residents to community redesign a public space. 
+    Designed and developed for [IDEO CoLab](https://www.ideocolab.com/).`,
   tools: 'Three.js, TopCodes.',
   role: `Design Collaborator and Prototype Developer. In collaboration with [Harrison Lin](https://harrisonlin.com/), 
   [Nicole Aw](https://www.nicoleaw.com/), and John Oustedyn.`,
