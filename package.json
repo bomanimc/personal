@@ -18,7 +18,6 @@
     "css-loader": "^0.26.0",
     "express": "^4.14.0",
     "express-robots": "^0.1.6",
-    "immutable": "^3.8.2",
     "mustache": "^2.3.0",
     "path": "^0.12.7",
     "prop-types": "^15.6.0",

@@ -4,11 +4,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { OrderedMap } from 'immutable';
 import ProjectCard from '../partials/ProjectCard';
 import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
-import { SkillAreaColors, ProjectContent, SocialLinks } from '../../constants';
+import { SkillAreaColors, ProjectContent, ProjectOrder, SocialLinks } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -203,12 +202,12 @@ const ProjectSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
       <ProjectGridContainer containerHeight="auto">
         {
-          OrderedMap(ProjectContent).map(section =>
+          ProjectOrder.map(section =>
             (<ProjectCard
-              key={section.id}
-              content={section}
+              key={ProjectContent[section].id}
+              content={ProjectContent[section]}
             />),
-          ).toArray()
+          )
         }
       </ProjectGridContainer>
     </ContentContainer>
