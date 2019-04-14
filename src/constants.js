@@ -5,6 +5,11 @@ export const SkillAreaColors = {
   art: '#20bf6b',
 };
 
+export const MediaTypes = {
+  image: 'image',
+  video: 'video',
+};
+
 const Tags = {
   software: 'software',
   design: 'design',
@@ -45,16 +50,15 @@ export const ProjectContent = {
     site: 'https://www.foldhaus.com/shrumen-lumen',
     primaryLink: `/${ProjectSlug.shrumen}`,
     media: 'img/shrumenlumen/shrumen_main.jpg',
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
       },
       {
-        src: 'img/shrumenlumen/gallery/shrumen_night.png',
+        type: MediaTypes.video,
+        videoUrl: 'https://www.youtube.com/watch?v=T75FvUDirNM', // Making Mushrooms Glow
       },
-    ],
-    videos: [
-      'https://www.youtube.com/watch?v=T75FvUDirNM', // Making Mushrooms Glow
     ],
   },
   npr: {
@@ -72,14 +76,17 @@ export const ProjectContent = {
     with the other engineers on my team.`,
     primaryLink: `/${ProjectSlug.npr}`,
     media: 'img/npr/npr.gif',
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/npr/gallery/npr_main_section.png',
       },
       {
+        type: MediaTypes.image,
         src: 'img/npr/gallery/npr_policies_section.png',
       },
       {
+        type: MediaTypes.image,
         src: 'img/npr/gallery/npr_logos_section.png',
       },
     ],
@@ -98,17 +105,23 @@ export const ProjectContent = {
     collaboration with [Eunice Lee](https://euniceylee.github.io/) and Matt Zhang.`,
     media: 'img/waves/waves_main.png',
     primaryLink: `/${ProjectSlug.waves}`,
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/waves/gallery/waves_showing.png',
       },
       {
+        type: MediaTypes.image,
         src: 'img/waves/gallery/waves_prints.png',
       },
-    ],
-    videos: [
-      'https://vimeo.com/220101786', // Waves Demo
-      'https://vimeo.com/220102610', // Eunice Testing Waves
+      {
+        type: MediaTypes.video,
+        videoUrl: 'https://vimeo.com/220101786',  // Waves Demo
+      },
+      {
+        type: MediaTypes.video,
+        videoUrl: 'https://vimeo.com/220102610', // Eunice Testing Waves
+      },
     ],
   },
   gitrocket: {
@@ -124,8 +137,9 @@ export const ProjectContent = {
     site: 'https://www.npmjs.com/package/gitrocket',
     media: 'img/gitrocket/gitrocket.gif',
     primaryLink: `/${ProjectSlug.gitrocket}`,
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/gitrocket/gitrocket.gif',
       },
     ],
@@ -141,17 +155,21 @@ export const ProjectContent = {
     role: 'Individual Project',
     media: 'img/versions/versions_main.jpg',
     primaryLink: `/${ProjectSlug.versions}`,
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/versions/gallery/versions_wings.jpg',
       },
       {
+        type: MediaTypes.image,
         src: 'img/versions/gallery/versions_dark_rose.jpg',
       },
       {
+        type: MediaTypes.image,
         src: 'img/versions/gallery/versions_white_hex.jpg',
       },
       {
+        type: MediaTypes.image,
         src: 'img/versions/gallery/versions_pillow.jpg',
       },
     ],
@@ -167,15 +185,21 @@ export const ProjectContent = {
     role: 'Design Collaborator and Prototype Developer.',
     media: 'img/futurecity/futurecity_main.gif',
     primaryLink: `/${ProjectSlug.futurecity}`,
-    videos: ['https://www.youtube.com/watch?v=20Jf0CrJreo'],
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.video,
+        videoUrl: 'https://www.youtube.com/watch?v=20Jf0CrJreo',
+      },
+      {
+        type: MediaTypes.image,
         src: 'img/futurecity/gallery/futurecity_description.png',
       },
       {
+        type: MediaTypes.image,
         src: 'img/futurecity/gallery/futurecity_process.jpg',
       },
       {
+        type: MediaTypes.image,
         src: 'img/futurecity/gallery/futurecity_mobileviewer.jpg',
       },
     ],
@@ -193,11 +217,13 @@ export const ProjectContent = {
     site: 'http://dialupstuff.com/home',
     media: 'img/dialup/dialup_main.png',
     primaryLink: `/${ProjectSlug.dialup}`,
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/dialup/gallery/dialup_magazine.png',
       },
       {
+        type: MediaTypes.image,
         src: 'img/dialup/gallery/dialup_chatroom.png',
       },
     ],
@@ -214,8 +240,9 @@ export const ProjectContent = {
     media: 'img/negativereel/negativereel_main.gif',
     primaryLink: `/${ProjectSlug.negativereel}`,
     // primaryLink: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/negativereel/gallery/negativereel_interaction.gif',
       },
     ],
@@ -231,9 +258,11 @@ export const ProjectContent = {
     role: 'Individual Project',
     media: 'img/codeasart/codeasart_main.gif',
     primaryLink: `/${ProjectSlug.codeasart}`,
-    images: [],
-    videos: [
-      'https://vimeo.com/307190485', // Demo Video
+    projectMedia: [
+      {
+        type: MediaTypes.video,
+        videoUrl: 'https://vimeo.com/307190485', // Demo Video
+      },
     ],
   },
   bikewheelsynth: {
@@ -248,9 +277,11 @@ export const ProjectContent = {
     site: 'https://youtu.be/w4CTSO9HesA',
     media: 'img/bikewheelsynth/bikewheelsynth_main.gif',
     primaryLink: `/${ProjectSlug.bikewheelsynth}`,
-    images: [],
-    videos: [
-      'https://youtu.be/w4CTSO9HesA', // Tutorial Video
+    projectMedia: [
+      {
+        type: MediaTypes.video,
+        videoUrl: 'https://youtu.be/w4CTSO9HesA', // Tutorial Video
+      },
     ],
   },
   topolamp: {
@@ -264,14 +295,17 @@ export const ProjectContent = {
     media: 'img/topolamp/topolamp_main.jpg',
     primaryLink: `/${ProjectSlug.topolamp}`,
     // primaryLink: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
-    images: [
+    projectMedia: [
       {
+        type: MediaTypes.image,
         src: 'img/topolamp/gallery/topolamp_topview.png',
       },
       {
+        type: MediaTypes.image,
         src: 'img/topolamp/gallery/topolamp_pieces.png',
       },
       {
+        type: MediaTypes.image,
         src: 'img/topolamp/gallery/topolamp_lasercut.png',
       },
     ],
@@ -288,7 +322,7 @@ export const ProjectContent = {
     role: 'Developer & Designer. In collaboration with Rebecca Wei and Justin Holzmann.',
     media: 'img/drawachart/drawachart_main.gif',
     primaryLink: `/${ProjectSlug.drawachart}`,
-    images: [],
+    projectMedia: [],
   },
   reflections: {
     id: ProjectSlug.reflections,
@@ -301,7 +335,7 @@ export const ProjectContent = {
     site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
     media: 'img/reflections/reflections_main.png',
     primaryLink: `/${ProjectSlug.reflections}`,
-    images: [],
+    projectMedia: [],
   },
 };
 
@@ -317,7 +351,7 @@ export const DeprecatedProjectContent = {
     role: 'Developer & Designer. In collaboration with Greg Kim and Rogue Agency.',
     media: 'img/cakes/cakes_main.png',
     primaryLink: `/${ProjectSlug.cakes}`,
-    images: [],
+    projectMedia: [],
   },
   authorcontext: {
     id: ProjectSlug.authorcontext,
@@ -330,7 +364,7 @@ export const DeprecatedProjectContent = {
     role: 'Software Engineer. In collaboration with one other engineer.',
     media: 'img/dialup/dialup_main.png',
     primaryLink: `/${ProjectSlug.authorcontext}`,
-    images: [],
+    projectMedia: [],
   },
 };
 

@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Helmet } from 'react-helmet';
 import { Link, Body, TextContent } from '../commonComponents';
+import { MediaTypes } from '../../constants';
 
 const PROJECT_PAGE_WIDTH = '1000px';
 
@@ -133,11 +134,16 @@ const Metadata = ({ tools, role, site }) => (
   </MetadataSection>
 );
 
-export const getProjectImages = (projectData, showMainMedia) => {
-  const projectImages = projectData.images.map(image => image.src);
+export const getProjectMedia = (projectData, showMainMedia) => {
+  const projectMedia = projectData.projectMedia;
   return showMainMedia
-    ? [projectData.media].concat(projectImages)
-    : projectImages;
+    ? [
+      {
+        type: MediaTypes.image,
+        src: projectData.media,
+      },
+    ].concat(projectMedia)
+    : projectMedia;
 };
 
 export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
@@ -182,26 +188,31 @@ export class BaseBodyContent extends React.Component {
     const { project, showMainMedia } = this.props;
     const { introContent } = this.state;
 
+    const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
+      switch (media.type) {
+        case MediaTypes.video:
+          return (
+            <VideoWrapper key={media.videoUrl}>
+              <ReactPlayer url={media.videoUrl} />
+            </VideoWrapper>
+          );
+        case MediaTypes.image:
+        default:
+          return (
+            <ProjectPageImage key={media.src}>
+              <ProjectPageImageSource src={media.src} />
+            </ProjectPageImage>
+          );
+      }
+    });
+
     return (
       <BodySection>
         <TextContent>
           <ReactMarkdown source={introContent} escapeHtml={false} />
         </TextContent>
         <HiddenDivider />
-        {
-          getProjectImages(project, showMainMedia).map(image => (
-            <ProjectPageImage key={image}>
-              <ProjectPageImageSource src={image} />
-            </ProjectPageImage>
-          ))
-        }
-        {
-          project.videos && project.videos.map(videoUrl => (
-            <VideoWrapper key={videoUrl}>
-              <ReactPlayer url={videoUrl} />
-            </VideoWrapper>
-          ))
-        }
+        {mediaSection}
       </BodySection>
     );
   }
