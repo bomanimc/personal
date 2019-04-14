@@ -38,14 +38,14 @@ export const ProjectOrder = [
   ProjectSlug.versions,
   ProjectSlug.codeasart,
   ProjectSlug.futurecity,
-  ProjectSlug.npr,
-  ProjectSlug.waves,
-  ProjectSlug.gitrocket,
   ProjectSlug.negativereel,
+  ProjectSlug.drawachart,
+  ProjectSlug.npr,
+  ProjectSlug.gitrocket,
+  ProjectSlug.waves,
   ProjectSlug.dialup,
   ProjectSlug.bikewheelsynth,
   ProjectSlug.topolamp,
-  ProjectSlug.drawachart,
   ProjectSlug.reflections,
 ];
 
