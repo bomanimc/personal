@@ -25,6 +25,11 @@ export const TextContent = styled.span`
     ${linkStyle}
     background-color: rgba(255, 255, 255, 0.3);
   }
+
+  ul {
+    margin-left: 24px;
+  }
+  
 `;
 
 export const Link = styled.a`

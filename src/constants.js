@@ -182,7 +182,9 @@ export const ProjectContent = {
     technology. Website featured on
     [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
     tools: 'Three.js, TopCodes.',
-    role: 'Design Collaborator and Prototype Developer.',
+    role: `Design Collaborator and Prototype Developer. In collaboration with [Harrison Lin](https://harrisonlin.com/), 
+    [Nicole Aw](https://www.nicoleaw.com/), and John Oustedyn.`,
+    site: 'https://github.com/bomanimc/future-city',
     media: 'img/futurecity/futurecity_main.gif',
     primaryLink: `/${ProjectSlug.futurecity}`,
     projectMedia: [
