@@ -2,10 +2,10 @@
 
 import React from 'react';
 import NegativeReelContentPath from './negativereel.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.negativereel;
+const project = ProjectContent[ProjectSlug.negativereel];
 
 const NegativeReelProjectPage = () => (
   <BaseProjectPage

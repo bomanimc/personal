@@ -1,10 +1,10 @@
 /* eslint no-confusing-arrow: 0 */
 
 import React from 'react';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.cakes;
+const project = ProjectContent[ProjectSlug.cakes];
 
 const CakesProjectPage = () => (
   <BaseProjectPage

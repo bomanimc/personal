@@ -2,10 +2,10 @@
 
 import React from 'react';
 import WavesContentPath from './waves.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.waves;
+const project = ProjectContent[ProjectSlug.waves];
 
 const WavesProjectPage = () => (
   <BaseProjectPage

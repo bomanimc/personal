@@ -2,10 +2,10 @@
 
 import React from 'react';
 import ReflectionsContentPath from './reflections.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.reflections;
+const project = ProjectContent[ProjectSlug.reflections];
 
 const ReflectionsProjectPage = () => (
   <BaseProjectPage

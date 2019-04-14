@@ -2,10 +2,10 @@
 
 import React from 'react';
 import BikeWheelSynthContentPath from './bikewheelsynth.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.bikewheelsynth;
+const project = ProjectContent[ProjectSlug.bikewheelsynth];
 
 const BikeWheelSynthProjectPage = () => (
   <BaseProjectPage

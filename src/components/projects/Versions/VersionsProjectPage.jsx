@@ -2,10 +2,10 @@
 
 import React from 'react';
 import VersionsContentPath from './versions.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.versions;
+const project = ProjectContent[ProjectSlug.versions];
 
 const VersionsProjectPage = () => (
   <BaseProjectPage

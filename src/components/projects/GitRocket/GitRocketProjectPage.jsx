@@ -2,10 +2,10 @@
 
 import React from 'react';
 import GitRocketContentPath from './gitrocket.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.gitrocket;
+const project = ProjectContent[ProjectSlug.gitrocket];
 
 const GitRocketProjectPage = () => (
   <BaseProjectPage

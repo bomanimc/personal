@@ -2,10 +2,10 @@
 
 import React from 'react';
 import NPRContentPath from './npr.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.npr;
+const project = ProjectContent[ProjectSlug.npr];
 
 const NPRProjectPage = () => (
   <BaseProjectPage

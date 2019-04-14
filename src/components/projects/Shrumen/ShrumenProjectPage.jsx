@@ -2,10 +2,10 @@
 
 import React from 'react';
 import ShrumenContentPath from './shrumen.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.shrumen;
+const project = ProjectContent[ProjectSlug.shrumen];
 
 const ShrumenProjectPage = () => (
   <BaseProjectPage

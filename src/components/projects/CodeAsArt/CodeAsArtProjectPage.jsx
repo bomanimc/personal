@@ -2,10 +2,10 @@
 
 import React from 'react';
 import CodeAsArtContentPath from './codeasart.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.codeasart;
+const project = ProjectContent[ProjectSlug.codeasart];
 
 const CodeAsArtProjectPage = () => (
   <BaseProjectPage

@@ -2,10 +2,10 @@
 
 import React from 'react';
 import DrawAChartContentPath from './drawachart.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.drawachart;
+const project = ProjectContent[ProjectSlug.drawachart];
 
 const DrawAChartProjectPage = () => (
   <BaseProjectPage

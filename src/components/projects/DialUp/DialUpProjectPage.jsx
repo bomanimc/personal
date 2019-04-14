@@ -2,10 +2,10 @@
 
 import React from 'react';
 import DialUpContentPath from './dialup.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.dialup;
+const project = ProjectContent[ProjectSlug.dialup];
 
 const DialUpProjectPage = () => (
   <BaseProjectPage

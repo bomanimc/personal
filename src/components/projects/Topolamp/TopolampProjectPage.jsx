@@ -2,10 +2,10 @@
 
 import React from 'react';
 import TopolampContentPath from './topolamp.md';
-import { ProjectContent } from '../../../constants';
+import { ProjectContent, ProjectSlug } from '../../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../commonProjectComponents';
 
-const project = ProjectContent.topolamp;
+const project = ProjectContent[ProjectSlug.topolamp];
 
 const TopolampProjectPage = () => (
   <BaseProjectPage
