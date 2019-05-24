@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
-import { ProjectContent, ProjectOrder, SocialLinks } from '../../constants';
+import { ProjectContent, ProjectOrder, SocialLinks, NavLinks } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -95,7 +95,7 @@ const changeColor = (e) => {
 
 const HomePage = () => (
   <div id="root">
-    <LinksBar links={SocialLinks} />
+    <LinksBar links={NavLinks} />
     <NameSection onChangeColor={changeColor} />
     <IntroSection />
     <ProjectSection />

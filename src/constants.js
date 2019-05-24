@@ -418,3 +418,18 @@ export const SocialLinks = [
     link: 'https://github.com/bomanimc',
   },
 ];
+
+export const NavLinks = [
+  {
+    name: 'Home',
+    link: '/',
+  },
+  {
+    name: 'Work',
+    link: '/',
+  },
+  {
+    name: 'About',
+    link: '/',
+  },
+];
