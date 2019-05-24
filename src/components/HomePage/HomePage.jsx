@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
-import { ProjectContent, ProjectOrder, SocialLinks, NavLinks } from '../../constants';
+import { ProjectContent, FeaturedProjects, SocialLinks, NavLinks } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -151,7 +151,7 @@ const ProjectSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
       <ProjectGridContainer containerHeight="auto">
         {
-          ProjectOrder.map(section =>
+          FeaturedProjects.map(section =>
             (<ProjectCard
               key={ProjectContent[section].id}
               content={ProjectContent[section]}

@@ -33,6 +33,13 @@ export const ProjectSlug = {
   futurecity: 'future-city',
 };
 
+export const FeaturedProjects = [
+  ProjectSlug.shrumen,
+  ProjectSlug.versions,
+  ProjectSlug.codeasart,
+  ProjectSlug.futurecity,
+];
+
 export const ProjectOrder = [
   ProjectSlug.shrumen,
   ProjectSlug.versions,
