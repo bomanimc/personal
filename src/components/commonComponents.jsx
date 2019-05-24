@@ -110,7 +110,7 @@ export const BodySection = TextContent.extend``;
 
 export const MetadataSection = styled.div`
   display: flex;
-  margin-top: 16px;
+  margin-top: 24px;
 
   @media (max-width: ${PAGE_WIDTH}) {
     flex-direction: column;
@@ -161,6 +161,7 @@ export const PageTitle = styled.p`
   font-size: 48px;
   font-weight: bold;
   text-transform: uppercase;
+  line-height: 0.7;
 `;
 
 export const BasePage = ({ title, body, metadata }) => (

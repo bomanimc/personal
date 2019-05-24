@@ -23,7 +23,7 @@ import {
 } from '../commonComponents';
 
 export const BackButtonWrapper = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 `;
 
 export const BackButton = Link.extend`
