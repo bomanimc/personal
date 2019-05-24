@@ -31,6 +31,7 @@ const ContentContainer = styled.section`
   justify-content: ${props => props.verticalCenter ? 'center' : 'normal'};
   height: ${props => props.containerHeight ? props.containerHeight : '100%'};
   margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
+  margin-bottom: ${props => props.marginBottom ? props.marginBottom : '0px'};
 `;
 
 const ProjectGridContainer = styled.div`
@@ -144,7 +145,7 @@ const ProjectSection = () => (
     minHeight={`${(ProjectContent.length * 250) + 200}px`}
     marginHorizontal="20px"
   >
-    <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
+    <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px" marginBottom="36px">
       <ProjectGridContainer containerHeight="auto">
         {
           FeaturedProjects.map(section =>
