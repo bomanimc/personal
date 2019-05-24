@@ -68,42 +68,77 @@ const AboutPage = () => (
             </TextContent>
           </TextContent>
           <AboutSectionContainer>
-            <div>
-              <AboutBoxTitle>Writing</AboutBoxTitle>
-              <AboutBoxContent>
-                <div>
-                  {AboutCopy.writing.map(item => (
-                    <WritingLink
-                      name={item.name}
-                      date={item.date}
-                      link={item.link}
-                    />),
-                  )}
-                </div>
-              </AboutBoxContent>
-            </div>
-            <div>
-              <AboutBoxTitle>Speaking</AboutBoxTitle>
-              <AboutBoxContent>
-                <div>
-                  {AboutCopy.speaking.map(item => (
-                    <SpeakingLink
-                      name={item.name}
-                      event={item.event}
-                      date={item.date}
-                      location={item.location}
-                      link={item.link}
-                    />),
-                  )}
-                </div>
-              </AboutBoxContent>
-            </div>
+            <EducationBox />
+            <SpeakingBox />
+            <WritingBox />
           </AboutSectionContainer>
         </BodySection>
       }
     />
     <LinksBar links={SocialLinks} />
   </div>
+);
+
+const EducationBox = () => (
+  <div>
+    <AboutBoxTitle>Education</AboutBoxTitle>
+    <AboutBoxContent>
+      <div>
+        {AboutCopy.education.map(item => (
+          <EducationItem
+            name={item.name}
+            startDate={item.startDate}
+            endDate={item.endDate}
+            degree={item.degree}
+          />),
+        )}
+      </div>
+    </AboutBoxContent>
+  </div>
+);
+
+const SpeakingBox = () => (
+  <div>
+    <AboutBoxTitle>Speaking</AboutBoxTitle>
+    <AboutBoxContent>
+      <div>
+        {AboutCopy.speaking.map(item => (
+          <SpeakingLink
+            name={item.name}
+            event={item.event}
+            date={item.date}
+            location={item.location}
+            link={item.link}
+          />),
+        )}
+      </div>
+    </AboutBoxContent>
+  </div>
+);
+
+const WritingBox = () => (
+  <div>
+    <AboutBoxTitle>Writing</AboutBoxTitle>
+    <AboutBoxContent>
+      <div>
+        {AboutCopy.writing.map(item => (
+          <WritingLink
+            name={item.name}
+            date={item.date}
+            link={item.link}
+          />),
+        )}
+      </div>
+    </AboutBoxContent>
+  </div>
+);
+
+const EducationItem = ({ name, degree, startDate, endDate }) => (
+  <SpeakingLinkItem>
+    {name}
+    <AboutDetail>{degree}</AboutDetail>
+    <AboutDetail>{`${startDate} - ${endDate}`}</AboutDetail>
+  </SpeakingLinkItem>
 );
 
 const SpeakingLink = ({ name, location, event, date, link }) => (
@@ -128,6 +163,13 @@ const WritingLink = ({ name, date, link }) => (
     <AboutDetail>{`${date}`}</AboutDetail>
   </SpeakingLinkItem>
 );
+
+EducationItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  degree: PropTypes.string.isRequired,
+};
 
 SpeakingLink.propTypes = {
   name: PropTypes.string.isRequired,

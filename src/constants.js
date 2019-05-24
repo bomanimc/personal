@@ -438,6 +438,27 @@ export const NavLinks = [
 ];
 
 export const AboutCopy = {
+  education: [
+    {
+      name: 'New York University',
+      degree: 'M.P.S in Interactive Telecommunications',
+      date: '2019 - 2021',
+      startDate: '2019',
+      endDate: '2021',
+    },
+    {
+      name: 'School for Poetic Computation',
+      degree: '10-Week Spring Session',
+      startDate: '2019',
+      endDate: '2019',
+    },
+    {
+      name: 'Northwestern University',
+      degree: 'B.S in Computer Science',
+      startDate: '2013',
+      endDate: '2017',
+    },
+  ],
   writing: [
     {
       name: 'How I built my first mobile app scraper',
