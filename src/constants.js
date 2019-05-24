@@ -437,6 +437,6 @@ export const NavLinks = [
   },
   {
     name: 'About',
-    link: '/',
+    link: '/about',
   },
 ];

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
-import { Link, Body, TextContent } from '../commonComponents';
+import { Body } from '../commonComponents';
 import { ProjectContent, FeaturedProjects, SocialLinks, NavLinks } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
@@ -66,20 +66,17 @@ const Name = styled.h1`
   }
 `;
 
-const Outro = Introduction.extend`
+const Bio = Introduction.extend`
   justify-content: center;
   align-items: center;
   text-align: center;
   max-width: 500px;
+  height: auto;
+  text-align: center;
 
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
-
-const Bio = Outro.extend`
-  height: auto;
-  text-align: center;
 `;
 
 const changeColor = (e) => {
@@ -99,7 +96,6 @@ const HomePage = () => (
     <NameSection onChangeColor={changeColor} />
     <IntroSection />
     <ProjectSection />
-    <OutroSection />
     <LinksBar links={SocialLinks} />
   </div>
 );
@@ -160,34 +156,6 @@ const ProjectSection = () => (
         }
       </ProjectGridContainer>
     </ContentContainer>
-  </Section>
-);
-
-const OutroSection = () => (
-  <Section
-    bgColor="black"
-    textColor="white"
-    align="center"
-    sectionHeight="100vh"
-    minHeight="600px"
-    marginHorizontal="20px"
-  >
-    <Outro horizontalCenter verticalCenter>
-      <TextContent>
-        During the day, Bomani works on news products at Facebook.
-        He has previously interned at IDEO, Grubhub, and Boeing.
-        <br />
-        <br />
-        Bomani has conducted HCI & Learning Sciences research
-        with <Link href="http://delta.northwestern.edu/">Delta Lab</Link>, and
-        has contributed to journalism innovation projects as a Fellow
-        at <Link href="https://knightlab.northwestern.edu/">Knight Lab</Link>.
-        <br />
-        <br />
-        <br />
-        See his full resume <Link href="/resume">here</Link>.
-      </TextContent>
-    </Outro>
   </Section>
 );
 
