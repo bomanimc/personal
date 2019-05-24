@@ -22,6 +22,10 @@ import {
   MetadataContent,
 } from '../commonComponents';
 
+export const BackButtonWrapper = styled.div`
+  margin-bottom: 16px;
+`;
+
 export const BackButton = Link.extend`
   font-weight: bold;
 `;
@@ -101,7 +105,9 @@ export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
     </Helmet>
     <Page>
       <PageCenteringContainer>
-        <BackButton href={`/#${id}`}>Back</BackButton>
+        <BackButtonWrapper>
+          <BackButton href={`/#${id}`}>Back</BackButton>
+        </BackButtonWrapper>
         <PageTitle>{title}</PageTitle>
         <Metadata tools={tools} role={role} site={site} />
         <Divider />

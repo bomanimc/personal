@@ -161,7 +161,6 @@ export const PageTitle = styled.p`
   font-size: 48px;
   font-weight: bold;
   text-transform: uppercase;
-  margin-top: 16px;
 `;
 
 export const BasePage = ({ title, body, metadata }) => (
