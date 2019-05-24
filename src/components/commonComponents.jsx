@@ -104,6 +104,8 @@ export const Divider = styled.div`
   margin: 48px 0px;
 `;
 
+export const BodySection = TextContent.extend``;
+
 export const PAGE_WIDTH = '1000px';
 
 export const Page = styled.div`

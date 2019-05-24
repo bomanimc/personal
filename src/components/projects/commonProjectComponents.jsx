@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown/with-html';
 import { Helmet } from 'react-helmet';
 import LinksBar from '../partials/LinksBar';
 import { MediaTypes, SocialLinks, NavLinks } from '../../constants';
-import { Link, Body, TextContent, Divider, Page, PageCenteringContainer, PageTitle, PAGE_WIDTH } from '../commonComponents';
+import { Link, Body, TextContent, Divider, Page, PageCenteringContainer, PageTitle, BodySection, PAGE_WIDTH } from '../commonComponents';
 
 export const BackButton = Link.extend`
   font-weight: bold;
@@ -48,8 +48,6 @@ export const MetadataContent = TextContent.extend``;
 export const HiddenDivider = styled.div`
   margin: 48px 0px;
 `;
-
-export const BodySection = TextContent.extend``;
 
 export const ProjectPageImage = styled.div`
   width: 100%;
