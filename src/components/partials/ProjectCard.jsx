@@ -1,10 +1,12 @@
 /* eslint array-callback-return: 0 */
 /* eslint no-confusing-arrow: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
+import Img from 'react-image';
 import { SkillAreaColors } from '../../constants';
 import { TextContent, ProjectTags, Link } from '../commonComponents';
 
@@ -37,7 +39,7 @@ const ProjectContent = styled.div`
   }
 `;
 
-const ProjectImage = styled.img`
+const ProjectImage = styled(Img)`
   width: 100%;
   height: 315px;
   border-bottom: 1px solid white;
