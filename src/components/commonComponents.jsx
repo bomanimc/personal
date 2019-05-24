@@ -3,6 +3,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { SkillAreaColors } from '../constants';
 
 const linkStyle = css`
@@ -96,3 +97,56 @@ export const ProjectGridContainer = styled.div`
     grid-template-columns: repeat(1, 1fr);
   }
 `;
+
+export const Divider = styled.div`
+  width: 200px;
+  border-top: 1px dashed white;
+  margin: 48px 0px;
+`;
+
+export const PAGE_WIDTH = '1000px';
+
+export const Page = styled.div`
+  margin: 48px;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: ${PAGE_WIDTH}) {
+    margin: 20px;
+  }
+`;
+
+export const PageCenteringContainer = styled.div`
+  width: ${PAGE_WIDTH};
+
+  @media (max-width: ${PAGE_WIDTH}) {
+    width: 100%;
+  }
+`;
+
+export const PageTitle = styled.p`
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 16px;
+`;
+
+export const BasePage = ({ title, body }) => (
+  <div>
+    <Helmet>
+      <title>{`${title} – BOMANI`}</title>
+    </Helmet>
+    <Page>
+      <PageCenteringContainer>
+        <PageTitle>{title}</PageTitle>
+        <Divider />
+        {body}
+      </PageCenteringContainer>
+    </Page>
+  </div>
+);
+
+BasePage.propTypes = {
+  title: PropTypes.string.isRequired,
+  body: PropTypes.node.isRequired,
+};

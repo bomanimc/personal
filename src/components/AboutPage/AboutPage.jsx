@@ -4,7 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinksBar from '../partials/LinksBar';
-import { Link, TextContent } from '../commonComponents';
+import { Link, TextContent, BasePage } from '../commonComponents';
 import { SocialLinks, NavLinks } from '../../constants';
 
 const Section = styled.section`
@@ -49,37 +49,38 @@ const Outro = Introduction.extend`
 const AboutPage = () => (
   <div id="root">
     <LinksBar links={NavLinks} />
-    <OutroSection />
+    <BasePage
+      title={'About'}
+      body={
+        <Section
+          bgColor="black"
+          textColor="white"
+          align="center"
+          sectionHeight="100vh"
+          minHeight="600px"
+          marginHorizontal="20px"
+        >
+          <Outro horizontalCenter verticalCenter>
+            <TextContent>
+              During the day, Bomani works on news products at Facebook.
+              He has previously interned at IDEO, Grubhub, and Boeing.
+              <br />
+              <br />
+              Bomani has conducted HCI & Learning Sciences research
+              with <Link href="http://delta.northwestern.edu/">Delta Lab</Link>, and
+              has contributed to journalism innovation projects as a Fellow
+              at <Link href="https://knightlab.northwestern.edu/">Knight Lab</Link>.
+              <br />
+              <br />
+              <br />
+              See his full resume <Link href="/resume">here</Link>.
+            </TextContent>
+          </Outro>
+        </Section>
+      }
+    />
     <LinksBar links={SocialLinks} />
   </div>
-);
-
-const OutroSection = () => (
-  <Section
-    bgColor="black"
-    textColor="white"
-    align="center"
-    sectionHeight="100vh"
-    minHeight="600px"
-    marginHorizontal="20px"
-  >
-    <Outro horizontalCenter verticalCenter>
-      <TextContent>
-        During the day, Bomani works on news products at Facebook.
-        He has previously interned at IDEO, Grubhub, and Boeing.
-        <br />
-        <br />
-        Bomani has conducted HCI & Learning Sciences research
-        with <Link href="http://delta.northwestern.edu/">Delta Lab</Link>, and
-        has contributed to journalism innovation projects as a Fellow
-        at <Link href="https://knightlab.northwestern.edu/">Knight Lab</Link>.
-        <br />
-        <br />
-        <br />
-        See his full resume <Link href="/resume">here</Link>.
-      </TextContent>
-    </Outro>
-  </Section>
 );
 
 export default AboutPage;

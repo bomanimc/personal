@@ -6,45 +6,18 @@ import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Helmet } from 'react-helmet';
-import { Link, Body, TextContent } from '../commonComponents';
+import { Link, Body, TextContent, Divider, Page, PageCenteringContainer, PageTitle, PAGE_WIDTH } from '../commonComponents';
 import { MediaTypes } from '../../constants';
-
-const PROJECT_PAGE_WIDTH = '1000px';
-
-export const ProjectPage = styled.div`
-  margin: 48px;
-  display: flex;
-  justify-content: center;
-
-  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
-    margin: 20px;
-  }
-`;
-
-export const ProjectCenteringContainer = styled.div`
-  width: ${PROJECT_PAGE_WIDTH};
-
-  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
-    width: 100%;
-  }
-`;
 
 export const BackButton = Link.extend`
   font-weight: bold;
-`;
-
-export const ProjectPageTitle = styled.p`
-  font-size: 48px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 16px;
 `;
 
 export const MetadataSection = styled.div`
   display: flex;
   margin-top: 16px;
 
-  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
+  @media (max-width: ${PAGE_WIDTH}) {
     flex-direction: column;
   }
 `;
@@ -53,7 +26,7 @@ export const MetadataItem = styled.div`
   margin-right: 48px;
   width: 300px;
 
-  @media (max-width: ${PROJECT_PAGE_WIDTH}) {
+  @media (max-width: ${PAGE_WIDTH}) {
     width: 100%;
     margin-bottom: 16px;
 
@@ -70,12 +43,6 @@ export const MetadataTitle = Body.extend`
 `;
 
 export const MetadataContent = TextContent.extend``;
-
-export const Divider = styled.div`
-  width: 200px;
-  border-top: 1px dashed white;
-  margin: 48px 0px;
-`;
 
 export const HiddenDivider = styled.div`
   margin: 48px 0px;
@@ -151,15 +118,15 @@ export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
     <Helmet>
       <title>{`${title} – BOMANI`}</title>
     </Helmet>
-    <ProjectPage>
-      <ProjectCenteringContainer>
+    <Page>
+      <PageCenteringContainer>
         <BackButton href={`/#${id}`}>Back</BackButton>
-        <ProjectPageTitle>{title}</ProjectPageTitle>
+        <PageTitle>{title}</PageTitle>
         <Metadata tools={tools} role={role} site={site} />
         <Divider />
         {body}
-      </ProjectCenteringContainer>
-    </ProjectPage>
+      </PageCenteringContainer>
+    </Page>
   </div>
 );
 
