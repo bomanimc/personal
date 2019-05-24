@@ -5,8 +5,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import LinksBar from '../partials/LinksBar';
-import { Link, TextContent, BasePage, BodySection } from '../commonComponents';
-import { SocialLinks, NavLinks } from '../../constants';
+import { Link, TextContent, BasePage, Body, BodySection } from '../commonComponents';
+import { SocialLinks, NavLinks, AboutCopy } from '../../constants';
+
+const GRID_GAP_VALUE = '36px';
 
 const AboutSectionContainer = styled.div`
   display: grid;
@@ -19,7 +21,6 @@ const AboutBoxContent = styled.div`
   border-style: dashed;
   border-color: white;
   padding: 6px;
-  max-width: 500px;
 `;
 
 const AboutBoxTitle = styled.div`
@@ -66,18 +67,38 @@ const AboutPage = () => (
               See his full resume <Link href="/resume">here</Link>.
             </TextContent>
           </TextContent>
-          <div>
-            <AboutBoxTitle>Writing</AboutBoxTitle>
-            <AboutBoxContent>
-              <div>{writingLinks}</div>
-            </AboutBoxContent>
-          </div>
-          <div>
-            <AboutBoxTitle>Speaking</AboutBoxTitle>
-            <AboutBoxContent>
-              <div>{speakingLinks}</div>
-            </AboutBoxContent>
-          </div>
+          <AboutSectionContainer>
+            <div>
+              <AboutBoxTitle>Writing</AboutBoxTitle>
+              <AboutBoxContent>
+                <div>
+                  {AboutCopy.writing.map(item => (
+                    <WritingLink
+                      name={item.name}
+                      date={item.date}
+                      link={item.link}
+                    />),
+                  )}
+                </div>
+              </AboutBoxContent>
+            </div>
+            <div>
+              <AboutBoxTitle>Speaking</AboutBoxTitle>
+              <AboutBoxContent>
+                <div>
+                  {AboutCopy.speaking.map(item => (
+                    <SpeakingLink
+                      name={item.name}
+                      event={item.event}
+                      date={item.date}
+                      location={item.location}
+                      link={item.link}
+                    />),
+                  )}
+                </div>
+              </AboutBoxContent>
+            </div>
+          </AboutSectionContainer>
         </BodySection>
       }
     />

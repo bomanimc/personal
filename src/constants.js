@@ -436,3 +436,46 @@ export const NavLinks = [
     link: '/about',
   },
 ];
+
+export const AboutCopy = {
+  writing: [
+    {
+      name: 'How I built my first mobile app scraper',
+      link: 'https://medium.com/leesons-journalism-tech/how-i-built-my-first-mobile-app-scraper-6ed7201c7678',
+      date: 'Knight Lab',
+    },
+    {
+      name: 'Getting started with conversational bots using Wit.ai',
+      link: 'https://medium.com/leesons-journalism-tech/getting-started-with-conversational-bots-using-wit-ai-5001b85f5afa',
+      date: 'Knight Lab',
+    },
+    {
+      name: 'Paying dinosaurs: Lessons learned from many hacky deployments with Heroku',
+      link: 'https://medium.com/leesons-journalism-tech/paying-dinosaurs-lessons-learned-from-many-hacky-deployments-with-heroku-597ed9824c17',
+      date: 'Knight Lab',
+    },
+  ],
+  speaking: [
+    {
+      name: 'Making Mushrooms Glow',
+      event: '!!Con',
+      date: 'May 2017',
+      location: 'New York, NY',
+      link: 'https://www.youtube.com/watch?v=T75FvUDirNM',
+    },
+    {
+      name: "'Hacking' Mobile Apps",
+      event: 'Open Lab',
+      date: 'November 2016',
+      location: 'Evanston, IL',
+    },
+    {
+      name: `Serving Social Change: Leveraging the Internet for the Empowerment
+      of Social Movements`,
+      event: 'MozFest',
+      date: 'November 2015',
+      location: 'London, England',
+    },
+  ],
+};
+
