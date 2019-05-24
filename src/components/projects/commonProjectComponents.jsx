@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Helmet } from 'react-helmet';
+import LinksBar from '../partials/LinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
-import { MediaTypes } from '../../constants';
+import { MediaTypes, SocialLinks, NavLinks } from '../../constants';
 
 const PROJECT_PAGE_WIDTH = '1000px';
 
@@ -148,6 +149,7 @@ export const getProjectMedia = (projectData, showMainMedia) => {
 
 export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
   <div>
+    <LinksBar links={NavLinks} />
     <Helmet>
       <title>{`${title} – BOMANI`}</title>
     </Helmet>
@@ -160,6 +162,7 @@ export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
         {body}
       </ProjectCenteringContainer>
     </ProjectPage>
+    <LinksBar links={SocialLinks} />
   </div>
 );
 
