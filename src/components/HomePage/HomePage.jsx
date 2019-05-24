@@ -71,12 +71,7 @@ const IntroSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
       <Bio>
         <Body>
-          Bomani McClendon is a software engineer, designer, and
-          aspiring artist based in New York City.
-        </Body>
-        <br />
-        <Body>
-          See his work below.
+          Bomani Oseni McClendon is an engineer and artist based in Brooklyn, NY.
         </Body>
       </Bio>
     </ContentContainer>
