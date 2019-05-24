@@ -432,10 +432,6 @@ export const NavLinks = [
     link: '/',
   },
   {
-    name: 'Work',
-    link: '/work',
-  },
-  {
     name: 'About',
     link: '/about',
   },
