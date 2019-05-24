@@ -457,6 +457,20 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Code As An Artistic Medium',
+      event: 'WordHack',
+      date: 'May 2019',
+      location: 'New York, NY',
+      link: 'https://docs.google.com/presentation/d/1HtEw3l-R5G4duIEJKuSuO2KFSYfqNklObWGiKtKUejs/edit?usp=sharing',
+    },
+    {
+      name: 'Interactive Projection Mapping with Processing',
+      event: 'Processing Community Day NYC',
+      date: 'February 2019',
+      location: 'New York, NY',
+      link: 'https://docs.google.com/presentation/d/1GfVKDLk5o_yNBy4mst4nDapCcCRiyqyqsiHV5sRelnk/edit?usp=sharing',
+    },
+    {
       name: 'Making Mushrooms Glow',
       event: '!!Con',
       date: 'May 2017',
