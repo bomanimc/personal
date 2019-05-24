@@ -417,6 +417,10 @@ export const SocialLinks = [
     link: 'https://medium.com/@bomani',
   },
   {
+    name: 'Email',
+    link: 'mailto:bomanimc@gmail.com',
+  },
+  {
     name: 'LinkedIn',
     link: 'https://www.linkedin.com/in/bomanimc/',
   },
