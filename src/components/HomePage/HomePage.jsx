@@ -58,10 +58,6 @@ const Name = styled.h1`
   line-height: 0.80;
   transition: opacity ${hoverNameAnimationSpeed}s ease;
 
-  &:hover {
-    color: #000000;
-  }
-
   @media (max-width: 768px) {
     font-size: 5.5rem;
   }
@@ -80,34 +76,19 @@ const Bio = Introduction.extend`
   }
 `;
 
-const changeColor = (e) => {
-  const splash = document.getElementById('root');
-  splash.style.backgroundColor = e.target.getAttribute('data-color');
-
-  if (e.target.id !== 'name') {
-    document.getElementById('name').style.opacity = 0.3;
-  } else {
-    document.getElementById('name').style.opacity = 1;
-  }
-};
-
 const HomePage = () => (
   <div id="root">
     <LinksBar links={NavLinks} />
-    <NameSection onChangeColor={changeColor} />
+    <NameSection />
     <IntroSection />
     <ProjectSection />
     <LinksBar links={SocialLinks} />
   </div>
 );
 
-const NameSection = ({ onChangeColor }) => (
+const NameSection = () => (
   <Introduction horizontalCenter verticalCenter marginTop="36px">
-    <Name
-      id="name"
-      data-color={'#000'}
-      onMouseEnter={e => onChangeColor(e)}
-    >
+    <Name>
       BOMANI
     </Name>
   </Introduction>
