@@ -78,6 +78,7 @@ const AboutPage = () => (
             <EducationBox />
             <SpeakingBox />
             <WritingBox />
+            <FellowshipBox />
           </AboutSectionContainer>
         </BodySection>
       }
@@ -140,6 +141,24 @@ const WritingBox = () => (
   </div>
 );
 
+const FellowshipBox = () => (
+  <div>
+    <AboutBoxTitle>Fellowships</AboutBoxTitle>
+    <AboutBoxContent>
+      <div>
+        {AboutCopy.fellowships.map(item => (
+          <FellowshipItem
+            org={item.org}
+            startDate={item.startDate}
+            endDate={item.endDate}
+            title={item.title}
+          />),
+        )}
+      </div>
+    </AboutBoxContent>
+  </div>
+);
+
 const EducationItem = ({ name, degree, startDate, endDate }) => (
   <SpeakingLinkItem>
     {name}
@@ -171,6 +190,14 @@ const WritingLink = ({ name, date, link }) => (
   </SpeakingLinkItem>
 );
 
+const FellowshipItem = ({ org, title, startDate, endDate }) => (
+  <SpeakingLinkItem>
+    {org}
+    <AboutDetail>{title}</AboutDetail>
+    <AboutDetail>{`${startDate} - ${endDate}`}</AboutDetail>
+  </SpeakingLinkItem>
+);
+
 Metadata.propTypes = {
   location: PropTypes.string.isRequired,
   links: PropTypes.string.isRequired,
@@ -195,6 +222,13 @@ WritingLink.propTypes = {
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+};
+
+FellowshipItem.propTypes = {
+  org: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default AboutPage;
