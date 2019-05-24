@@ -21,6 +21,10 @@ import {
 
 const GRID_GAP_VALUE = '36px';
 
+const AboutRoot = styled.div`
+  margin-top: 48px;
+`;
+
 const AboutSectionContainer = styled.div`
   display: grid;
   grid-gap: ${GRID_GAP_VALUE};
@@ -71,20 +75,22 @@ const Metadata = ({ location, links }) => (
 const AboutPage = () => (
   <div id="root">
     <LinksBar links={NavLinks} />
-    <BasePage
-      title={'About'}
-      body={
-        <BodySection>
-          <AboutSectionContainer>
-            <BioContent />
-            <EducationBox />
-            <SpeakingBox />
-            <WritingBox />
-            <FellowshipBox />
-          </AboutSectionContainer>
-        </BodySection>
-      }
-    />
+    <AboutRoot>
+      <BasePage
+        title={'About'}
+        body={
+          <BodySection>
+            <AboutSectionContainer>
+              <BioContent />
+              <EducationBox />
+              <SpeakingBox />
+              <WritingBox />
+              <FellowshipBox />
+            </AboutSectionContainer>
+          </BodySection>
+        }
+      />
+    </AboutRoot>
     <LinksBar links={SocialLinks} />
   </div>
 );
