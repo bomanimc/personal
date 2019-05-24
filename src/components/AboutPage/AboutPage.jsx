@@ -29,7 +29,7 @@ const AboutSectionContainer = styled.div`
 
 const AboutBoxContent = styled.div`
   border-width: 0px 1px 1px 1px;
-  border-style: dashed;
+  border-style: solid;
   border-color: white;
   padding: 6px;
 `;
