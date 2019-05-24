@@ -4,9 +4,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown/with-html';
 import LinksBar from '../partials/LinksBar';
-import { Link, TextContent, BasePage, Body, BodySection } from '../commonComponents';
 import { SocialLinks, NavLinks, AboutCopy } from '../../constants';
+import {
+  Link,
+  BasePage,
+  Body,
+  BodySection,
+  MetadataSection,
+  MetadataItem,
+  MetadataTitle,
+  MetadataContent,
+} from '../commonComponents';
 
 const GRID_GAP_VALUE = '36px';
 
@@ -44,6 +54,19 @@ const SpeakingLinkItem = styled.div`
   }
 `;
 
+const Metadata = ({ location, links }) => (
+  <MetadataSection>
+    <MetadataItem>
+      <MetadataTitle>Location</MetadataTitle>
+      <MetadataContent><ReactMarkdown source={location} /></MetadataContent>
+    </MetadataItem>
+    <MetadataItem>
+      <MetadataTitle>Links</MetadataTitle>
+      <MetadataContent><ReactMarkdown source={links} /></MetadataContent>
+    </MetadataItem>
+  </MetadataSection>
+);
+
 const AboutPage = () => (
   <div id="root">
     <LinksBar links={NavLinks} />
@@ -51,22 +74,6 @@ const AboutPage = () => (
       title={'About'}
       body={
         <BodySection>
-          <TextContent>
-            <TextContent>
-              During the day, Bomani works on news products at Facebook.
-              He has previously interned at IDEO, Grubhub, and Boeing.
-              <br />
-              <br />
-              Bomani has conducted HCI & Learning Sciences research
-              with <Link href="http://delta.northwestern.edu/">Delta Lab</Link>, and
-              has contributed to journalism innovation projects as a Fellow
-              at <Link href="https://knightlab.northwestern.edu/">Knight Lab</Link>.
-              <br />
-              <br />
-              <br />
-              See his full resume <Link href="/resume">here</Link>.
-            </TextContent>
-          </TextContent>
           <AboutSectionContainer>
             <EducationBox />
             <SpeakingBox />
@@ -163,6 +170,11 @@ const WritingLink = ({ name, date, link }) => (
     <AboutDetail>{`${date}`}</AboutDetail>
   </SpeakingLinkItem>
 );
+
+Metadata.propTypes = {
+  location: PropTypes.string.isRequired,
+  links: PropTypes.string.isRequired,
+};
 
 EducationItem.propTypes = {
   name: PropTypes.string.isRequired,

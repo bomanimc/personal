@@ -8,42 +8,23 @@ import ReactMarkdown from 'react-markdown/with-html';
 import { Helmet } from 'react-helmet';
 import LinksBar from '../partials/LinksBar';
 import { MediaTypes, SocialLinks, NavLinks } from '../../constants';
-import { Link, Body, TextContent, Divider, Page, PageCenteringContainer, PageTitle, BodySection, PAGE_WIDTH } from '../commonComponents';
+import {
+  Link,
+  TextContent,
+  Divider,
+  Page,
+  PageCenteringContainer,
+  PageTitle,
+  BodySection,
+  MetadataSection,
+  MetadataItem,
+  MetadataTitle,
+  MetadataContent,
+} from '../commonComponents';
 
 export const BackButton = Link.extend`
   font-weight: bold;
 `;
-
-export const MetadataSection = styled.div`
-  display: flex;
-  margin-top: 16px;
-
-  @media (max-width: ${PAGE_WIDTH}) {
-    flex-direction: column;
-  }
-`;
-
-export const MetadataItem = styled.div`
-  margin-right: 48px;
-  width: 300px;
-
-  @media (max-width: ${PAGE_WIDTH}) {
-    width: 100%;
-    margin-bottom: 16px;
-
-    :last-child {
-      margin-bottom: 0px;
-    }
-  }
-`;
-
-export const MetadataTitle = Body.extend`
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 8px;
-`;
-
-export const MetadataContent = TextContent.extend``;
 
 export const HiddenDivider = styled.div`
   margin: 48px 0px;

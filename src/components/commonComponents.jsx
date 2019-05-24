@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { SkillAreaColors } from '../constants';
 
+export const PAGE_WIDTH = '1000px';
+
 const linkStyle = css`
   text-decoration: none;
   color: white;
@@ -106,7 +108,36 @@ export const Divider = styled.div`
 
 export const BodySection = TextContent.extend``;
 
-export const PAGE_WIDTH = '1000px';
+export const MetadataSection = styled.div`
+  display: flex;
+  margin-top: 16px;
+
+  @media (max-width: ${PAGE_WIDTH}) {
+    flex-direction: column;
+  }
+`;
+
+export const MetadataItem = styled.div`
+  margin-right: 48px;
+  width: 300px;
+
+  @media (max-width: ${PAGE_WIDTH}) {
+    width: 100%;
+    margin-bottom: 16px;
+
+    :last-child {
+      margin-bottom: 0px;
+    }
+  }
+`;
+
+export const MetadataTitle = Body.extend`
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+`;
+
+export const MetadataContent = TextContent.extend``;
 
 export const Page = styled.div`
   margin: 48px;
@@ -133,7 +164,7 @@ export const PageTitle = styled.p`
   margin-top: 16px;
 `;
 
-export const BasePage = ({ title, body }) => (
+export const BasePage = ({ title, body, metadata }) => (
   <div>
     <Helmet>
       <title>{`${title} – BOMANI`}</title>
@@ -141,6 +172,7 @@ export const BasePage = ({ title, body }) => (
     <Page>
       <PageCenteringContainer>
         <PageTitle>{title}</PageTitle>
+        {metadata}
         <Divider />
         {body}
       </PageCenteringContainer>
@@ -151,4 +183,5 @@ export const BasePage = ({ title, body }) => (
 BasePage.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.node.isRequired,
+  metadata: PropTypes.node.isRequired,
 };
