@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ProjectCard from '../partials/ProjectCard';
 import SocialLinksBar from '../partials/SocialLinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
-import { SkillAreaColors, ProjectContent, ProjectOrder, SocialLinks } from '../../constants';
+import { ProjectContent, ProjectOrder, SocialLinks } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -44,19 +44,6 @@ const ProjectGridContainer = styled.div`
   }
 `;
 
-const Splash = Section.extend`
-  height: 80vh;
-  min-height: 600px;
-  background-color: white;
-  transition: background-color ${hoverNameAnimationSpeed}s ease;
-  margin: 0px;
-
-  @media (max-width: 768px) {
-    height: 400px;
-    min-height: 300px;
-  }
-`;
-
 const Introduction = ContentContainer.extend`
   display: flex;
   flex-direction: column;
@@ -65,7 +52,7 @@ const Introduction = ContentContainer.extend`
 
 const Name = styled.h1`
   font-family: Helvetica;
-  color: black;
+  color: white;
   font-size: 180px;
   line-height: 0.80;
   transition: opacity ${hoverNameAnimationSpeed}s ease;
@@ -76,22 +63,6 @@ const Name = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 5.5rem;
-  }
-`;
-
-const SkillArea = styled.h3`
-  color: rgba(0, 0, 0, 0.3);
-  font-family: Helvetica;
-  font-size: 64px;
-  transition: color ${hoverNameAnimationSpeed}s ease;
-  z-index: 2;
-
-  &:hover {
-    color: #000000;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
   }
 `;
 
@@ -112,7 +83,7 @@ const Bio = Outro.extend`
 `;
 
 const changeColor = (e) => {
-  const splash = document.getElementById('splash');
+  const splash = document.getElementById('root');
   splash.style.backgroundColor = e.target.getAttribute('data-color');
 
   if (e.target.id !== 'name') {
@@ -123,8 +94,8 @@ const changeColor = (e) => {
 };
 
 const HomePage = () => (
-  <div>
-    <SplashSection onChangeColor={changeColor} />
+  <div id="root">
+    <NameSection onChangeColor={changeColor} />
     <IntroSection />
     <ProjectSection />
     <OutroSection />
@@ -132,39 +103,16 @@ const HomePage = () => (
   </div>
 );
 
-const SplashSection = ({ onChangeColor }) => (
-  <Splash
-    bgColor="white"
-    id="splash"
-  >
-    <Introduction horizontalCenter verticalCenter>
-      <Name
-        id="name"
-        data-color={SkillAreaColors.name}
-        onMouseEnter={e => onChangeColor(e)}
-      >
-        BOMANI
-      </Name>
-      <SkillArea
-        data-color={SkillAreaColors.software}
-        onMouseEnter={e => onChangeColor(e)}
-      >
-        SOFTWARE
-      </SkillArea>
-      <SkillArea
-        data-color={SkillAreaColors.design}
-        onMouseEnter={e => onChangeColor(e)}
-      >
-        DESIGN
-      </SkillArea>
-      <SkillArea
-        data-color={SkillAreaColors.art}
-        onMouseEnter={e => onChangeColor(e)}
-      >
-        ART
-      </SkillArea>
-    </Introduction>
-  </Splash>
+const NameSection = ({ onChangeColor }) => (
+  <Introduction horizontalCenter verticalCenter marginTop="36px">
+    <Name
+      id="name"
+      data-color={'#000'}
+      onMouseEnter={e => onChangeColor(e)}
+    >
+      BOMANI
+    </Name>
+  </Introduction>
 );
 
 const IntroSection = () => (
@@ -242,7 +190,7 @@ const OutroSection = () => (
   </Section>
 );
 
-SplashSection.propTypes = {
+NameSection.propTypes = {
   onChangeColor: PropTypes.func.isRequired,
 };
 
