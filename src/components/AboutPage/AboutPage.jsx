@@ -11,6 +11,7 @@ import {
   Link,
   BasePage,
   Body,
+  TextContent,
   BodySection,
   MetadataSection,
   MetadataItem,
@@ -75,6 +76,7 @@ const AboutPage = () => (
       body={
         <BodySection>
           <AboutSectionContainer>
+            <BioContent />
             <EducationBox />
             <SpeakingBox />
             <WritingBox />
@@ -85,6 +87,26 @@ const AboutPage = () => (
     />
     <LinksBar links={SocialLinks} />
   </div>
+);
+
+const BioContent = () => (
+  <BodySection>
+    <TextContent>
+      Bomani Oseni McClendon is a Brooklyn-based engineer and research-based artist.
+      <br /><br />
+      Through his art practice, Bomani explores the way that Black health outcomes
+      are influenced by a history of scientific racism. As an engineer, he focuses
+      on building software interfaces and prototypes that explore new possibilities
+      for information creation or discovery. Bomani aspires to make work that honors
+      articulations of pain while simultaneously instilling hope that we have the power
+      and goodness to create a more positive future.
+      <br /><br />
+      Bomani studied Computer Science at Northwestern University, where he focused
+      on Human-Computer Interaction, Learning Sciences, and storytelling tools for
+      journalism. He was also a member of the Spring 2019 cohort at School for Poetic
+    Computation in West Village, NY.
+    </TextContent>
+  </BodySection>
 );
 
 const EducationBox = () => (
@@ -229,6 +251,10 @@ FellowshipItem.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+};
+
+BioContent.propTypes = {
+  bioContentPath: PropTypes.string,
 };
 
 export default AboutPage;
