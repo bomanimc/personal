@@ -3,6 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import HomePage from './components/HomePage/HomePage';
 import AboutPage from './components/AboutPage/AboutPage';
+import WorkPage from './components/WorkPage/WorkPage';
 import NotFoundPage from './components/NotFoundPage';
 import ShrumenProjectPage from './components/projects/Shrumen/ShrumenProjectPage';
 import NPRProjectPage from './components/projects/NPR/NPRProjectPage';
@@ -23,6 +24,7 @@ const routes = (
   <Route path={`${process.env.PUBLIC_URL}/`} component={App}>
     <IndexRoute component={HomePage} />
     <Route path={'/about'} component={AboutPage} />
+    <Route path={'/work'} component={WorkPage} />
     <Route path={ProjectSlug.shrumen} component={ShrumenProjectPage} />
     <Route path={ProjectSlug.npr} component={NPRProjectPage} />
     <Route path={ProjectSlug.waves} component={WavesProjectPage} />

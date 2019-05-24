@@ -6,44 +6,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
-import { Body } from '../commonComponents';
+import { Body, Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
 import { ProjectContent, FeaturedProjects, SocialLinks, NavLinks } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
-
-const Section = styled.section`
-  background-color: ${props => props.bgColor};
-  color: ${props => props.textColor};
-  height: ${props => props.sectionHeight};
-  min-height: ${props => props.minHeight};
-  display: flex;
-  flex-direction: column;
-  align-items: ${props => props.align};
-  justify-content: space-between;
-  margin-left: ${props => props.marginHorizontal ? props.marginHorizontal : '0px'};
-  margin-right: ${props => props.marginHorizontal ? props.marginHorizontal : '0px'};
-`;
-
-const ContentContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: ${props => props.horizontalCenter ? 'center' : 'normal'};
-  justify-content: ${props => props.verticalCenter ? 'center' : 'normal'};
-  height: ${props => props.containerHeight ? props.containerHeight : '100%'};
-  margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom : '0px'};
-`;
-
-const ProjectGridContainer = styled.div`
-  display: grid;
-  grid-gap: 36px;
-  grid-template-columns: repeat(2, 1fr);
-  height: ${props => props.containerHeight ? props.containerHeight : '100%'};
-
-  @media (max-width: 1100px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-`;
 
 const Introduction = ContentContainer.extend`
   display: flex;
