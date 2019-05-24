@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ProjectCard from '../partials/ProjectCard';
-import SocialLinksBar from '../partials/SocialLinksBar';
+import LinksBar from '../partials/LinksBar';
 import { Link, Body, TextContent } from '../commonComponents';
 import { ProjectContent, ProjectOrder, SocialLinks } from '../../constants';
 
@@ -95,11 +95,12 @@ const changeColor = (e) => {
 
 const HomePage = () => (
   <div id="root">
+    <LinksBar links={SocialLinks} />
     <NameSection onChangeColor={changeColor} />
     <IntroSection />
     <ProjectSection />
     <OutroSection />
-    <SocialLinksBar links={SocialLinks} />
+    <LinksBar links={SocialLinks} />
   </div>
 );
 

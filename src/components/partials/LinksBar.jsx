@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Link } from '../commonComponents';
 
-const SocialLinksContainer = styled.div`
+const LinksContainer = styled.div`
   background-color: blue;
   padding: 10px;
   flex-grow: 1;
@@ -14,24 +14,24 @@ const SocialLinksContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const SocialLink = Link.extend`
+const LinkItem = Link.extend`
   display: inline-block;
   text-align: center;
   padding: 0px 10px;
   text-transform: lowercase;
 `;
 
-const SocialLinksBar = (props) => {
+const LinksBar = (props) => {
   const socialLinks = props.links.map(item =>
-    <SocialLink href={item.link} key={item.name}>{item.name}</SocialLink>);
+    <LinkItem href={item.link} key={item.name}>{item.name}</LinkItem>);
 
   return (
-    <SocialLinksContainer>{socialLinks}</SocialLinksContainer>
+    <LinksContainer>{socialLinks}</LinksContainer>
   );
 };
 
-SocialLinksBar.propTypes = {
+LinksBar.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
-export default SocialLinksBar;
+export default LinksBar;
