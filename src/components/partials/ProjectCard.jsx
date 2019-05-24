@@ -53,6 +53,21 @@ const ProjectImage = styled(Img)`
   }
 `;
 
+const ProjectImagePlaceholder = styled.div`
+  width: 100%;
+  height: 315px;
+  border-bottom: 1px solid white;
+  display: block;
+
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    min-width: auto;
+  }
+`;
+
 const ProjectHeader = styled.div`
   align-items: center;
   background: white;
@@ -132,12 +147,14 @@ const Project = ({ content }) => (
         <ProjectImage
           order={1}
           src={content.media}
+          loader={<ProjectImagePlaceholder />}
         />
       </Link>
       : <Link href={content.primaryLink}>
         <ProjectImage
           order={1}
           src={content.media}
+          loader={<ProjectImagePlaceholder />}
         />
       </Link>
     }
