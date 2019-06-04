@@ -18,6 +18,7 @@ import ReflectionsProjectPage from './components/projects/Reflections/Reflection
 import BikeWheelSynthProjectPage from './components/projects/BikeWheelSynth/BikeWheelSynthProjectPage';
 import CodeAsArtProjectPage from './components/projects/CodeAsArt/CodeAsArtProjectPage';
 import FutureCityProjectPage from './components/projects/FutureCity/FutureCityProjectPage';
+import InformedConsentProjectPage from './components/projects/InformedConsent/InformedConsentProjectPage';
 import { ProjectSlug } from './constants';
 
 const routes = (
@@ -38,6 +39,7 @@ const routes = (
     <Route path={ProjectSlug.bikewheelsynth} component={BikeWheelSynthProjectPage} />
     <Route path={ProjectSlug.codeasart} component={CodeAsArtProjectPage} />
     <Route path={ProjectSlug.futurecity} component={FutureCityProjectPage} />
+    <Route path={ProjectSlug.informedconsent} component={InformedConsentProjectPage} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

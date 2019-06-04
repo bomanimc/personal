@@ -31,6 +31,7 @@ export const ProjectSlug = {
   bikewheelsynth: 'bike-wheel-synth',
   codeasart: 'code-as-art',
   futurecity: 'future-city',
+  informedconsent: 'informed-consent',
 };
 
 export const FeaturedProjects = [
@@ -42,6 +43,7 @@ export const FeaturedProjects = [
 
 export const ProjectOrder = [
   ProjectSlug.shrumen,
+  ProjectSlug.informedconsent,
   ProjectSlug.versions,
   ProjectSlug.codeasart,
   ProjectSlug.futurecity,
@@ -372,6 +374,32 @@ ProjectContent[ProjectSlug.reflections] = {
   media: 'img/reflections/reflections_main.png',
   primaryLink: `/${ProjectSlug.reflections}`,
   projectMedia: [],
+};
+
+ProjectContent[ProjectSlug.informedconsent] = {
+  id: ProjectSlug.informedconsent,
+  title: 'Informed Consent',
+  tags: [Tags.art],
+  body: `Informed Consent is a projection mapping installation that places the viewer 
+  into the uncomfortable position of signing a consent form for a clinical trial.`,
+  tools: 'Projector, MadMapper, Acrylic, Vellum Paper',
+  role: 'Individual Project',
+  media: 'img/informedconsent/informedconsent_main.JPG',
+  primaryLink: `/${ProjectSlug.informedconsent}`,
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'img/informedconsent/gallery/informedconsent_frontal.JPG',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'img/informedconsent/gallery/informedconsent_upclose.JPG',
+    },
+    {
+      type: MediaTypes.video,
+      videoUrl: 'https://www.youtube.com/watch?v=FdqxRcJ08FE',
+    },
+  ],
 };
 
 export const DeprecatedProjectContent = {
