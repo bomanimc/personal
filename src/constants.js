@@ -37,6 +37,8 @@ export const ProjectSlug = {
 
 export const FeaturedProjects = [
   ProjectSlug.shrumen,
+  ProjectSlug.informedconsent,
+  ProjectSlug.blackhealthbook,
   ProjectSlug.versions,
   ProjectSlug.codeasart,
   ProjectSlug.futurecity,

@@ -7,7 +7,6 @@ import LinksBar from '../partials/LinksBar';
 import { Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
 import { ProjectContent, ProjectOrder, SocialLinks, NavLinks } from '../../constants';
 
-
 const WorkPage = () => (
   <div id="root">
     <LinksBar links={NavLinks} />

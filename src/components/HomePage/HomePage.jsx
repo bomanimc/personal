@@ -5,8 +5,8 @@ import React from 'react';
 import styled from 'styled-components';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
-import { Body, Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
-import { ProjectContent, ProjectOrder, SocialLinks, NavLinks } from '../../constants';
+import { Link, Body, Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
+import { ProjectContent, FeaturedProjects, SocialLinks, NavLinks } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -38,6 +38,19 @@ const Bio = Introduction.extend`
 
   @media (max-width: 768px) {
     width: 100%;
+  }
+`;
+
+const CTAButton = Link.extend`
+  margin-top: 36px;
+  background-color: white;
+  color: black;
+  padding: 8px;
+  cursor: pointer;
+  
+  &:hover {
+    text-decoration: none;
+    box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.3);
   }
 `;
 
@@ -89,7 +102,7 @@ const ProjectSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px" marginBottom="36px">
       <ProjectGridContainer containerHeight="auto">
         {
-          ProjectOrder.map(section =>
+          FeaturedProjects.map(section =>
             (<ProjectCard
               key={ProjectContent[section].id}
               content={ProjectContent[section]}
@@ -97,6 +110,7 @@ const ProjectSection = () => (
           )
         }
       </ProjectGridContainer>
+      <CTAButton href="\work">See more work.</CTAButton>
     </ContentContainer>
   </Section>
 );
