@@ -32,6 +32,7 @@ export const ProjectSlug = {
   codeasart: 'code-as-art',
   futurecity: 'future-city',
   informedconsent: 'informed-consent',
+  blackhealthbook: 'black-health-book',
 };
 
 export const FeaturedProjects = [
@@ -44,6 +45,7 @@ export const FeaturedProjects = [
 export const ProjectOrder = [
   ProjectSlug.shrumen,
   ProjectSlug.informedconsent,
+  ProjectSlug.blackhealthbook,
   ProjectSlug.versions,
   ProjectSlug.codeasart,
   ProjectSlug.futurecity,
@@ -398,6 +400,29 @@ ProjectContent[ProjectSlug.informedconsent] = {
     {
       type: MediaTypes.video,
       videoUrl: 'https://www.youtube.com/watch?v=FdqxRcJ08FE',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.blackhealthbook] = {
+  id: ProjectSlug.blackhealthbook,
+  title: 'Black Health',
+  tags: [Tags.software, Tags.art],
+  body: `“Black Health: A Collection of References to Black People on WebMD” is a book composed 
+  of over a thousand sentences containing the keywords “black” or “African” that were 
+  scraped from WebMD, one of the most popular online destinations for medical information.`,
+  role: 'Individual Project',
+  site: 'https://issuu.com/bomanimc/docs/black_health_book',
+  media: 'img/blackhealthbook/blackhealthbook_main.JPG',
+  primaryLink: `/${ProjectSlug.blackhealthbook}`,
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'img/blackhealthbook/blackhealthbook_main.JPG',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'img/blackhealthbook/gallery/blackhealthbook_reading.JPG',
     },
   ],
 };
