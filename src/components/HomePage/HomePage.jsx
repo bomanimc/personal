@@ -3,7 +3,6 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
 import { Body, Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
@@ -101,9 +100,5 @@ const ProjectSection = () => (
     </ContentContainer>
   </Section>
 );
-
-NameSection.propTypes = {
-  onChangeColor: PropTypes.func.isRequired,
-};
 
 export default HomePage;
