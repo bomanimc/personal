@@ -147,6 +147,7 @@ const Project = ({ content }) => (
         <ProjectImage
           order={1}
           src={content.media}
+          alt={content.title}
           loader={<ProjectImagePlaceholder />}
         />
       </Link>
@@ -154,6 +155,7 @@ const Project = ({ content }) => (
         <ProjectImage
           order={1}
           src={content.media}
+          alt={content.title}
           loader={<ProjectImagePlaceholder />}
         />
       </Link>
