@@ -106,7 +106,6 @@ const ProjectCTA = styled.a`
   display: none;
   justify-content: center;
   align-items: center;
-  padding: 8px;
   transition: background 0.3s ease, filter 0.3s ease;
 
   &:hover {
@@ -124,6 +123,7 @@ const ProjectCTA = styled.a`
 
 const EyeIcon = styled.img`
   height: 16px;
+  margin: 8px;
 `;
 
 const getIsExternalLink = link => link[0] !== '/';
