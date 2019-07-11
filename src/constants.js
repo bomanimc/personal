@@ -468,10 +468,6 @@ export const SocialLinks = [
     link: 'https://www.instagram.com/bxmani/',
   },
   {
-    name: 'Medium',
-    link: 'https://medium.com/@bomani',
-  },
-  {
     name: 'Email',
     link: 'mailto:bomanimc@gmail.com',
   },
