@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint array-callback-return: 0 */
 /* eslint no-confusing-arrow: 0 */
 /* eslint no-unused-vars: 0 */
@@ -6,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-import Img from 'react-image';
+import { Image, Video } from 'cloudinary-react';
 import { SkillAreaColors } from '../../constants';
 import { TextContent, Link } from '../commonComponents';
 
@@ -39,7 +40,7 @@ const ProjectContent = styled.div`
   }
 `;
 
-const ProjectImage = styled(Img)`
+const ProjectImage = styled(Image)`
   width: 100%;
   height: 315px;
   border-bottom: 1px solid white;
@@ -53,12 +54,11 @@ const ProjectImage = styled(Img)`
   }
 `;
 
-const ProjectImagePlaceholder = styled.div`
+const ProjectVideoContainer = styled.div`
   width: 100%;
   height: 315px;
   border-bottom: 1px solid white;
   display: block;
-
 
   @media (max-width: 768px) {
     width: 100%;
@@ -66,6 +66,12 @@ const ProjectImagePlaceholder = styled.div`
     min-height: auto;
     min-width: auto;
   }
+`;
+
+const ProjectVideo = styled(Video)`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const ProjectHeader = styled.div`
@@ -117,8 +123,6 @@ const EyeIcon = styled.img`
   margin: 8px;
 `;
 
-const getIsExternalLink = link => link[0] !== '/';
-
 const Project = ({ content }) => (
   <ProjectContainer
     id={content.id}
@@ -129,38 +133,35 @@ const Project = ({ content }) => (
     <ProjectHeader>
       <ProjectTitle>{content.title}</ProjectTitle>
     </ProjectHeader>
-    {
-      getIsExternalLink(content.primaryLink)
-      ? <Link href={content.primaryLink} target="_blank" rel="noopener noreferrer">
-        <ProjectImage
+    <Link href={content.primaryLink}>
+      {
+        content.media.includes('video')
+        ? <ProjectVideoContainer>
+          <ProjectVideo
+            cloudName="bomani-personal"
+            publicId={content.media}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        </ProjectVideoContainer>
+        : <ProjectImage
+          cloudName="bomani-personal"
+          publicId={content.media}
+          transformation="project-card-transform"
           order={1}
-          src={content.media}
           alt={content.title}
-          loader={<ProjectImagePlaceholder />}
         />
-      </Link>
-      : <Link href={content.primaryLink}>
-        <ProjectImage
-          order={1}
-          src={content.media}
-          alt={content.title}
-          loader={<ProjectImagePlaceholder />}
-        />
-      </Link>
-    }
+      }
+    </Link>
     <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
     <ProjectContent order={2}>
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
     </ProjectContent>
-    {
-      getIsExternalLink(content.primaryLink)
-      ? <ProjectCTA href={content.primaryLink} target="_blank" rel="noopener noreferrer">
-        <EyeIcon src="img/icons/view.svg" alt={`View ${content.title}`} />
-      </ProjectCTA>
-      : <ProjectCTA href={content.primaryLink}>
-        <EyeIcon src="img/icons/view.svg" alt={`View ${content.title}`} />
-      </ProjectCTA>
-    }
+    <ProjectCTA href={content.primaryLink}>
+      <EyeIcon src="img/icons/view.svg" alt={`View ${content.title}`} />
+    </ProjectCTA>
   </ProjectContainer>
 );
 

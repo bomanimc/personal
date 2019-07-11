@@ -15,6 +15,7 @@
   "dependencies": {
     "@babel/runtime": "^7.4.5",
     "classnames": "^2.2.5",
+    "cloudinary-react": "^1.1.1",
     "consolidate": "^0.14.5",
     "css-loader": "^0.26.0",
     "es6-object-assign": "^1.1.0",

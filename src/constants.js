@@ -78,11 +78,11 @@ ProjectContent[ProjectSlug.shrumen] = {
   collaboration with the [Foldhaus Collective](https://www.foldhaus.com) team.`,
   site: 'https://www.foldhaus.com/shrumen-lumen',
   primaryLink: `/${ProjectSlug.shrumen}`,
-  media: 'img/shrumenlumen/shrumen_main.jpg',
+  media: 'shrumen_main.jpg',
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/shrumenlumen/gallery/shrumen_sandy.jpg',
+      src: 'shrumen_sandy.jpg',
     },
     {
       type: MediaTypes.video,
@@ -105,19 +105,19 @@ ProjectContent[ProjectSlug.npr] = {
   role: `Software Engineer focused on internal review processes. In collaboration
   with the other engineers on my team.`,
   primaryLink: `/${ProjectSlug.npr}`,
-  media: 'img/npr/npr.gif',
+  media: 'npr_main_video',
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/npr/gallery/npr_main_section.png',
+      src: 'npr_main_section.png',
     },
     {
       type: MediaTypes.image,
-      src: 'img/npr/gallery/npr_policies_section.png',
+      src: 'npr_policies_section.png',
     },
     {
       type: MediaTypes.image,
-      src: 'img/npr/gallery/npr_logos_section.png',
+      src: 'npr_logos_section.png',
     },
   ],
 };
@@ -134,16 +134,16 @@ ProjectContent[ProjectSlug.waves] = {
   tools: 'Raspberry Pi, Python, JavaScript.',
   role: `Developer and Designer. In
   collaboration with [Eunice Lee](https://euniceylee.github.io/) and Matt Zhang.`,
-  media: 'img/waves/waves_main.png',
+  media: 'waves_main.png',
   primaryLink: `/${ProjectSlug.waves}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/waves/gallery/waves_showing.png',
+      src: 'waves_showing.png',
     },
     {
       type: MediaTypes.image,
-      src: 'img/waves/gallery/waves_prints.png',
+      src: 'waves_prints.png',
     },
     {
       type: MediaTypes.video,
@@ -167,12 +167,12 @@ ProjectContent[ProjectSlug.gitrocket] = {
   tools: 'React, Redux, Hyper.',
   role: 'Individual Project',
   site: 'https://www.npmjs.com/package/gitrocket',
-  media: 'img/gitrocket/gitrocket.gif',
+  media: 'gitrocket_main_video',
   primaryLink: `/${ProjectSlug.gitrocket}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/gitrocket/gitrocket.gif',
+      src: 'gitrocket',
     },
   ],
 };
@@ -186,24 +186,24 @@ ProjectContent[ProjectSlug.versions] = {
   at Elsewhere, H0L0, and Playground Coffee.`,
   tools: 'CoGe, Giphy, AKAI MP32.',
   role: 'Individual Project',
-  media: 'img/versions/versions_main.jpg',
+  media: 'versions_main.jpg',
   primaryLink: `/${ProjectSlug.versions}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/versions/gallery/versions_wings.jpg',
+      src: 'versions_wings.jpg',
     },
     {
       type: MediaTypes.image,
-      src: 'img/versions/gallery/versions_dark_rose.jpg',
+      src: 'versions_dark_rose.jpg',
     },
     {
       type: MediaTypes.image,
-      src: 'img/versions/gallery/versions_white_hex.jpg',
+      src: 'versions_white_hex.jpg',
     },
     {
       type: MediaTypes.image,
-      src: 'img/versions/gallery/versions_pillow.jpg',
+      src: 'versions_pillow.jpg',
     },
   ],
 };
@@ -218,7 +218,7 @@ ProjectContent[ProjectSlug.futurecity] = {
   role: `Design Collaborator and Prototype Developer. In collaboration with [Harrison Lin](https://harrisonlin.com/), 
   [Nicole Aw](https://www.nicoleaw.com/), and John Oustedyn.`,
   site: 'https://github.com/bomanimc/future-city',
-  media: 'img/futurecity/futurecity_main.gif',
+  media: 'futurecity_main_video',
   primaryLink: `/${ProjectSlug.futurecity}`,
   projectMedia: [
     {
@@ -227,15 +227,15 @@ ProjectContent[ProjectSlug.futurecity] = {
     },
     {
       type: MediaTypes.image,
-      src: 'img/futurecity/gallery/futurecity_description.png',
+      src: 'futurecity_description.png',
     },
     {
       type: MediaTypes.image,
-      src: 'img/futurecity/gallery/futurecity_process.jpg',
+      src: 'futurecity_process.jpg',
     },
     {
       type: MediaTypes.image,
-      src: 'img/futurecity/gallery/futurecity_mobileviewer.jpg',
+      src: 'futurecity_mobileviewer.jpg',
     },
   ],
 };
@@ -251,16 +251,16 @@ ProjectContent[ProjectSlug.dialup] = {
   role: `Developer, Designer, Writer, DJ. In collaboration with other members
   of Dial Up.`,
   site: 'http://dialupstuff.com/home',
-  media: 'img/dialup/dialup_main.png',
+  media: 'dialup_main.png',
   primaryLink: `/${ProjectSlug.dialup}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/dialup/gallery/dialup_magazine.png',
+      src: 'dialup_magazine.png',
     },
     {
       type: MediaTypes.image,
-      src: 'img/dialup/gallery/dialup_chatroom.png',
+      src: 'dialup_chatroom.png',
     },
   ],
 };
@@ -274,13 +274,13 @@ ProjectContent[ProjectSlug.negativereel] = {
   installation reacts to gestures made by the viewer.`,
   tools: 'Node, Processing, Leap Motion, MadMapper.',
   role: 'Individual Project',
-  media: 'img/negativereel/negativereel_main.gif',
+  media: 'negativereel_main_video',
   primaryLink: `/${ProjectSlug.negativereel}`,
   // primaryLink: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/negativereel/gallery/negativereel_interaction.gif',
+      src: 'negativereel_interaction',
     },
   ],
 };
@@ -294,7 +294,7 @@ ProjectContent[ProjectSlug.codeasart] = {
   dynamic visualizations.`,
   tools: 'p5.js, Atom, Socket.io, Node.',
   role: 'Individual Project',
-  media: 'img/codeasart/codeasart_main.gif',
+  media: 'codeasart_main_video',
   primaryLink: `/${ProjectSlug.codeasart}`,
   projectMedia: [
     {
@@ -314,7 +314,7 @@ ProjectContent[ProjectSlug.bikewheelsynth] = {
   tools: 'Arduino, Ableton, Max for Live, Reed Switches.',
   role: 'Individual Project',
   site: 'https://youtu.be/w4CTSO9HesA',
-  media: 'img/bikewheelsynth/bikewheelsynth_main.gif',
+  media: 'bikewheelsynth_main_video',
   primaryLink: `/${ProjectSlug.bikewheelsynth}`,
   projectMedia: [
     {
@@ -332,21 +332,20 @@ ProjectContent[ProjectSlug.topolamp] = {
   laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
   tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
   role: 'Individual Project',
-  media: 'img/topolamp/topolamp_main.jpg',
+  media: 'topolamp_main.jpg',
   primaryLink: `/${ProjectSlug.topolamp}`,
-  // primaryLink: 'https://www.instagram.com/p/BdIS-tdhF1b/?taken-by=bxmani',
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/topolamp/gallery/topolamp_topview.png',
+      src: 'topolamp_topview.png',
     },
     {
       type: MediaTypes.image,
-      src: 'img/topolamp/gallery/topolamp_pieces.png',
+      src: 'topolamp_pieces.png',
     },
     {
       type: MediaTypes.image,
-      src: 'img/topolamp/gallery/topolamp_lasercut.png',
+      src: 'topolamp_lasercut.png',
     },
   ],
 };
@@ -361,7 +360,7 @@ ProjectContent[ProjectSlug.drawachart] = {
   Used In A Classroom".`,
   tools: 'jQuery, Highcharts.',
   role: 'Developer & Designer. In collaboration with Rebecca Wei and Justin Holzmann.',
-  media: 'img/drawachart/drawachart_main.gif',
+  media: 'drawachart_main_video',
   primaryLink: `/${ProjectSlug.drawachart}`,
   projectMedia: [],
 };
@@ -375,7 +374,7 @@ ProjectContent[ProjectSlug.reflections] = {
   tools: 'Sketch, Adobe Photoshop.',
   role: 'Individual Project',
   site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
-  media: 'img/reflections/reflections_main.png',
+  media: 'reflections_main.png',
   primaryLink: `/${ProjectSlug.reflections}`,
   projectMedia: [],
 };
@@ -388,16 +387,16 @@ ProjectContent[ProjectSlug.informedconsent] = {
   into the uncomfortable position of signing a consent form for a clinical trial.`,
   tools: 'Projector, MadMapper, Acrylic, Vellum Paper',
   role: 'Individual Project',
-  media: 'img/informedconsent/informedconsent_main.JPG',
+  media: 'informedconsent_main.JPG',
   primaryLink: `/${ProjectSlug.informedconsent}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/informedconsent/gallery/informedconsent_frontal.JPG',
+      src: 'informedconsent_frontal.JPG',
     },
     {
       type: MediaTypes.image,
-      src: 'img/informedconsent/gallery/informedconsent_upclose.JPG',
+      src: 'informedconsent_upclose.JPG',
     },
     {
       type: MediaTypes.video,
@@ -415,16 +414,16 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
   scraped from WebMD, one of the most popular online destinations for medical information.`,
   role: 'Individual Project',
   site: 'https://issuu.com/bomanimc/docs/black_health_book',
-  media: 'img/blackhealthbook/blackhealthbook_main.JPG',
+  media: 'blackhealthbook_main.JPG',
   primaryLink: `/${ProjectSlug.blackhealthbook}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'img/blackhealthbook/blackhealthbook_main.JPG',
+      src: 'blackhealthbook_main.JPG',
     },
     {
       type: MediaTypes.image,
-      src: 'img/blackhealthbook/gallery/blackhealthbook_reading.JPG',
+      src: 'blackhealthbook_reading.JPG',
     },
   ],
 };
@@ -439,7 +438,7 @@ export const DeprecatedProjectContent = {
     tour. This site was public from late 2015 through 2016.`,
     tools: 'Node, Handlebars.',
     role: 'Developer & Designer. In collaboration with Greg Kim and Rogue Agency.',
-    media: 'img/cakes/cakes_main.png',
+    media: 'cakes_main.png',
     primaryLink: `/${ProjectSlug.cakes}`,
     projectMedia: [],
   },
@@ -452,7 +451,7 @@ export const DeprecatedProjectContent = {
     article format). Covered by [TechCrunch](https://techcrunch.com/2018/04/03/facebook-author-info/).`,
     tools: 'Native Templates, Android, Litho, PHP (Hack).',
     role: 'Software Engineer. In collaboration with one other engineer.',
-    media: 'img/dialup/dialup_main.png',
+    media: 'dialup_main.png',
     primaryLink: `/${ProjectSlug.authorcontext}`,
     projectMedia: [],
   },
