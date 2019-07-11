@@ -92,15 +92,6 @@ const ProjectCardSectionTitle = styled.div`
   font-weight: bold;
 `;
 
-const ProjectDetail = TextContent.extend`
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-
-  ${ProjectContainer}:hover & {
-    opacity: 1;
-  }
-`;
-
 const ProjectCTA = styled.a`
   border-top: 1px solid white;
   display: none;
@@ -137,9 +128,6 @@ const Project = ({ content }) => (
   >
     <ProjectHeader>
       <ProjectTitle>{content.title}</ProjectTitle>
-      <ProjectDetail>
-        <ProjectTags tags={content.tags} />
-      </ProjectDetail>
     </ProjectHeader>
     {
       getIsExternalLink(content.primaryLink)
