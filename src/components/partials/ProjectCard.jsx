@@ -136,7 +136,7 @@ const Project = ({ content }) => (
     <Link href={content.primaryLink}>
       {
         content.media.includes('video')
-        ? <ProjectVideoContainer>
+        ? <ProjectVideoContainer aria-label={content.title}>
           <ProjectVideo
             cloudName="bomani-personal"
             publicId={content.media}
