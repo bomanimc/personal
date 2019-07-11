@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Img from 'react-image';
 import { SkillAreaColors } from '../../constants';
-import { TextContent, ProjectTags, Link } from '../commonComponents';
+import { TextContent, Link } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -155,10 +155,10 @@ const Project = ({ content }) => (
     {
       getIsExternalLink(content.primaryLink)
       ? <ProjectCTA href={content.primaryLink} target="_blank" rel="noopener noreferrer">
-        <EyeIcon src="img/icons/view.svg" />
+        <EyeIcon src="img/icons/view.svg" alt={`View ${content.title}`} />
       </ProjectCTA>
       : <ProjectCTA href={content.primaryLink}>
-        <EyeIcon src="img/icons/view.svg" />
+        <EyeIcon src="img/icons/view.svg" alt={`View ${content.title}`} />
       </ProjectCTA>
     }
   </ProjectContainer>
