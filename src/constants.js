@@ -1,7 +1,7 @@
 export const SkillAreaColors = {
   name: '#ffffff',
-  software: '#ff0000',
-  design: '#0000ff',
+  engineering: '#ff0000',
+  experiment: '#0000ff',
   art: '#20bf6b',
 };
 
@@ -11,8 +11,8 @@ export const MediaTypes = {
 };
 
 const Tags = {
-  software: 'software',
-  design: 'design',
+  engineering: 'engineering',
+  experiment: 'experiment',
   art: 'art',
 };
 
@@ -66,7 +66,7 @@ export const ProjectContent = {};
 ProjectContent[ProjectSlug.shrumen] = {
   id: ProjectSlug.shrumen,
   title: 'Shrumen Lumen',
-  tags: [Tags.software, Tags.art],
+  tags: [Tags.art],
   body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
   interactive art installation made up of five glowing mushrooms
   that react to the presence of people. Presented at Burning Man '16
@@ -94,7 +94,7 @@ ProjectContent[ProjectSlug.shrumen] = {
 ProjectContent[ProjectSlug.npr] = {
   id: ProjectSlug.npr,
   title: 'News Page Index',
-  tags: [Tags.software],
+  tags: [Tags.engineering],
   body: `Facebook's new product for indexing News pages to
   support the [Political Ads Archive project](https://newsroom.fb.com/news/2018/05/ads-with-political-content/).
   Publishers can also submit links
@@ -125,7 +125,7 @@ ProjectContent[ProjectSlug.npr] = {
 ProjectContent[ProjectSlug.waves] = {
   id: ProjectSlug.waves,
   title: 'Waves',
-  tags: [Tags.software, Tags.art],
+  tags: [Tags.art],
   body: `Prototype device that encodes responses to personal questions as
   printed sound waves. Featured in the
   [Raspberry Pi blog](https://www.raspberrypi.org/blog/printed-sound-wave/)
@@ -159,7 +159,7 @@ ProjectContent[ProjectSlug.waves] = {
 ProjectContent[ProjectSlug.gitrocket] = {
   id: ProjectSlug.gitrocket,
   title: 'GitRocket',
-  tags: [Tags.software],
+  tags: [Tags.engineering],
   body: `A fun plugin for the [Hyper](https://hyper.is/) terminal that launches
   a rocket ship when you push code with Git. It has received 40+ GitHub stars and
   [over 12,000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
@@ -180,7 +180,7 @@ ProjectContent[ProjectSlug.gitrocket] = {
 ProjectContent[ProjectSlug.versions] = {
   id: ProjectSlug.versions,
   title: "Visuals for 'Versions'",
-  tags: [Tags.design, Tags.art],
+  tags: [Tags.art],
   body: `A live-mixed VJ (video jockey) set for [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl)
   project. These visuals were a backdrop for Jasper Lotti's live performances
   at Elsewhere, H0L0, and Playground Coffee.`,
@@ -211,7 +211,7 @@ ProjectContent[ProjectSlug.versions] = {
 ProjectContent[ProjectSlug.futurecity] = {
   id: ProjectSlug.futurecity,
   title: 'Future City',
-  tags: [Tags.software, Tags.design],
+  tags: [Tags.engineering],
   body: `A prototype for an on-site augmented reality pop-up that invites residents to community redesign a public space. 
     Designed and developed for [IDEO CoLab](https://www.ideocolab.com/).`,
   tools: 'Three.js, TopCodes.',
@@ -243,7 +243,7 @@ ProjectContent[ProjectSlug.futurecity] = {
 ProjectContent[ProjectSlug.dialup] = {
   id: ProjectSlug.dialup,
   title: 'Dial Up',
-  tags: [Tags.software, Tags.design],
+  tags: [Tags.engineering],
   body: `Creative collective that creates music, videos, magazines, and
   technology. Website featured on
   [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
@@ -268,7 +268,7 @@ ProjectContent[ProjectSlug.dialup] = {
 ProjectContent[ProjectSlug.negativereel] = {
   id: ProjectSlug.negativereel,
   title: 'NegativeReel',
-  tags: [Tags.software, Tags.art],
+  tags: [Tags.art],
   body: `Projection mapping installation that displays negative thoughts
   as an expression of vulnerability. The
   installation reacts to gestures made by the viewer.`,
@@ -288,7 +288,7 @@ ProjectContent[ProjectSlug.negativereel] = {
 ProjectContent[ProjectSlug.codeasart] = {
   id: ProjectSlug.codeasart,
   title: 'Code As Art',
-  tags: [Tags.software, Tags.art],
+  tags: [Tags.art],
   body: `Re-representing code in order to explore its potential as a
   standalone medium. The unique structure of the code is used to produce
   dynamic visualizations.`,
@@ -307,7 +307,7 @@ ProjectContent[ProjectSlug.codeasart] = {
 ProjectContent[ProjectSlug.bikewheelsynth] = {
   id: ProjectSlug.bikewheelsynth,
   title: 'Bike Wheel Synth',
-  tags: [Tags.software, Tags.design],
+  tags: [Tags.experiment],
   body: `Experiemental project and [tutorial video](https://youtu.be/w4CTSO9HesA)
   that explains how control sound effects in Ableton using the speed of a bike
   wheel.`,
@@ -327,7 +327,7 @@ ProjectContent[ProjectSlug.bikewheelsynth] = {
 ProjectContent[ProjectSlug.topolamp] = {
   id: ProjectSlug.topolamp,
   title: 'TopoLamp',
-  tags: [Tags.software, Tags.design],
+  tags: [Tags.experiment],
   body: `A topographic lamp based on an imaginary mountain. Made with stacked
   laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
   tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
@@ -354,7 +354,7 @@ ProjectContent[ProjectSlug.topolamp] = {
 ProjectContent[ProjectSlug.drawachart] = {
   id: ProjectSlug.drawachart,
   title: 'Draw-A-Chart',
-  tags: [Tags.software, Tags.design],
+  tags: [Tags.experiment],
   body: `A prototype interactive web app that allows students to practice
   drawing graphical relationships based on real-world prompts. Created at the
   Hack To The Future '16 ed-tech hackathon, where it won "Most Likely To Be
@@ -369,7 +369,7 @@ ProjectContent[ProjectSlug.drawachart] = {
 ProjectContent[ProjectSlug.reflections] = {
   id: ProjectSlug.reflections,
   title: 'Reflections \'16',
-  tags: [Tags.design],
+  tags: [Tags.experiment],
   body: `A few pithy reflections from a summer working as a Software Design
   intern at IDEO Palo Alto. Documented and designed for sharing.`,
   tools: 'Sketch, Adobe Photoshop.',
@@ -409,7 +409,7 @@ ProjectContent[ProjectSlug.informedconsent] = {
 ProjectContent[ProjectSlug.blackhealthbook] = {
   id: ProjectSlug.blackhealthbook,
   title: 'Black Health',
-  tags: [Tags.software, Tags.art],
+  tags: [Tags.art],
   body: `“Black Health: A Collection of References to Black People on WebMD” is a book composed 
   of over a thousand sentences containing the keywords “black” or “African” that were 
   scraped from WebMD, one of the most popular online destinations for medical information.`,
@@ -433,7 +433,7 @@ export const DeprecatedProjectContent = {
   cakes: {
     id: ProjectSlug.cakes,
     title: 'Cakes Da Killa Site',
-    tags: [Tags.software, Tags.design],
+    tags: [Tags.engineering],
     body: `A website for rapper [Cakes Da Killa](https://en.wikipedia.org/wiki/Cakes_da_Killa)
     in preparation for his 'Hunger Pangs' deluxe album release and European
     tour. This site was public from late 2015 through 2016.`,
@@ -446,7 +446,7 @@ export const DeprecatedProjectContent = {
   authorcontext: {
     id: ProjectSlug.authorcontext,
     title: 'Author Context',
-    tags: [Tags.software],
+    tags: [Tags.engineering],
     body: `An experiment that allows news consumers to find more details about an
     article's author while reading news on an Instant Article (Facebook's native
     article format). Covered by [TechCrunch](https://techcrunch.com/2018/04/03/facebook-author-info/).`,
