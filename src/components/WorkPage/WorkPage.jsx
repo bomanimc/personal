@@ -2,13 +2,18 @@
 /* eslint array-callback-return: 0 */
 
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
 import { Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
 import { ProjectContent, ProjectOrder, SocialLinks, NavLinks } from '../../constants';
+import { setMetaTitle } from '../../utils';
 
 const WorkPage = () => (
   <div id="root">
+    <Helmet>
+      {setMetaTitle('Work')}
+    </Helmet>
     <LinksBar links={NavLinks} />
     <ProjectSection />
     <LinksBar links={SocialLinks} />
