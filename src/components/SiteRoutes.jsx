@@ -14,7 +14,8 @@ function hashLinkScroll() {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) zenscroll.to(element, 500);
-      browserHistory.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
+      // eslint-disable-next-line no-restricted-globals
+      history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
     }, 0);
   }
 }

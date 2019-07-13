@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
-import { Image, Transformation } from 'cloudinary-react';
+import { Image, Video, Transformation } from 'cloudinary-react';
 import { Helmet } from 'react-helmet';
 import LinksBar from '../partials/LinksBar';
 import { MediaTypes, SocialLinks, NavLinks } from '../../constants';
@@ -46,15 +46,16 @@ export const ProjectPageImage = styled(Image)`
   width: 100%;
 `;
 
-export const VideoWrapper = styled.div`
+const BaseVideoContainer = styled.div`
+  width: 100%;
+  border: 1px solid white;
+  margin-bottom: 16px;
+`;
+
+export const VideoWrapper = BaseVideoContainer.extend`
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
-  border-style: solid;
-  border-width: 1px 1px 1px 1px;
-  border-color: white;
-  width: 100%;
-  margin-bottom: 16px;
   overflow: hidden;
 
   iframe {
@@ -64,6 +65,23 @@ export const VideoWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
+`;
+
+const ProjectVideoContainer = BaseVideoContainer.extend`
+  display: block;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    min-width: auto;
+  }
+`;
+
+const ProjectVideo = styled(Video)`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const Metadata = ({ tools, role, site }) => (
@@ -160,14 +178,29 @@ export class BaseBodyContent extends React.Component {
         case MediaTypes.image:
         default:
           return (
-            <ProjectPageImageContainer key={media.src}>
-              <ProjectPageImage
-                cloudName="bomani-personal"
-                publicId={media.src}
-              >
-                <Transformation quality="auto:best" crop="limit" fetchFormat="auto" />
-              </ProjectPageImage>
-            </ProjectPageImageContainer>
+            media.src.includes('video')
+              ? (
+                <ProjectVideoContainer>
+                  <ProjectVideo
+                    cloudName="bomani-personal"
+                    publicId={media.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                </ProjectVideoContainer>
+              )
+              : (
+                <ProjectPageImageContainer key={media.src}>
+                  <ProjectPageImage
+                    cloudName="bomani-personal"
+                    publicId={media.src}
+                  >
+                    <Transformation quality="auto:best" crop="limit" fetchFormat="auto" />
+                  </ProjectPageImage>
+                </ProjectPageImageContainer>
+              )
           );
       }
     });
