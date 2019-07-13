@@ -78,11 +78,11 @@ ProjectContent[ProjectSlug.shrumen] = {
   collaboration with the [Foldhaus Collective](https://www.foldhaus.com) team.`,
   site: 'https://www.foldhaus.com/shrumen-lumen',
   primaryLink: `/${ProjectSlug.shrumen}`,
-  media: 'shrumen_main.jpg',
+  media: 'shrumen_main',
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'shrumen_sandy.jpg',
+      src: 'shrumen_sandy',
     },
     {
       type: MediaTypes.video,
@@ -186,7 +186,7 @@ ProjectContent[ProjectSlug.versions] = {
   at Elsewhere, H0L0, and Playground Coffee.`,
   tools: 'CoGe, Giphy, AKAI MP32.',
   role: 'Individual Project',
-  media: 'versions_main.jpg',
+  media: 'versions_main',
   primaryLink: `/${ProjectSlug.versions}`,
   projectMedia: [
     {
@@ -332,7 +332,7 @@ ProjectContent[ProjectSlug.topolamp] = {
   laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
   tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
   role: 'Individual Project',
-  media: 'topolamp_main.jpg',
+  media: 'topolamp_main',
   primaryLink: `/${ProjectSlug.topolamp}`,
   projectMedia: [
     {
@@ -387,7 +387,7 @@ ProjectContent[ProjectSlug.informedconsent] = {
   into the uncomfortable position of signing a consent form for a clinical trial.`,
   tools: 'Projector, MadMapper, Acrylic, Vellum Paper',
   role: 'Individual Project',
-  media: 'informedconsent_main.JPG',
+  media: 'informedconsent_main',
   primaryLink: `/${ProjectSlug.informedconsent}`,
   projectMedia: [
     {
@@ -414,7 +414,7 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
   scraped from WebMD, one of the most popular online destinations for medical information.`,
   role: 'Individual Project',
   site: 'https://issuu.com/bomanimc/docs/black_health_book',
-  media: 'blackhealthbook_main.JPG',
+  media: 'blackhealthbook_main',
   primaryLink: `/${ProjectSlug.blackhealthbook}`,
   projectMedia: [
     {

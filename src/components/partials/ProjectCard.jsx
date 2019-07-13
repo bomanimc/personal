@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-import { Image, Video } from 'cloudinary-react';
+import { Image, Video, Transformation } from 'cloudinary-react';
 import { SkillAreaColors } from '../../constants';
 import { TextContent, Link } from '../commonComponents';
 
@@ -149,10 +149,11 @@ const Project = ({ content }) => (
         : <ProjectImage
           cloudName="bomani-personal"
           publicId={content.media}
-          transformation="project-card-transform"
           order={1}
           alt={content.title}
-        />
+        >
+          <Transformation height="630" quality="auto:best" crop="limit" fetchFormat="auto" />
+        </ProjectImage>
       }
     </Link>
     <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
