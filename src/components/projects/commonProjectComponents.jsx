@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
+import { Image, Transformation } from 'cloudinary-react';
 import { Helmet } from 'react-helmet';
 import LinksBar from '../partials/LinksBar';
 import { MediaTypes, SocialLinks, NavLinks } from '../../constants';
@@ -35,12 +36,12 @@ export const HiddenDivider = styled.div`
   margin: 48px 0px;
 `;
 
-export const ProjectPageImage = styled.div`
+export const ProjectPageImageContainer = styled.div`
   width: 100%;
   margin-bottom: 16px;
 `;
 
-export const ProjectPageImageSource = styled.img`
+export const ProjectPageImage = styled(Image)`
   border: 1px solid white;
   width: 100%;
 `;
@@ -159,9 +160,14 @@ export class BaseBodyContent extends React.Component {
         case MediaTypes.image:
         default:
           return (
-            <ProjectPageImage key={media.src}>
-              <ProjectPageImageSource src={media.src} />
-            </ProjectPageImage>
+            <ProjectPageImageContainer key={media.src}>
+              <ProjectPageImage
+                cloudName="bomani-personal"
+                publicId={media.src}
+              >
+                <Transformation quality="auto:best" crop="limit" fetchFormat="auto" />
+              </ProjectPageImage>
+            </ProjectPageImageContainer>
           );
       }
     });

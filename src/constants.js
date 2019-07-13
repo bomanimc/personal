@@ -109,15 +109,15 @@ ProjectContent[ProjectSlug.npr] = {
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'npr_main_section.png',
+      src: 'npr_main_section',
     },
     {
       type: MediaTypes.image,
-      src: 'npr_policies_section.png',
+      src: 'npr_policies_section',
     },
     {
       type: MediaTypes.image,
-      src: 'npr_logos_section.png',
+      src: 'npr_logos_section',
     },
   ],
 };
@@ -134,16 +134,16 @@ ProjectContent[ProjectSlug.waves] = {
   tools: 'Raspberry Pi, Python, JavaScript.',
   role: `Developer and Designer. In
   collaboration with [Eunice Lee](https://euniceylee.github.io/) and Matt Zhang.`,
-  media: 'waves_main.png',
+  media: 'waves_main',
   primaryLink: `/${ProjectSlug.waves}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'waves_showing.png',
+      src: 'waves_showing',
     },
     {
       type: MediaTypes.image,
-      src: 'waves_prints.png',
+      src: 'waves_prints',
     },
     {
       type: MediaTypes.video,
@@ -227,7 +227,7 @@ ProjectContent[ProjectSlug.futurecity] = {
     },
     {
       type: MediaTypes.image,
-      src: 'futurecity_description.png',
+      src: 'futurecity_description',
     },
     {
       type: MediaTypes.image,
@@ -251,16 +251,16 @@ ProjectContent[ProjectSlug.dialup] = {
   role: `Developer, Designer, Writer, DJ. In collaboration with other members
   of Dial Up.`,
   site: 'http://dialupstuff.com/home',
-  media: 'dialup_main.png',
+  media: 'dialup_main',
   primaryLink: `/${ProjectSlug.dialup}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'dialup_magazine.png',
+      src: 'dialup_magazine',
     },
     {
       type: MediaTypes.image,
-      src: 'dialup_chatroom.png',
+      src: 'dialup_chatroom',
     },
   ],
 };
@@ -337,15 +337,15 @@ ProjectContent[ProjectSlug.topolamp] = {
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'topolamp_topview.png',
+      src: 'topolamp_topview',
     },
     {
       type: MediaTypes.image,
-      src: 'topolamp_pieces.png',
+      src: 'topolamp_pieces',
     },
     {
       type: MediaTypes.image,
-      src: 'topolamp_lasercut.png',
+      src: 'topolamp_lasercut',
     },
   ],
 };
@@ -374,7 +374,7 @@ ProjectContent[ProjectSlug.reflections] = {
   tools: 'Sketch, Adobe Photoshop.',
   role: 'Individual Project',
   site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
-  media: 'reflections_main.png',
+  media: 'reflections_main',
   primaryLink: `/${ProjectSlug.reflections}`,
   projectMedia: [],
 };
@@ -438,7 +438,7 @@ export const DeprecatedProjectContent = {
     tour. This site was public from late 2015 through 2016.`,
     tools: 'Node, Handlebars.',
     role: 'Developer & Designer. In collaboration with Greg Kim and Rogue Agency.',
-    media: 'cakes_main.png',
+    media: 'cakes_main',
     primaryLink: `/${ProjectSlug.cakes}`,
     projectMedia: [],
   },
@@ -451,7 +451,7 @@ export const DeprecatedProjectContent = {
     article format). Covered by [TechCrunch](https://techcrunch.com/2018/04/03/facebook-author-info/).`,
     tools: 'Native Templates, Android, Litho, PHP (Hack).',
     role: 'Software Engineer. In collaboration with one other engineer.',
-    media: 'dialup_main.png',
+    media: 'dialup_main',
     primaryLink: `/${ProjectSlug.authorcontext}`,
     projectMedia: [],
   },
