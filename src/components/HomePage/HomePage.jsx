@@ -5,8 +5,12 @@ import React from 'react';
 import styled from 'styled-components';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
-import { Link, Body, Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
-import { ProjectContent, FeaturedProjects, SocialLinks, NavLinks } from '../../constants';
+import {
+  Link, Body, Section, ContentContainer, ProjectGridContainer,
+} from '../commonComponents';
+import {
+  ProjectContent, FeaturedProjects, SocialLinks, NavLinks,
+} from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -102,12 +106,12 @@ const ProjectSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px" marginBottom="36px">
       <ProjectGridContainer containerHeight="auto">
         {
-          FeaturedProjects.map(section =>
-            (<ProjectCard
+          FeaturedProjects.map(section => (
+            <ProjectCard
               key={ProjectContent[section].id}
               content={ProjectContent[section]}
-            />),
-          )
+            />
+          ))
         }
       </ProjectGridContainer>
       <CTAButton href="\work">See more work.</CTAButton>

@@ -147,7 +147,7 @@ ProjectContent[ProjectSlug.waves] = {
     },
     {
       type: MediaTypes.video,
-      videoUrl: 'https://vimeo.com/220101786',  // Waves Demo
+      videoUrl: 'https://vimeo.com/220101786', // Waves Demo
     },
     {
       type: MediaTypes.video,
@@ -592,4 +592,3 @@ export const AboutCopy = {
     },
   ],
 };
-

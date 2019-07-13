@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 class App extends React.Component {
   render() {
+    const { children } = this.props;
     return (
       <div>
-        {this.props.children}
+        {children}
       </div>
     );
   }

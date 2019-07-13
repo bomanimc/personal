@@ -6,7 +6,9 @@ import { Helmet } from 'react-helmet';
 import ProjectCard from '../partials/ProjectCard';
 import LinksBar from '../partials/LinksBar';
 import { Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
-import { ProjectContent, ProjectOrder, SocialLinks, NavLinks } from '../../constants';
+import {
+  ProjectContent, ProjectOrder, SocialLinks, NavLinks,
+} from '../../constants';
 import { setMetaTitle } from '../../utils';
 
 const WorkPage = () => (
@@ -32,12 +34,12 @@ const ProjectSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px" marginBottom="36px">
       <ProjectGridContainer containerHeight="auto">
         {
-          ProjectOrder.map(section =>
-            (<ProjectCard
+          ProjectOrder.map(section => (
+            <ProjectCard
               key={ProjectContent[section].id}
               content={ProjectContent[section]}
-            />),
-          )
+            />
+          ))
         }
       </ProjectGridContainer>
     </ContentContainer>

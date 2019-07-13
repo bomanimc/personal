@@ -136,24 +136,28 @@ const Project = ({ content }) => (
     <Link href={content.primaryLink}>
       {
         content.media.includes('video')
-        ? <ProjectVideoContainer aria-label={content.title}>
-          <ProjectVideo
-            cloudName="bomani-personal"
-            publicId={content.media}
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-        </ProjectVideoContainer>
-        : <ProjectImage
-          cloudName="bomani-personal"
-          publicId={content.media}
-          order={1}
-          alt={content.title}
-        >
-          <Transformation height="630" quality="auto:best" crop="limit" fetchFormat="auto" />
-        </ProjectImage>
+          ? (
+            <ProjectVideoContainer aria-label={content.title}>
+              <ProjectVideo
+                cloudName="bomani-personal"
+                publicId={content.media}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </ProjectVideoContainer>
+          )
+          : (
+            <ProjectImage
+              cloudName="bomani-personal"
+              publicId={content.media}
+              order={1}
+              alt={content.title}
+            >
+              <Transformation height="630" quality="auto:best" crop="limit" fetchFormat="auto" />
+            </ProjectImage>
+          )
       }
     </Link>
     <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>

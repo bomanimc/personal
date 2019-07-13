@@ -25,8 +25,8 @@ import { ProjectSlug } from './constants';
 const routes = (
   <Route path={`${process.env.PUBLIC_URL}/`} component={App}>
     <IndexRoute component={HomePage} />
-    <Route path={'/about'} component={AboutPage} />
-    <Route path={'/work'} component={WorkPage} />
+    <Route path="/about" component={AboutPage} />
+    <Route path="/work" component={WorkPage} />
     <Route path={ProjectSlug.shrumen} component={ShrumenProjectPage} />
     <Route path={ProjectSlug.npr} component={NPRProjectPage} />
     <Route path={ProjectSlug.waves} component={WavesProjectPage} />

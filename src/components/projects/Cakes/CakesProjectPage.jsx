@@ -13,11 +13,11 @@ const CakesProjectPage = () => (
     tools={project.tools}
     role={project.role}
     site={project.site}
-    body={
+    body={(
       <BaseBodyContent
         project={project}
       />
-    }
+)}
   />
 );
 

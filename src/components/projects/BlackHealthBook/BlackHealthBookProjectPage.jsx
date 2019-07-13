@@ -14,13 +14,13 @@ const BlackHealthBookProjectPage = () => (
     tools={project.tools}
     role={project.role}
     site={project.site}
-    body={
+    body={(
       <BaseBodyContent
         project={project}
         showMainMedia={false}
         introContentPath={BlackHealthBookContentPath}
       />
-    }
+)}
   />
 );
 

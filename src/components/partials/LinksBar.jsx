@@ -21,9 +21,12 @@ const LinkItem = Link.extend`
   text-transform: lowercase;
 `;
 
-const LinksBar = (props) => {
-  const socialLinks = props.links.map(item =>
-    <LinkItem href={item.link} key={item.name}>{item.name}</LinkItem>);
+const LinksBar = ({ links }) => {
+  const socialLinks = links.map(item => (
+    <LinkItem href={item.link} key={item.name}>
+      {item.name}
+    </LinkItem>
+  ));
 
   return (
     <LinksContainer>{socialLinks}</LinksContainer>

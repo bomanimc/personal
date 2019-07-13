@@ -77,8 +77,8 @@ const AboutPage = () => (
     <LinksBar links={NavLinks} />
     <AboutRoot>
       <BasePage
-        title={'About'}
-        body={
+        title="About"
+        body={(
           <BodySection>
             <AboutSectionContainer>
               <BioContent />
@@ -88,7 +88,7 @@ const AboutPage = () => (
               <FellowshipBox />
             </AboutSectionContainer>
           </BodySection>
-        }
+)}
       />
     </AboutRoot>
     <LinksBar links={SocialLinks} />
@@ -99,14 +99,16 @@ const BioContent = () => (
   <BodySection>
     <TextContent>
       Bomani Oseni McClendon is a Brooklyn-based engineer and research-based artist.
-      <br /><br />
+      <br />
+      <br />
       Through his art practice, Bomani explores the way that Black health outcomes
       are influenced by a history of scientific racism. As an engineer, he focuses
       on building software interfaces and prototypes that explore new possibilities
       for information creation or discovery. Bomani aspires to make work that honors
       articulations of pain while simultaneously instilling hope that we have the power
       and goodness to create a more positive future.
-      <br /><br />
+      <br />
+      <br />
       Bomani studied Computer Science at Northwestern University, where he focused
       on Human-Computer Interaction, Learning Sciences, and storytelling tools for
       journalism. He was also a member of the Spring 2019 cohort at School for Poetic
@@ -126,8 +128,8 @@ const EducationBox = () => (
             startDate={item.startDate}
             endDate={item.endDate}
             degree={item.degree}
-          />),
-        )}
+          />
+        ))}
       </div>
     </AboutBoxContent>
   </div>
@@ -145,8 +147,8 @@ const SpeakingBox = () => (
             date={item.date}
             location={item.location}
             link={item.link}
-          />),
-        )}
+          />
+        ))}
       </div>
     </AboutBoxContent>
   </div>
@@ -162,8 +164,8 @@ const WritingBox = () => (
             name={item.name}
             date={item.date}
             link={item.link}
-          />),
-        )}
+          />
+        ))}
       </div>
     </AboutBoxContent>
   </div>
@@ -180,14 +182,16 @@ const FellowshipBox = () => (
             startDate={item.startDate}
             endDate={item.endDate}
             title={item.title}
-          />),
-        )}
+          />
+        ))}
       </div>
     </AboutBoxContent>
   </div>
 );
 
-const EducationItem = ({ name, degree, startDate, endDate }) => (
+const EducationItem = ({
+  name, degree, startDate, endDate,
+}) => (
   <SpeakingLinkItem>
     {name}
     <AboutDetail>{degree}</AboutDetail>
@@ -195,12 +199,14 @@ const EducationItem = ({ name, degree, startDate, endDate }) => (
   </SpeakingLinkItem>
 );
 
-const SpeakingLink = ({ name, location, event, date, link }) => (
+const SpeakingLink = ({
+  name, location, event, date, link,
+}) => (
   <SpeakingLinkItem>
     {
       link !== undefined && link !== null
-      ? <Link href={link} key={name}>{`"${name}"`}</Link>
-      : `"${name}"`
+        ? <Link href={link} key={name}>{`"${name}"`}</Link>
+        : `"${name}"`
     }
     <AboutDetail>{`${event}, ${date}`}</AboutDetail>
     <AboutDetail>{location}</AboutDetail>
@@ -211,14 +217,16 @@ const WritingLink = ({ name, date, link }) => (
   <SpeakingLinkItem>
     {
       link !== undefined && link !== null
-      ? <Link href={link} key={name}>{`"${name}"`}</Link>
-      : `"${name}"`
+        ? <Link href={link} key={name}>{`"${name}"`}</Link>
+        : `"${name}"`
     }
     <AboutDetail>{`${date}`}</AboutDetail>
   </SpeakingLinkItem>
 );
 
-const FellowshipItem = ({ org, title, startDate, endDate }) => (
+const FellowshipItem = ({
+  org, title, startDate, endDate,
+}) => (
   <SpeakingLinkItem>
     {org}
     <AboutDetail>{title}</AboutDetail>
@@ -257,10 +265,6 @@ FellowshipItem.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-};
-
-BioContent.propTypes = {
-  bioContentPath: PropTypes.string,
 };
 
 export default AboutPage;

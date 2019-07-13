@@ -14,12 +14,12 @@ const GitRocketProjectPage = () => (
     tools={project.tools}
     role={project.role}
     site={project.site}
-    body={
+    body={(
       <BaseBodyContent
         project={project}
         introContentPath={GitRocketContentPath}
       />
-    }
+)}
   />
 );
 

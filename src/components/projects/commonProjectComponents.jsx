@@ -75,19 +75,21 @@ const Metadata = ({ tools, role, site }) => (
       <MetadataTitle>Role</MetadataTitle>
       <MetadataContent><ReactMarkdown source={role} /></MetadataContent>
     </MetadataItem>
-    { site &&
+    { site
+      && (
       <MetadataItem>
         <MetadataTitle>External Site</MetadataTitle>
         <MetadataContent>
           <Link href={site}>{site}</Link>
         </MetadataContent>
       </MetadataItem>
+      )
     }
   </MetadataSection>
 );
 
 export const getProjectMedia = (projectData, showMainMedia) => {
-  const projectMedia = projectData.projectMedia;
+  const { projectMedia } = projectData;
   return showMainMedia
     ? [
       {
@@ -98,7 +100,9 @@ export const getProjectMedia = (projectData, showMainMedia) => {
     : projectMedia;
 };
 
-export const BaseProjectPage = ({ id, title, tools, role, site, body }) => (
+export const BaseProjectPage = ({
+  id, title, tools, role, site, body,
+}) => (
   <div>
     <LinksBar links={NavLinks} />
     <Helmet>
@@ -135,9 +139,9 @@ export class BaseBodyContent extends React.Component {
       return;
     }
 
-    fetch(introContentPath).then(response => response.text()).then(text =>
-      this.setState({ introContent: text }),
-    );
+    fetch(introContentPath)
+      .then(response => response.text())
+      .then(text => this.setState({ introContent: text }));
   }
 
   render() {
@@ -192,7 +196,7 @@ BaseProjectPage.propTypes = {
 BaseBodyContent.propTypes = {
   introContentPath: PropTypes.string,
   project: PropTypes.object.isRequired,
-  showMainMedia: PropTypes.boolean,
+  showMainMedia: PropTypes.bool,
 };
 
 BaseBodyContent.defaultProps = {
