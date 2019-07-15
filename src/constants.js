@@ -385,7 +385,7 @@ ProjectContent[ProjectSlug.informedconsent] = {
   tags: [Tags.art],
   body: `Informed Consent is a projection mapping installation that places the viewer 
   into the uncomfortable position of signing a consent form for a clinical trial.`,
-  tools: 'Projector, MadMapper, Acrylic, Vellum Paper',
+  tools: 'Projector, MadMapper, Acrylic, Vellum Paper.',
   role: 'Individual Project',
   media: 'informedconsent_main',
   primaryLink: `/${ProjectSlug.informedconsent}`,
@@ -412,6 +412,7 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
   body: `“Black Health: A Collection of References to Black People on WebMD” is a book composed 
   of over a thousand sentences containing the keywords “black” or “African” that were 
   scraped from WebMD, one of the most popular online destinations for medical information.`,
+  tools: 'Python, Selenium.',
   role: 'Individual Project',
   site: 'https://issuu.com/bomanimc/docs/black_health_book',
   media: 'blackhealthbook_main',

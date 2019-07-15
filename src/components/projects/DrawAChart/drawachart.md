@@ -6,4 +6,4 @@ Rebecca Wei, Justin Holzmann, and I built a prototype interactive web app that s
 
 <br /><br />
 
-Draw-A-Chart presents students with a prompt (e.g. “Draw the relationship between GDP and Life Expectancy”) and allows them to draw the relationship into a canvas on the interface. After the student completes their sketch, it is automatically transferred into an interactive Highcharts graph and analyzed to determine its polynomial degree. The student may then choose to see the correct graph for the prompt, and answer questions about the correct graph’s polynomial degree.
+Draw-A-Chart presents students with a prompt (e.g. “Draw the relationship between GDP and Life Expectancy”) and allows them to draw the relationship into a canvas on the interface. After the student completes their sketch, it is automatically transferred into an interactive Highcharts graph and analyzed to determine its polynomial degree. The student may then choose to see the correct graph for the prompt and answer questions about the correct graph’s polynomial degree.

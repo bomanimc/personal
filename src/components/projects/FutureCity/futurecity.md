@@ -2,13 +2,13 @@ During a 7-day IDEO CoLab Fellowship, my team and I designed and prototyped Futu
 
 <br /><br />
 
-We built Future City because we wanted to invite residents into the design process of public spaces. Future City is meant to allow for collaboration between city planners and local residents and to facilitate conversations between both parties when it comes to developing a shared vision for the developing a new space in the city. 
+We built Future City because we wanted to invite residents into the design process of public spaces. Future City is meant to allow for collaboration between city planners and local residents and to facilitate conversations between both parties when it comes to developing a shared vision for a new space in the city. 
 
 <br /><br />
 
 To prototype this concept, we created the following assets:
 - A "game board" with physical pieces (3D printed & laser cut) with [TopCodes](https://github.com/TIDAL-Lab/TopCodes) attached. When the TopCodes are placed into the view of the webcam, an associated 3D object is displayed on the screen.
-- Mock-up of the futurecity.com website and the dashboard that City Planner's would use to make decisions based on community designs.
+- Mock-up of the futurecity.com website and the dashboard that city planners would use to make decisions based on community designs.
 - Posters to show process flow & AR viewer that is meant to show the AR view of how the landscape will look like after the shared vision is applied.
 
 <br /><br />

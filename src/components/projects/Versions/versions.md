@@ -1,4 +1,4 @@
-To support friend and musical artist [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl) project, I created a live-mixed VJ (video jockey) set. These visuals were a backdrop for Jasper Lotti's live performances at Elsewhere, H0L0, and Playground Coffee.
+To support musical artist [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl) project, I created a live-mixed VJ (video jockey) set. These visuals were a backdrop for Jasper Lotti's live performances at Elsewhere, H0L0, and Playground Coffee.
 
 <br /><br />
 

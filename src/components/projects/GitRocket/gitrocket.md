@@ -6,4 +6,4 @@ After learning about Next’s [Hyper](https://hyper.is/) terminal, I was immedia
 
 <br /><br />
 
-GitRocket has received 38 GitHub stars and over [over 9000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01) via NPM. You can find GitRocket, along with other useful plugins for Hyper, on the [awesome-hyper](https://github.com/bnb/awesome-hyper) GitHub list.
+GitRocket has received over 50 GitHub stars and over [over 15,000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01) via NPM. You can find GitRocket, along with other useful plugins for Hyper, on the [awesome-hyper](https://github.com/bnb/awesome-hyper) GitHub list.
