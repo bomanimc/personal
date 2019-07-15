@@ -145,7 +145,9 @@ const Project = ({ content }) => (
                 loop
                 muted
                 playsInline
-              />
+              >
+                <Transformation audioCodec="none" />
+              </ProjectVideo>
             </ProjectVideoContainer>
           )
           : (

@@ -188,7 +188,9 @@ export class BaseBodyContent extends React.Component {
                     loop
                     muted
                     playsInline
-                  />
+                  >
+                    <Transformation audioCodec="none" />
+                  </ProjectVideo>
                 </ProjectVideoContainer>
               )
               : (
