@@ -130,7 +130,7 @@ export const BaseProjectPage = ({
     <Page>
       <PageCenteringContainer>
         <BackButtonWrapper>
-          <BackButton href={`/#${id}`}>Back</BackButton>
+          <BackButton href={`/work#${id}`}>Back</BackButton>
         </BackButtonWrapper>
         <PageTitle>{title}</PageTitle>
         <Metadata tools={tools} role={role} site={site} />
