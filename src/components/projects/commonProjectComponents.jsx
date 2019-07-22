@@ -7,8 +7,7 @@ import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Image, Video, Transformation } from 'cloudinary-react';
 import { Helmet } from 'react-helmet';
-import LinksBar from '../partials/LinksBar';
-import { MediaTypes, SocialLinks, NavLinks } from '../../constants';
+import { MediaTypes } from '../../constants';
 import {
   Link,
   TextContent,
@@ -123,7 +122,6 @@ export const BaseProjectPage = ({
   id, title, tools, role, site, body,
 }) => (
   <div>
-    <LinksBar links={NavLinks} />
     <Helmet>
       {setMetaTitle(title)}
     </Helmet>
@@ -138,7 +136,6 @@ export const BaseProjectPage = ({
         {body}
       </PageCenteringContainer>
     </Page>
-    <LinksBar links={SocialLinks} />
   </div>
 );
 

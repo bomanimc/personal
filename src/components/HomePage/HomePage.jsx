@@ -4,13 +4,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProjectCard from '../partials/ProjectCard';
-import LinksBar from '../partials/LinksBar';
 import {
   Link, Body, Section, ContentContainer, ProjectGridContainer,
 } from '../commonComponents';
-import {
-  ProjectContent, FeaturedProjects, SocialLinks, NavLinks,
-} from '../../constants';
+import { ProjectContent, FeaturedProjects } from '../../constants';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -60,11 +57,9 @@ const CTAButton = Link.extend`
 
 const HomePage = () => (
   <div id="root">
-    <LinksBar links={NavLinks} />
     <NameSection />
     <IntroSection />
     <ProjectSection />
-    <LinksBar links={SocialLinks} />
   </div>
 );
 

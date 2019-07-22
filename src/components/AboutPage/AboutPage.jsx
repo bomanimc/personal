@@ -5,8 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown/with-html';
-import LinksBar from '../partials/LinksBar';
-import { SocialLinks, NavLinks, AboutCopy } from '../../constants';
+import { AboutCopy } from '../../constants';
 import {
   Link,
   BasePage,
@@ -73,26 +72,22 @@ const Metadata = ({ location, links }) => (
 );
 
 const AboutPage = () => (
-  <div id="root">
-    <LinksBar links={NavLinks} />
-    <AboutRoot>
-      <BasePage
-        title="About"
-        body={(
-          <BodySection>
-            <AboutSectionContainer>
-              <BioContent />
-              <EducationBox />
-              <SpeakingBox />
-              <WritingBox />
-              <FellowshipBox />
-            </AboutSectionContainer>
-          </BodySection>
-)}
-      />
-    </AboutRoot>
-    <LinksBar links={SocialLinks} />
-  </div>
+  <AboutRoot>
+    <BasePage
+      title="About"
+      body={(
+        <BodySection>
+          <AboutSectionContainer>
+            <BioContent />
+            <EducationBox />
+            <SpeakingBox />
+            <WritingBox />
+            <FellowshipBox />
+          </AboutSectionContainer>
+        </BodySection>
+      )}
+    />
+  </AboutRoot>
 );
 
 const BioContent = () => (
