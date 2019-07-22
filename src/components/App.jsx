@@ -1,21 +1,16 @@
 /* eslint react/prefer-stateless-function: 0 */
 import React from 'react';
-import PropTypes from 'prop-types';
 import Layout from './partials/Layout';
+import Routes from '../Routes';
 
 class App extends React.Component {
   render() {
-    const { children } = this.props;
     return (
       <Layout>
-        {children}
+        <Routes />
       </Layout>
     );
   }
 }
-
-App.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default App;

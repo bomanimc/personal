@@ -2,7 +2,7 @@
 
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import { Link as RouterLink } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';

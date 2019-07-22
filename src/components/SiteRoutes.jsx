@@ -1,7 +1,8 @@
 import React from 'react';
-import { Router, browserHistory } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import zenscroll from 'zenscroll';
-import routes from '../routes';
+import App from './App';
+import routes from '../Routes';
 
 // Taken from https://github.com/rafrex/react-router-hash-link/tree/react-router-v2/3.
 function hashLinkScroll() {
@@ -21,7 +22,9 @@ function hashLinkScroll() {
 }
 
 const SiteRoutes = () => (
-  <Router history={browserHistory} routes={routes} onUpdate={hashLinkScroll} />
+  <BrowserRouter routes={routes} onUpdate={hashLinkScroll}>
+    <App />
+  </BrowserRouter>
 );
 
 export default SiteRoutes;

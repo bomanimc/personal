@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import App from './components/App';
+import { Route, Switch } from 'react-router';
 import HomePage from './components/HomePage/HomePage';
 import AboutPage from './components/AboutPage/AboutPage';
 import WorkPage from './components/WorkPage/WorkPage';
@@ -22,28 +21,28 @@ import InformedConsentProjectPage from './components/projects/InformedConsent/In
 import BlackHealthBookProjectPage from './components/projects/BlackHealthBook/BlackHealthBookProjectPage';
 import { ProjectSlug } from './constants';
 
-const routes = (
-  <Route path={`${process.env.PUBLIC_URL}/`} component={App}>
-    <IndexRoute component={HomePage} />
-    <Route path="/about" component={AboutPage} />
-    <Route path="/work" component={WorkPage} />
-    <Route path={ProjectSlug.shrumen} component={ShrumenProjectPage} />
-    <Route path={ProjectSlug.npr} component={NPRProjectPage} />
-    <Route path={ProjectSlug.waves} component={WavesProjectPage} />
-    <Route path={ProjectSlug.gitrocket} component={GitRocketProjectPage} />
-    <Route path={ProjectSlug.versions} component={VersionsProjectPage} />
-    <Route path={ProjectSlug.dialup} component={DialUpProjectPage} />
-    <Route path={ProjectSlug.drawachart} component={DrawAChartProjectPage} />
-    <Route path={ProjectSlug.negativereel} component={NegativeReelProjectPage} />
-    <Route path={ProjectSlug.topolamp} component={TopolampProjectPage} />
-    <Route path={ProjectSlug.reflections} component={ReflectionsProjectPage} />
-    <Route path={ProjectSlug.bikewheelsynth} component={BikeWheelSynthProjectPage} />
-    <Route path={ProjectSlug.codeasart} component={CodeAsArtProjectPage} />
-    <Route path={ProjectSlug.futurecity} component={FutureCityProjectPage} />
-    <Route path={ProjectSlug.informedconsent} component={InformedConsentProjectPage} />
-    <Route path={ProjectSlug.blackhealthbook} component={BlackHealthBookProjectPage} />
+const Routes = () => (
+  <Switch>
+    <Route exact path="/" component={HomePage} />
+    <Route exact path="/about" component={AboutPage} />
+    <Route exact path="/work" component={WorkPage} />
+    <Route path={`/${ProjectSlug.shrumen}`} component={ShrumenProjectPage} />
+    <Route path={`/${ProjectSlug.npr}`} component={NPRProjectPage} />
+    <Route path={`/${ProjectSlug.waves}`} component={WavesProjectPage} />
+    <Route path={`/${ProjectSlug.gitrocket}`} component={GitRocketProjectPage} />
+    <Route path={`/${ProjectSlug.versions}`} component={VersionsProjectPage} />
+    <Route path={`/${ProjectSlug.dialup}`} component={DialUpProjectPage} />
+    <Route path={`/${ProjectSlug.drawachart}`} component={DrawAChartProjectPage} />
+    <Route path={`/${ProjectSlug.negativereel}`} component={NegativeReelProjectPage} />
+    <Route path={`/${ProjectSlug.topolamp}`} component={TopolampProjectPage} />
+    <Route path={`/${ProjectSlug.reflections}`} component={ReflectionsProjectPage} />
+    <Route path={`/${ProjectSlug.bikewheelsynth}`} component={BikeWheelSynthProjectPage} />
+    <Route path={`/${ProjectSlug.codeasart}`} component={CodeAsArtProjectPage} />
+    <Route path={`/${ProjectSlug.futurecity}`} component={FutureCityProjectPage} />
+    <Route path={`/${ProjectSlug.informedconsent}`} component={InformedConsentProjectPage} />
+    <Route path={`/${ProjectSlug.blackhealthbook}`} component={BlackHealthBookProjectPage} />
     <Route path="*" component={NotFoundPage} />
-  </Route>
+  </Switch>
 );
 
-export default routes;
+export default Routes;
