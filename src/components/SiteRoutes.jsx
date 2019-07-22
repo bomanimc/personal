@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import zenscroll from 'zenscroll';
 import App from './App';
 import routes from '../Routes';
+import ScrollToTop from '../ScrollToTop';
 
 // Taken from https://github.com/rafrex/react-router-hash-link/tree/react-router-v2/3.
 function hashLinkScroll() {
@@ -23,7 +24,9 @@ function hashLinkScroll() {
 
 const SiteRoutes = () => (
   <BrowserRouter routes={routes} onUpdate={hashLinkScroll}>
-    <App />
+    <ScrollToTop>
+      <App />
+    </ScrollToTop>
   </BrowserRouter>
 );
 
