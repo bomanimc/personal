@@ -9,7 +9,7 @@ import { Image, Video, Transformation } from 'cloudinary-react';
 import { Helmet } from 'react-helmet';
 import { MediaTypes } from '../../constants';
 import {
-  Link,
+  ExternalLink,
   TextContent,
   Divider,
   Page,
@@ -27,7 +27,7 @@ export const BackButtonWrapper = styled.div`
   margin-bottom: 24px;
 `;
 
-export const BackButton = Link.extend`
+export const BackButton = ExternalLink.extend`
   font-weight: bold;
 `;
 
@@ -98,7 +98,9 @@ const Metadata = ({ tools, role, site }) => (
       <MetadataItem>
         <MetadataTitle>External Site</MetadataTitle>
         <MetadataContent>
-          <Link href={site}>{site}</Link>
+          <ExternalLink href={site} target="_blank" rel="noopener noreferrer">
+            {site}
+          </ExternalLink>
         </MetadataContent>
       </MetadataItem>
       )

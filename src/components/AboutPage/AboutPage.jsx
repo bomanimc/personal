@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown/with-html';
 import { AboutCopy } from '../../constants';
 import {
-  Link,
+  ExternalLink,
   BasePage,
   Body,
   TextContent,
@@ -200,7 +200,7 @@ const SpeakingLink = ({
   <SpeakingLinkItem>
     {
       link !== undefined && link !== null
-        ? <Link href={link} key={name}>{`"${name}"`}</Link>
+        ? <ExternalLink href={link} key={name}>{`"${name}"`}</ExternalLink>
         : `"${name}"`
     }
     <AboutDetail>{`${event}, ${date}`}</AboutDetail>
@@ -212,7 +212,7 @@ const WritingLink = ({ name, date, link }) => (
   <SpeakingLinkItem>
     {
       link !== undefined && link !== null
-        ? <Link href={link} key={name}>{`"${name}"`}</Link>
+        ? <ExternalLink href={link} key={name}>{`"${name}"`}</ExternalLink>
         : `"${name}"`
     }
     <AboutDetail>{`${date}`}</AboutDetail>

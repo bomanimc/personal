@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { Link } from '../commonComponents';
+import { InternalLink, ExternalLink } from '../commonComponents';
 
 const LinksContainer = styled.div`
   background-color: blue;
@@ -14,22 +14,38 @@ const LinksContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const LinkItem = Link.extend`
+const linkStyle = css`
   display: inline-block;
   text-align: center;
   padding: 0px 10px;
   text-transform: lowercase;
 `;
 
+const ExternalLinkItem = ExternalLink.extend`
+  ${linkStyle}
+`;
+
+const InternalLinkItem = InternalLink.extend`
+  ${linkStyle}
+`;
+
 const LinksBar = ({ links }) => {
-  const socialLinks = links.map(item => (
-    <LinkItem href={item.link} key={item.name}>
-      {item.name}
-    </LinkItem>
+  const barLinks = links.map(item => (
+    item.isExternal
+      ? (
+        <ExternalLinkItem href={item.link} key={item.name} target="_blank" rel="noopener noreferrer">
+          {item.name}
+        </ExternalLinkItem>
+      )
+      : (
+        <InternalLinkItem to={item.link} key={item.name}>
+          {item.name}
+        </InternalLinkItem>
+      )
   ));
 
   return (
-    <LinksContainer>{socialLinks}</LinksContainer>
+    <LinksContainer>{barLinks}</LinksContainer>
   );
 };
 

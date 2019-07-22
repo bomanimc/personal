@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ProjectCard from '../partials/ProjectCard';
 import {
-  Link, Body, Section, ContentContainer, ProjectGridContainer,
+  InternalLink, Body, Section, ContentContainer, ProjectGridContainer,
 } from '../commonComponents';
 import { ProjectContent, FeaturedProjects } from '../../constants';
 
@@ -42,7 +42,7 @@ const Bio = Introduction.extend`
   }
 `;
 
-const CTAButton = Link.extend`
+const CTAButton = InternalLink.extend`
   margin-top: 36px;
   background-color: white;
   color: black;
@@ -109,7 +109,7 @@ const ProjectSection = () => (
           ))
         }
       </ProjectGridContainer>
-      <CTAButton href="\work">See more work.</CTAButton>
+      <CTAButton to="/work">See more work.</CTAButton>
     </ContentContainer>
   </Section>
 );

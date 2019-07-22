@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { Image, Video, Transformation } from 'cloudinary-react';
 import { SkillAreaColors } from '../../constants';
-import { TextContent, Link } from '../commonComponents';
+import { TextContent, InternalLink } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -98,7 +98,7 @@ const ProjectCardSectionTitle = styled.div`
   font-weight: bold;
 `;
 
-const ProjectCTA = styled.a`
+const ProjectCTA = styled(InternalLink)`
   border-top: 1px solid white;
   display: none;
   justify-content: center;
@@ -133,7 +133,7 @@ const Project = ({ content }) => (
     <ProjectHeader>
       <ProjectTitle>{content.title}</ProjectTitle>
     </ProjectHeader>
-    <Link href={content.primaryLink}>
+    <InternalLink to={content.primaryLink}>
       {
         content.media.includes('video')
           ? (
@@ -161,12 +161,12 @@ const Project = ({ content }) => (
             </ProjectImage>
           )
       }
-    </Link>
+    </InternalLink>
     <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
     <ProjectContent order={2}>
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
     </ProjectContent>
-    <ProjectCTA href={content.primaryLink}>
+    <ProjectCTA to={content.primaryLink}>
       <EyeIcon src="img/icons/view.svg" alt={`View ${content.title}`} />
     </ProjectCTA>
   </ProjectContainer>

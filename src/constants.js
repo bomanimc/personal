@@ -462,22 +462,27 @@ export const SocialLinks = [
   {
     name: 'Twitter',
     link: 'https://twitter.com/bxmani',
+    isExternal: true,
   },
   {
     name: 'Instagram',
     link: 'https://www.instagram.com/bxmani/',
+    isExternal: true,
   },
   {
     name: 'Email',
     link: 'mailto:bomanimc@gmail.com',
+    isExternal: true,
   },
   {
     name: 'LinkedIn',
     link: 'https://www.linkedin.com/in/bomanimc/',
+    isExternal: true,
   },
   {
     name: 'GitHub',
     link: 'https://github.com/bomanimc',
+    isExternal: true,
   },
 ];
 
@@ -485,14 +490,17 @@ export const NavLinks = [
   {
     name: 'Work',
     link: '/work',
+    isExternal: false,
   },
   {
     name: 'Home',
     link: '/',
+    isExternal: false,
   },
   {
     name: 'About',
     link: '/about',
+    isExternal: false,
   },
 ];
 
