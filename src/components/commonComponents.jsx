@@ -161,5 +161,9 @@ export const BasePage = ({ title, body, metadata }) => (
 BasePage.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.node.isRequired,
-  metadata: PropTypes.node.isRequired,
+  metadata: PropTypes.node,
+};
+
+BasePage.defaultProps = {
+  metadata: null,
 };

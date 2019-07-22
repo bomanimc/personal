@@ -119,6 +119,7 @@ const EducationBox = () => (
       <div>
         {AboutCopy.education.map(item => (
           <EducationItem
+            key={item.name}
             name={item.name}
             startDate={item.startDate}
             endDate={item.endDate}
@@ -137,6 +138,7 @@ const SpeakingBox = () => (
       <div>
         {AboutCopy.speaking.map(item => (
           <SpeakingLink
+            key={item.name}
             name={item.name}
             event={item.event}
             date={item.date}
@@ -156,6 +158,7 @@ const WritingBox = () => (
       <div>
         {AboutCopy.writing.map(item => (
           <WritingLink
+            key={item.name}
             name={item.name}
             date={item.date}
             link={item.link}
@@ -173,6 +176,7 @@ const FellowshipBox = () => (
       <div>
         {AboutCopy.fellowships.map(item => (
           <FellowshipItem
+            key={item.org}
             org={item.org}
             startDate={item.startDate}
             endDate={item.endDate}
@@ -246,7 +250,11 @@ SpeakingLink.propTypes = {
   event: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
+};
+
+SpeakingLink.defaultProps = {
+  link: null,
 };
 
 WritingLink.propTypes = {
