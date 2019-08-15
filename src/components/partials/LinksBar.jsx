@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { InternalLink, ExternalLink } from '../commonComponents';
+import { InternalLink, ExternalLink, NavBarLink } from '../commonComponents';
 
 const LinksContainer = styled.div`
   background-color: blue;
@@ -19,6 +19,10 @@ const linkStyle = css`
   text-align: center;
   padding: 0px 10px;
   text-transform: lowercase;
+
+  &.active {
+    text-decoration: underline;
+  }
 `;
 
 const ExternalLinkItem = ExternalLink.extend`
@@ -29,7 +33,24 @@ const InternalLinkItem = InternalLink.extend`
   ${linkStyle}
 `;
 
-const LinksBar = ({ links }) => {
+
+const NavBarLinkItem = NavBarLink.extend`
+  ${linkStyle}
+`;
+
+const LinksBar = ({ links, isNav }) => {
+  if (isNav) {
+    return (
+      <LinksContainer>
+        {links.map(item => (
+          <NavBarLinkItem exact to={item.link} key={item.name} activeClassName="active">
+            {item.name}
+          </NavBarLinkItem>
+        ))}
+      </LinksContainer>
+    );
+  }
+
   const barLinks = links.map(item => (
     item.isExternal
       ? (
@@ -51,6 +72,11 @@ const LinksBar = ({ links }) => {
 
 LinksBar.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  isNav: PropTypes.bool,
+};
+
+LinksBar.defaultProps = {
+  isNav: false,
 };
 
 export default LinksBar;

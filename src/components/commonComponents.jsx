@@ -2,7 +2,7 @@
 
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
@@ -42,6 +42,10 @@ export const InternalLink = styled(RouterLink)`
 `;
 
 export const InternalHashLink = styled(HashLink)`
+  ${linkStyle}
+`;
+
+export const NavBarLink = styled(NavLink)`
   ${linkStyle}
 `;
 

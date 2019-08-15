@@ -5,7 +5,7 @@ import { SocialLinks, NavLinks } from '../../constants';
 
 const Layout = ({ children }) => (
   <div>
-    <LinksBar links={NavLinks} />
+    <LinksBar links={NavLinks} isNav />
     {children}
     <LinksBar links={SocialLinks} />
   </div>
