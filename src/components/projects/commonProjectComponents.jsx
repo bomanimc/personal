@@ -131,7 +131,7 @@ export const BaseProjectPage = ({
     <Page>
       <PageCenteringContainer>
         <BackButtonWrapper>
-          <BackButton smooth to={`/work#${id}`}>Back to All Work</BackButton>
+          <BackButton smooth to={`/work#${id}`}>Back</BackButton>
         </BackButtonWrapper>
         <PageTitle>{title}</PageTitle>
         <Metadata tools={tools} role={role} site={site} />
