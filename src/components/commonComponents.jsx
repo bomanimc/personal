@@ -3,6 +3,7 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { Link as RouterLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -37,6 +38,10 @@ export const TextContent = styled.span`
 `;
 
 export const InternalLink = styled(RouterLink)`
+  ${linkStyle}
+`;
+
+export const InternalHashLink = styled(HashLink)`
   ${linkStyle}
 `;
 

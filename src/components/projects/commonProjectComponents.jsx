@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet';
 import { MediaTypes } from '../../constants';
 import {
   ExternalLink,
+  InternalHashLink,
   TextContent,
   Divider,
   Page,
@@ -27,7 +28,7 @@ export const BackButtonWrapper = styled.div`
   margin-bottom: 24px;
 `;
 
-export const BackButton = ExternalLink.extend`
+export const BackButton = InternalHashLink.extend`
   font-weight: bold;
 `;
 
@@ -130,7 +131,7 @@ export const BaseProjectPage = ({
     <Page>
       <PageCenteringContainer>
         <BackButtonWrapper>
-          <BackButton href={`/work#${id}`}>Back</BackButton>
+          <BackButton smooth to={`/work#${id}`}>Back to All Work</BackButton>
         </BackButtonWrapper>
         <PageTitle>{title}</PageTitle>
         <Metadata tools={tools} role={role} site={site} />
