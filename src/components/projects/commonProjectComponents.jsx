@@ -22,6 +22,7 @@ import {
   MetadataTitle,
   MetadataContent,
 } from '../commonComponents';
+import MarkdownTextBlock from '../partials/MarkdownTextBlock';
 import { setMetaTitleWithName } from '../../utils';
 
 export const BackButtonWrapper = styled.div`
@@ -142,82 +143,60 @@ export const BaseProjectPage = ({
   </div>
 );
 
-export class BaseBodyContent extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      introContent: null,
-    };
-  }
-
-  componentWillMount() {
-    const { introContentPath, project } = this.props;
-    if (introContentPath === null || introContentPath === undefined) {
-      this.setState({ introContent: project.body });
-      return;
+export const BaseBodyContent = ({ project, showMainMedia, introContentPath }) => {
+  const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
+    switch (media.type) {
+      case MediaTypes.video:
+        return (
+          <VideoWrapper key={media.videoUrl}>
+            <ReactPlayer url={media.videoUrl} />
+          </VideoWrapper>
+        );
+      case MediaTypes.image:
+      default:
+        return (
+          media.src.includes('video')
+            ? (
+              <ProjectVideoContainer>
+                <ProjectVideo
+                  cloudName="bomani-personal"
+                  publicId={media.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <Transformation audioCodec="none" />
+                </ProjectVideo>
+              </ProjectVideoContainer>
+            )
+            : (
+              <ProjectPageImageContainer key={media.src}>
+                <ProjectPageImage
+                  cloudName="bomani-personal"
+                  publicId={media.src}
+                >
+                  <Transformation quality="auto:best" crop="limit" fetchFormat="auto" />
+                </ProjectPageImage>
+              </ProjectPageImageContainer>
+            )
+        );
     }
+  });
 
-    fetch(introContentPath)
-      .then(response => response.text())
-      .then(text => this.setState({ introContent: text }));
-  }
-
-  render() {
-    const { project, showMainMedia } = this.props;
-    const { introContent } = this.state;
-
-    const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
-      switch (media.type) {
-        case MediaTypes.video:
-          return (
-            <VideoWrapper key={media.videoUrl}>
-              <ReactPlayer url={media.videoUrl} />
-            </VideoWrapper>
-          );
-        case MediaTypes.image:
-        default:
-          return (
-            media.src.includes('video')
-              ? (
-                <ProjectVideoContainer>
-                  <ProjectVideo
-                    cloudName="bomani-personal"
-                    publicId={media.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  >
-                    <Transformation audioCodec="none" />
-                  </ProjectVideo>
-                </ProjectVideoContainer>
-              )
-              : (
-                <ProjectPageImageContainer key={media.src}>
-                  <ProjectPageImage
-                    cloudName="bomani-personal"
-                    publicId={media.src}
-                  >
-                    <Transformation quality="auto:best" crop="limit" fetchFormat="auto" />
-                  </ProjectPageImage>
-                </ProjectPageImageContainer>
-              )
-          );
-      }
-    });
-
-    return (
-      <BodySection>
-        <TextContent>
-          <ReactMarkdown source={introContent} escapeHtml={false} />
-        </TextContent>
-        <HiddenDivider />
-        {mediaSection}
-      </BodySection>
-    );
-  }
-}
+  return (
+    <BodySection>
+      <TextContent>
+        <MarkdownTextBlock
+          markdownContentPath={introContentPath}
+          placeholderContent={project.body}
+        />
+      </TextContent>
+      <HiddenDivider />
+      {mediaSection}
+    </BodySection>
+  );
+};
 
 Metadata.propTypes = {
   tools: PropTypes.string.isRequired,
