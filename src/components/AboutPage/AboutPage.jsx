@@ -130,6 +130,7 @@ const SpeakingBox = () => (
             date={item.date}
             location={item.location}
             link={item.link}
+            isNameTitle={item.isNameTitle}
           />
         ))}
       </div>
@@ -185,18 +186,22 @@ const EducationItem = ({
 );
 
 const SpeakingLink = ({
-  name, location, event, date, link,
-}) => (
-  <SpeakingLinkItem>
-    {
-      link !== undefined && link !== null
-        ? <ExternalLink href={link} key={name}>{`"${name}"`}</ExternalLink>
-        : `"${name}"`
-    }
-    <AboutDetail>{`${event}, ${date}`}</AboutDetail>
-    <AboutDetail>{location}</AboutDetail>
-  </SpeakingLinkItem>
-);
+  name, location, event, date, link, isNameTitle,
+}) => {
+  const formattedName = isNameTitle ? `"${name}"` : name;
+
+  return (
+    <SpeakingLinkItem>
+      {
+        link !== undefined && link !== null
+          ? <ExternalLink href={link} key={name}>{formattedName}</ExternalLink>
+          : formattedName
+      }
+      <AboutDetail>{`${event}, ${date}`}</AboutDetail>
+      <AboutDetail>{location}</AboutDetail>
+    </SpeakingLinkItem>
+  );
+};
 
 const WritingLink = ({ name, date, link }) => (
   <SpeakingLinkItem>
@@ -237,10 +242,12 @@ SpeakingLink.propTypes = {
   date: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   link: PropTypes.string,
+  isNameTitle: PropTypes.bool,
 };
 
 SpeakingLink.defaultProps = {
   link: null,
+  isNameTitle: true,
 };
 
 WritingLink.propTypes = {

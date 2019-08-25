@@ -545,6 +545,12 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Advice & Insights for Institute For Entrepreneurship Students',
+      event: 'Upperline Code',
+      date: 'August 2019',
+      location: 'New York, NY',
+    },
+    {
       name: 'Code As An Artistic Medium',
       event: 'WordHack',
       date: 'May 2019',
@@ -557,6 +563,13 @@ export const AboutCopy = {
       date: 'February 2019',
       location: 'New York, NY',
       link: 'https://docs.google.com/presentation/d/1GfVKDLk5o_yNBy4mst4nDapCcCRiyqyqsiHV5sRelnk/edit?usp=sharing',
+    },
+    {
+      name: 'Panel Discussion at Student Assembly',
+      event: 'Avenues: The World School',
+      date: 'December 2018',
+      location: 'New York, NY',
+      isNameTitle: false,
     },
     {
       name: 'Making Mushrooms Glow',
