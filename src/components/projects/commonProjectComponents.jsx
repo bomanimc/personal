@@ -22,7 +22,7 @@ import {
   MetadataTitle,
   MetadataContent,
 } from '../commonComponents';
-import { setMetaTitle } from '../../utils';
+import { setMetaTitleWithName } from '../../utils';
 
 export const BackButtonWrapper = styled.div`
   margin-bottom: 24px;
@@ -126,7 +126,7 @@ export const BaseProjectPage = ({
 }) => (
   <div>
     <Helmet>
-      {setMetaTitle(title)}
+      {setMetaTitleWithName(title)}
     </Helmet>
     <Page>
       <PageCenteringContainer>

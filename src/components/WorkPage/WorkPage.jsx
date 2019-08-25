@@ -6,12 +6,12 @@ import { Helmet } from 'react-helmet';
 import ProjectCard from '../partials/ProjectCard';
 import { Section, ContentContainer, ProjectGridContainer } from '../commonComponents';
 import { ProjectContent, ProjectOrder } from '../../constants';
-import { setMetaTitle } from '../../utils';
+import { setMetaTitleWithName } from '../../utils';
 
 const WorkPage = () => (
   <div id="root">
     <Helmet>
-      {setMetaTitle('Work')}
+      {setMetaTitleWithName('Work')}
     </Helmet>
     <ProjectSection />
   </div>

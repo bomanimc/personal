@@ -7,7 +7,7 @@ import { HashLink } from 'react-router-hash-link';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { setMetaTitle } from '../utils';
+import { setMetaTitleWithName } from '../utils';
 
 export const PAGE_WIDTH = '1000px';
 
@@ -154,7 +154,7 @@ export const PageTitle = styled.p`
 export const BasePage = ({ title, body, metadata }) => (
   <div>
     <Helmet>
-      {setMetaTitle(title)}
+      {setMetaTitleWithName(title)}
     </Helmet>
     <Page>
       <PageCenteringContainer>

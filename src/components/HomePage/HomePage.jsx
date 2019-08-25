@@ -3,11 +3,13 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 import ProjectCard from '../partials/ProjectCard';
 import {
   InternalLink, Body, Section, ContentContainer, ProjectGridContainer,
 } from '../commonComponents';
 import { ProjectContent, FeaturedProjects } from '../../constants';
+import { setMetaTitle } from '../../utils';
 
 const hoverNameAnimationSpeed = 1.5;
 
@@ -57,6 +59,9 @@ const CTAButton = InternalLink.extend`
 
 const HomePage = () => (
   <div id="root">
+    <Helmet>
+      {setMetaTitle('BOMANI')}
+    </Helmet>
     <NameSection />
     <IntroSection />
     <ProjectSection />
