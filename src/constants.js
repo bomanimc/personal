@@ -545,6 +545,13 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Panel Discussion at Decode Experiential Vol. V',
+      event: 'Lightbox',
+      date: 'September 2019',
+      location: 'New York, NY',
+      isNameTitle: false,
+    },
+    {
       name: 'Advice & Insights for Institute For Entrepreneurship Students',
       event: 'Upperline Code',
       date: 'August 2019',
