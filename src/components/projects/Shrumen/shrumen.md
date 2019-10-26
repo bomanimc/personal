@@ -6,4 +6,4 @@ The initial version of the software was built with Node and C running on a Raspb
 
 <br /> <br />
 
-Shrumen Lumen was initially built to display at Burning Man '16. Since then, Shrumen Lumen has been presented at Dubai’s Meet D3 Festival and is currently on display at the [Smithsonian's Renwick Gallery](https://americanart.si.edu/exhibitions/burning-man) until January '19.
+Shrumen Lumen was initially built to display at Burning Man '16. Since then, Shrumen Lumen has been presented at Dubai’s Meet D3 Festival, the Smithsonian's Renwick Gallery, Pacific Place for Art Basel Hong Kong, and Cincinatti Art Museum. It is currently on display at Oakland Museum of California until February '20.
