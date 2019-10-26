@@ -435,11 +435,6 @@ export const SocialLinks = [
     isExternal: true,
   },
   {
-    name: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/bomanimc/',
-    isExternal: true,
-  },
-  {
     name: 'GitHub',
     link: 'https://github.com/bomanimc',
     isExternal: true,
