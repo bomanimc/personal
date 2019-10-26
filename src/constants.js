@@ -514,6 +514,14 @@ export const AboutCopy = {
       link: 'https://docs.google.com/presentation/d/1HtEw3l-R5G4duIEJKuSuO2KFSYfqNklObWGiKtKUejs/edit?usp=sharing',
     },
     {
+      name: 'Meet the Students Spring 2019',
+      event: 'School for Poetic Computation',
+      date: 'March 2019',
+      location: 'New York, NY',
+      link: 'https://youtu.be/DOMR8-3hE04?t=1538',
+      isNameTitle: false,
+    },
+    {
       name: 'Interactive Projection Mapping with Processing',
       event: 'Processing Community Day NYC',
       date: 'February 2019',
