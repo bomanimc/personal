@@ -87,7 +87,7 @@ const IntroSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
       <Bio>
         <Body>
-          Bomani Oseni McClendon is an engineer and artist based in Brooklyn, NY.
+          Bomani Oseni McClendon is an engineer based in Brooklyn, NY.
         </Body>
       </Bio>
     </ContentContainer>

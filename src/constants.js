@@ -19,6 +19,7 @@ const Tags = {
 export const ProjectSlug = {
   shrumen: 'shrumen-lumen',
   waves: 'waves',
+  npr: 'news-page-index',
   gitrocket: 'gitrocket',
   versions: 'versions-jasper-lotti',
   dialup: 'dial-up',
@@ -382,6 +383,37 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
     {
       type: MediaTypes.image,
       src: 'blackhealthbook_reading.JPG',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.npr] = {
+  id: ProjectSlug.npr,
+  title: 'News Page Index',
+  tags: [Tags.engineering],
+  body: `Facebook's new product for indexing News pages to
+  support the [Political Ads Archive project](https://newsroom.fb.com/news/2018/05/ads-with-political-content/).
+  Publishers can also submit links
+  to policies, info, and logos in alignment with [The Trust Project's](https://thetrustproject.org/)
+  best practices. Covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html)
+  and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).`,
+  tools: 'React, PHP (Hack), Relay, GraphQL.',
+  role: `Software Engineer focused on internal review processes. In collaboration
+  with the other engineers on my team.`,
+  primaryLink: `/${ProjectSlug.npr}`,
+  media: 'npr_main_video',
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'npr_main_section',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'npr_policies_section',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'npr_logos_section',
     },
   ],
 };
