@@ -18,7 +18,6 @@ const Tags = {
 
 export const ProjectSlug = {
   shrumen: 'shrumen-lumen',
-  npr: 'news-page-index',
   waves: 'waves',
   gitrocket: 'gitrocket',
   versions: 'versions-jasper-lotti',
@@ -53,7 +52,6 @@ export const ProjectOrder = [
   ProjectSlug.futurecity,
   ProjectSlug.negativereel,
   ProjectSlug.drawachart,
-  ProjectSlug.npr,
   ProjectSlug.gitrocket,
   ProjectSlug.waves,
   ProjectSlug.dialup,
@@ -87,37 +85,6 @@ ProjectContent[ProjectSlug.shrumen] = {
     {
       type: MediaTypes.video,
       videoUrl: 'https://www.youtube.com/watch?v=T75FvUDirNM', // Making Mushrooms Glow
-    },
-  ],
-};
-
-ProjectContent[ProjectSlug.npr] = {
-  id: ProjectSlug.npr,
-  title: 'News Page Index',
-  tags: [Tags.engineering],
-  body: `Facebook's new product for indexing News pages to
-  support the [Political Ads Archive project](https://newsroom.fb.com/news/2018/05/ads-with-political-content/).
-  Publishers can also submit links
-  to policies, info, and logos in alignment with [The Trust Project's](https://thetrustproject.org/)
-  best practices. Covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html)
-  and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).`,
-  tools: 'React, PHP (Hack), Relay, GraphQL.',
-  role: `Software Engineer focused on internal review processes. In collaboration
-  with the other engineers on my team.`,
-  primaryLink: `/${ProjectSlug.npr}`,
-  media: 'npr_main_video',
-  projectMedia: [
-    {
-      type: MediaTypes.image,
-      src: 'npr_main_section',
-    },
-    {
-      type: MediaTypes.image,
-      src: 'npr_policies_section',
-    },
-    {
-      type: MediaTypes.image,
-      src: 'npr_logos_section',
     },
   ],
 };
@@ -427,35 +394,6 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
       src: 'blackhealthbook_reading.JPG',
     },
   ],
-};
-
-export const DeprecatedProjectContent = {
-  cakes: {
-    id: ProjectSlug.cakes,
-    title: 'Cakes Da Killa Site',
-    tags: [Tags.engineering],
-    body: `A website for rapper [Cakes Da Killa](https://en.wikipedia.org/wiki/Cakes_da_Killa)
-    in preparation for his 'Hunger Pangs' deluxe album release and European
-    tour. This site was public from late 2015 through 2016.`,
-    tools: 'Node, Handlebars.',
-    role: 'Developer & Designer. In collaboration with Greg Kim and Rogue Agency.',
-    media: 'cakes_main',
-    primaryLink: `/${ProjectSlug.cakes}`,
-    projectMedia: [],
-  },
-  authorcontext: {
-    id: ProjectSlug.authorcontext,
-    title: 'Author Context',
-    tags: [Tags.engineering],
-    body: `An experiment that allows news consumers to find more details about an
-    article's author while reading news on an Instant Article (Facebook's native
-    article format). Covered by [TechCrunch](https://techcrunch.com/2018/04/03/facebook-author-info/).`,
-    tools: 'Native Templates, Android, Litho, PHP (Hack).',
-    role: 'Software Engineer. In collaboration with one other engineer.',
-    media: 'dialup_main',
-    primaryLink: `/${ProjectSlug.authorcontext}`,
-    projectMedia: [],
-  },
 };
 
 export const SocialLinks = [
