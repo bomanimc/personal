@@ -245,7 +245,7 @@ ProjectContent[ProjectSlug.negativereel] = {
 
 ProjectContent[ProjectSlug.codeasart] = {
   id: ProjectSlug.codeasart,
-  title: 'Code As Art',
+  title: 'Code Visualizations',
   tags: [Tags.art],
   body: `Re-representing code in order to explore its potential as a
   standalone medium. The unique structure of the code is used to produce
