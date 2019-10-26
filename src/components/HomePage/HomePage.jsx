@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import ProjectCard from '../partials/ProjectCard';
 import {
-  InternalLink, Body, Section, ContentContainer, ProjectGridContainer,
+  Body, Section, ContentContainer, ProjectGridContainer,
 } from '../commonComponents';
 import { ProjectContent, FeaturedProjects } from '../../constants';
 import { setMetaTitle } from '../../utils';
@@ -41,19 +41,6 @@ const Bio = Introduction.extend`
 
   @media (max-width: 768px) {
     width: 100%;
-  }
-`;
-
-const CTAButton = InternalLink.extend`
-  margin-top: 36px;
-  background-color: white;
-  color: black;
-  padding: 8px;
-  cursor: pointer;
-  
-  &:hover {
-    text-decoration: none;
-    box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.3);
   }
 `;
 
@@ -114,7 +101,6 @@ const ProjectSection = () => (
           ))
         }
       </ProjectGridContainer>
-      <CTAButton to="/work">See more work.</CTAButton>
     </ContentContainer>
   </Section>
 );
