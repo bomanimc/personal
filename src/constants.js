@@ -417,11 +417,6 @@ export const SocialLinks = [
 export const NavLinks = [
   {
     name: 'Work',
-    link: '/work',
-    isExternal: false,
-  },
-  {
-    name: 'Home',
     link: '/',
     isExternal: false,
   },
