@@ -40,7 +40,6 @@ export const FeaturedProjects = [
   ProjectSlug.blackhealthbook,
   ProjectSlug.versions,
   ProjectSlug.codeasart,
-  ProjectSlug.futurecity,
 ];
 
 export const ProjectOrder = [
@@ -49,15 +48,6 @@ export const ProjectOrder = [
   ProjectSlug.blackhealthbook,
   ProjectSlug.versions,
   ProjectSlug.codeasart,
-  ProjectSlug.futurecity,
-  ProjectSlug.negativereel,
-  ProjectSlug.drawachart,
-  ProjectSlug.gitrocket,
-  ProjectSlug.waves,
-  ProjectSlug.dialup,
-  ProjectSlug.bikewheelsynth,
-  ProjectSlug.topolamp,
-  ProjectSlug.reflections,
 ];
 
 export const ProjectContent = {};
