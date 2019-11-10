@@ -3,7 +3,7 @@ module.exports = [{
       options: {"plugins":[],"name":"gatsby-starter-default","short_name":"starter","start_url":"/","background_color":"#663399","theme_color":"#663399","display":"minimal-ui","icon":"src/images/gatsby-icon.png"},
     },{
       plugin: require('../node_modules/gatsby-source-prismic-graphql/gatsby-browser.js'),
-      options: {"plugins":[],"repositoryName":"bomani","path":"/preview","previews":true,"pages":[{"type":"Project","match":"/:uid","path":"/project","component":"/Users/bomani/Desktop/personal/src/templates/project.js"}]},
+      options: {"plugins":[],"repositoryName":"bomani","path":"/preview","previews":true,"pages":[{"type":"Project","match":"/:uid","path":"/","component":"/Users/bomani/Desktop/personal/src/templates/project.js"}]},
     },{
       plugin: require('../gatsby-browser.js'),
       options: {"plugins":[]},

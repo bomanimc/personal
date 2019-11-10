@@ -2,16 +2,14 @@
 
 import React from 'react';
 import { graphql } from 'gatsby';
-import { RichText } from 'prismic-reactjs';
 import { ProjectContent } from '../constants';
 import { BaseProjectPage, BaseBodyContent } from '../components/commonProjectComponents';
 import { Text } from '../components/slices'
 
-// Query for the Blog Post content in Prismic
 export const query = graphql`
-  query ProjectQuery {
+  query ProjectQuery($uid: String) {
     prismic {
-      allProjects {
+      allProjects(uid: $uid) {
         edges {
           node {
             _meta {
@@ -38,12 +36,13 @@ export const query = graphql`
 `;
 
 	
-export default ({ data }) => {
+const Project = props => {
   // Required check for no data being returned
-  const doc = data.prismic.allProjects.edges.slice(0,1).pop();
+  const doc = props.data.prismic.allProjects.edges.slice(0,1).pop();
   if (!doc) return null;
 
   const uid = doc.node._meta.uid;
+  console.log(uid);
   const project = ProjectContent[uid];
 
   console.log(doc.node.body);
@@ -87,4 +86,6 @@ const PostSlices = ({ slices }) => {
 
     return res;
   })
-}
+};
+
+export default Project;

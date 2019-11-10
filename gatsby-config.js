@@ -40,7 +40,7 @@ module.exports = {
           pages: [{ // (optional, builds pages dynamically)
             type: 'Project',         // TypeName from prismic
             match: '/:uid',  // Pages will be generated under this pattern
-            path: '/project',        // Placeholder page for unpublished documents
+            path: '/',        // Placeholder page for unpublished documents
             component: require.resolve('./src/templates/project.js'),
           }],
       }
