@@ -1,7 +1,8 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
 import styled from 'styled-components';
-import { linkResolver } from '../../utils/linkResolver';
+import { linkResolver } from '../../utils/linkResolver'
+import htmlSerializer from '../../utils/htmlSerializer'
 
 const TextBlock = styled.div`
   p {
@@ -14,7 +15,7 @@ export default ({ slice }) => {
 
   return (
     <TextBlock>
-      {RichText.render(slice.primary.text)}
+      {RichText.render(slice.primary.text, linkResolver, htmlSerializer)}
     </TextBlock>
   );
 }
