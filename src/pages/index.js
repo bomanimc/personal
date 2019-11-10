@@ -4,6 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import Layout from "../components/layout"
 import ProjectCard from '../components/partials/ProjectCard';
 import {
   Body, Section, ContentContainer, ProjectGridContainer,
@@ -45,14 +46,16 @@ const Bio = styled(Introduction)`
 `;
 
 const HomePage = () => (
-  <div id="root">
-    <Helmet>
-      {setMetaTitle('BOMANI')}
-    </Helmet>
-    <NameSection />
-    <IntroSection />
-    <ProjectSection />
-  </div>
+  <Layout>
+    <div id="root">
+      <Helmet>
+        {setMetaTitle('BOMANI')}
+      </Helmet>
+      <NameSection />
+      <IntroSection />
+      <ProjectSection />
+    </div>
+  </Layout>
 );
 
 const NameSection = () => (

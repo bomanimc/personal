@@ -25,16 +25,16 @@ const linkStyle = css`
   }
 `;
 
-const ExternalLinkItem = ExternalLink.extend`
+const ExternalLinkItem = styled(ExternalLink)`
   ${linkStyle}
 `;
 
-const InternalLinkItem = InternalLink.extend`
+const InternalLinkItem = styled(InternalLink)`
   ${linkStyle}
 `;
 
 
-const NavBarLinkItem = NavBarLink.extend`
+const NavBarLinkItem = styled(NavBarLink)`
   ${linkStyle}
 `;
 
