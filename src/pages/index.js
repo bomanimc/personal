@@ -1,21 +1,108 @@
-import React from "react"
-import { Link } from "gatsby"
+/* eslint no-confusing-arrow: 0 */
+/* eslint array-callback-return: 0 */
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import React from 'react';
+import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+import ProjectCard from '../components/partials/ProjectCard';
+import {
+  Body, Section, ContentContainer, ProjectGridContainer,
+} from '../components/commonComponents';
+import { ProjectContent, FeaturedProjects } from '../constants';
+import { setMetaTitle } from '../utils';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const hoverNameAnimationSpeed = 1.5;
 
-export default IndexPage
+const Introduction = styled(ContentContainer)`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const Name = styled.h1`
+  font-family: Helvetica;
+  color: white;
+  font-size: 180px;
+  line-height: 0.80;
+  transition: opacity ${hoverNameAnimationSpeed}s ease;
+
+  @media (max-width: 768px) {
+    font-size: 5.5rem;
+  }
+`;
+
+const Bio = styled(Introduction)`
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  height: auto;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const HomePage = () => (
+  <div id="root">
+    <Helmet>
+      {setMetaTitle('BOMANI')}
+    </Helmet>
+    <NameSection />
+    <IntroSection />
+    <ProjectSection />
+  </div>
+);
+
+const NameSection = () => (
+  <Introduction horizontalCenter verticalCenter marginTop="36px">
+    <Name>
+      BOMANI
+    </Name>
+  </Introduction>
+);
+
+const IntroSection = () => (
+  <Section
+    bgColor="black"
+    textColor="white"
+    align="normal"
+    sectionHeight="20%"
+    marginHorizontal="20px"
+  >
+    <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">
+      <Bio>
+        <Body>
+          Bomani Oseni McClendon is an engineer based in Brooklyn, NY.
+        </Body>
+      </Bio>
+    </ContentContainer>
+  </Section>
+);
+
+const ProjectSection = () => (
+  <Section
+    bgColor="black"
+    textColor="white"
+    align="normal"
+    sectionHeight="auto"
+    minHeight={`${(ProjectContent.length * 250) + 200}px`}
+    marginHorizontal="20px"
+  >
+    <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px" marginBottom="36px">
+      <ProjectGridContainer containerHeight="auto">
+        {
+          FeaturedProjects.map(section => (
+            <ProjectCard
+              key={ProjectContent[section].id}
+              content={ProjectContent[section]}
+            />
+          ))
+        }
+      </ProjectGridContainer>
+    </ContentContainer>
+  </Section>
+);
+
+export default HomePage;

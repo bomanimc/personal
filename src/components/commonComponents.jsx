@@ -2,8 +2,8 @@
 
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import { Link as RouterLink, NavLink } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
+// Routing needs to be fixed
+import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -37,15 +37,15 @@ export const TextContent = styled.span`
   }
 `;
 
-export const InternalLink = styled(RouterLink)`
+export const InternalLink = styled(Link)`
   ${linkStyle}
 `;
 
-export const InternalHashLink = styled(HashLink)`
+export const InternalHashLink = styled(Link)`
   ${linkStyle}
 `;
 
-export const NavBarLink = styled(NavLink)`
+export const NavBarLink = styled(Link)`
   ${linkStyle}
 `;
 
@@ -93,7 +93,7 @@ export const Divider = styled.div`
   margin: 48px 0px;
 `;
 
-export const BodySection = TextContent.extend``;
+export const BodySection = styled(TextContent)``;
 
 export const MetadataSection = styled.div`
   display: flex;
@@ -118,13 +118,13 @@ export const MetadataItem = styled.div`
   }
 `;
 
-export const MetadataTitle = Body.extend`
+export const MetadataTitle = styled(Body)`
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 8px;
 `;
 
-export const MetadataContent = TextContent.extend``;
+export const MetadataContent = styled(TextContent)``;
 
 export const Page = styled.div`
   margin: 48px;
