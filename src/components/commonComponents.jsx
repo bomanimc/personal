@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { setMetaTitleWithName } from '../utils';
+import { setMetaTitleWithName } from '../utils/utils';
 
 export const PAGE_WIDTH = '1000px';
 

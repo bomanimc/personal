@@ -7,7 +7,8 @@ import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Image, Video, Transformation } from 'cloudinary-react';
 import { Helmet } from 'react-helmet';
-import { MediaTypes } from '../../constants';
+import Layout from './layout';
+import { MediaTypes } from '../constants';
 import {
   ExternalLink,
   InternalHashLink,
@@ -21,15 +22,15 @@ import {
   MetadataItem,
   MetadataTitle,
   MetadataContent,
-} from '../commonComponents';
-import MarkdownTextBlock from '../partials/MarkdownTextBlock';
-import { setMetaTitleWithName } from '../../utils';
+} from './commonComponents';
+import MarkdownTextBlock from './partials/MarkdownTextBlock';
+import { setMetaTitleWithName } from '../utils/utils';
 
 export const BackButtonWrapper = styled.div`
   margin-bottom: 24px;
 `;
 
-export const BackButton = InternalHashLink.extend`
+export const BackButton = styled(InternalHashLink)`
   font-weight: bold;
 `;
 
@@ -53,7 +54,7 @@ const BaseVideoContainer = styled.div`
   margin-bottom: 16px;
 `;
 
-export const VideoWrapper = BaseVideoContainer.extend`
+export const VideoWrapper = styled(BaseVideoContainer)`
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
@@ -68,7 +69,7 @@ export const VideoWrapper = BaseVideoContainer.extend`
   }
 `;
 
-const ProjectVideoContainer = BaseVideoContainer.extend`
+const ProjectVideoContainer = styled(BaseVideoContainer)`
   display: block;
 
   @media (max-width: 768px) {
@@ -125,7 +126,7 @@ export const getProjectMedia = (projectData, showMainMedia) => {
 export const BaseProjectPage = ({
   id, title, tools, role, site, body,
 }) => (
-  <div>
+  <Layout>
     <Helmet>
       {setMetaTitleWithName(title)}
     </Helmet>
@@ -140,10 +141,10 @@ export const BaseProjectPage = ({
         {body}
       </PageCenteringContainer>
     </Page>
-  </div>
+  </Layout>
 );
 
-export const BaseBodyContent = ({ project, showMainMedia, introContentPath }) => {
+export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
   const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
     switch (media.type) {
       case MediaTypes.video:
@@ -184,14 +185,11 @@ export const BaseBodyContent = ({ project, showMainMedia, introContentPath }) =>
     }
   });
 
+  const content = customContent ? customContent : project.body;
+
   return (
     <BodySection>
-      <TextContent>
-        <MarkdownTextBlock
-          markdownContentPath={introContentPath}
-          placeholderContent={project.body}
-        />
-      </TextContent>
+      <TextContent>{content}</TextContent>
       <HiddenDivider />
       {mediaSection}
     </BodySection>
@@ -214,7 +212,7 @@ BaseProjectPage.propTypes = {
 };
 
 BaseBodyContent.propTypes = {
-  introContentPath: PropTypes.string,
+  customContent: PropTypes.node,
   project: PropTypes.object.isRequired,
   showMainMedia: PropTypes.bool,
 };

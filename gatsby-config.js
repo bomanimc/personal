@@ -1,3 +1,6 @@
+const { apiEndpoint } = require('./prismic-config');
+var repo = /([^\/]+)\.prismic\.io\/graphql/.exec(apiEndpoint);
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -28,8 +31,19 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-source-prismic-graphql',
+        options: {
+          repositoryName: repo[1],
+          path: '/preview', // (optional preview path. Default: /preview)
+          previews: true, // (optional, activated Previews. Default: false)
+          pages: [{ // (optional, builds pages dynamically)
+            type: 'Project_page',         // TypeName from prismic
+            match: '/:uid',  // Pages will be generated under this pattern
+            path: '/project',        // Placeholder page for unpublished documents
+            component: require.resolve('./src/templates/project.js'),
+          }],
+      }
+    }
   ],
 }

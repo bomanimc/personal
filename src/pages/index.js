@@ -10,7 +10,7 @@ import {
   Body, Section, ContentContainer, ProjectGridContainer,
 } from '../components/commonComponents';
 import { ProjectContent, FeaturedProjects } from '../constants';
-import { setMetaTitle } from '../utils';
+import { setMetaTitle } from '../utils/utils';
 
 const hoverNameAnimationSpeed = 1.5;
 

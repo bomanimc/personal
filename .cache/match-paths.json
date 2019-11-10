@@ -1,1 +1,30 @@
-[]
+[
+    {
+        "path": "/404.html",
+        "matchPath": "/404.html"
+    },
+    {
+        "path": "/about/",
+        "matchPath": "/about/"
+    },
+    {
+        "path": "/404/",
+        "matchPath": "/404/"
+    },
+    {
+        "path": "/dev-404-page/",
+        "matchPath": "/dev-404-page/"
+    },
+    {
+        "path": "/project",
+        "matchPath": "/:uid"
+    },
+    {
+        "path": "/informed-consent",
+        "matchPath": "/informed-consent"
+    },
+    {
+        "path": "/preview",
+        "matchPath": "/preview"
+    }
+]
