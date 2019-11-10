@@ -38,7 +38,7 @@ module.exports = {
           path: '/preview', // (optional preview path. Default: /preview)
           previews: true, // (optional, activated Previews. Default: false)
           pages: [{ // (optional, builds pages dynamically)
-            type: 'Project_page',         // TypeName from prismic
+            type: 'Project',         // TypeName from prismic
             match: '/:uid',  // Pages will be generated under this pattern
             path: '/project',        // Placeholder page for unpublished documents
             component: require.resolve('./src/templates/project.js'),

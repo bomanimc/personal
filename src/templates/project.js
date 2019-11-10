@@ -2,23 +2,33 @@
 
 import React from 'react';
 import { graphql } from 'gatsby';
-import { RichText } from 'prismic-reactjs'
+import { RichText } from 'prismic-reactjs';
 import { ProjectContent } from '../constants';
 import { BaseProjectPage, BaseBodyContent } from '../components/commonProjectComponents';
+import { Text } from '../components/slices'
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
   query ProjectQuery {
     prismic {
-      allProject_pages {
+      allProjects {
         edges {
           node {
-            title
-            body
             _meta {
+              id
               uid
               type
-              id
+            }
+            title
+            body {
+              __typename
+              ... on PRISMIC_ProjectBodyText{
+                type
+                label
+                primary{
+                  text
+                }
+              }
             }
           }
         }
@@ -30,7 +40,7 @@ export const query = graphql`
 	
 export default ({ data }) => {
   // Required check for no data being returned
-  const doc = data.prismic.allProject_pages.edges.slice(0,1).pop();
+  const doc = data.prismic.allProjects.edges.slice(0,1).pop();
   if (!doc) return null;
 
   const uid = doc.node._meta.uid;
@@ -49,28 +59,32 @@ export default ({ data }) => {
         <BaseBodyContent
           project={project}
           showMainMedia={false}
-          customContent={RichText.render(doc.node.body)}
+          customContent={
+            <PostSlices slices={doc.node.body} />
+          }
         />
       )}
     />
   );
+};
+
+// Sort and display the different slice options
+const PostSlices = ({ slices }) => {
+  return slices.map((slice, index) => {
+    const res = (() => {
+      switch(slice.type) {
+        case 'text': 
+          return (
+            <div key={index} className="homepage-slice-wrapper">
+              <Text slice={slice} />
+            </div>
+          );
+        default:
+          console.log('Not Paragraph');
+          return;
+      }
+    })();
+
+    return res;
+  })
 }
-
-// const project = ProjectContent[ProjectSlug.informedconsent];
-
-// const InformedConsentProjectPage = () => (
-//   <BaseProjectPage
-//     id={project.id}
-//     title={project.title}
-//     tools={project.tools}
-//     role={project.role}
-//     site={project.site}
-//     body={(
-//       <BaseBodyContent
-//         project={project}
-//         showMainMedia={false}
-//         introContentPath={InformedConsentContentPath}
-//       />
-//     )}
-//   />
-// );
