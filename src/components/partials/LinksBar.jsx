@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { InternalLink, ExternalLink, NavBarLink } from '../commonComponents';
+import { InternalLink, ExternalLink } from '../commonComponents';
 
 const LinksContainer = styled.div`
   background-color: blue;
@@ -34,18 +34,14 @@ const InternalLinkItem = styled(InternalLink)`
 `;
 
 
-const NavBarLinkItem = styled(NavBarLink)`
-  ${linkStyle}
-`;
-
 const LinksBar = ({ links, isNav }) => {
   if (isNav) {
     return (
       <LinksContainer>
         {links.map(item => (
-          <NavBarLinkItem exact to={item.link} key={item.name} activeClassName="active">
+          <InternalLinkItem key={item.name} to={item.link} activeClassName="active">
             {item.name}
-          </NavBarLinkItem>
+          </InternalLinkItem>
         ))}
       </LinksContainer>
     );

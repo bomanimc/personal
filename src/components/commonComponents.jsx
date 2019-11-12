@@ -7,7 +7,6 @@ import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { Text } from './slices';
 import { setMetaTitleWithName } from '../utils/utils';
 
 export const PAGE_WIDTH = '1000px';
@@ -39,14 +38,6 @@ export const TextContent = styled.span`
 `;
 
 export const InternalLink = styled(Link)`
-  ${linkStyle}
-`;
-
-export const InternalHashLink = styled(Link)`
-  ${linkStyle}
-`;
-
-export const NavBarLink = styled(Link)`
   ${linkStyle}
 `;
 

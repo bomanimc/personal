@@ -11,7 +11,6 @@ import Layout from './layout';
 import { MediaTypes } from '../constants';
 import {
   ExternalLink,
-  InternalHashLink,
   TextContent,
   Divider,
   Page,
