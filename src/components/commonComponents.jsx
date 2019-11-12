@@ -63,7 +63,6 @@ export const ContentContainer = styled.section`
   flex-direction: column;
   align-items: ${props => props.horizontalCenter ? 'center' : 'normal'};
   justify-content: ${props => props.verticalCenter ? 'center' : 'normal'};
-  height: ${props => props.containerHeight ? props.containerHeight : '100%'};
   margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
   margin-bottom: ${props => props.marginBottom ? props.marginBottom : '0px'};
 `;

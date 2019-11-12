@@ -129,7 +129,7 @@ ProjectContent[ProjectSlug.gitrocket] = {
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'gitrocket',
+      src: 'gitrocket_main_video',
     },
   ],
 };
@@ -233,11 +233,14 @@ ProjectContent[ProjectSlug.negativereel] = {
   role: 'Individual Project',
   media: 'negativereel_main_video',
   primaryLink: `/${ProjectSlug.negativereel}`,
-  // primaryLink: 'https://www.instagram.com/p/BdNtkMiBg1C/?taken-by=bxmani',
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'negativereel_interaction',
+      src: 'negativereel_main_video',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'negativereel_interaction_video',
     },
   ],
 };
@@ -319,7 +322,12 @@ ProjectContent[ProjectSlug.drawachart] = {
   role: 'Developer & Designer. In collaboration with Rebecca Wei and Justin Holzmann.',
   media: 'drawachart_main_video',
   primaryLink: `/${ProjectSlug.drawachart}`,
-  projectMedia: [],
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'drawachart_main_video',
+    },
+  ],
 };
 
 ProjectContent[ProjectSlug.reflections] = {
@@ -333,7 +341,12 @@ ProjectContent[ProjectSlug.reflections] = {
   site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
   media: 'reflections_main',
   primaryLink: `/${ProjectSlug.reflections}`,
-  projectMedia: [],
+  projectMedia: [
+    // {
+    //   type: MediaTypes.image,
+    //   src: 'reflections_main',
+    // },
+  ],
 };
 
 ProjectContent[ProjectSlug.informedconsent] = {

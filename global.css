@@ -1,3 +1,9 @@
+/* 
+ * Purpose:
+ * Assign height: "100%" to
+ * html, body, #___gatsby &  
+ * div with role="group"
+*/
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Montserrat');
 
 html, body, h1, h2, h3, h4, h5, h6, p,
@@ -16,8 +22,18 @@ video {
 }
 
 body {
-	font-family: Courier;
+  font-family: Courier;
   background: #000;
   color: #fff;
   scroll-behavior: smooth;
+  margin: 0px;
+}
+
+html, body, #___gatsby {
+    height: 100%;
+    width: 100%;
+}
+
+div[role="group"][tabindex] {
+    height: 100%;
 }

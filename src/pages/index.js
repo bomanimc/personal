@@ -71,7 +71,6 @@ const IntroSection = () => (
     bgColor="black"
     textColor="white"
     align="normal"
-    sectionHeight="20%"
     marginHorizontal="20px"
   >
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px">

@@ -7,7 +7,6 @@ import { InternalLink, ExternalLink } from '../commonComponents';
 const LinksContainer = styled.div`
   background-color: blue;
   padding: 10px;
-  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
