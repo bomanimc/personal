@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown';
 import { Image, Video, Transformation } from 'cloudinary-react';
 import { SkillAreaColors } from '../../constants';
 import { TextContent, InternalLink } from '../commonComponents';
+import EyeSVG from '../../images/icons/view.svg';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -167,7 +168,7 @@ const Project = ({ content }) => (
       <TextContent><ReactMarkdown source={content.body} /></TextContent>
     </ProjectContent>
     <ProjectCTA to={content.primaryLink}>
-      <EyeIcon src="img/icons/view.svg" alt={`View ${content.title}`} />
+      <EyeIcon src={EyeSVG} alt={`View ${content.title}`} />
     </ProjectCTA>
   </ProjectContainer>
 );
