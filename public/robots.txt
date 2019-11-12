@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: https://bomani.xyz/sitemap.xml
+Host: https://bomani.xyz

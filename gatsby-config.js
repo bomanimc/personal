@@ -5,7 +5,7 @@ module.exports = {
   siteMetadata: {
     title: `BOMANI`,
     description: `Bomani Oseni McClendon is an engineer living in Brooklyn, NY.`,
-    url: 'https://bomani.xyz',
+    siteUrl: 'https://bomani.xyz',
     ogImageWidth: 600,
     ogImageHeight: 600,
     twitterCreator: '@bxmani',

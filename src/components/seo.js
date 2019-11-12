@@ -17,7 +17,7 @@ function SEO() {
           siteMetadata {
             title
             description
-            url
+            siteUrl
             ogImageHeight
             ogImageWidth
             twitterCreator
@@ -30,7 +30,7 @@ function SEO() {
   );
 
   const metaDescription = site.siteMetadata.description;
-  const { title, url, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain, googleSiteVerification } = site.siteMetadata;
+  const { title, siteUrl, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain, googleSiteVerification } = site.siteMetadata;
 
   return (
     <Helmet
@@ -62,7 +62,7 @@ function SEO() {
         },
         {
           property: `og:url`,
-          content: url,
+          content: siteUrl,
         },
         {
           property: `og:image:width`,
