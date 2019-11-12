@@ -11,11 +11,11 @@ const TextBlock = styled.div`
 `;
 
 export default ({ slice }) => {
-  console.log(slice);
+  const renderableText = slice.primary ? slice.primary.text : slice;
 
   return (
     <TextBlock>
-      {RichText.render(slice.primary.text, linkResolver, htmlSerializer)}
+      {RichText.render(renderableText, linkResolver, htmlSerializer)}
     </TextBlock>
   );
 }

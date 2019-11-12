@@ -3,6 +3,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown/with-html';
 import Layout from "../components/layout"
@@ -18,6 +19,7 @@ import {
   MetadataTitle,
   MetadataContent,
 } from '../components/commonComponents';
+import { Text } from '../components/slices';
 
 const GRID_GAP_VALUE = '36px';
 
@@ -59,6 +61,20 @@ const SpeakingLinkItem = styled.div`
   }
 `;
 
+export const query = graphql`	
+  {
+    prismic {
+      allBios {
+        edges {
+          node {
+            text
+          }
+        }
+      }
+    }
+  }
+`;
+
 const Metadata = ({ location, links }) => (
   <MetadataSection>
     <MetadataItem>
@@ -72,40 +88,45 @@ const Metadata = ({ location, links }) => (
   </MetadataSection>
 );
 
-const AboutPage = () => (
-  <Layout>
-    <AboutRoot>
-      <BasePage
-        title="About"
-        body={(
-          <BodySection>
-            <AboutSectionContainer>
-              <BioContent />
-              <EducationBox />
-              <SpeakingBox />
-              <WritingBox />
-              <FellowshipBox />
-            </AboutSectionContainer>
-          </BodySection>
-        )}
-      />
-    </AboutRoot>
-  </Layout>
-);
+const AboutPage = props => {
+  // Required check for no data being returned
+  const doc = props.data.prismic.allBios.edges.slice(0,1).pop();
 
-const BioContent = () => (
-  <BodySection>
-    <TextContent>
-      Bomani Oseni McClendon is an engineer living in Brooklyn, NY.
-      <br />
-      <br />
-      Bomani studies the ways that Black health outcomes are influenced by a history of scientific racism, examining his own proximity to techno-solutionist monocultures and the medical industry as a starting point. By exploring the shortcomings of scientific practice, Bomani hopes to highlight the validity of other ways of knowing.
-      <br />
-      <br />
-      Bomani has been a member of the Bay Area-based [Foldhaus Art Collective](https://www.foldhaus.com) since 2016 and is a founding member of [Dial Up](http://dialupstuff.com/), a Chicago-based creative collective established in 2014 focused on music, film, design, and technology. He was also a member of the Spring 2019 immersive cohort at [School for Poetic Computation](https://sfpc.io/).
-    </TextContent>
-  </BodySection>
-);
+  return (
+    <Layout>
+      <AboutRoot>
+        <BasePage
+          title="About"
+          body={(
+            <BodySection>
+              <AboutSectionContainer>
+                <BioContent allBiosEdgeDoc={doc} />
+                <EducationBox />
+                <SpeakingBox />
+                <WritingBox />
+                <FellowshipBox />
+              </AboutSectionContainer>
+            </BodySection>
+          )}
+        />
+      </AboutRoot>
+    </Layout>
+  );
+};
+
+const BioContent = ({ allBiosEdgeDoc }) => {
+  if (!allBiosEdgeDoc) {
+    return null;
+  }
+  
+  return (
+    <BodySection>
+      <TextContent>
+        <Text slice={allBiosEdgeDoc.node.text} />
+      </TextContent>
+    </BodySection>
+  );
+};
 
 const EducationBox = () => (
   <div>
