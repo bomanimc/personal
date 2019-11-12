@@ -18,14 +18,19 @@ function SEO({ description, lang, meta, title }) {
           siteMetadata {
             title
             description
-            author
+            url
+            ogImageHeight
+            ogImageWidth
+            twitterCreator
+            twitterDomain
           }
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
+  const { url, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain} = site.siteMetadata;
 
   return (
     <Helmet
@@ -52,12 +57,28 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          property: `og:url`,
+          content: url,
+        },
+        {
+          property: `og:image:width`,
+          content: ogImageWidth,
+        },
+        {
+          property: `og:image:height`,
+          content: ogImageHeight,
+        },
+        {
+          name: `twitter:domain`,
+          content: twitterDomain,
+        },
+        {
+          name: `twitter:site`,
+          content: title,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: twitterCreator,
         },
         {
           name: `twitter:title`,

@@ -4,8 +4,12 @@ var repo = /([^\/]+)\.prismic\.io\/graphql/.exec(apiEndpoint);
 module.exports = {
   siteMetadata: {
     title: `BOMANI`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@bomanimc`,
+    description: `Bomani Oseni McClendon is an engineer living in Brooklyn, NY.`,
+    url: 'https://bomani.xyz',
+    ogImageWidth: 600,
+    ogImageHeight: 600,
+    twitterCreator: '@bxmani',
+    twitterDomain: 'bomani.xyz',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
