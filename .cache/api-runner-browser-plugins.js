@@ -1,4 +1,7 @@
 module.exports = [{
+      plugin: require('../node_modules/gatsby-plugin-google-analytics/gatsby-browser.js'),
+      options: {"plugins":[],"trackingId":"UA-120000757-1"},
+    },{
       plugin: require('../node_modules/gatsby-plugin-manifest/gatsby-browser.js'),
       options: {"plugins":[],"name":"BOMANI","short_name":"BOMANI","start_url":"/","background_color":"#000","theme_color":"#000","display":"minimal-ui","icon":"src/images/drip.png"},
     },{

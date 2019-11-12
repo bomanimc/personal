@@ -23,6 +23,7 @@ function SEO({ description, lang, meta, title }) {
             ogImageWidth
             twitterCreator
             twitterDomain
+            googleSiteVerification
           }
         }
       }
@@ -30,7 +31,7 @@ function SEO({ description, lang, meta, title }) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const { url, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain} = site.siteMetadata;
+  const { url, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain, googleSiteVerification } = site.siteMetadata;
 
   return (
     <Helmet
@@ -40,6 +41,10 @@ function SEO({ description, lang, meta, title }) {
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
+        { 
+          name: 'google-site-verification',
+          content: googleSiteVerification,
+        },
         {
           name: `description`,
           content: metaDescription,

@@ -5,6 +5,9 @@ var plugins = [{
       plugin: require('/Users/bomani/Desktop/personal/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[]},
     },{
+      plugin: require('/Users/bomani/Desktop/personal/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
+      options: {"plugins":[],"trackingId":"UA-120000757-1"},
+    },{
       plugin: require('/Users/bomani/Desktop/personal/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
       options: {"plugins":[],"name":"BOMANI","short_name":"BOMANI","start_url":"/","background_color":"#000","theme_color":"#000","display":"minimal-ui","icon":"src/images/drip.png"},
     },{

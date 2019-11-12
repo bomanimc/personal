@@ -10,6 +10,7 @@ module.exports = {
     ogImageHeight: 600,
     twitterCreator: '@bxmani',
     twitterDomain: 'bomani.xyz',
+    googleSiteVerification: 'oUOz_91m_HgyQz1q_kErpkk03-qUN-OS1Wh8once9gg',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
