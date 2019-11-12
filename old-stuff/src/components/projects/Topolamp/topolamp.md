@@ -1,1 +1,0 @@
-TopoLamp is a prototype topographic lamp. I created the topographic layout with bezier curves in Adobe Illustrator and made a prototype with stacked laser cut pieces of wood and acrylic. Inside, there are 24 NeoPixel LEDs controlled by an Arduino. I also added a Bluetooth module for wirelessly changing the color of the LEDs.
