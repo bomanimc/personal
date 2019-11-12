@@ -1,1 +1,78 @@
-[]
+[
+    {
+        "path": "/404.html",
+        "matchPath": "/404.html"
+    },
+    {
+        "path": "/about/",
+        "matchPath": "/about/"
+    },
+    {
+        "path": "/404/",
+        "matchPath": "/404/"
+    },
+    {
+        "path": "/dev-404-page/",
+        "matchPath": "/dev-404-page/"
+    },
+    {
+        "path": "/",
+        "matchPath": "/:uid"
+    },
+    {
+        "path": "/dial-up",
+        "matchPath": "/dial-up"
+    },
+    {
+        "path": "/draw-a-chart",
+        "matchPath": "/draw-a-chart"
+    },
+    {
+        "path": "/negativereel",
+        "matchPath": "/negativereel"
+    },
+    {
+        "path": "/gitrocket",
+        "matchPath": "/gitrocket"
+    },
+    {
+        "path": "/reflections",
+        "matchPath": "/reflections"
+    },
+    {
+        "path": "/topolamp",
+        "matchPath": "/topolamp"
+    },
+    {
+        "path": "/waves",
+        "matchPath": "/waves"
+    },
+    {
+        "path": "/bike-wheel-synth",
+        "matchPath": "/bike-wheel-synth"
+    },
+    {
+        "path": "/versions-jasper-lotti",
+        "matchPath": "/versions-jasper-lotti"
+    },
+    {
+        "path": "/shrumen-lumen",
+        "matchPath": "/shrumen-lumen"
+    },
+    {
+        "path": "/code-as-art",
+        "matchPath": "/code-as-art"
+    },
+    {
+        "path": "/black-health-book",
+        "matchPath": "/black-health-book"
+    },
+    {
+        "path": "/informed-consent",
+        "matchPath": "/informed-consent"
+    },
+    {
+        "path": "/preview",
+        "matchPath": "/preview"
+    }
+]
