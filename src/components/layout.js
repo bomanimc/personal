@@ -8,8 +8,7 @@ import { SocialLinks, NavLinks } from '../constants';
 const BaseWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  flex: 1;
 `;
 
 const ContentWrapper = styled.div`
