@@ -26,14 +26,6 @@ import {
 import MarkdownTextBlock from './partials/MarkdownTextBlock';
 import { setMetaTitleWithName } from '../utils/utils';
 
-export const BackButtonWrapper = styled.div`
-  margin-bottom: 24px;
-`;
-
-export const BackButton = styled(InternalHashLink)`
-  font-weight: bold;
-`;
-
 export const HiddenDivider = styled.div`
   margin: 48px 0px;
 `;
@@ -132,9 +124,6 @@ export const BaseProjectPage = ({
     </Helmet>
     <Page>
       <PageCenteringContainer>
-        <BackButtonWrapper>
-          <BackButton smooth to={`/#${id}`}>Back</BackButton>
-        </BackButtonWrapper>
         <PageTitle>{title}</PageTitle>
         <Metadata tools={tools} role={role} site={site} />
         <Divider />
