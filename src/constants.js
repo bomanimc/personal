@@ -70,6 +70,10 @@ ProjectContent[ProjectSlug.shrumen] = {
   projectMedia: [
     {
       type: MediaTypes.image,
+      src: 'shrumen_main',
+    },
+    {
+      type: MediaTypes.image,
       src: 'shrumen_sandy',
     },
     {
@@ -146,6 +150,10 @@ ProjectContent[ProjectSlug.versions] = {
   media: 'versions_main',
   primaryLink: `/${ProjectSlug.versions}`,
   projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'versions_main',
+    },
     {
       type: MediaTypes.image,
       src: 'versions_wings.jpg',
@@ -342,10 +350,10 @@ ProjectContent[ProjectSlug.reflections] = {
   media: 'reflections_main',
   primaryLink: `/${ProjectSlug.reflections}`,
   projectMedia: [
-    // {
-    //   type: MediaTypes.image,
-    //   src: 'reflections_main',
-    // },
+    {
+      type: MediaTypes.image,
+      src: 'reflections_main',
+    },
   ],
 };
 
@@ -360,6 +368,10 @@ ProjectContent[ProjectSlug.informedconsent] = {
   media: 'informedconsent_main',
   primaryLink: `/${ProjectSlug.informedconsent}`,
   projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'informedconsent_main.JPG',
+    },
     {
       type: MediaTypes.image,
       src: 'informedconsent_frontal.JPG',
