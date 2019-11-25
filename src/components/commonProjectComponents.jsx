@@ -136,6 +136,9 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
     switch (media.type) {
       case MediaTypes.video:
         console.log(media.videoUrl);
+        const srcEmbedUrl = media.videoUrl.includes('vimeo')
+          ? 
+          : `${media.videoUrl}?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1`;
         return (
           <VideoWrapper key={media.videoUrl}>
             <iframe 
