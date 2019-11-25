@@ -33,11 +33,13 @@ export const ProjectSlug = {
   futurecity: 'future-city',
   informedconsent: 'informed-consent',
   blackhealthbook: 'black-health-book',
+  obb: 'out-of-the-black-box',
 };
 
 export const FeaturedProjects = [
   ProjectSlug.informedconsent,
   ProjectSlug.blackhealthbook,
+  ProjectSlug.obb,
   ProjectSlug.shrumen,
   ProjectSlug.versions,
   ProjectSlug.codeasart,
@@ -79,6 +81,29 @@ ProjectContent[ProjectSlug.shrumen] = {
     {
       type: MediaTypes.video,
       videoUrl: 'https://www.youtube.com/embed/T75FvUDirNM', // Making Mushrooms Glow
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.obb] = {
+  id: ProjectSlug.obb,
+  title: 'Out of the Black Box',
+  tags: [Tags.art],
+  body: `Out of the Black Box (OBB) is a workshop series taught at [Pioneer Works](https://pioneerworks.org/) to help children in grades 2-5 to uncover the magical 
+  logic of electronic circuitry through arts and crafts.`,
+  tools: 'Squishy Circuits, Hexbugs, Voice Recording Modules, and many other electronic components and craft supplies.',
+  role: `Co-teacher & Organizer`,
+  site: 'https://pioneerworks.org/programs/summer-steam-program-out-of-the-black-box/',
+  primaryLink: `/${ProjectSlug.obb}`,
+  media: 'obb_drawbot',
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'obb_hexbug_playing',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'obb_drawbot',
     },
   ],
 };
