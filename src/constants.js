@@ -108,11 +108,11 @@ ProjectContent[ProjectSlug.waves] = {
     },
     {
       type: MediaTypes.video,
-      videoUrl: 'https://vimeo.com/220101786', // Waves Demo
+      videoUrl: 'https://player.vimeo.com/video/220101786', // Waves Demo
     },
     {
       type: MediaTypes.video,
-      videoUrl: 'https://vimeo.com/220102610', // Eunice Testing Waves
+      videoUrl: 'https://player.vimeo.com/video/220102610', // Eunice Testing Waves
     },
   ],
 };
@@ -267,7 +267,7 @@ ProjectContent[ProjectSlug.codeasart] = {
   projectMedia: [
     {
       type: MediaTypes.video,
-      videoUrl: 'https://vimeo.com/307190485', // Demo Video
+      videoUrl: 'https://player.vimeo.com/video/307190485', // Demo Video
     },
   ],
 };
