@@ -143,7 +143,6 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
         );
       case MediaTypes.image:
       default:
-        console.log(media);
         return (
           media.src.includes('video')
             ? (
