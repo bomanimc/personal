@@ -22,7 +22,6 @@ import {
   MetadataTitle,
   MetadataContent,
 } from './commonComponents';
-import MarkdownTextBlock from './partials/MarkdownTextBlock';
 import { setMetaTitleWithName } from '../utils/utils';
 
 export const HiddenDivider = styled.div`
@@ -136,9 +135,20 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
   const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
     switch (media.type) {
       case MediaTypes.video:
+        console.log(media.videoUrl);
         return (
           <VideoWrapper key={media.videoUrl}>
             <ReactPlayer url={media.videoUrl} />
+            <iframe 
+              allowfullscreen="1"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+              title="YouTube video player" 
+              src="https://www.youtube.com/embed/T75FvUDirNM?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1"
+              id="widget2"
+              width="100%"
+              height="100%"
+              frameborder="0">
+            </iframe>
           </VideoWrapper>
         );
       case MediaTypes.image:
