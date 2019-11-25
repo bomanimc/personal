@@ -78,7 +78,7 @@ ProjectContent[ProjectSlug.shrumen] = {
     },
     {
       type: MediaTypes.video,
-      videoUrl: 'https://www.youtube.com/watch?v=T75FvUDirNM', // Making Mushrooms Glow
+      videoUrl: 'https://www.youtube.com/embed/T75FvUDirNM', // Making Mushrooms Glow
     },
   ],
 };
@@ -188,7 +188,7 @@ ProjectContent[ProjectSlug.futurecity] = {
   projectMedia: [
     {
       type: MediaTypes.video,
-      videoUrl: 'https://www.youtube.com/watch?v=20Jf0CrJreo',
+      videoUrl: 'https://www.youtube.com/embed/20Jf0CrJreo',
     },
     {
       type: MediaTypes.image,

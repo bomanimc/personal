@@ -138,12 +138,11 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
         console.log(media.videoUrl);
         return (
           <VideoWrapper key={media.videoUrl}>
-            <ReactPlayer url={media.videoUrl} />
             <iframe 
               allowfullscreen="1"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
               title="YouTube video player" 
-              src="https://www.youtube.com/embed/T75FvUDirNM?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1"
+              src={`${media.videoUrl}?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1`}
               id="widget2"
               width="100%"
               height="100%"
