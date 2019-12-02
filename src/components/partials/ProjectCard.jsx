@@ -146,6 +146,7 @@ const Project = ({ content }) => (
                 loop
                 muted
                 playsInline
+                secure
               >
                 <Transformation audioCodec="none" />
               </ProjectVideo>
@@ -157,6 +158,7 @@ const Project = ({ content }) => (
               publicId={content.media}
               order={1}
               alt={content.title}
+              secure
             >
               <Transformation height="630" quality="auto:best" crop="limit" fetchFormat="auto" />
             </ProjectImage>

@@ -175,6 +175,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
                   loop
                   muted
                   playsInline
+                  secure
                 >
                   <Transformation audioCodec="none" />
                 </ProjectVideo>
@@ -185,6 +186,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
                 <ProjectPageImage
                   cloudName="bomani-personal"
                   publicId={media.src}
+                  secure
                 >
                   <Transformation quality="auto:best" crop="limit" fetchFormat="auto" />
                 </ProjectPageImage>
