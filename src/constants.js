@@ -312,7 +312,7 @@ ProjectContent[ProjectSlug.bikewheelsynth] = {
   projectMedia: [
     {
       type: MediaTypes.video,
-      videoUrl: 'https://youtu.be/w4CTSO9HesA', // Tutorial Video
+      videoUrl: 'https://www.youtube.com/embed/w4CTSO9HesA',
     },
   ],
 };
@@ -407,7 +407,7 @@ ProjectContent[ProjectSlug.informedconsent] = {
     },
     {
       type: MediaTypes.video,
-      videoUrl: 'https://www.youtube.com/watch?v=FdqxRcJ08FE',
+      videoUrl: 'https://www.youtube.com/embed/FdqxRcJ08FE',
     },
   ],
 };
