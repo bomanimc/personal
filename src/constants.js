@@ -112,8 +112,12 @@ ProjectContent[ProjectSlug.mybluewindow] = {
   role: 'Sole Developer',
   site: 'https://americanartist.us/app',
   primaryLink: `/${ProjectSlug.mybluewindow}`,
-  media: 'obb_drawbot',
+  media: 'mybluewindow_threescreens',
   projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'mybluewindow_threescreens',
+    },
     {
       type: MediaTypes.video,
       videoUrl: 'https://player.vimeo.com/video/377343798', // Demo Video
