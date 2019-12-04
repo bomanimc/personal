@@ -96,8 +96,7 @@ const Metadata = ({ tools, role, site }) => (
           </ExternalLink>
         </MetadataContent>
       </MetadataItem>
-      )
-    }
+      )}
   </MetadataSection>
 );
 
@@ -136,27 +135,31 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
     switch (media.type) {
       case MediaTypes.video:
         const videoIframe = media.videoUrl.includes('vimeo')
-          ? <iframe 
+          ? (
+            <iframe
               src={`${media.videoUrl}?title=0&amp;byline=0&amp;portrait=0&amp;playsinline=0&amp;autopause=0&amp;controls=0&amp;app_id=122963`}
               allow="autoplay; fullscreen"
-              allowfullscreen=""
+              allowFullScreen=""
               title="Vimeo Video Player"
               data-ready="true"
-              style={{'width': '100%', 'height': '100%'}}
+              style={{ width: '100%', height: '100%' }}
               width="640"
-              height="360" 
-              frameborder="0">
-            </iframe>
-          : <iframe 
-              allowfullscreen="1"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-              title="YouTube Video Player" 
+              height="360"
+              frameBorder="0"
+            />
+          )
+          : (
+            <iframe
+              allowFullScreen="1"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              title="YouTube Video Player"
               src={`${media.videoUrl}?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1`}
               id="widget2"
               width="100%"
               height="100%"
-              frameborder="0">
-            </iframe>;
+              frameBorder="0"
+            />
+          );
         return (
           <VideoWrapper key={media.videoUrl}>
             {videoIframe}
@@ -196,7 +199,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
     }
   });
 
-  const content = customContent ? customContent : project.body;
+  const content = customContent || project.body;
 
   return (
     <BodySection>

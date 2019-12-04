@@ -4,7 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import Layout from "../components/layout";
+import Layout from '../components/layout';
 import ProjectCard from '../components/partials/ProjectCard';
 import {
   Body, Section, ContentContainer, ProjectGridContainer,
@@ -95,7 +95,7 @@ const ProjectSection = () => (
     <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px" marginBottom="36px">
       <ProjectGridContainer containerHeight="auto">
         {
-          FeaturedProjects.map(section => (
+          FeaturedProjects.map((section) => (
             <ProjectCard
               key={ProjectContent[section].id}
               content={ProjectContent[section]}

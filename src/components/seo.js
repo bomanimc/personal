@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react";
-import Helmet from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import Helmet from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO() {
   const { site } = useStaticQuery(
@@ -26,11 +26,13 @@ function SEO() {
           }
         }
       }
-    `
+    `,
   );
 
   const metaDescription = site.siteMetadata.description;
-  const { title, siteUrl, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain, googleSiteVerification } = site.siteMetadata;
+  const {
+    title, siteUrl, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain, googleSiteVerification,
+  } = site.siteMetadata;
 
   return (
     <Helmet
@@ -38,63 +40,63 @@ function SEO() {
         lang: 'en',
       }}
       title={title}
-      titleTemplate={`%s`}
+      titleTemplate="%s"
       meta={[
-        { 
+        {
           name: 'google-site-verification',
           content: googleSiteVerification,
         },
         {
-          name: `description`,
+          name: 'description',
           content: metaDescription,
         },
         {
-          property: `og:title`,
+          property: 'og:title',
           content: title,
         },
         {
-          property: `og:description`,
+          property: 'og:description',
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: 'og:type',
+          content: 'website',
         },
         {
-          property: `og:url`,
+          property: 'og:url',
           content: siteUrl,
         },
         {
-          property: `og:image:width`,
+          property: 'og:image:width',
           content: ogImageWidth,
         },
         {
-          property: `og:image:height`,
+          property: 'og:image:height',
           content: ogImageHeight,
         },
         {
-          name: `twitter:domain`,
+          name: 'twitter:domain',
           content: twitterDomain,
         },
         {
-          name: `twitter:site`,
+          name: 'twitter:site',
           content: title,
         },
         {
-          name: `twitter:creator`,
+          name: 'twitter:creator',
           content: twitterCreator,
         },
         {
-          name: `twitter:title`,
+          name: 'twitter:title',
           content: title,
         },
         {
-          name: `twitter:description`,
+          name: 'twitter:description',
           content: metaDescription,
         },
       ]}
     />
-  )
+  );
 }
 
 export default SEO;

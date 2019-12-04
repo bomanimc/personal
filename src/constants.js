@@ -92,7 +92,7 @@ ProjectContent[ProjectSlug.obb] = {
   body: `Out of the Black Box (OBB) is a workshop series taught at [Pioneer Works](https://pioneerworks.org/) to help children in grades 2-5 to uncover the magical 
   logic of electronic circuitry through arts and crafts.`,
   tools: 'Squishy Circuits, Hexbugs, Voice Recording Modules, and many other electronic components and craft supplies.',
-  role: `Co-teacher & Organizer`,
+  role: 'Co-teacher & Organizer',
   site: 'https://pioneerworks.org/programs/summer-steam-program-out-of-the-black-box/',
   primaryLink: `/${ProjectSlug.obb}`,
   media: 'obb_drawbot',

@@ -16,8 +16,8 @@ export default class MarkdownTextBlock extends React.Component {
     }
 
     fetch(markdownContentPath)
-      .then(response => response.text())
-      .then(text => this.setState({ markdownContent: text }));
+      .then((response) => response.text())
+      .then((text) => this.setState({ markdownContent: text }));
   }
 
   render() {

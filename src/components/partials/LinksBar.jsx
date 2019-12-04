@@ -37,7 +37,7 @@ const LinksBar = ({ links, isNav }) => {
   if (isNav) {
     return (
       <LinksContainer>
-        {links.map(item => (
+        {links.map((item) => (
           <InternalLinkItem key={item.name} to={item.link} activeClassName="active">
             {item.name}
           </InternalLinkItem>
@@ -46,7 +46,7 @@ const LinksBar = ({ links, isNav }) => {
     );
   }
 
-  const barLinks = links.map(item => (
+  const barLinks = links.map((item) => (
     item.isExternal
       ? (
         <ExternalLinkItem href={item.link} key={item.name} target="_blank" rel="noopener noreferrer">

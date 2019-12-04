@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown/with-html';
-import Layout from "../components/layout"
+import Layout from '../components/layout';
 import { AboutCopy } from '../constants';
 import {
   ExternalLink,
@@ -88,9 +88,9 @@ const Metadata = ({ location, links }) => (
   </MetadataSection>
 );
 
-const AboutPage = props => {
+const AboutPage = (props) => {
   // Required check for no data being returned
-  const doc = props.data.prismic.allBios.edges.slice(0,1).pop();
+  const doc = props.data.prismic.allBios.edges.slice(0, 1).pop();
 
   return (
     <Layout>
@@ -118,7 +118,7 @@ const BioContent = ({ allBiosEdgeDoc }) => {
   if (!allBiosEdgeDoc) {
     return null;
   }
-  
+
   return (
     <BodySection>
       <TextContent>
@@ -133,7 +133,7 @@ const EducationBox = () => (
     <AboutBoxTitle>Education</AboutBoxTitle>
     <AboutBoxContent>
       <div>
-        {AboutCopy.education.map(item => (
+        {AboutCopy.education.map((item) => (
           <EducationItem
             key={item.name}
             name={item.name}
@@ -152,7 +152,7 @@ const SpeakingBox = () => (
     <AboutBoxTitle>Speaking</AboutBoxTitle>
     <AboutBoxContent>
       <div>
-        {AboutCopy.speaking.map(item => (
+        {AboutCopy.speaking.map((item) => (
           <SpeakingLink
             key={item.name}
             name={item.name}
@@ -173,7 +173,7 @@ const WritingBox = () => (
     <AboutBoxTitle>Writing</AboutBoxTitle>
     <AboutBoxContent>
       <div>
-        {AboutCopy.writing.map(item => (
+        {AboutCopy.writing.map((item) => (
           <WritingLink
             key={item.name}
             name={item.name}
@@ -191,7 +191,7 @@ const FellowshipBox = () => (
     <AboutBoxTitle>Fellowships</AboutBoxTitle>
     <AboutBoxContent>
       <div>
-        {AboutCopy.fellowships.map(item => (
+        {AboutCopy.fellowships.map((item) => (
           <FellowshipItem
             key={item.org}
             org={item.org}

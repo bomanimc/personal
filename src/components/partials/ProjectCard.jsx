@@ -23,7 +23,7 @@ const ProjectContainer = styled.div`
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 3px 3px 3px ${props => props.shadowColor};
+    box-shadow: 3px 3px 3px ${(props) => props.shadowColor};
   }
 
   @media (max-width: 768px) {

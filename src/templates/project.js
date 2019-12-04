@@ -35,15 +35,15 @@ export const query = graphql`
   }
 `;
 
-	
-const Project = props => {
+
+const Project = (props) => {
   // Required check for no data being returned
-  const doc = props.data.prismic.allProjects.edges.slice(0,1).pop();
+  const doc = props.data.prismic.allProjects.edges.slice(0, 1).pop();
   if (!doc) return null;
 
-  const uid = doc.node._meta.uid;
+  const { uid } = doc.node._meta;
   const project = ProjectContent[uid];
-	
+
   return (
     <BaseProjectPage
       id={project.id}
