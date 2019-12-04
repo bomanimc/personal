@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { RichText } from 'prismic-reactjs';
 import styled from 'styled-components';

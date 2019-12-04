@@ -31,7 +31,13 @@ function SEO() {
 
   const metaDescription = site.siteMetadata.description;
   const {
-    title, siteUrl, ogImageWidth, ogImageHeight, twitterCreator, twitterDomain, googleSiteVerification,
+    title,
+    siteUrl,
+    ogImageWidth,
+    ogImageHeight,
+    twitterCreator,
+    twitterDomain,
+    googleSiteVerification,
   } = site.siteMetadata;
 
   return (

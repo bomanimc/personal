@@ -15,7 +15,7 @@ export const PostSlices = ({ slices }) => slices.map((slice, index) => {
           </div>
         );
       default:
-        console.log('Not Paragraph');
+        return null;
     }
   })();
 
