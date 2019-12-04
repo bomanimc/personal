@@ -3,7 +3,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import ReactPlayer from 'react-player';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Image, Video, Transformation } from 'cloudinary-react';
 import { Helmet } from 'react-helmet';
@@ -113,7 +112,7 @@ export const getProjectMedia = (projectData, showMainMedia) => {
 };
 
 export const BaseProjectPage = ({
-  id, title, tools, role, site, body,
+  title, tools, role, site, body,
 }) => (
   <Layout>
     <Helmet>
@@ -133,7 +132,7 @@ export const BaseProjectPage = ({
 export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
   const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
     switch (media.type) {
-      case MediaTypes.video:
+      case MediaTypes.video: {
         const videoIframe = media.videoUrl.includes('vimeo')
           ? (
             <iframe
@@ -165,6 +164,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
             {videoIframe}
           </VideoWrapper>
         );
+      }
       case MediaTypes.image:
       default:
         return (
@@ -217,7 +217,6 @@ Metadata.propTypes = {
 };
 
 BaseProjectPage.propTypes = {
-  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.node.isRequired,
   tools: PropTypes.string.isRequired,
@@ -232,7 +231,7 @@ BaseBodyContent.propTypes = {
 };
 
 BaseBodyContent.defaultProps = {
-  introContentPath: null,
+  customContent: null,
   showMainMedia: true,
 };
 
