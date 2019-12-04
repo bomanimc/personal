@@ -34,6 +34,7 @@ export const ProjectSlug = {
   informedconsent: 'informed-consent',
   blackhealthbook: 'black-health-book',
   obb: 'out-of-the-black-box',
+  mybluewindow: '1956-2054',
 };
 
 export const FeaturedProjects = [
@@ -41,16 +42,9 @@ export const FeaturedProjects = [
   ProjectSlug.blackhealthbook,
   ProjectSlug.obb,
   ProjectSlug.shrumen,
-  ProjectSlug.versions,
   ProjectSlug.codeasart,
-];
-
-export const ProjectOrder = [
-  ProjectSlug.informedconsent,
-  ProjectSlug.blackhealthbook,
-  ProjectSlug.shrumen,
+  ProjectSlug.mybluewindow,
   ProjectSlug.versions,
-  ProjectSlug.codeasart,
 ];
 
 export const ProjectContent = {};
@@ -104,6 +98,25 @@ ProjectContent[ProjectSlug.obb] = {
     {
       type: MediaTypes.image,
       src: 'obb_drawbot',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.mybluewindow] = {
+  id: ProjectSlug.mybluewindow,
+  title: '1956/2054',
+  tags: [Tags.art],
+  body: `1956/2054 is a mobile application that complements [American Artist's](https://americanartist.us/)
+  exhibition called ["My Blue Window" at Queens Museum](https://queensmuseum.org/2019/02/american-artist).`,
+  tools: 'React Native, Expo, Firebase, Google Cloud Functions.',
+  role: 'Sole Developer',
+  site: 'https://americanartist.us/app',
+  primaryLink: `/${ProjectSlug.mybluewindow}`,
+  media: 'obb_drawbot',
+  projectMedia: [
+    {
+      type: MediaTypes.video,
+      videoUrl: 'https://player.vimeo.com/video/377343798', // Demo Video
     },
   ],
 };
