@@ -10,6 +10,7 @@ export const PostSlices = ({ slices }) => slices.map((slice, index) => {
       case 'text':
       case 'paragraph':
         return (
+          // eslint-disable-next-line react/no-array-index-key
           <div key={index} className="homepage-slice-wrapper">
             <Text slice={slice} />
           </div>

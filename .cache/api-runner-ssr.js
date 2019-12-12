@@ -12,7 +12,7 @@ var plugins = [{
       options: {"plugins":[],"name":"BOMANI","short_name":"BOMANI","start_url":"/","background_color":"#000","theme_color":"#000","display":"minimal-ui","icon":"src/images/drip.png"},
     },{
       plugin: require('/Users/bomani/Desktop/personal/node_modules/gatsby-source-prismic-graphql/gatsby-ssr'),
-      options: {"plugins":[],"repositoryName":"bomani","path":"/preview","previews":true,"pages":[{"type":"Project","match":"/:uid","path":"/","component":"/Users/bomani/Desktop/personal/src/templates/project.js"}]},
+      options: {"plugins":[],"repositoryName":"bomani","path":"/preview","previews":true,"pages":[{"type":"Project","match":"/:uid","path":"/","component":"/Users/bomani/Desktop/personal/src/templates/project.jsx"}]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [

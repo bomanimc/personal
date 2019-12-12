@@ -1,6 +1,5 @@
 // In src/prismic-configuration.js
-export const linkResolver = (doc) => {
-  console.log('Link Resolver', doc);
+const linkResolver = (doc) => {
   // URL for a page type
   if (doc.type === 'page') {
     return `/${doc.uid}`;
@@ -8,3 +7,5 @@ export const linkResolver = (doc) => {
   // Backup for all other types
   return '/';
 };
+
+export default linkResolver;

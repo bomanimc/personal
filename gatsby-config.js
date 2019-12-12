@@ -72,7 +72,7 @@ module.exports = {
           type: 'Project', // TypeName from prismic
           match: '/:uid', // Pages will be generated under this pattern
           path: '/', // Placeholder page for unpublished documents
-          component: require.resolve('./src/templates/project.js'),
+          component: require.resolve('./src/templates/project.jsx'),
         }],
       },
     },

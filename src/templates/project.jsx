@@ -38,9 +38,13 @@ export const query = graphql`
 
 const Project = (props) => {
   // Required check for no data being returned
-  const doc = props.data.prismic.allProjects.edges.slice(0, 1).pop();
+  // eslint-disable-next-line react/prop-types
+  const { data } = props;
+  // eslint-disable-next-line react/prop-types
+  const doc = data.prismic.allProjects.edges.slice(0, 1).pop();
   if (!doc) return null;
 
+  // eslint-disable-next-line no-underscore-dangle
   const { uid } = doc.node._meta;
   const project = ProjectContent[uid];
 

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/jsx-props-no-spreading */
 // -- The HTML Serializer
 // This function will be used to modify the way that a Rich Text or Title field is rendered.
 
@@ -5,7 +7,7 @@ import React from 'react';
 import { Link as PrismicLink } from 'prismic-reactjs';
 import { Elements } from 'prismic-richtext';
 import { Link } from 'gatsby';
-import { linkResolver } from './linkResolver';
+import linkResolver from './linkResolver';
 
 export default function (type, element, content, children, index) {
   // Generate links to Prismic Documents as <Link> components

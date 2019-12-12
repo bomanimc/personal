@@ -61,7 +61,7 @@ const SpeakingLinkItem = styled.div`
   }
 `;
 
-export const query = graphql`	
+export const query = graphql`
   {
     prismic {
       allBios {
@@ -90,7 +90,10 @@ const Metadata = ({ location, links }) => (
 
 const AboutPage = (props) => {
   // Required check for no data being returned
-  const doc = props.data.prismic.allBios.edges.slice(0, 1).pop();
+  // eslint-disable-next-line react/prop-types
+  const { data } = props;
+  // eslint-disable-next-line react/prop-types
+  const doc = data.prismic.allBios.edges.slice(0, 1).pop();
 
   return (
     <Layout>
@@ -257,6 +260,11 @@ const FellowshipItem = ({
 Metadata.propTypes = {
   location: PropTypes.string.isRequired,
   links: PropTypes.string.isRequired,
+};
+
+BioContent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  allBiosEdgeDoc: PropTypes.object.isRequired,
 };
 
 EducationItem.propTypes = {

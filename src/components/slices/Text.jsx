@@ -2,7 +2,7 @@
 import React from 'react';
 import { RichText } from 'prismic-reactjs';
 import styled from 'styled-components';
-import { linkResolver } from '../../utils/linkResolver';
+import linkResolver from '../../utils/linkResolver';
 import htmlSerializer from '../../utils/htmlSerializer';
 
 const TextBlock = styled.div`
