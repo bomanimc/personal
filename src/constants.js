@@ -557,6 +557,13 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Interactive Projection Mapping with Processing',
+      event: 'The School of Afrotectopia',
+      date: 'January 2020',
+      location: 'New York, NY',
+      link: 'https://docs.google.com/presentation/d/1huLuMwr7kGXJifFZAMnxy4fk89dAXh7JsjT6YsKFPHE/edit#slide=id.p',
+    },
+    {
       name: 'Panel Discussion at Decode Experiential Vol. V',
       event: 'Lightbox',
       date: 'September 2019',
