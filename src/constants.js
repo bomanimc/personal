@@ -519,13 +519,6 @@ export const NavLinks = [
 export const AboutCopy = {
   education: [
     {
-      name: 'New York University',
-      degree: 'M.P.S in Interactive Telecommunications',
-      date: '2019 - 2021',
-      startDate: '2019',
-      endDate: '2021',
-    },
-    {
       name: 'School for Poetic Computation',
       degree: '10-Week Spring Session',
       startDate: '2019',
