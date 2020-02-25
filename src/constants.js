@@ -93,7 +93,7 @@ ProjectContent[ProjectSlug.mybluewindow] = {
   id: ProjectSlug.mybluewindow,
   title: '1956/2054',
   body: `1956/2054 is a mobile application that complements [American Artist's](https://americanartist.us/)
-  exhibition called ["My Blue Window" at Queens Museum](https://queensmuseum.org/2019/02/american-artist).`,
+  exhibition called ["My Blue Window" at Queens Museum](https://queensmuseum.org/2019/02/american-artist) focused on predictive policing.`,
   tools: 'React Native, Expo, Firebase, Google Cloud Functions.',
   role: 'Sole Developer',
   site: 'https://americanartist.us/app',
