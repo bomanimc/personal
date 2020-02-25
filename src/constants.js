@@ -35,6 +35,7 @@ export const ProjectSlug = {
   blackhealthbook: 'black-health-book',
   obb: 'out-of-the-black-box',
   mybluewindow: '1956-2054',
+  babyfaith: 'baby-faith',
 };
 
 export const FeaturedProjects = [
@@ -44,6 +45,7 @@ export const FeaturedProjects = [
   ProjectSlug.shrumen,
   ProjectSlug.codeasart,
   ProjectSlug.mybluewindow,
+  ProjectSlug.babyfaith,
   ProjectSlug.versions,
 ];
 
@@ -117,6 +119,30 @@ ProjectContent[ProjectSlug.mybluewindow] = {
     {
       type: MediaTypes.image,
       src: 'mybluewindow_threescreens',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.babyfaith] = {
+  id: ProjectSlug.babyfaith,
+  title: 'Baby Faith',
+  tags: [Tags.art],
+  body: `Baby Faith is an online conversational chatbot created as the latest iteration of artist [Ryan Kuo’s](https://rkuo.net/) series
+  on AI conversational agents that embody “the blind 'faith' that underpins both white supremacy and miserable
+  white liberalism”. Commissioned by [Rhizome](https://rhizome.org/) and [Jigsaw](https://jigsaw.google.com/).`,
+  tools: 'React, Next.js, p5.js, IBM Watson',
+  role: 'Project Lead & Developer',
+  site: 'https://faith.rhizome.org/',
+  primaryLink: `/${ProjectSlug.babyfaith}`,
+  media: 'babyfaith_main',
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'babyfaith_main',
+    },
+    {
+      type: MediaTypes.video,
+      videoUrl: 'https://player.vimeo.com/video/393681927', // Baby Faith Demo
     },
   ],
 };
