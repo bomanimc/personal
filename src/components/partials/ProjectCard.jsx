@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { Image, Video, Transformation } from 'cloudinary-react';
-import { SkillAreaColors } from '../../constants';
 import { TextContent, InternalLink } from '../commonComponents';
 import EyeSVG from '../../images/icons/view.svg';
 
@@ -23,7 +22,7 @@ const ProjectContainer = styled.div`
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 3px 3px 3px ${(props) => props.shadowColor};
+    box-shadow: 3px 3px 3px #0000ff;
   }
 
   @media (max-width: 768px) {
@@ -125,12 +124,7 @@ const EyeIcon = styled.img`
 `;
 
 const Project = ({ content }) => (
-  <ProjectContainer
-    id={content.id}
-    shadowColor={SkillAreaColors[
-      content.tags[Math.floor(Math.random() * content.tags.length)]
-    ]}
-  >
+  <ProjectContainer id={content.id}>
     <ProjectHeader>
       <ProjectTitle>{content.title}</ProjectTitle>
     </ProjectHeader>

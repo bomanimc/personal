@@ -1,19 +1,6 @@
-export const SkillAreaColors = {
-  name: '#ffffff',
-  engineering: '#ff0000',
-  experiment: '#0000ff',
-  art: '#20bf6b',
-};
-
 export const MediaTypes = {
   image: 'image',
   video: 'video',
-};
-
-const Tags = {
-  engineering: 'engineering',
-  experiment: 'experiment',
-  art: 'art',
 };
 
 export const ProjectSlug = {
@@ -53,7 +40,6 @@ export const ProjectContent = {};
 ProjectContent[ProjectSlug.shrumen] = {
   id: ProjectSlug.shrumen,
   title: 'Shrumen Lumen',
-  tags: [Tags.art],
   body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
   interactive art installation made up of five glowing mushrooms
   that react to the presence of people. Currently on display at the
@@ -84,7 +70,6 @@ ProjectContent[ProjectSlug.shrumen] = {
 ProjectContent[ProjectSlug.obb] = {
   id: ProjectSlug.obb,
   title: 'Out of the Black Box',
-  tags: [Tags.art],
   body: `Out of the Black Box (OBB) is a workshop series taught at [Pioneer Works](https://pioneerworks.org/) to help children in grades 2-5 to uncover the magical 
   logic of electronic circuitry through arts and crafts.`,
   tools: 'Squishy Circuits, Hexbugs, Voice Recording Modules, and many other electronic components and craft supplies.',
@@ -107,7 +92,6 @@ ProjectContent[ProjectSlug.obb] = {
 ProjectContent[ProjectSlug.mybluewindow] = {
   id: ProjectSlug.mybluewindow,
   title: '1956/2054',
-  tags: [Tags.art],
   body: `1956/2054 is a mobile application that complements [American Artist's](https://americanartist.us/)
   exhibition called ["My Blue Window" at Queens Museum](https://queensmuseum.org/2019/02/american-artist).`,
   tools: 'React Native, Expo, Firebase, Google Cloud Functions.',
@@ -126,7 +110,6 @@ ProjectContent[ProjectSlug.mybluewindow] = {
 ProjectContent[ProjectSlug.babyfaith] = {
   id: ProjectSlug.babyfaith,
   title: 'Baby Faith',
-  tags: [Tags.art],
   body: `Baby Faith is an online conversational chatbot created as the latest iteration of artist [Ryan Kuo’s](https://rkuo.net/) series
   on AI conversational agents that embody “the blind 'faith' that underpins both white supremacy and miserable
   white liberalism”. Commissioned by [Rhizome](https://rhizome.org/) and [Jigsaw](https://jigsaw.google.com/).`,
@@ -150,7 +133,6 @@ ProjectContent[ProjectSlug.babyfaith] = {
 ProjectContent[ProjectSlug.waves] = {
   id: ProjectSlug.waves,
   title: 'Waves',
-  tags: [Tags.art],
   body: `Prototype device that encodes responses to personal questions as
   printed sound waves. Featured in the
   [Raspberry Pi blog](https://www.raspberrypi.org/blog/printed-sound-wave/)
@@ -184,7 +166,6 @@ ProjectContent[ProjectSlug.waves] = {
 ProjectContent[ProjectSlug.gitrocket] = {
   id: ProjectSlug.gitrocket,
   title: 'GitRocket',
-  tags: [Tags.engineering],
   body: `A fun plugin for the [Hyper](https://hyper.is/) terminal that launches
   a rocket ship when you push code with Git. It has received 40+ GitHub stars and
   [over 12,000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
@@ -205,7 +186,6 @@ ProjectContent[ProjectSlug.gitrocket] = {
 ProjectContent[ProjectSlug.versions] = {
   id: ProjectSlug.versions,
   title: "Visuals for 'Versions'",
-  tags: [Tags.art],
   body: `A live-mixed VJ (video jockey) set for [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl)
   project. These visuals were a backdrop for Jasper Lotti's live performances
   at Elsewhere, H0L0, and Playground Coffee.`,
@@ -240,7 +220,6 @@ ProjectContent[ProjectSlug.versions] = {
 ProjectContent[ProjectSlug.futurecity] = {
   id: ProjectSlug.futurecity,
   title: 'Future City',
-  tags: [Tags.engineering],
   body: `A prototype for an on-site augmented reality pop-up that invites residents to community redesign a public space. 
     Designed and developed for [IDEO CoLab](https://www.ideocolab.com/).`,
   tools: 'Three.js, TopCodes.',
@@ -272,7 +251,6 @@ ProjectContent[ProjectSlug.futurecity] = {
 ProjectContent[ProjectSlug.dialup] = {
   id: ProjectSlug.dialup,
   title: 'Dial Up',
-  tags: [Tags.engineering],
   body: `Creative collective that creates music, videos, magazines, and
   technology. Website featured on
   [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
@@ -297,7 +275,6 @@ ProjectContent[ProjectSlug.dialup] = {
 ProjectContent[ProjectSlug.negativereel] = {
   id: ProjectSlug.negativereel,
   title: 'NegativeReel',
-  tags: [Tags.art],
   body: `Projection mapping installation that displays negative thoughts
   as an expression of vulnerability. The
   installation reacts to gestures made by the viewer.`,
@@ -320,7 +297,6 @@ ProjectContent[ProjectSlug.negativereel] = {
 ProjectContent[ProjectSlug.codeasart] = {
   id: ProjectSlug.codeasart,
   title: 'Code Visualizations',
-  tags: [Tags.art],
   body: `Re-representing code in order to explore its potential as a
   standalone medium. The unique structure of the code is used to produce
   dynamic visualizations.`,
@@ -339,7 +315,6 @@ ProjectContent[ProjectSlug.codeasart] = {
 ProjectContent[ProjectSlug.bikewheelsynth] = {
   id: ProjectSlug.bikewheelsynth,
   title: 'Bike Wheel Synth',
-  tags: [Tags.experiment],
   body: `Experiemental project and [tutorial video](https://youtu.be/w4CTSO9HesA)
   that explains how control sound effects in Ableton using the speed of a bike
   wheel.`,
@@ -359,7 +334,6 @@ ProjectContent[ProjectSlug.bikewheelsynth] = {
 ProjectContent[ProjectSlug.topolamp] = {
   id: ProjectSlug.topolamp,
   title: 'TopoLamp',
-  tags: [Tags.experiment],
   body: `A topographic lamp based on an imaginary mountain. Made with stacked
   laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
   tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
@@ -385,7 +359,6 @@ ProjectContent[ProjectSlug.topolamp] = {
 ProjectContent[ProjectSlug.drawachart] = {
   id: ProjectSlug.drawachart,
   title: 'Draw-A-Chart',
-  tags: [Tags.experiment],
   body: `A prototype interactive web app that allows students to practice
   drawing graphical relationships based on real-world prompts. Created at the
   Hack To The Future '16 ed-tech hackathon, where it won "Most Likely To Be
@@ -405,7 +378,6 @@ ProjectContent[ProjectSlug.drawachart] = {
 ProjectContent[ProjectSlug.reflections] = {
   id: ProjectSlug.reflections,
   title: 'Reflections \'16',
-  tags: [Tags.experiment],
   body: `A few pithy reflections from a summer working as a Software Design
   intern at IDEO Palo Alto. Documented and designed for sharing.`,
   tools: 'Sketch, Adobe Photoshop.',
@@ -424,7 +396,6 @@ ProjectContent[ProjectSlug.reflections] = {
 ProjectContent[ProjectSlug.informedconsent] = {
   id: ProjectSlug.informedconsent,
   title: 'Informed Consent',
-  tags: [Tags.art],
   body: `Informed Consent is a projection mapping installation that places the viewer 
   into the uncomfortable position of signing a consent form for a clinical trial.`,
   tools: 'Projector, MadMapper, Acrylic, Vellum Paper.',
@@ -454,7 +425,6 @@ ProjectContent[ProjectSlug.informedconsent] = {
 ProjectContent[ProjectSlug.blackhealthbook] = {
   id: ProjectSlug.blackhealthbook,
   title: 'Black Health',
-  tags: [Tags.art],
   body: `“Black Health: A Collection of References to Black People on WebMD” is a book composed 
   of over a thousand sentences containing the keywords “black” or “African” that were 
   scraped from WebMD, one of the most popular online destinations for medical information.`,
@@ -478,7 +448,6 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
 ProjectContent[ProjectSlug.npr] = {
   id: ProjectSlug.npr,
   title: 'News Page Index',
-  tags: [Tags.engineering],
   body: `Facebook's new product for indexing News pages to
   support the [Political Ads Archive project](https://newsroom.fb.com/news/2018/05/ads-with-political-content/).
   Publishers can also submit links
