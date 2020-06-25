@@ -528,6 +528,11 @@ export const AboutCopy = {
   ],
   writing: [
     {
+      name: 'A History of Pathologizing Blackness',
+      link: 'https://issuu.com/sfpcspring2019/docs/darkmatterszinespring2019scan/4',
+      date: 'Dark Matters (Zine)',
+    },
+    {
       name: 'How I built my first mobile app scraper',
       link: 'https://medium.com/leesons-journalism-tech/how-i-built-my-first-mobile-app-scraper-6ed7201c7678',
       date: 'Knight Lab',
