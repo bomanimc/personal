@@ -550,6 +550,20 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Guest Critic for "Intro to Web" Course',
+      event: 'NYU Integrated Digital Media',
+      date: 'May 2020',
+      location: 'New York, NY',
+      isNameTitle: false,
+    },
+    {
+      name: 'Creative Pathways in Computer Science (with Omayeli Arenyeka)',
+      event: "Harlem Children's Zone",
+      date: 'February 2020',
+      location: 'New York, NY',
+      isNameTitle: false,
+    },
+    {
       name: 'Interactive Projection Mapping with Processing',
       event: 'The School of Afrotectopia',
       date: 'January 2020',
