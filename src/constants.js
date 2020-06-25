@@ -599,7 +599,7 @@ export const AboutCopy = {
       isNameTitle: false,
     },
     {
-      name: 'Interactive Projection Mapping with Processing',
+      name: 'Interactive Projection Mapping with Processing!',
       event: 'Processing Community Day NYC',
       date: 'February 2019',
       location: 'New York, NY',
