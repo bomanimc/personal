@@ -635,23 +635,34 @@ export const AboutCopy = {
   ],
   fellowships: [
     {
+      org: 'Interact (Upcoming, Fall 2020)',
+      title: 'Fellow',
+      date: '2020',
+    },
+    {
+      org: 'Clinic for Open Source Arts',
+      title: 'Grant Fellow',
+      date: '2020',
+    },
+    {
+      org: 'Processing Foundation',
+      title: 'ml5.js Fellow',
+      date: '2020',
+    },
+    {
       org: 'IDEO CoLab',
       title: 'Software Design Fellow',
-      date: '2019 - 2021',
-      startDate: '2019',
-      endDate: '2019',
+      date: '2019',
     },
     {
       org: 'Delta Lab',
       title: 'Undergraduate Research Fellow',
-      startDate: '2016',
-      endDate: '2017',
+      date: '2016 - 2017',
     },
     {
       org: 'Knight Lab',
       title: 'Technical Fellow',
-      startDate: '2015',
-      endDate: '2017',
+      date: '2015 - 2017',
     },
   ],
 };

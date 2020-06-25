@@ -198,8 +198,7 @@ const FellowshipBox = () => (
           <FellowshipItem
             key={item.org}
             org={item.org}
-            startDate={item.startDate}
-            endDate={item.endDate}
+            date={item.date}
             title={item.title}
           />
         ))}
@@ -248,12 +247,12 @@ const WritingLink = ({ name, date, link }) => (
 );
 
 const FellowshipItem = ({
-  org, title, startDate, endDate,
+  org, title, date,
 }) => (
   <SpeakingLinkItem>
     {org}
     <AboutDetail>{title}</AboutDetail>
-    <AboutDetail>{`${startDate} - ${endDate}`}</AboutDetail>
+    <AboutDetail>{date}</AboutDetail>
   </SpeakingLinkItem>
 );
 
@@ -296,8 +295,7 @@ WritingLink.propTypes = {
 
 FellowshipItem.propTypes = {
   org: PropTypes.string.isRequired,
-  startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
