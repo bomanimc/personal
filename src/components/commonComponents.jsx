@@ -69,7 +69,7 @@ export const ContentContainer = styled.section`
 
 export const ProjectGridContainer = styled.div`
   display: grid;
-  grid-gap: 36px;
+  grid-gap: 3rem;
   grid-template-columns: repeat(2, 1fr);
   height: ${(props) => props.containerHeight ? props.containerHeight : '100%'};
 

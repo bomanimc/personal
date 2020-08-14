@@ -16,7 +16,6 @@ const ProjectContainer = styled.div`
   flex: 0 0 auto;
   justify-content: center;
   flex-wrap: nowrap;
-  max-width: 500px;
   transition: box-shadow 0.3s ease;
 
   &:hover {
@@ -31,7 +30,6 @@ const ProjectContainer = styled.div`
 
 const ProjectImage = styled(Image)`
   width: 100%;
-  height: 315px;
   border-bottom: 1px solid white;
   display: block;
 

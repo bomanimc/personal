@@ -17,6 +17,7 @@ const ContentWrapper = styled.div`
   flex: 1;
   align-content: center;
   flex-direction: column;
+  padding: 0 3rem;
 `;
 
 const Layout = ({ children }) => (
