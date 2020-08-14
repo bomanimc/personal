@@ -21,11 +21,7 @@ import {
 } from '../components/commonComponents';
 import { Text } from '../components/slices';
 
-const GRID_GAP_VALUE = '36px';
-
-const AboutRoot = styled.div`
-  margin-top: 48px;
-`;
+const GRID_GAP_VALUE = '3rem';
 
 const AboutSectionContainer = styled.div`
   display: grid;
@@ -97,22 +93,20 @@ const AboutPage = (props) => {
 
   return (
     <Layout>
-      <AboutRoot>
-        <BasePage
-          title="About"
-          body={(
-            <BodySection>
-              <AboutSectionContainer>
-                <BioContent allBiosEdgeDoc={doc} />
-                <EducationBox />
-                <SpeakingBox />
-                <WritingBox />
-                <FellowshipBox />
-              </AboutSectionContainer>
-            </BodySection>
-          )}
-        />
-      </AboutRoot>
+      <BasePage
+        title="About"
+        body={(
+          <BodySection>
+            <AboutSectionContainer>
+              <BioContent allBiosEdgeDoc={doc} />
+              <EducationBox />
+              <SpeakingBox />
+              <WritingBox />
+              <FellowshipBox />
+            </AboutSectionContainer>
+          </BodySection>
+        )}
+      />
     </Layout>
   );
 };

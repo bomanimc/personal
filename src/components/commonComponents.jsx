@@ -136,7 +136,7 @@ export const PageTitle = styled.p`
   font-size: 48px;
   font-weight: bold;
   text-transform: uppercase;
-  line-height: 0.7;
+  line-height: 0.9;
 `;
 
 export const BasePage = ({ title, body, metadata }) => (
