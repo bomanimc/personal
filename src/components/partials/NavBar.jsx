@@ -19,6 +19,7 @@ const Container = styled.nav`
   top: 0;
   left: 0;
   right: 0;
+  mix-blend-mode: exclusion;
 `;
 
 const NavLink = styled(InternalLink)`
