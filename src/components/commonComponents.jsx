@@ -119,13 +119,9 @@ export const MetadataTitle = styled(Body)`
 export const MetadataContent = styled(TextContent)``;
 
 export const Page = styled.div`
-  margin: 48px;
   display: flex;
   justify-content: center;
-
-  @media (max-width: ${PAGE_WIDTH}) {
-    margin: 20px;
-  }
+  margin: 2rem 0;
 `;
 
 export const PageCenteringContainer = styled.div`
