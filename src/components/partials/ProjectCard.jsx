@@ -10,7 +10,7 @@ import { Image, Video, Transformation } from 'cloudinary-react';
 import { InternalLink } from '../commonComponents';
 
 const ProjectContainer = styled.div`
-  border: 1px solid white;
+  border: 1px solid #0000ff;
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
@@ -30,7 +30,6 @@ const ProjectContainer = styled.div`
 
 const ProjectImage = styled(Image)`
   width: 100%;
-  border-bottom: 1px solid white;
   display: block;
 
   @media (max-width: 768px) {
@@ -44,7 +43,6 @@ const ProjectImage = styled(Image)`
 const ProjectVideoContainer = styled.div`
   width: 100%;
   height: 315px;
-  border-bottom: 1px solid white;
   display: block;
 
   @media (max-width: 768px) {
