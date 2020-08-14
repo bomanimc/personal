@@ -13,12 +13,10 @@ import { setMetaTitle } from '../utils/utils';
 
 const HomePage = () => (
   <Layout>
-    <div id="root">
-      <Helmet>
-        {setMetaTitle('BOMANI')}
-      </Helmet>
-      <ProjectSection />
-    </div>
+    <Helmet>
+      {setMetaTitle('BOMANI')}
+    </Helmet>
+    <ProjectSection />
   </Layout>
 );
 

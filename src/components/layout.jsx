@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, {ThemeProvider} from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import SEO from './seo';
 import NavBar from './partials/NavBar';
 import LinksBar from './partials/LinksBar';
