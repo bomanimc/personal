@@ -4,9 +4,9 @@ import { InternalLink } from '../commonComponents';
 
 const NavBar = () => (
   <Container>
-    <NavLink>Work</NavLink>
-    <Name>Bomani</Name>
-    <NavLink>Info</NavLink>
+    <NavLink to="/">Work</NavLink>
+    <Name to="/">Bomani</Name>
+    <NavLink to="/info">Info</NavLink>
   </Container>
 );
 
