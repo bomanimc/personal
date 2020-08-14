@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { InternalLink } from '../commonComponents';
 
 const NavBar = () => (
@@ -19,16 +19,21 @@ const NavBar = () => (
   </>
 );
 
-const DesktopContainer = styled.nav`
+const containerStyle = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   mix-blend-mode: exclusion;
+  pointer-events: none;
+`;
+
+const DesktopContainer = styled.nav`
+  ${containerStyle};
+  padding: 2rem 3rem;
 
   @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
     display: none;
@@ -36,16 +41,10 @@ const DesktopContainer = styled.nav`
 `;
 
 const MobileContainer = styled.nav`
+  ${containerStyle};
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 1rem;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  mix-blend-mode: exclusion;
 
   @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
     display: flex;
@@ -62,6 +61,7 @@ const NavLink = styled(InternalLink)`
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
+  pointer-events: auto;
 
   @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
     font-size: 1rem;
