@@ -94,7 +94,7 @@ const AboutPage = (props) => {
   return (
     <Layout>
       <BasePage
-        title="About"
+        title="Info"
         body={(
           <BodySection>
             <AboutSectionContainer>
