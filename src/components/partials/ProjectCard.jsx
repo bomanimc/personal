@@ -6,10 +6,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ReactMarkdown from 'react-markdown';
 import { Image, Video, Transformation } from 'cloudinary-react';
-import { TextContent, InternalLink } from '../commonComponents';
-import EyeSVG from '../../images/icons/view.svg';
+import { InternalLink } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid white;
@@ -28,15 +26,6 @@ const ProjectContainer = styled.div`
   @media (max-width: 768px) {
     display: block;
     width: 100%;
-  }
-`;
-
-const ProjectContent = styled.div`
-  padding: 8px;
-  min-height: 76px;
-
-  @media (max-width: 768px) {
-    min-height: auto;
   }
 `;
 
@@ -74,60 +63,8 @@ const ProjectVideo = styled(Video)`
   object-fit: cover;
 `;
 
-const ProjectHeader = styled.div`
-  align-items: center;
-  background: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-`;
-
-const ProjectTitle = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: black;
-  line-height: 20px;
-`;
-
-const ProjectCardSectionTitle = styled.div`
-  background: white;
-  color: black;
-  padding: 6px;
-  line-height: 6px;
-  font-weight: bold;
-`;
-
-const ProjectCTA = styled(InternalLink)`
-  border-top: 1px solid white;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  transition: background 0.3s ease, filter 0.3s ease;
-
-  &:hover {
-    background: white;
-
-    > img {
-      filter: invert(100%);
-    }
-  }
-
-  @media (max-width: 768px) {
-    display: flex;
-  }
-`;
-
-const EyeIcon = styled.img`
-  height: 16px;
-  margin: 8px;
-`;
-
 const Project = ({ content }) => (
   <ProjectContainer id={content.id}>
-    <ProjectHeader>
-      <ProjectTitle>{content.title}</ProjectTitle>
-    </ProjectHeader>
     <InternalLink to={content.primaryLink}>
       {
         content.media.includes('video')
@@ -159,13 +96,6 @@ const Project = ({ content }) => (
           )
       }
     </InternalLink>
-    <ProjectCardSectionTitle>Description</ProjectCardSectionTitle>
-    <ProjectContent order={2}>
-      <TextContent><ReactMarkdown source={content.body} /></TextContent>
-    </ProjectContent>
-    <ProjectCTA to={content.primaryLink}>
-      <EyeIcon src={EyeSVG} alt={`View ${content.title}`} />
-    </ProjectCTA>
   </ProjectContainer>
 );
 
