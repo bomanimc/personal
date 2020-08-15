@@ -10,7 +10,7 @@ import { Image, Video, Transformation } from 'cloudinary-react';
 import { InternalLink } from '../commonComponents';
 
 const ProjectContainer = styled.div`
-  border: 1px solid #0000ff;
+  border: 1px solid ${(p) => p.theme.color.blue};
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
@@ -19,7 +19,7 @@ const ProjectContainer = styled.div`
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 3px 3px 3px #0000ff;
+    box-shadow: 3px 3px 3px ${(p) => p.theme.color.blue};
   }
 
   @media (max-width: 768px) {

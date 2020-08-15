@@ -33,13 +33,13 @@ export const ProjectPageImageContainer = styled.div`
 `;
 
 export const ProjectPageImage = styled(Image)`
-  border: 1px solid white;
+  border: 1px solid ${(p) => p.theme.color.blue};
   width: 100%;
 `;
 
 const BaseVideoContainer = styled.div`
   width: 100%;
-  border: 1px solid white;
+  border: 1px solid ${(p) => p.theme.color.blue};
   margin-bottom: 16px;
 `;
 
