@@ -42,10 +42,6 @@ const ProjectMediaContainer = styled.div`
   justify-content: center;
   align-items: center;
   transition: filter ${TRANSITION_TIME} ease;
-
-  ${ProjectContainer}:hover & {
-    filter: grayscale(100%);
-  }
 `;
 
 const ProjectDetailsWrapper = styled.div`
@@ -82,7 +78,7 @@ const ProjectDetails = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    background: ${(p) => p.theme.color.blue};
+    background: black;
     opacity: .75;
   }
 `;
