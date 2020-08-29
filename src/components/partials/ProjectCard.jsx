@@ -5,9 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import ReactMarkdown from 'react-markdown';
 import { Image, Video, Transformation } from 'cloudinary-react';
-import { InternalLink } from '../commonComponents';
+import { InternalLink, TextContent } from '../commonComponents';
 
 const ProjectContainer = styled.div`
   border: 1px solid ${(p) => p.theme.color.blue};
@@ -28,6 +29,77 @@ const ProjectContainer = styled.div`
   }
 `;
 
+const ProjectMediaContainer = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: filter 1s ease;
+
+  /* ${ProjectContainer}:hover & {
+    filter: grayscale(100%);
+  } */
+`;
+
+const ProjectDetailsWrapper = styled.div`
+  padding-top: 66.5%;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+`;
+
+const ProjectDetails = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s, opacity 1s ease;
+
+  ${ProjectContainer}:hover & {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &::before {
+    content: '';
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    mix-blend-mode: multiply;
+    /* filter: grayscale(100%); */
+    background: ${(p) => p.theme.color.blue};
+    /* visibility: inherit;
+    opacity: .5; */
+  }
+`;
+
+const ProjectDetailsText = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  z-index: 1;
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 3rem;
+  }
+`;
+
 const ProjectImage = styled(Image)`
   width: 100%;
   display: block;
@@ -42,7 +114,6 @@ const ProjectImage = styled(Image)`
 
 const ProjectVideoContainer = styled.div`
   width: 100%;
-  height: 315px;
   display: block;
 
   @media (max-width: 768px) {
@@ -62,35 +133,45 @@ const ProjectVideo = styled(Video)`
 const Project = ({ content }) => (
   <ProjectContainer id={content.id}>
     <InternalLink to={content.primaryLink}>
-      {
-        content.media.includes('video')
-          ? (
-            <ProjectVideoContainer aria-label={content.title}>
-              <ProjectVideo
-                cloudName="bomani-personal"
-                publicId={content.media}
-                autoPlay
-                loop
-                muted
-                playsInline
-                secure
-              >
-                <Transformation audioCodec="none" />
-              </ProjectVideo>
-            </ProjectVideoContainer>
-          )
-          : (
-            <ProjectImage
-              cloudName="bomani-personal"
-              publicId={content.media}
-              order={1}
-              alt={content.title}
-              secure
-            >
-              <Transformation height="630" quality="auto:best" crop="limit" fetchFormat="auto" />
-            </ProjectImage>
-          )
-      }
+      <ProjectDetailsWrapper>
+        <ProjectMediaContainer>
+          {
+            content.media.includes('video')
+              ? (
+                <ProjectVideoContainer aria-label={content.title}>
+                  <ProjectVideo
+                    cloudName="bomani-personal"
+                    publicId={content.media}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    secure
+                  >
+                    <Transformation audioCodec="none" />
+                  </ProjectVideo>
+                </ProjectVideoContainer>
+              )
+              : (
+                <ProjectImage
+                  cloudName="bomani-personal"
+                  publicId={content.media}
+                  order={1}
+                  alt={content.title}
+                  secure
+                >
+                  <Transformation height="630" quality="auto:best" crop="limit" fetchFormat="auto" />
+                </ProjectImage>
+              )
+          }
+        </ProjectMediaContainer>
+        <ProjectDetails>
+          <ProjectDetailsText>
+            <h2>{content.title}</h2>
+            <TextContent><ReactMarkdown source={content.body} /></TextContent>
+          </ProjectDetailsText>
+        </ProjectDetails>
+      </ProjectDetailsWrapper>
     </InternalLink>
   </ProjectContainer>
 );
