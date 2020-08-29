@@ -5,10 +5,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { Image, Video, Transformation } from 'cloudinary-react';
 import { InternalLink, TextContent } from '../commonComponents';
+
+const TRANSITION_TIME = '.75s';
 
 const ProjectContainer = styled.div`
   border: 1px solid ${(p) => p.theme.color.blue};
@@ -17,7 +19,7 @@ const ProjectContainer = styled.div`
   flex: 0 0 auto;
   justify-content: center;
   flex-wrap: nowrap;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow ${TRANSITION_TIME} ease;
 
   &:hover {
     box-shadow: 3px 3px 3px ${(p) => p.theme.color.blue};
@@ -39,11 +41,11 @@ const ProjectMediaContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: filter 1s ease;
+  transition: filter ${TRANSITION_TIME} ease;
 
-  /* ${ProjectContainer}:hover & {
+  ${ProjectContainer}:hover & {
     filter: grayscale(100%);
-  } */
+  }
 `;
 
 const ProjectDetailsWrapper = styled.div`
@@ -65,7 +67,7 @@ const ProjectDetails = styled.div`
   padding: 1rem;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 1s, opacity 1s ease;
+  transition: visibility ${TRANSITION_TIME}, opacity ${TRANSITION_TIME} ease;
 
   ${ProjectContainer}:hover & {
     visibility: visible;
@@ -80,11 +82,8 @@ const ProjectDetails = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    mix-blend-mode: multiply;
-    /* filter: grayscale(100%); */
     background: ${(p) => p.theme.color.blue};
-    /* visibility: inherit;
-    opacity: .5; */
+    opacity: .75;
   }
 `;
 
