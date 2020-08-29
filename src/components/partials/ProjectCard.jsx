@@ -92,10 +92,12 @@ const ProjectDetailsText = styled.div`
   flex-direction: column;
   text-align: center;
   z-index: 1;
+  pointer-events: none;
 
   h2 {
     text-transform: uppercase;
     font-size: 3rem;
+    margin-bottom: .5rem;
   }
 `;
 
