@@ -21,8 +21,10 @@ const ProjectContainer = styled.div`
   flex-wrap: nowrap;
   transition: box-shadow ${TRANSITION_TIME} ease;
 
-  &:hover {
-    box-shadow: 3px 3px 3px ${(p) => p.theme.color.blue};
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 3px 3px 3px ${(p) => p.theme.color.blue};
+    }
   }
 
   @media (max-width: 768px) {
@@ -65,9 +67,11 @@ const ProjectDetails = styled.div`
   opacity: 0;
   transition: visibility ${TRANSITION_TIME}, opacity ${TRANSITION_TIME} ease;
 
-  ${ProjectContainer}:hover & {
-    visibility: visible;
-    opacity: 1;
+  @media (hover: hover) {
+    ${ProjectContainer}:hover & {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &::before {
