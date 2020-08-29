@@ -44,6 +44,7 @@ const ProjectMediaContainer = styled.div`
   justify-content: center;
   align-items: center;
   transition: filter ${TRANSITION_TIME} ease;
+  color: black;
 `;
 
 const ProjectDetailsWrapper = styled.div`
