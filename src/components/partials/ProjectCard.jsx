@@ -169,7 +169,9 @@ const Project = ({ content }) => (
         <ProjectDetails>
           <ProjectDetailsText>
             <h2>{content.title}</h2>
-            <TextContent><ReactMarkdown source={content.body} /></TextContent>
+            <TextContent>
+              <ReactMarkdown source={content.body} disallowedTypes={['link']} unwrapDisallowed />
+            </TextContent>
           </ProjectDetailsText>
         </ProjectDetails>
       </ProjectDetailsWrapper>
