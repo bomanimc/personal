@@ -528,6 +528,11 @@ export const AboutCopy = {
   ],
   writing: [
     {
+      name: 'Making ml5.js Accessible: Interview with Bomani Oseni McClendon',
+      link: 'https://medium.com/processing-foundation/making-ml5-js-accessible-b28ae295af4a',
+      date: 'Processing Foundation',
+    },
+    {
       name: 'A History of Pathologizing Blackness',
       link: 'https://issuu.com/sfpcspring2019/docs/darkmatterszinespring2019scan/4',
       date: 'Dark Matters (Zine)',
@@ -549,6 +554,20 @@ export const AboutCopy = {
     },
   ],
   speaking: [
+    {
+      name: 'Guest Speaker at "Introduction to Machine Learning for the Arts"',
+      event: 'NYU Interactive Media Arts',
+      date: 'October 2020',
+      location: 'New York, NY',
+      isNameTitle: false,
+    },
+    {
+      name: 'Panelist at Institute for Entrepreneurship',
+      event: 'Prep for Prep',
+      date: 'July 2020',
+      location: 'New York, NY',
+      isNameTitle: false,
+    },
     {
       name: 'Guest Critic for "Intro to Web" Course',
       event: 'NYU Integrated Digital Media',
@@ -635,9 +654,9 @@ export const AboutCopy = {
   ],
   fellowships: [
     {
-      org: 'Interact (Upcoming, Fall 2020)',
+      org: 'Interact (Upcoming, 2021)',
       title: 'Fellow',
-      date: '2020',
+      date: '2021',
     },
     {
       org: 'Clinic for Open Source Arts',
