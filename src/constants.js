@@ -23,12 +23,14 @@ export const ProjectSlug = {
   obb: 'out-of-the-black-box',
   mybluewindow: '1956-2054',
   babyfaith: 'baby-faith',
+  ml5: 'ml5',
 };
 
 export const FeaturedProjects = [
   ProjectSlug.informedconsent,
   ProjectSlug.blackhealthbook,
   ProjectSlug.obb,
+  ProjectSlug.ml5,
   ProjectSlug.shrumen,
   ProjectSlug.codeasart,
   ProjectSlug.mybluewindow,
@@ -448,6 +450,30 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
   site: 'https://issuu.com/bomanimc/docs/black_health_book',
   media: 'blackhealthbook_main',
   primaryLink: `/${ProjectSlug.blackhealthbook}`,
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'blackhealthbook_main.JPG',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'blackhealthbook_reading.JPG',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.ml5] = {
+  id: ProjectSlug.ml5,
+  title: 'ml5.js',
+  body: `“Black Health: A Collection of References to Black People on WebMD” is a book composed 
+  of over a thousand sentences containing the keywords “black” or “African” that were 
+  scraped from WebMD, one of the most popular online destinations for medical information.`,
+  year: '2020 - Present',
+  tools: 'Tensorflow.js, p5.js, GitHub',
+  role: 'Maintainer',
+  site: 'https://ml5js.org/',
+  media: 'blackhealthbook_main',
+  primaryLink: `/${ProjectSlug.ml5}`,
   projectMedia: [
     {
       type: MediaTypes.image,
