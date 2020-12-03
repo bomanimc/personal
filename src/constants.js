@@ -45,6 +45,7 @@ ProjectContent[ProjectSlug.shrumen] = {
   that react to the presence of people. Currently on display at the
   [Oakland Museum](https://museumca.org/exhibit/no-spectators-art-burning-man)
   until February '20.`,
+  year: '2016 - Present',
   tools: 'Arduino, NeoPixel, MadMapper, PixelPusher, Raspberry Pi, Node, Processing, Python, C.',
   role: `Lead Software Developer. Hardware-Software Integration. In
   collaboration with the [Foldhaus Collective](https://www.foldhaus.com) team.`,
@@ -72,6 +73,7 @@ ProjectContent[ProjectSlug.obb] = {
   title: 'Out of the Black Box',
   body: `Out of the Black Box (OBB) is a workshop series taught at [Pioneer Works](https://pioneerworks.org/) to help children in grades 2-5 to uncover the magical 
   logic of electronic circuitry through arts and crafts.`,
+  year: '2019 - Present',
   tools: 'Squishy Circuits, Hexbugs, Voice Recording Modules, and many other electronic components and craft supplies.',
   role: 'Co-teacher & Organizer',
   site: 'https://pioneerworks.org/programs/summer-steam-program-out-of-the-black-box/',
@@ -94,6 +96,7 @@ ProjectContent[ProjectSlug.mybluewindow] = {
   title: '1956/2054',
   body: `1956/2054 is a mobile application that complements [American Artist's](https://americanartist.us/)
   exhibition called ["My Blue Window" at Queens Museum](https://queensmuseum.org/2019/02/american-artist) focused on predictive policing.`,
+  year: '2019',
   tools: 'React Native, Expo, Firebase, Google Cloud Functions.',
   role: 'Sole Developer',
   site: 'https://americanartist.us/app',
@@ -113,6 +116,7 @@ ProjectContent[ProjectSlug.babyfaith] = {
   body: `Baby Faith is an online conversational chatbot created as the latest iteration of artist [Ryan Kuo’s](https://rkuo.net/) series
   on AI conversational agents that embody “the blind 'faith' that underpins both white supremacy and miserable
   white liberalism”. Commissioned by [Rhizome](https://rhizome.org/) and [Jigsaw](https://jigsaw.google.com/).`,
+  year: '2020',
   tools: 'React, Next.js, p5.js, IBM Watson',
   role: 'Project Lead & Developer',
   site: 'https://faith.rhizome.org/',
@@ -138,6 +142,7 @@ ProjectContent[ProjectSlug.waves] = {
   [Raspberry Pi blog](https://www.raspberrypi.org/blog/printed-sound-wave/)
   and [MagPi](https://www.raspberrypi.org/magpi-issues/MagPi61.pdf) (p.31 - p.32), the
   official Raspberry Pi magazine. Presented at Segal Design Expo '17.`,
+  year: '2017',
   tools: 'Raspberry Pi, Python, JavaScript.',
   role: `Developer and Designer. In
   collaboration with [Eunice Lee](https://euniceylee.github.io/) and Matt Zhang.`,
@@ -170,6 +175,7 @@ ProjectContent[ProjectSlug.gitrocket] = {
   a rocket ship when you push code with Git. It has received 40+ GitHub stars and
   [over 12,000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
   via NPM.`,
+  year: '2017',
   tools: 'React, Redux, Hyper.',
   role: 'Individual Project',
   site: 'https://www.npmjs.com/package/gitrocket',
@@ -189,6 +195,7 @@ ProjectContent[ProjectSlug.versions] = {
   body: `A live-mixed VJ (video jockey) set for [Jasper Lotti's 'Versions'](https://open.spotify.com/album/2oWuiYDtbQZc0It2qcw4jl)
   project. These visuals were a backdrop for Jasper Lotti's live performances
   at Elsewhere, H0L0, and Playground Coffee.`,
+  year: '2018',
   tools: 'CoGe, Giphy, AKAI MP32.',
   role: 'Individual Project',
   media: 'versions_main',
@@ -222,6 +229,7 @@ ProjectContent[ProjectSlug.futurecity] = {
   title: 'Future City',
   body: `A prototype for an on-site augmented reality pop-up that invites residents to community redesign a public space. 
     Designed and developed for [IDEO CoLab](https://www.ideocolab.com/).`,
+  year: '2019',
   tools: 'Three.js, TopCodes.',
   role: `Design Collaborator and Prototype Developer. In collaboration with [Harrison Lin](https://harrisonlin.com/), 
   [Nicole Aw](https://www.nicoleaw.com/), and John Oustedyn.`,
@@ -254,6 +262,7 @@ ProjectContent[ProjectSlug.dialup] = {
   body: `Creative collective that creates music, videos, magazines, and
   technology. Website featured on
   [Brutalist Websites](http://brutalistwebsites.com/dialupstuff.com/).`,
+  year: '2014 - Present',
   tools: 'Node, React, SASS, Sketch.',
   role: `Developer, Designer, Writer, DJ. In collaboration with other members
   of Dial Up.`,
@@ -278,6 +287,7 @@ ProjectContent[ProjectSlug.negativereel] = {
   body: `Projection mapping installation that displays negative thoughts
   as an expression of vulnerability. The
   installation reacts to gestures made by the viewer.`,
+  year: '2017',
   tools: 'Node, Processing, Leap Motion, MadMapper.',
   role: 'Individual Project',
   media: 'negativereel_main_video',
@@ -300,6 +310,7 @@ ProjectContent[ProjectSlug.codeasart] = {
   body: `Re-representing code in order to explore its potential as a
   standalone medium. The unique structure of the code is used to produce
   dynamic visualizations.`,
+  year: '2018',
   tools: 'p5.js, Atom, Socket.io, Node.',
   role: 'Individual Project',
   media: 'codeasart_main_video',
@@ -318,6 +329,7 @@ ProjectContent[ProjectSlug.bikewheelsynth] = {
   body: `Experiemental project and [tutorial video](https://youtu.be/w4CTSO9HesA)
   that explains how control sound effects in Ableton using the speed of a bike
   wheel.`,
+  year: '2018',
   tools: 'Arduino, Ableton, Max for Live, Reed Switches.',
   role: 'Individual Project',
   site: 'https://youtu.be/w4CTSO9HesA',
@@ -336,6 +348,7 @@ ProjectContent[ProjectSlug.topolamp] = {
   title: 'TopoLamp',
   body: `A topographic lamp based on an imaginary mountain. Made with stacked
   laser cut pieces of wood and acrylic, and 24 NeoPixel LEDs.`,
+  year: '2016',
   tools: 'Adobe Illustrator, Arduino, NeoPixel, Laser Cutter.',
   role: 'Individual Project',
   media: 'topolamp_main',
@@ -363,6 +376,7 @@ ProjectContent[ProjectSlug.drawachart] = {
   drawing graphical relationships based on real-world prompts. Created at the
   Hack To The Future '16 ed-tech hackathon, where it won "Most Likely To Be
   Used In A Classroom".`,
+  year: '2016',
   tools: 'jQuery, Highcharts.',
   role: 'Developer & Designer. In collaboration with Rebecca Wei and Justin Holzmann.',
   media: 'drawachart_main_video',
@@ -380,7 +394,8 @@ ProjectContent[ProjectSlug.reflections] = {
   title: 'Reflections \'16',
   body: `A few pithy reflections from a summer working as a Software Design
   intern at IDEO Palo Alto. Documented and designed for sharing.`,
-  tools: 'Sketch, Adobe Photoshop.',
+  year: '2016',
+  tools: 'Setch, Adobe Photoshop.',
   role: 'Individual Project',
   site: 'https://issuu.com/bomanimc/docs/reflections-summer-2016',
   media: 'reflections_main',
@@ -398,6 +413,7 @@ ProjectContent[ProjectSlug.informedconsent] = {
   title: 'Informed Consent',
   body: `Informed Consent is a projection mapping installation that places the viewer 
   into the uncomfortable position of signing a consent form for a clinical trial.`,
+  year: '2019',
   tools: 'Projector, MadMapper, Acrylic, Vellum Paper.',
   role: 'Individual Project',
   media: 'informedconsent_main',
@@ -428,6 +444,7 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
   body: `“Black Health: A Collection of References to Black People on WebMD” is a book composed 
   of over a thousand sentences containing the keywords “black” or “African” that were 
   scraped from WebMD, one of the most popular online destinations for medical information.`,
+  year: '2019',
   tools: 'Python, Selenium.',
   role: 'Individual Project',
   site: 'https://issuu.com/bomanimc/docs/black_health_book',
@@ -454,6 +471,7 @@ ProjectContent[ProjectSlug.npr] = {
   to policies, info, and logos in alignment with [The Trust Project's](https://thetrustproject.org/)
   best practices. Covered by [Axios](https://www.axios.com/facebook-building-index-news-pages-07190e47-13b1-43c7-84eb-bf8084841f10.html)
   and [Adweek](https://www.adweek.com/digital/facebook-started-indexing-news-pages-to-determine-which-publishers-belong-in-its-ad-archive/).`,
+  year: '2018',
   tools: 'React, PHP (Hack), Relay, GraphQL.',
   role: `Software Engineer focused on internal review processes. In collaboration
   with the other engineers on my team.`,

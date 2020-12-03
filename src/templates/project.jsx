@@ -52,6 +52,7 @@ const Project = (props) => {
     <BaseProjectPage
       id={project.id}
       title={project.title}
+      year={project.year}
       tools={project.tools}
       role={project.role}
       site={project.site}

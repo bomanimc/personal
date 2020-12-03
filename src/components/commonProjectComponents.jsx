@@ -75,8 +75,14 @@ const ProjectVideo = styled(Video)`
   object-fit: cover;
 `;
 
-const Metadata = ({ tools, role, site }) => (
+const Metadata = ({
+  year, tools, role, site,
+}) => (
   <MetadataSection>
+    <MetadataItem>
+      <MetadataTitle>Year</MetadataTitle>
+      <MetadataContent><ReactMarkdown source={year} /></MetadataContent>
+    </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Tools</MetadataTitle>
       <MetadataContent><ReactMarkdown source={tools} /></MetadataContent>
@@ -112,7 +118,7 @@ export const getProjectMedia = (projectData, showMainMedia) => {
 };
 
 export const BaseProjectPage = ({
-  title, tools, role, site, body,
+  year, title, tools, role, site, body,
 }) => (
   <Layout>
     <Helmet>
@@ -121,7 +127,7 @@ export const BaseProjectPage = ({
     <Page>
       <PageCenteringContainer>
         <PageTitle>{title}</PageTitle>
-        <Metadata tools={tools} role={role} site={site} />
+        <Metadata year={year} tools={tools} role={role} site={site} />
         <Divider />
         {body}
       </PageCenteringContainer>
@@ -211,12 +217,14 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
 };
 
 Metadata.propTypes = {
+  year: PropTypes.string.isRequired,
   tools: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   site: PropTypes.string,
 };
 
 BaseProjectPage.propTypes = {
+  year: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.node.isRequired,
   tools: PropTypes.string.isRequired,
