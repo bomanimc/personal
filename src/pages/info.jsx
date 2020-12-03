@@ -186,7 +186,7 @@ const WritingBox = () => (
 
 const FellowshipBox = () => (
   <div>
-    <AboutBoxTitle>Selected Fellowships & Residencies</AboutBoxTitle>
+    <AboutBoxTitle>Fellowships & Residencies</AboutBoxTitle>
     <AboutBoxContent>
       <div>
         {AboutCopy.fellowships.map((item) => (
@@ -204,7 +204,7 @@ const FellowshipBox = () => (
 
 const ExhibitionBox = () => (
   <div>
-    <AboutBoxTitle>Selected Exhibitions & Showings</AboutBoxTitle>
+    <AboutBoxTitle>Exhibitions & Showings</AboutBoxTitle>
     <AboutBoxContent>
       <div>
         {AboutCopy.exhibitions.map((item) => (
