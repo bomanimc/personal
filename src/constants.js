@@ -512,6 +512,11 @@ export const SocialLinks = [
     link: 'https://github.com/bomanimc',
     isExternal: true,
   },
+  {
+    name: 'Are.na',
+    link: 'https://www.are.na/bomani-oseni-mcclendon',
+    isExternal: true,
+  },
 ];
 
 export const NavLinks = [
