@@ -42,9 +42,7 @@ ProjectContent[ProjectSlug.shrumen] = {
   title: 'Shrumen Lumen',
   body: `[Foldhaus Collective's](https://www.foldhaus.com/shrumen-lumen/)
   interactive art installation made up of five glowing mushrooms
-  that react to the presence of people. Currently on display at the
-  [Oakland Museum](https://museumca.org/exhibit/no-spectators-art-burning-man)
-  until February '20.`,
+  that react to the presence of people. Displayed at the Smithsonian Renwick Gallery, Oakland Museum, Burning Man '16, and other locations.`,
   year: '2016 - Present',
   tools: 'Arduino, NeoPixel, MadMapper, PixelPusher, Raspberry Pi, Node, Processing, Python, C.',
   role: `Lead Software Developer. Hardware-Software Integration. In
