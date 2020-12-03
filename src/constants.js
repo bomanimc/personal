@@ -592,6 +592,13 @@ export const AboutCopy = {
       isNameTitle: false,
     },
     {
+      name: 'Co-Organizer of Processing Community Day NYC',
+      event: 'Processing Community Day',
+      date: 'February 2020',
+      location: 'New York, NY',
+      isNameTitle: false,
+    },
+    {
       name: 'Creative Pathways in Computer Science (with Omayeli Arenyeka)',
       event: "Harlem Children's Zone",
       date: 'February 2020',
