@@ -103,6 +103,7 @@ const AboutPage = (props) => {
               <SpeakingBox />
               <WritingBox />
               <FellowshipBox />
+              <ExhibitionBox />
             </AboutSectionContainer>
           </BodySection>
         )}
@@ -185,7 +186,7 @@ const WritingBox = () => (
 
 const FellowshipBox = () => (
   <div>
-    <AboutBoxTitle>Fellowships</AboutBoxTitle>
+    <AboutBoxTitle>Selected Fellowships & Residencies</AboutBoxTitle>
     <AboutBoxContent>
       <div>
         {AboutCopy.fellowships.map((item) => (
@@ -194,6 +195,25 @@ const FellowshipBox = () => (
             org={item.org}
             date={item.date}
             title={item.title}
+          />
+        ))}
+      </div>
+    </AboutBoxContent>
+  </div>
+);
+
+const ExhibitionBox = () => (
+  <div>
+    <AboutBoxTitle>Selected Exhibitions & Showings</AboutBoxTitle>
+    <AboutBoxContent>
+      <div>
+        {AboutCopy.exhibitions.map((item) => (
+          <ExhibitionItem
+            key={item.org}
+            title={item.title}
+            gallery={item.gallery}
+            location={item.location}
+            date={item.date}
           />
         ))}
       </div>
@@ -250,6 +270,17 @@ const FellowshipItem = ({
   </SpeakingLinkItem>
 );
 
+const ExhibitionItem = ({
+  location, gallery, title, date,
+}) => (
+  <SpeakingLinkItem>
+    {title}
+    <AboutDetail>{gallery}</AboutDetail>
+    <AboutDetail>{location}</AboutDetail>
+    <AboutDetail>{date}</AboutDetail>
+  </SpeakingLinkItem>
+);
+
 Metadata.propTypes = {
   location: PropTypes.string.isRequired,
   links: PropTypes.string.isRequired,
@@ -291,6 +322,13 @@ FellowshipItem.propTypes = {
   org: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+};
+
+ExhibitionItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  gallery: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default AboutPage;
