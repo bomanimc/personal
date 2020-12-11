@@ -23,7 +23,7 @@ export const ProjectSlug = {
   obb: 'out-of-the-black-box',
   mybluewindow: '1956-2054',
   babyfaith: 'baby-faith',
-  ml5: 'ml5',
+  ml5: 'ml5js',
 };
 
 export const FeaturedProjects = [
@@ -465,23 +465,19 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
 ProjectContent[ProjectSlug.ml5] = {
   id: ProjectSlug.ml5,
   title: 'ml5.js',
-  body: `“Black Health: A Collection of References to Black People on WebMD” is a book composed 
-  of over a thousand sentences containing the keywords “black” or “African” that were 
-  scraped from WebMD, one of the most popular online destinations for medical information.`,
+  body: `ml5.js is a beginner-friendly open-source machine learning library focused on making 
+  creative ML techniques approachable for a broad audience of artists, educators, creative 
+  coders, and others.`,
   year: '2020 - Present',
   tools: 'Tensorflow.js, p5.js, GitHub',
-  role: 'Maintainer',
+  role: 'Lead Maintainer',
   site: 'https://ml5js.org/',
-  media: 'blackhealthbook_main',
+  media: 'ml5js_main',
   primaryLink: `/${ProjectSlug.ml5}`,
   projectMedia: [
     {
       type: MediaTypes.image,
-      src: 'blackhealthbook_main.JPG',
-    },
-    {
-      type: MediaTypes.image,
-      src: 'blackhealthbook_reading.JPG',
+      src: 'ml5js_main.JPG',
     },
   ],
 };
