@@ -576,6 +576,13 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Speaker at Pond Mag & Eto Ano’s "Year-End Education Convention"',
+      event: "BABY TV by Baby's All Right",
+      date: 'December 2020',
+      location: 'Brooklyn, NY',
+      isNameTitle: false,
+    },
+    {
       name: 'Guest Speaker at "Introduction to Machine Learning for the Arts"',
       event: 'NYU Interactive Media Arts',
       date: 'October 2020',
