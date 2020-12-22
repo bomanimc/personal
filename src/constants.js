@@ -23,12 +23,14 @@ export const ProjectSlug = {
   obb: 'out-of-the-black-box',
   mybluewindow: '1956-2054',
   babyfaith: 'baby-faith',
+  ml5: 'ml5js',
 };
 
 export const FeaturedProjects = [
   ProjectSlug.informedconsent,
   ProjectSlug.blackhealthbook,
   ProjectSlug.obb,
+  ProjectSlug.ml5,
   ProjectSlug.shrumen,
   ProjectSlug.codeasart,
   ProjectSlug.mybluewindow,
@@ -456,6 +458,26 @@ ProjectContent[ProjectSlug.blackhealthbook] = {
     {
       type: MediaTypes.image,
       src: 'blackhealthbook_reading.JPG',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.ml5] = {
+  id: ProjectSlug.ml5,
+  title: 'ml5.js',
+  body: `ml5.js is a beginner-friendly open-source machine learning library focused on making 
+  creative ML techniques approachable for a broad audience of artists, educators, creative 
+  coders, and others.`,
+  year: '2020 - Present',
+  tools: 'Tensorflow.js, p5.js, GitHub',
+  role: 'Lead Maintainer',
+  site: 'https://ml5js.org/',
+  media: 'ml5js_main',
+  primaryLink: `/${ProjectSlug.ml5}`,
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'ml5js_main.JPG',
     },
   ],
 };
