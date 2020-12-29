@@ -37,7 +37,6 @@ export const FeaturedProjects = [
   ProjectSlug.babyfaith,
   ProjectSlug.versions,
   ProjectSlug.futurecity,
-  ProjectSlug.negativereel,
   ProjectSlug.topolamp,
   ProjectSlug.drawachart,
   ProjectSlug.reflections,
