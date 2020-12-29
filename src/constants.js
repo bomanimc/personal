@@ -36,6 +36,12 @@ export const FeaturedProjects = [
   ProjectSlug.mybluewindow,
   ProjectSlug.babyfaith,
   ProjectSlug.versions,
+  ProjectSlug.futurecity,
+  ProjectSlug.negativereel,
+  ProjectSlug.topolamp,
+  ProjectSlug.drawachart,
+  ProjectSlug.reflections,
+  ProjectSlug.gitrocket,
 ];
 
 export const ProjectContent = {};
@@ -173,7 +179,7 @@ ProjectContent[ProjectSlug.gitrocket] = {
   title: 'GitRocket',
   body: `A fun plugin for the [Hyper](https://hyper.is/) terminal that launches
   a rocket ship when you push code with Git. It has received 40+ GitHub stars and
-  [over 12,000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
+  [over 20,000 downloads](https://npm-stat.com/charts.html?package=gitrocket&from=2017-07-01)
   via NPM.`,
   year: '2017',
   tools: 'React, Redux, Hyper.',
