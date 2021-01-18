@@ -717,7 +717,12 @@ export const AboutCopy = {
   ],
   fellowships: [
     {
-      org: 'Interact (Upcoming, 2021)',
+      org: 'Clinic for Open Source Arts',
+      title: 'COSA Community Leaders Program Fellow',
+      date: '2021',
+    },
+    {
+      org: 'Interact',
       title: 'Fellow',
       date: '2021',
     },
