@@ -227,7 +227,7 @@ const EducationItem = ({
   <SpeakingLinkItem>
     {name}
     <AboutDetail>{degree}</AboutDetail>
-    <AboutDetail>{`${startDate} - ${endDate}`}</AboutDetail>
+    <AboutDetail>{endDate ? `${startDate} - ${endDate}` : startDate}</AboutDetail>
   </SpeakingLinkItem>
 );
 
@@ -294,7 +294,7 @@ BioContent.propTypes = {
 EducationItem.propTypes = {
   name: PropTypes.string.isRequired,
   startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string,
   degree: PropTypes.string.isRequired,
 };
 
@@ -310,6 +310,10 @@ SpeakingLink.propTypes = {
 SpeakingLink.defaultProps = {
   link: null,
   isNameTitle: true,
+};
+
+EducationItem.defaultProps = {
+  endDate: null,
 };
 
 WritingLink.propTypes = {

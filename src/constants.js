@@ -562,10 +562,14 @@ export const NavLinks = [
 export const AboutCopy = {
   education: [
     {
+      name: 'B&H Emergency Medical Training',
+      degree: 'EMT Accelerated Course',
+      startDate: '2021',
+    },
+    {
       name: 'School for Poetic Computation',
       degree: '10-Week Spring Session',
       startDate: '2019',
-      endDate: '2019',
     },
     {
       name: 'Northwestern University',
@@ -716,7 +720,12 @@ export const AboutCopy = {
   ],
   fellowships: [
     {
-      org: 'Interact (Upcoming, 2021)',
+      org: 'Clinic for Open Source Arts',
+      title: 'COSA Community Leaders Program Fellow',
+      date: '2021',
+    },
+    {
+      org: 'Interact',
       title: 'Fellow',
       date: '2021',
     },
