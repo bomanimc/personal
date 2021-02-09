@@ -49,7 +49,7 @@ class Walker {
     const lerpedColor = p5.lerpColor(
       p5.color(...color1),
       p5.color(...color2),
-      p5.map(sinRange, -1, 1, 0, 1),
+      Math.abs(sinRange),
     );
     p5.stroke(lerpedColor);
     p5.ellipse(
@@ -61,7 +61,7 @@ class Walker {
   }
 }
 
-class Metastasis extends Component {
+class Vasoconstriction extends Component {
   x = 0;
 
   y = 0;
@@ -70,7 +70,7 @@ class Metastasis extends Component {
 
   setup = (p5, canvasParentRef) => {
     p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
-    this.walker = new Walker(p5, 0, 0, 0.003, 0.002, [255, 82, 82, 30], [44, 44, 83, 30]);
+    this.walker = new Walker(p5, 0, 0, 0.003, 0.002, [255, 82, 82, 60], [44, 44, 83, 30]);
     p5.noFill();
     p5.blendMode(p5.ADD);
   };
@@ -87,17 +87,17 @@ class Metastasis extends Component {
   render() {
     return (
       <Layout showLinksBar={false}>
-        <BaseAnimationPage title="Metastasis">
-          <Metastasis.Container>
+        <BaseAnimationPage title="Vasoconstriction">
+          <Vasoconstriction.Container>
             <Sketch setup={this.setup} draw={this.draw} windowResized={this.windowResized} />
-          </Metastasis.Container>
+          </Vasoconstriction.Container>
         </BaseAnimationPage>
       </Layout>
     );
   }
 }
 
-Metastasis.Container = styled.div`
+Vasoconstriction.Container = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -106,4 +106,4 @@ Metastasis.Container = styled.div`
   z-index: -1;
 `;
 
-export default Metastasis;
+export default Vasoconstriction;
