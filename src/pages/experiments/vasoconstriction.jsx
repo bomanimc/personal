@@ -81,6 +81,9 @@ class Vasoconstriction extends Component {
   }
 
   render() {
+    const isServer = typeof window === 'undefined';
+    if (isServer) return null;
+
     return (
       <Layout showLinksBar={false}>
         <BaseAnimationPage title="Vasoconstriction">
