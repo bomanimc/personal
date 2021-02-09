@@ -62,10 +62,6 @@ class Walker {
 }
 
 class Vasoconstriction extends Component {
-  x = 0;
-
-  y = 0;
-
   walker = null;
 
   setup = (p5, canvasParentRef) => {
