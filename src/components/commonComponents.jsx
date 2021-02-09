@@ -156,6 +156,16 @@ export const BasePage = ({ title, body, metadata }) => (
   </div>
 );
 
+export const BaseAnimationPage = ({ title, children }) => (
+  <div>
+    <Helmet>
+      {setMetaTitleWithName(title)}
+    </Helmet>
+    <Page>{children}</Page>
+  </div>
+);
+
+
 BasePage.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.node.isRequired,
@@ -164,4 +174,13 @@ BasePage.propTypes = {
 
 BasePage.defaultProps = {
   metadata: null,
+};
+
+BaseAnimationPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+BaseAnimationPage.defaultProps = {
+  children: null,
 };

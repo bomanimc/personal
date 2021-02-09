@@ -25,7 +25,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Layout = ({ children }) => (
+const Layout = ({ showLinksBar, children }) => (
   <ThemeProvider theme={theme}>
     <BaseWrapper>
       <SEO />
@@ -33,13 +33,18 @@ const Layout = ({ children }) => (
       <ContentWrapper>
         {children}
       </ContentWrapper>
-      <LinksBar links={SocialLinks} />
+      {showLinksBar && <LinksBar links={SocialLinks} />}
     </BaseWrapper>
   </ThemeProvider>
 );
 
 Layout.propTypes = {
+  showLinksBar: PropTypes.bool,
   children: PropTypes.node.isRequired,
+};
+
+Layout.defaultProps = {
+  showLinksBar: true,
 };
 
 export default Layout;
