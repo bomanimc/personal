@@ -7,12 +7,14 @@ import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
 class Walker {
-  constructor(p5, x, y, xNoiseIncrement, yNoiseIncrement) {
+  constructor(p5, x, y, xNoiseIncrement, yNoiseIncrement, color1, color2) {
     this.p5 = p5;
     this.x = x;
     this.y = y;
     this.xNoiseIncrement = xNoiseIncrement;
     this.yNoiseIncrement = yNoiseIncrement;
+    this.color1 = color1;
+    this.color2 = color2;
     this.xStep = 0;
     this.yStep = 0;
     this.millisScale = 0.0006;
@@ -38,9 +40,18 @@ class Walker {
       x,
       y,
       millisScale,
+      color1,
+      color2,
     } = this;
 
-    const diameter = 200 * p5.sin(millisScale * p5.millis());
+    const sinRange = p5.sin(millisScale * p5.millis());
+    const diameter = 200 * sinRange;
+    const lerpedColor = p5.lerpColor(
+      p5.color(...color1),
+      p5.color(...color2),
+      p5.map(sinRange, -1, 1, 0, 1),
+    );
+    p5.stroke(lerpedColor);
     p5.ellipse(
       x,
       y,
@@ -59,9 +70,8 @@ class Metastasis extends Component {
 
   setup = (p5, canvasParentRef) => {
     p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
-    this.walker = new Walker(p5, 0, 0, 0.003, 0.002);
+    this.walker = new Walker(p5, 0, 0, 0.003, 0.002, [255, 82, 82, 30], [44, 44, 83, 30]);
     p5.noFill();
-    p5.stroke(44, 44, 83, 30);
     p5.blendMode(p5.ADD);
   };
 
