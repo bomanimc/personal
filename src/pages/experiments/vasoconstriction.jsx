@@ -26,8 +26,8 @@ class Walker {
     const xNoise = p5.noise(this.xStep);
     const yNoise = p5.noise(this.yStep);
 
-    this.x = p5.map(xNoise, 0, 1, 0, window.innerWidth);
-    this.y = p5.map(yNoise, 0, 1, 0, window.innerHeight);
+    this.x = p5.map(xNoise, 0, 1, 0, p5.windowWidth);
+    this.y = p5.map(yNoise, 0, 1, 0, p5.windowHeight);
     this.draw();
 
     this.xStep += xNoiseIncrement;
@@ -65,7 +65,7 @@ class Vasoconstriction extends Component {
   walker = null;
 
   setup = (p5, canvasParentRef) => {
-    p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
+    p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     this.walker = new Walker(p5, 0, 0, 0.003, 0.002, [255, 82, 82, 60], [44, 44, 83, 30]);
     p5.noFill();
     p5.blendMode(p5.ADD);
@@ -77,7 +77,7 @@ class Vasoconstriction extends Component {
   };
 
   windowResized = (p5) => {
-    p5.resizeCanvas(window.innerWidth, window.innerHeight);
+    p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
   }
 
   render() {
