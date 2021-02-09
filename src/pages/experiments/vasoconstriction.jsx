@@ -6,18 +6,15 @@ import { BaseAnimationPage } from '../../components/commonComponents';
 import { loadableP5 as P5Wrapper } from '../../components/loadable';
 import VasoconstrictionSketch from '../../noc-sketches/vasoconstriction';
 
-const Vasoconstriction = () => {
-  return (
-    <P5Wrapper sketch={VasoconstrictionSketch} />
-    // <Layout showLinksBar={false}>
-    //   <BaseAnimationPage title="Vasoconstriction">
-    //     <Vasoconstriction.Container>
-    //       {/* <VasoconstrictionSketch /> */}
-    //     </Vasoconstriction.Container>
-    //   </BaseAnimationPage>
-    // </Layout>
-  );
-};
+const Vasoconstriction = () => (
+  <Layout showLinksBar={false}>
+    <BaseAnimationPage title="Vasoconstriction">
+      <Vasoconstriction.Container>
+        <P5Wrapper sketch={VasoconstrictionSketch} />
+      </Vasoconstriction.Container>
+    </BaseAnimationPage>
+  </Layout>
+);
 
 Vasoconstriction.Container = styled.div`
   position: absolute;
