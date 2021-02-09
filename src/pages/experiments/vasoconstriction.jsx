@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Loadable from '@loadable/component';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
-const VasoconstrictionSketch = Loadable(() => import('../../noc-sketches/vasoconstriction'));
+import { loadableP5 as P5Wrapper } from '../../components/loadable';
+import VasoconstrictionSketch from '../../noc-sketches/vasoconstriction';
 
 const Vasoconstriction = () => {
-  // if (typeof window === 'undefined') return null;
-
   return (
-    <VasoconstrictionSketch />
+    <P5Wrapper sketch={VasoconstrictionSketch} />
     // <Layout showLinksBar={false}>
     //   <BaseAnimationPage title="Vasoconstriction">
     //     <Vasoconstriction.Container>

@@ -1,7 +1,5 @@
 /* eslint max-classes-per-file: 0 */
-
-import React, { Component } from 'react';
-import Sketch from 'react-p5';
+/* eslint no-param-reassign: 0 */
 
 class Walker {
   constructor(p5, x, y, xNoiseIncrement, yNoiseIncrement, color1, color2) {
@@ -58,34 +56,24 @@ class Walker {
   }
 }
 
-class VasoconstrictionSketch extends Component {
-  walker = null;
+const VasoconstrictionSketch = (p5) => {
+  let walker = null;
 
-  setup = (p5, canvasParentRef) => {
-    p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-    this.walker = new Walker(p5, 0, 0, 0.003, 0.002, [255, 82, 82, 60], [44, 44, 83, 30]);
+  p5.setup = () => {
+    p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    walker = new Walker(p5, 0, 0, 0.003, 0.002, [255, 82, 82, 60], [44, 44, 83, 30]);
     p5.noFill();
     p5.blendMode(p5.ADD);
   };
 
-  draw = (p5) => {
+  p5.draw = () => {
     p5.background(0, 0, 0, 255);
-    this.walker.move();
+    walker.move();
   };
 
-  windowResized = (p5) => {
+  p5.windowResized = () => {
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-  }
-
-  render() {
-    return (
-      <Sketch
-        setup={this.setup}
-        draw={this.draw}
-        windowResized={this.windowResized}
-      />
-    );
-  }
-}
+  };
+};
 
 export default VasoconstrictionSketch;
