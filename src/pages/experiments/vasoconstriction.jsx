@@ -2,9 +2,11 @@
 
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Sketch from 'react-p5';
+import Loadable from '@loadable/component';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
+
+export const LoadableSketch = Loadable(() => import('react-p5'));
 
 class Walker {
   constructor(p5, x, y, xNoiseIncrement, yNoiseIncrement, color1, color2) {
@@ -89,7 +91,11 @@ class Vasoconstriction extends Component {
       <Layout showLinksBar={false}>
         <BaseAnimationPage title="Vasoconstriction">
           <Vasoconstriction.Container>
-            <Sketch setup={this.setup} draw={this.draw} windowResized={this.windowResized} />
+            <LoadableSketch
+              setup={this.setup}
+              draw={this.draw}
+              windowResized={this.windowResized}
+            />
           </Vasoconstriction.Container>
         </BaseAnimationPage>
       </Layout>
