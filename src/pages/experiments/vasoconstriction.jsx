@@ -83,18 +83,14 @@ class Vasoconstriction extends Component {
   }
 
   render() {
+    if (typeof window === 'undefined') return null;
+
     return (
-      <Layout showLinksBar={false}>
-        <BaseAnimationPage title="Vasoconstriction">
-          <Vasoconstriction.Container>
-            <LoadableSketch
-              setup={this.setup}
-              draw={this.draw}
-              windowResized={this.windowResized}
-            />
-          </Vasoconstriction.Container>
-        </BaseAnimationPage>
-      </Layout>
+      <LoadableSketch
+        setup={this.setup}
+        draw={this.draw}
+        windowResized={this.windowResized}
+      />
     );
   }
 }
