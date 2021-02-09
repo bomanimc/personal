@@ -1,29 +1,85 @@
+/* eslint max-classes-per-file: 0 */
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Sketch from 'react-p5';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
+class Walker {
+  constructor(p5, x, y, xNoiseIncrement, yNoiseIncrement) {
+    this.p5 = p5;
+    this.x = x;
+    this.y = y;
+    this.xNoiseIncrement = xNoiseIncrement;
+    this.yNoiseIncrement = yNoiseIncrement;
+    this.xStep = 0;
+    this.yStep = 0;
+    this.millisScale = 0.0006;
+  }
+
+  move() {
+    const { p5, xNoiseIncrement, yNoiseIncrement } = this;
+
+    const xNoise = p5.noise(this.xStep);
+    const yNoise = p5.noise(this.yStep);
+
+    this.x = p5.map(xNoise, 0, 1, 0, window.innerWidth);
+    this.y = p5.map(yNoise, 0, 1, 0, window.innerHeight);
+    this.draw();
+
+    this.xStep += xNoiseIncrement;
+    this.yStep += yNoiseIncrement;
+  }
+
+  draw() {
+    const {
+      p5,
+      x,
+      y,
+      millisScale,
+    } = this;
+
+    const diameter = 200 * p5.sin(millisScale * p5.millis());
+    p5.ellipse(
+      x,
+      y,
+      diameter,
+      diameter,
+    );
+  }
+}
+
 class Metastasis extends Component {
   x = 0;
 
   y = 0;
 
+  walker = null;
+
   setup = (p5, canvasParentRef) => {
     p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
+    this.walker = new Walker(p5, 0, 0, 0.003, 0.002);
+    p5.noFill();
+    p5.stroke(44, 44, 83, 30);
+    p5.blendMode(p5.ADD);
   };
 
   draw = (p5) => {
-    p5.clear();
-    p5.ellipse(p5.mouseX, p5.mouseY, 400, 400);
+    p5.background(0, 0, 0, 255);
+    this.walker.move();
   };
+
+  windowResized = (p5) => {
+    p5.resizeCanvas(window.innerWidth, window.innerHeight);
+  }
 
   render() {
     return (
       <Layout showLinksBar={false}>
         <BaseAnimationPage title="Metastasis">
           <Metastasis.Container>
-            <Sketch setup={this.setup} draw={this.draw} />
+            <Sketch setup={this.setup} draw={this.draw} windowResized={this.windowResized} />
           </Metastasis.Container>
         </BaseAnimationPage>
       </Layout>
