@@ -30,7 +30,7 @@ const Main = styled.main`
   flex: 1;
 `;
 
-const Layout = ({ children }) => (
+const Layout = ({ showLinksBar, children }) => (
   <ThemeProvider theme={theme}>
     <BaseWrapper>
       <SEO />
@@ -38,13 +38,18 @@ const Layout = ({ children }) => (
       <Main>
         <ContentWrapper>{children}</ContentWrapper>
       </Main>
-      <footer><LinksBar links={SocialLinks} /></footer>
+      {showLinksBar && <LinksBar links={SocialLinks} />}
     </BaseWrapper>
   </ThemeProvider>
 );
 
 Layout.propTypes = {
+  showLinksBar: PropTypes.bool,
   children: PropTypes.node.isRequired,
+};
+
+Layout.defaultProps = {
+  showLinksBar: true,
 };
 
 export default Layout;
