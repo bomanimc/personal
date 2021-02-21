@@ -37,10 +37,6 @@ export const FeaturedProjects = [
   ProjectSlug.babyfaith,
   ProjectSlug.versions,
   ProjectSlug.futurecity,
-  ProjectSlug.topolamp,
-  ProjectSlug.drawachart,
-  ProjectSlug.reflections,
-  ProjectSlug.gitrocket,
 ];
 
 export const ProjectContent = {};

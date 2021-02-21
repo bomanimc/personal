@@ -4,18 +4,13 @@ import { InternalLink } from '../commonComponents';
 
 const NavBar = () => (
   <>
-    <DesktopContainer>
-      <NavLink to="/">Work</NavLink>
-      <Name to="/">Bomani</Name>
-      <NavLink to="/info">Info</NavLink>
-    </DesktopContainer>
-    <MobileContainer>
+    <NavContainer>
       <Name to="/">Bomani</Name>
       <LinksRow>
         <NavLink to="/">Work</NavLink>
         <NavLink to="/info">Info</NavLink>
       </LinksRow>
-    </MobileContainer>
+    </NavContainer>
   </>
 );
 
@@ -31,24 +26,11 @@ const containerStyle = css`
   pointer-events: none;
 `;
 
-const DesktopContainer = styled.nav`
+const NavContainer = styled.nav`
   ${containerStyle};
-  padding: 2rem 3rem;
-
-  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
-    display: none;
-  }
-`;
-
-const MobileContainer = styled.nav`
-  ${containerStyle};
-  display: none;
+  display: flex;
   flex-direction: column;
   padding: 1rem;
-
-  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
-    display: flex;
-  }
 `;
 
 const LinksRow = styled.div`
@@ -62,11 +44,8 @@ const NavLink = styled(InternalLink)`
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: auto;
-
-  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
-    font-size: 1rem;
-    margin: 0rem 1rem;
-  }
+  font-size: 1rem;
+  margin: 0rem 1rem;
 `;
 
 const Name = styled(NavLink)`
