@@ -10,7 +10,7 @@ import theme from '../theme';
 const BaseWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  height: 100%;
 `;
 
 const ContentWrapper = styled.div`
@@ -25,15 +25,20 @@ const ContentWrapper = styled.div`
   }
 `;
 
+const Main = styled.main`
+  display: flex;
+  flex: 1;
+`;
+
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <BaseWrapper>
       <SEO />
       <NavBar />
-      <ContentWrapper>
-        {children}
-      </ContentWrapper>
-      <LinksBar links={SocialLinks} />
+      <Main>
+        <ContentWrapper>{children}</ContentWrapper>
+      </Main>
+      <footer><LinksBar links={SocialLinks} /></footer>
     </BaseWrapper>
   </ThemeProvider>
 );
