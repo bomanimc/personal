@@ -10,7 +10,7 @@ import theme from '../theme';
 const BaseWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
 `;
 
 const ContentWrapper = styled.div`
