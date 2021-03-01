@@ -5,6 +5,9 @@ import SketchWrapper from '../../components/partials/SketchWrapper';
 
 const Vasoconstriction = () => {
   const [sketch, setSketch] = useState();
+
+  if (typeof window === 'undefined') return null;
+
   import(`../../../scripts/sketches/test.js`).then((result) => setSketch(result));
 
   return sketch
