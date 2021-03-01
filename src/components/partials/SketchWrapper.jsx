@@ -1,8 +1,11 @@
+/* eslint-disable global-require */
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import p5 from 'p5';
 
 const SketchWrapper = (props) => {
+  const p5 = typeof window !== 'undefined' ? require('p5') : null;
+  if (!p5) return null;
+
   const sketchRef = useRef();
   useEffect(() => {
     // eslint-disable-next-line no-new
