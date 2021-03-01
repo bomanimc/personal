@@ -53,7 +53,7 @@ export default function sketch(p) {
   // ~~~~~~ Setup ~~~~~~
   p.setup = () => {
   // use full screen size
-  p.createCanvas(p.displayWidth, p.displayHeight)
+  p.createCanvas(800, 800)
   p.background(255)
   p.cursor(p.CROSS)
 
