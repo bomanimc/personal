@@ -9,10 +9,10 @@ const Vasoconstriction = () => {
   // import('../../../scripts/sketches/test.js').then((result) => setSketch(result));
   useEffect(() => {
     console.log('Sketch Wrapper USE EFFECT RAN');
-    const p5Sketch = require('../../../scripts/sketches/test.js');
-    console.log(p5Sketch);
-    setSketch(p5Sketch);
-  });
+    // const p5Sketch = require('../../../scripts/sketches/test.js');
+    // console.log(p5Sketch);
+    // setSketch(p5Sketch);
+  }, []);
 
   return sketch
     ? <Layout><SketchWrapper sketch={sketch.default} /></Layout>

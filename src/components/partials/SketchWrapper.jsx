@@ -12,7 +12,7 @@ const SketchWrapper = (props) => {
     new p5(props.sketch, sketchRef.current);
     console.log('USE EFFECT RAN');
     setIsSSR(false);
-  });
+  }, []);
 
   return isSSR ? null : <div ref={sketchRef} />;
 };
