@@ -6,11 +6,11 @@ module.exports = {
   siteMetadata: {
     title: 'BOMANI',
     description: 'Bomani Oseni McClendon is an engineer living in Brooklyn, NY.',
-    siteUrl: 'https://bomani.xyz',
+    siteUrl: 'https://bomani.rip',
     ogImageWidth: 600,
     ogImageHeight: 600,
     twitterCreator: '@bxmani',
-    twitterDomain: 'bomani.xyz',
+    twitterDomain: 'bomani.rip',
     googleSiteVerification: 'oUOz_91m_HgyQz1q_kErpkk03-qUN-OS1Wh8once9gg',
   },
   plugins: [
@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://bomani.xyz',
+        host: 'https://bomani.rip',
         policy: [{ userAgent: '*', disallow: '' }],
       },
     },
