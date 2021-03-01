@@ -20,6 +20,7 @@
     "gatsby-source-filesystem": "^2.1.35",
     "gatsby-source-prismic-graphql": "^3.3.1",
     "gatsby-transformer-sharp": "^2.3.1",
+    "p5": "^1.2.0",
     "prismic-reactjs": "^1.1.1",
     "prismic-richtext": "^1.0.3",
     "prop-types": "^15.7.2",
