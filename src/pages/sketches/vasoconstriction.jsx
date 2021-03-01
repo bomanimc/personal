@@ -12,7 +12,7 @@ const Vasoconstriction = () => {
     // const p5Sketch = require('../../../scripts/sketches/test.js');
     // console.log(p5Sketch);
     // setSketch(p5Sketch);
-  }, []);
+  });
 
   return sketch
     ? <Layout><SketchWrapper sketch={sketch.default} /></Layout>
