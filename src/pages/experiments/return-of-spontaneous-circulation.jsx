@@ -61,34 +61,22 @@ class ROSCSketch extends Component {
   };
 
   draw = (p5) => {
-    p5.background(0);
-    const mult1 = 1;
-    const mult2 = 5;
+    const { waveformX, waveformY } = this.props;
+    const waveformXValues = waveformX.getValue();
+    const waveformYValues = waveformY.getValue();
 
-    // Circle 1
-    const centerX = p5.width / 2;
-    const centerY = p5.height / 2;
-    const x = 100 * p5.cos(this.angle * mult1 - p5.HALF_PI);
-    const y = 100 * p5.sin(this.angle * mult1 - p5.HALF_PI);
-    p5.fill(255, 0, 0);
-    p5.noStroke();
-    p5.ellipse(centerX + x, centerY + y, 10, 10);
+    p5.stroke(255);
+    p5.strokeWeight(1);
+    p5.noFill();
 
-    // Circle 2
-    const centerX2 = (p5.width / 2);
-    const centerY2 = (p5.height / 2);
-    const x2 = 100 * p5.cos(this.angle * mult2 - p5.HALF_PI);
-    const y2 = 100 * p5.sin(this.angle * mult2 - p5.HALF_PI);
-    p5.fill(0, 255, 0);
-    p5.noStroke();
-    p5.ellipse(centerX2 + x2, centerY2 + y2, 10, 10);
-
-    this.curve.setX(centerX + x);
-    this.curve.setY(centerY2 + y2);
-    this.curve.addPoint();
-    this.curve.draw();
-
-    this.angle -= 0.01;
+    p5.beginShape();
+    for (let i = 0; i < waveformXValues.length; i += 1) {
+      const x = p5.map(waveformXValues[i], -1, 1, 0, p5.width / 2);
+      const y = p5.map(waveformYValues[i], -1, 1, p5.height / 2, 0);
+      // console.log(x, y);
+      p5.vertex(x, y);
+    }
+    p5.endShape();
   };
 
   windowResized = (p5) => {
@@ -107,18 +95,22 @@ class ROSCSketch extends Component {
 }
 
 const ROSC = () => {
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   const oscillatorX = new Oscillator(440, 'sine');
   oscillatorX.volume.value = -5;
-  // const analyzerX = new Waveform(1024);
-  // oscillatorX.connect(analyzerX);
+  const waveformX = new Waveform(1024);
+  oscillatorX.connect(waveformX);
   oscillatorX.toDestination().start();
 
-  const oscillatorY = new Oscillator(440, 'sine');
+  const oscillatorY = new Oscillator({
+    type: 'sine',
+    frequency: 440,
+    phase: 90,
+  });
   oscillatorY.volume.value = -5;
-  // const analyzerY = new Waveform(1024);
-  // oscillatorY.connect(analyzerY);
+  const waveformY = new Waveform(1024);
+  oscillatorY.connect(waveformY);
   oscillatorY.toDestination().start();
 
   useEffect(() => {
@@ -134,7 +126,7 @@ const ROSC = () => {
       <BaseAnimationPage title="Return of Spontaneous Circulation">
         <button onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</button>
         <ROSC.Container>
-          <ROSCSketch />
+          <ROSCSketch waveformX={waveformX} waveformY={waveformY} />
         </ROSC.Container>
       </BaseAnimationPage>
     </Layout>
