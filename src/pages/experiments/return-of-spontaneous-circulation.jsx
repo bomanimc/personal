@@ -1,8 +1,9 @@
 /* eslint max-classes-per-file: 0 */
 
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Loadable from '@loadable/component';
+import { Oscillator, Waveform, Destination } from 'tone';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
@@ -47,7 +48,7 @@ class Curve {
   }
 }
 
-class ROSC extends Component {
+class ROSCSketch extends Component {
   angle = 0;
 
   curve = null;
@@ -61,12 +62,14 @@ class ROSC extends Component {
 
   draw = (p5) => {
     p5.background(0);
+    const mult1 = 1;
+    const mult2 = 5;
 
     // Circle 1
     const centerX = p5.width / 2;
     const centerY = p5.height / 2;
-    const x = 100 * p5.cos(this.angle - p5.HALF_PI);
-    const y = 100 * p5.sin(this.angle - p5.HALF_PI);
+    const x = 100 * p5.cos(this.angle * mult1 - p5.HALF_PI);
+    const y = 100 * p5.sin(this.angle * mult1 - p5.HALF_PI);
     p5.fill(255, 0, 0);
     p5.noStroke();
     p5.ellipse(centerX + x, centerY + y, 10, 10);
@@ -74,8 +77,8 @@ class ROSC extends Component {
     // Circle 2
     const centerX2 = (p5.width / 2);
     const centerY2 = (p5.height / 2);
-    const x2 = 100 * p5.cos(this.angle * 5 - p5.HALF_PI);
-    const y2 = 100 * p5.sin(this.angle * 5 - p5.HALF_PI);
+    const x2 = 100 * p5.cos(this.angle * mult2 - p5.HALF_PI);
+    const y2 = 100 * p5.sin(this.angle * mult2 - p5.HALF_PI);
     p5.fill(0, 255, 0);
     p5.noStroke();
     p5.ellipse(centerX2 + x2, centerY2 + y2, 10, 10);
@@ -94,20 +97,49 @@ class ROSC extends Component {
 
   render() {
     return (
-      <Layout showLinksBar={false}>
-        <BaseAnimationPage title="Return of Spontaneous Circulation">
-          <ROSC.Container>
-            <LoadableSketch
-              setup={this.setup}
-              draw={this.draw}
-              windowResized={this.windowResized}
-            />
-          </ROSC.Container>
-        </BaseAnimationPage>
-      </Layout>
+      <LoadableSketch
+        setup={this.setup}
+        draw={this.draw}
+        windowResized={this.windowResized}
+      />
     );
   }
 }
+
+const ROSC = () => {
+  const [isMuted, setIsMuted] = useState(false);
+
+  const oscillatorX = new Oscillator(440, 'sine');
+  oscillatorX.volume.value = -5;
+  // const analyzerX = new Waveform(1024);
+  // oscillatorX.connect(analyzerX);
+  oscillatorX.toDestination().start();
+
+  const oscillatorY = new Oscillator(440, 'sine');
+  oscillatorY.volume.value = -5;
+  // const analyzerY = new Waveform(1024);
+  // oscillatorY.connect(analyzerY);
+  oscillatorY.toDestination().start();
+
+  useEffect(() => {
+    Destination.mute = isMuted;
+  }, [isMuted]);
+
+  const onToggleMuted = () => {
+    setIsMuted(!isMuted);
+  };
+
+  return (
+    <Layout showLinksBar={false}>
+      <BaseAnimationPage title="Return of Spontaneous Circulation">
+        <button onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</button>
+        <ROSC.Container>
+          <ROSCSketch />
+        </ROSC.Container>
+      </BaseAnimationPage>
+    </Layout>
+  );
+};
 
 ROSC.Container = styled.div`
   position: absolute;
