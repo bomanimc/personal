@@ -1,18 +1,20 @@
 /* eslint-disable global-require */
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const SketchWrapper = (props) => {
-  const p5 = typeof window !== 'undefined' ? require('p5') : null;
-  if (!p5) return null;
-
+  const [isSSR, setIsSSR] = useState(true);
   const sketchRef = useRef();
-  useEffect(() => {
-    // eslint-disable-next-line no-new
-    new p5(props.sketch, sketchRef.current);
-  }, []);
 
-  return <div ref={sketchRef} />;
+  useEffect(() => {
+    // Run! Like go get some data from an API.
+    const p5 = require('p5');
+    new p5(props.sketch, sketchRef.current);
+    console.log('USE EFFECT RAN');
+    setIsSSR(false);
+  });
+
+  return isSSR ? null : <div ref={sketchRef} />;
 };
 
 SketchWrapper.propTypes = {
