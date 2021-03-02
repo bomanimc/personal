@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { Oscillator, Waveform, Destination } from 'tone';
+import { Channel, Oscillator, Waveform, Destination } from 'tone';
 import Sketch from '../../sketches/rosc';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
 const ROSC = () => {
+  const baseChannel = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
   const [oscillators, setOscillators] = useState({});
   const [waveforms, setWaveforms] = useState({});
-  const [interval, setInterval] = useState(5 / 3);
+  const [xFrequencyScaling, setXFrequencyScaling] = useState(1);
+  const [yFrequencyScaling, setYFrequencyScaling] = useState(1);
   const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
   const middleCFrequency = 261.6;
   const initializeOscillator = (type, frequency, phase = 0) => {
@@ -29,18 +31,32 @@ const ROSC = () => {
   }, [isMuted]);
 
   useEffect(() => {
+    baseChannel.current = new Channel();
+
+    return () => {
+      console.log('Unmount');
+      Object.values(oscillators).map((oscillator) => oscillator.stop().dispose());
+      if (baseChannel.current) {
+        baseChannel.current.dispose();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     Object.values(oscillators).map((oscillator) => oscillator.dispose());
     const { x: xType, y: yType } = selectedOscillatorTypes;
 
-    const oscillatorX = initializeOscillator(xType, middleCFrequency);
+    const oscillatorX = initializeOscillator(xType, middleCFrequency * xFrequencyScaling);
     const waveformX = new Waveform(1024);
     oscillatorX.connect(waveformX);
-    oscillatorX.toDestination().start();
+    oscillatorX.start().connect(baseChannel.current);
 
-    const oscillatorY = initializeOscillator(yType, middleCFrequency * interval, 90);
+    const oscillatorY = initializeOscillator(yType, middleCFrequency * yFrequencyScaling, 90);
     const waveformY = new Waveform(1024);
     oscillatorY.connect(waveformY);
-    oscillatorY.toDestination().start();
+    oscillatorY.start().connect(baseChannel.current);
+
+    baseChannel.current.toDestination();
 
     setOscillators({
       x: oscillatorX,
@@ -50,7 +66,7 @@ const ROSC = () => {
       x: waveformX,
       y: waveformY,
     });
-  }, [selectedOscillatorTypes]);
+  }, [selectedOscillatorTypes, xFrequencyScaling, yFrequencyScaling]);
 
   const onToggleMuted = () => {
     setIsMuted(!isMuted);
@@ -72,6 +88,10 @@ const ROSC = () => {
     });
   };
 
+  const onChangeXFrequencyScaling = (event) => setXFrequencyScaling(event.target.value || 1);
+
+  const onChangeYFrequencyScaling = (event) => setYFrequencyScaling(event.target.value || 1);
+
   return (
     <Layout showLinksBar={false}>
       <BaseAnimationPage title="Return of Spontaneous Circulation">
@@ -84,10 +104,10 @@ const ROSC = () => {
         </ROSC.Content>
         <ROSC.ControlsPanel>
           <ROSC.ControlsContent>
-            <ROSC.ControlPanelRow>
+            <ROSC.ControlPanelSection>
               <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
-            </ROSC.ControlPanelRow>
-            <ROSC.ControlPanelRow>
+            </ROSC.ControlPanelSection>
+            <ROSC.ControlPanelSection>
               <ROSC.SectionTitle>X-Axis Waveform</ROSC.SectionTitle>
               <ROSC.ButtonGrid>
                 {allOscillatorTypes.map((type) => (
@@ -100,8 +120,8 @@ const ROSC = () => {
                   </ROSC.Button>
                 ))}
               </ROSC.ButtonGrid>
-            </ROSC.ControlPanelRow>
-            <ROSC.ControlPanelRow>
+            </ROSC.ControlPanelSection>
+            <ROSC.ControlPanelSection>
               <ROSC.SectionTitle>Y-Axis Waveform</ROSC.SectionTitle>
               <ROSC.ButtonGrid>
                 {allOscillatorTypes.map((type) => (
@@ -114,7 +134,30 @@ const ROSC = () => {
                   </ROSC.Button>
                 ))}
               </ROSC.ButtonGrid>
-            </ROSC.ControlPanelRow>
+            </ROSC.ControlPanelSection>
+            <ROSC.ControlPanelSection>
+              <ROSC.SectionTitle>Custom Tuning Ratio</ROSC.SectionTitle>
+              <ROSC.ControlRow>
+                <ROSC.ControlLabel>X Tone Multiple of 440Hz</ROSC.ControlLabel>
+                <ROSC.Input
+                  type="text"
+                  autoComplete="off"
+                  placeholder="Enter here"
+                  defaultValue={1}
+                  onChange={onChangeXFrequencyScaling}
+                />
+              </ROSC.ControlRow>
+              <ROSC.ControlRow>
+                <ROSC.ControlLabel>Y Tone Multiple of 440Hz</ROSC.ControlLabel>
+                <ROSC.Input
+                  type="text"
+                  autoComplete="off"
+                  placeholder="Enter here"
+                  defaultValue={1}
+                  onChange={onChangeYFrequencyScaling}
+                />
+              </ROSC.ControlRow>
+            </ROSC.ControlPanelSection>
           </ROSC.ControlsContent>
         </ROSC.ControlsPanel>
       </BaseAnimationPage>
@@ -182,8 +225,23 @@ ROSC.ControlsHeader = styled.div`
 
 ROSC.ControlsContent = styled.div``;
 
-ROSC.ControlPanelRow = styled.div`
+ROSC.ControlPanelSection = styled.div`
   padding: 0.5rem;
+`;
+
+ROSC.ControlRow = styled.div`
+  display: flex;
+  font-size: 0.75rem;
+  flex-direction: column;
+  margin: 0.5rem 0;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+`;
+
+ROSC.ControlLabel = styled.div`
+  margin-bottom: 0.5rem;
 `;
 
 ROSC.ButtonGrid = styled.div`
@@ -199,6 +257,18 @@ ROSC.Button = styled.button`
   border: 1px solid white;
   padding: 0.5rem;
   width: 100%;
+`;
+
+ROSC.Input = styled.input`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: transparent;
+  outline: none;
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid white;
 `;
 
 ROSC.SectionTitle = styled.p`
