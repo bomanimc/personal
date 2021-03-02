@@ -5,12 +5,6 @@ import Sketch from '../../sketches/rosc';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
-const DropdownSelector = ({name, optionValues, onChange}) => (
-  <select name={name} onChange={onChange}>
-    {optionValues.map((type) => <ROSC.SelectorOption value={type}>{type}</ROSC.SelectorOption>)}
-  </select>
-);
-
 const ROSC = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
@@ -59,7 +53,6 @@ const ROSC = () => {
   }, [selectedOscillatorTypes]);
 
   const onToggleMuted = () => {
-    console.log('TOGGLED');
     setIsMuted(!isMuted);
   };
 
@@ -88,12 +81,42 @@ const ROSC = () => {
               <Sketch waveformX={waveforms.x} waveformY={waveforms.y} />
             </ROSC.SketchWrapper>
           </ROSC.SquareContainer>
-          <ROSC.ControlsPanel>
-            <button onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</button>
-            <DropdownSelector name="oscillatorXType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorXType} />
-            <DropdownSelector name="oscillatorYType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorYType} />
-          </ROSC.ControlsPanel>
         </ROSC.Content>
+        <ROSC.ControlsPanel>
+          <ROSC.ControlsContent>
+            <ROSC.ControlPanelRow>
+              <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
+            </ROSC.ControlPanelRow>
+            <ROSC.ControlPanelRow>
+              <ROSC.SectionTitle>X-Axis Waveform</ROSC.SectionTitle>
+              <ROSC.ButtonGrid>
+                {allOscillatorTypes.map((type) => (
+                  <ROSC.Button
+                    isSelected={type === selectedOscillatorTypes.x}
+                    onClick={onChangeOscillatorXType}
+                    value={type}
+                  >
+                    {type}
+                  </ROSC.Button>
+                ))}
+              </ROSC.ButtonGrid>
+            </ROSC.ControlPanelRow>
+            <ROSC.ControlPanelRow>
+              <ROSC.SectionTitle>Y-Axis Waveform</ROSC.SectionTitle>
+              <ROSC.ButtonGrid>
+                {allOscillatorTypes.map((type) => (
+                  <ROSC.Button
+                    isSelected={type === selectedOscillatorTypes.y}
+                    onClick={onChangeOscillatorYType}
+                    value={type}
+                  >
+                    {type}
+                  </ROSC.Button>
+                ))}
+              </ROSC.ButtonGrid>
+            </ROSC.ControlPanelRow>
+          </ROSC.ControlsContent>
+        </ROSC.ControlsPanel>
       </BaseAnimationPage>
     </Layout>
   );
@@ -139,12 +162,48 @@ ROSC.ControlsPanel = styled.div`
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  border: 1px solid blue;
+  border: 1px solid white;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  background: black;
 `;
 
-ROSC.SelectorOption = styled.option`
+ROSC.ControlsHeader = styled.div`
+  display: flex;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid white;
+  flex: 1;
+  background: rgba(0, 0, 255, .37);
+`;
+
+ROSC.ControlsContent = styled.div``;
+
+ROSC.ControlPanelRow = styled.div`
+  padding: 0.5rem;
+`;
+
+ROSC.ButtonGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.5rem;
+`;
+
+ROSC.Button = styled.button`
+  background: ${(p) => (p.isSelected ? 'rgba(0, 0, 255, 0.37)' : 'none')};
+  color: white;
   text-transform: capitalize;
+  border: 1px solid white;
+  padding: 0.5rem;
+  width: 100%;
+`;
+
+ROSC.SectionTitle = styled.p`
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 `;
 
 export default ROSC;
