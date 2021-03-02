@@ -51,10 +51,14 @@ class Curve {
 class ROSCSketch extends Component {
   angle = 0;
 
+  curveSizingFactor = 0.8;
+
   curve = null;
 
   setup = (p5, canvasParentRef) => {
-    p5.createCanvas(1000, 1000).parent(canvasParentRef);
+    const { width, height } = this.getCanvasSizing();
+    p5.createCanvas(width, height).parent(canvasParentRef);
+
     p5.strokeWeight(1);
 
     this.curve = new Curve(p5);
@@ -71,17 +75,34 @@ class ROSCSketch extends Component {
     p5.strokeWeight(1);
     p5.noFill();
 
+    p5.push();
+    p5.translate(p5.width / 2, p5.height / 2);
     p5.beginShape();
+    const maxValue = Math.max.apply(null, waveformXValues);
+    const minValue = Math.min.apply(null, waveformXValues);
+    const widthHalf = (p5.width * this.curveSizingFactor) / 2;
+    const heightHalf = (p5.width * this.curveSizingFactor) / 2;
     for (let i = 0; i < waveformXValues.length; i += 1) {
-      const x = p5.map(waveformXValues[i], -1, 1, 0, p5.width / 2);
-      const y = p5.map(waveformYValues[i], -1, 1, p5.height / 2, 0);
+      const x = p5.map(waveformXValues[i], minValue, maxValue, -widthHalf, widthHalf);
+      const y = p5.map(waveformYValues[i], minValue, maxValue, heightHalf, -heightHalf);
       p5.vertex(x, y);
     }
     p5.endShape();
+    p5.pop();
   };
 
   windowResized = (p5) => {
-    p5.resizeCanvas(window.innerWidth, window.innerHeight);
+    const { width, height } = this.getCanvasSizing();
+    p5.resizeCanvas(width, height);
+  }
+
+  getCanvasSizing = () => {
+    const canvasContainer = document.getElementById('canvasContainer');
+
+    return {
+      width: typeof window !== 'undefined' ? canvasContainer.offsetWidth : 0,
+      height: typeof window !== 'undefined' ? canvasContainer.offsetHeight : 0,
+    };
   }
 
   render() {
@@ -171,24 +192,44 @@ const ROSC = () => {
   return (
     <Layout showLinksBar={false}>
       <BaseAnimationPage title="Return of Spontaneous Circulation">
-        <button onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</button>
-        <DropdownSelector name="oscillatorXType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorXType} />
-        <DropdownSelector name="oscillatorYType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorYType} />
-        <ROSC.Container>
-          <ROSCSketch waveformX={waveforms.x} waveformY={waveforms.y} />
-        </ROSC.Container>
+        <ROSC.Content>
+          <ROSC.SquareContainer>
+            <ROSC.SketchWrapper id="canvasContainer">
+              <ROSCSketch waveformX={waveforms.x} waveformY={waveforms.y} />
+            </ROSC.SketchWrapper>
+          </ROSC.SquareContainer>
+          <div>
+            <button onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</button>
+            <DropdownSelector name="oscillatorXType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorXType} />
+            <DropdownSelector name="oscillatorYType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorYType} />
+          </div>
+        </ROSC.Content>
       </BaseAnimationPage>
     </Layout>
   );
 };
 
-ROSC.Container = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
+ROSC.Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+ROSC.SquareContainer = styled.div`
+  border: 1px solid white;
+  width: 50vh;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .25rem;
+`;
+
+ROSC.SketchWrapper = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 ROSC.SelectorOption = styled.option`
