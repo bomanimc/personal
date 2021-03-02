@@ -65,7 +65,7 @@ class ROSCSketch extends Component {
   };
 
   draw = (p5) => {
-    p5.background(0);
+    p5.background(0, 0, 0, 255);
 
     const { waveformX, waveformY } = this.props;
     const waveformXValues = waveformX.getValue();
@@ -136,7 +136,7 @@ const ROSC = () => {
       frequency,
       phase,
     });
-    oscillator.volume.value = -10;
+    oscillator.volume.value = -30;
 
     return oscillator;
   };
@@ -198,11 +198,11 @@ const ROSC = () => {
               <ROSCSketch waveformX={waveforms.x} waveformY={waveforms.y} />
             </ROSC.SketchWrapper>
           </ROSC.SquareContainer>
-          <div>
+          {/* <div>
             <button onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</button>
             <DropdownSelector name="oscillatorXType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorXType} />
             <DropdownSelector name="oscillatorYType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorYType} />
-          </div>
+          </div> */}
         </ROSC.Content>
       </BaseAnimationPage>
     </Layout>
@@ -215,16 +215,29 @@ ROSC.Content = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 `;
 
 ROSC.SquareContainer = styled.div`
-  border: 1px solid white;
-  width: 50vh;
-  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: .25rem;
+
+  @media screen and (orientation:landscape) {
+    height: 100vh;
+    width: 100vh;
+  }
+
+  @media screen and (orientation:portrait) {
+    height: 100vw;
+    width: 100vw;
+  }
 `;
 
 ROSC.SketchWrapper = styled.div`
