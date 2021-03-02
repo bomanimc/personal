@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import {
-  Channel,
-  Oscillator,
-  Waveform,
-  Destination,
-} from 'tone';
+import styled, { keyframes } from 'styled-components';
+import * as Tone from 'tone';
 import Sketch from '../../sketches/rosc';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
@@ -13,6 +8,7 @@ import { BaseAnimationPage } from '../../components/commonComponents';
 const ROSC = () => {
   const baseChannel = useRef(null);
   const [areControlsExposed, setAreControlsExposed] = useState(true);
+  const [audioContextStarted, setAudioContextStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
   const [oscillators, setOscillators] = useState({});
@@ -22,7 +18,7 @@ const ROSC = () => {
   const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
   const middleCFrequency = 261.6;
   const initializeOscillator = (type, frequency, phase = 0) => {
-    const oscillator = new Oscillator({
+    const oscillator = new Tone.Oscillator({
       type,
       frequency: frequency || middleCFrequency,
       phase,
@@ -33,11 +29,11 @@ const ROSC = () => {
   };
 
   useEffect(() => {
-    Destination.mute = isMuted;
+    Tone.Destination.mute = isMuted;
   }, [isMuted]);
 
   useEffect(() => {
-    baseChannel.current = new Channel();
+    baseChannel.current = new Tone.Channel();
 
     return () => {
       Object.values(oscillators).map((oscillator) => oscillator.stop().dispose());
@@ -52,12 +48,12 @@ const ROSC = () => {
     const { x: xType, y: yType } = selectedOscillatorTypes;
 
     const oscillatorX = initializeOscillator(xType, middleCFrequency * xFrequencyScaling);
-    const waveformX = new Waveform(1024);
+    const waveformX = new Tone.Waveform(1024);
     oscillatorX.connect(waveformX);
     oscillatorX.start().connect(baseChannel.current);
 
     const oscillatorY = initializeOscillator(yType, middleCFrequency * yFrequencyScaling, 90);
-    const waveformY = new Waveform(1024);
+    const waveformY = new Tone.Waveform(1024);
     oscillatorY.connect(waveformY);
     oscillatorY.start().connect(baseChannel.current);
 
@@ -99,6 +95,11 @@ const ROSC = () => {
 
   const onToggleControls = () => setAreControlsExposed(!areControlsExposed);
 
+  const onStartAudioContext = () => {
+    Tone.context.resume();
+    setAudioContextStarted(true);
+  };
+
   return (
     <Layout showLinksBar={false}>
       <BaseAnimationPage title="Return of Spontaneous Circulation">
@@ -117,6 +118,16 @@ const ROSC = () => {
             </ROSC.ControlsHeaderButton>
           </ROSC.ControlsHeader>
           <ROSC.ControlsContent isExposed={areControlsExposed}>
+            {!audioContextStarted && (
+              <ROSC.ControlPanelSection>
+                <ROSC.FlashingButton
+                  isSelected={isMuted}
+                  onClick={onStartAudioContext}
+                >
+                  Activate Audio Context
+                </ROSC.FlashingButton>
+              </ROSC.ControlPanelSection>
+            )}
             <ROSC.ControlPanelSection>
               <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
             </ROSC.ControlPanelSection>
@@ -282,6 +293,15 @@ ROSC.ButtonGrid = styled.div`
   grid-gap: 0.5rem;
 `;
 
+const flashingBorder = keyframes`    
+  from, to {    
+    border-color: white;
+  }    
+  50% {    
+    border-color: yellow;   
+  }    
+`;
+
 ROSC.Button = styled.button`
   background: ${(p) => (p.isSelected ? 'rgba(0, 0, 255, 0.37)' : 'none')};
   color: white;
@@ -289,6 +309,10 @@ ROSC.Button = styled.button`
   border: 1px solid white;
   padding: 0.5rem;
   width: 100%;
+`;
+
+ROSC.FlashingButton = styled(ROSC.Button)`
+  animation: 0.5s ${flashingBorder} ease-out infinite;
 `;
 
 ROSC.Input = styled.input`
