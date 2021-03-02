@@ -54,13 +54,15 @@ class ROSCSketch extends Component {
   curve = null;
 
   setup = (p5, canvasParentRef) => {
-    p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
+    p5.createCanvas(1000, 1000).parent(canvasParentRef);
     p5.strokeWeight(1);
 
     this.curve = new Curve(p5);
   };
 
   draw = (p5) => {
+    p5.background(0);
+
     const { waveformX, waveformY } = this.props;
     const waveformXValues = waveformX.getValue();
     const waveformYValues = waveformY.getValue();
@@ -73,7 +75,6 @@ class ROSCSketch extends Component {
     for (let i = 0; i < waveformXValues.length; i += 1) {
       const x = p5.map(waveformXValues[i], -1, 1, 0, p5.width / 2);
       const y = p5.map(waveformYValues[i], -1, 1, p5.height / 2, 0);
-      // console.log(x, y);
       p5.vertex(x, y);
     }
     p5.endShape();
@@ -94,39 +95,87 @@ class ROSCSketch extends Component {
   }
 }
 
+const DropdownSelector = ({name, optionValues, onChange}) => (
+  <select name={name} onChange={onChange}>
+    {optionValues.map((type) => <ROSC.SelectorOption value={type}>{type}</ROSC.SelectorOption>)}
+  </select>
+);
+
 const ROSC = () => {
   const [isMuted, setIsMuted] = useState(true);
+  const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
+  const [oscillators, setOscillators] = useState({});
+  const [waveforms, setWaveforms] = useState({});
+  const [interval, setInterval] = useState(5 / 3);
+  const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
+  const middleCFrequency = 261.6;
+  const initializeOscillator = (type, frequency, phase = 0) => {
+    const oscillator = new Oscillator({
+      type,
+      frequency,
+      phase,
+    });
+    oscillator.volume.value = -10;
 
-  const oscillatorX = new Oscillator(440, 'sine');
-  oscillatorX.volume.value = -5;
-  const waveformX = new Waveform(1024);
-  oscillatorX.connect(waveformX);
-  oscillatorX.toDestination().start();
-
-  const oscillatorY = new Oscillator({
-    type: 'sine',
-    frequency: 440,
-    phase: 90,
-  });
-  oscillatorY.volume.value = -5;
-  const waveformY = new Waveform(1024);
-  oscillatorY.connect(waveformY);
-  oscillatorY.toDestination().start();
+    return oscillator;
+  };
 
   useEffect(() => {
     Destination.mute = isMuted;
   }, [isMuted]);
 
+  useEffect(() => {
+    Object.values(oscillators).map((oscillator) => oscillator.dispose());
+    const { x: xType, y: yType } = selectedOscillatorTypes;
+
+    const oscillatorX = initializeOscillator(xType, middleCFrequency);
+    const waveformX = new Waveform(1024);
+    oscillatorX.connect(waveformX);
+    oscillatorX.toDestination().start();
+
+    const oscillatorY = initializeOscillator(yType, middleCFrequency * interval, 90);
+    const waveformY = new Waveform(1024);
+    oscillatorY.connect(waveformY);
+    oscillatorY.toDestination().start();
+
+    setOscillators({
+      x: oscillatorX,
+      y: oscillatorY,
+    });
+    setWaveforms({
+      x: waveformX,
+      y: waveformY,
+    });
+  }, [selectedOscillatorTypes]);
+
   const onToggleMuted = () => {
     setIsMuted(!isMuted);
+  };
+
+  const onChangeOscillatorXType = (event) => {
+    const type = event.target.value;
+    setSelectedOscillatorTypes({
+      ...selectedOscillatorTypes,
+      x: type,
+    });
+  };
+
+  const onChangeOscillatorYType = (event) => {
+    const type = event.target.value;
+    setSelectedOscillatorTypes({
+      ...selectedOscillatorTypes,
+      y: type,
+    });
   };
 
   return (
     <Layout showLinksBar={false}>
       <BaseAnimationPage title="Return of Spontaneous Circulation">
         <button onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</button>
+        <DropdownSelector name="oscillatorXType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorXType} />
+        <DropdownSelector name="oscillatorYType" optionValues={allOscillatorTypes} onChange={onChangeOscillatorYType} />
         <ROSC.Container>
-          <ROSCSketch waveformX={waveformX} waveformY={waveformY} />
+          <ROSCSketch waveformX={waveforms.x} waveformY={waveforms.y} />
         </ROSC.Container>
       </BaseAnimationPage>
     </Layout>
@@ -140,6 +189,10 @@ ROSC.Container = styled.div`
   left: 0;
   right: 0;
   z-index: -1;
+`;
+
+ROSC.SelectorOption = styled.option`
+  text-transform: capitalize;
 `;
 
 export default ROSC;
