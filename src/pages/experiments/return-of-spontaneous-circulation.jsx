@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { Channel, Oscillator, Waveform, Destination } from 'tone';
+import {
+  Channel,
+  Oscillator,
+  Waveform,
+  Destination,
+} from 'tone';
 import Sketch from '../../sketches/rosc';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
 const ROSC = () => {
   const baseChannel = useRef(null);
+  const [areControlsExposed, setAreControlsExposed] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
   const [oscillators, setOscillators] = useState({});
@@ -18,7 +24,7 @@ const ROSC = () => {
   const initializeOscillator = (type, frequency, phase = 0) => {
     const oscillator = new Oscillator({
       type,
-      frequency,
+      frequency: frequency || middleCFrequency,
       phase,
     });
     oscillator.volume.value = -30;
@@ -34,7 +40,6 @@ const ROSC = () => {
     baseChannel.current = new Channel();
 
     return () => {
-      console.log('Unmount');
       Object.values(oscillators).map((oscillator) => oscillator.stop().dispose());
       if (baseChannel.current) {
         baseChannel.current.dispose();
@@ -92,6 +97,8 @@ const ROSC = () => {
 
   const onChangeYFrequencyScaling = (event) => setYFrequencyScaling(event.target.value || 1);
 
+  const onToggleControls = () => setAreControlsExposed(!areControlsExposed);
+
   return (
     <Layout showLinksBar={false}>
       <BaseAnimationPage title="Return of Spontaneous Circulation">
@@ -103,7 +110,13 @@ const ROSC = () => {
           </ROSC.SquareContainer>
         </ROSC.Content>
         <ROSC.ControlsPanel>
-          <ROSC.ControlsContent>
+          <ROSC.ControlsHeader>
+            <span>Controls</span>
+            <ROSC.ControlsHeaderButton onClick={onToggleControls}>
+              {areControlsExposed ? '–' : '+'}
+            </ROSC.ControlsHeaderButton>
+          </ROSC.ControlsHeader>
+          <ROSC.ControlsContent isExposed={areControlsExposed}>
             <ROSC.ControlPanelSection>
               <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
             </ROSC.ControlPanelSection>
@@ -211,19 +224,38 @@ ROSC.ControlsPanel = styled.div`
   flex-direction: column;
   width: 15rem;
   background: black;
+
+  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
+    width: unset;
+    left: 1rem;
+  }
 `;
 
 ROSC.ControlsHeader = styled.div`
   display: flex;
-  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
   text-transform: uppercase;
+  font-size: 1rem;
   font-weight: bold;
   border-bottom: 1px solid white;
   flex: 1;
   background: rgba(0, 0, 255, .37);
 `;
 
-ROSC.ControlsContent = styled.div``;
+ROSC.ControlsHeaderButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+`;
+
+ROSC.ControlsContent = styled.div`
+  display: ${(p) => (p.isExposed ? 'block' : 'none')};
+`;
 
 ROSC.ControlPanelSection = styled.div`
   padding: 0.5rem;
