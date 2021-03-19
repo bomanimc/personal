@@ -11,11 +11,14 @@ const ROSC = () => {
   const [audioContextStarted, setAudioContextStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isClockMode, setIsClockMode] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
   const [oscillators, setOscillators] = useState({});
   const [waveforms, setWaveforms] = useState({});
   const [xFrequencyScaling, setXFrequencyScaling] = useState(1);
   const [yFrequencyScaling, setYFrequencyScaling] = useState(1);
+  const xFrequencyScalingInput = useRef();
+  const yFrequencyScalingInput = useRef();
   const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
   const middleCFrequency = 261.6;
   const initializeOscillator = (type, frequency, phase = 0) => {
@@ -70,6 +73,28 @@ const ROSC = () => {
     });
   }, [selectedOscillatorTypes, xFrequencyScaling, yFrequencyScaling]);
 
+  useEffect(() => {
+    let interval = null;
+
+    if (isClockMode) {
+      interval = setInterval(() => {
+        setCurrentTime(new Date());
+      }, 1000);
+    }
+
+    return () => clearInterval(interval);
+  }, [isClockMode]);
+
+  useEffect(() => {
+    if (isClockMode) {
+      setXFrequencyScaling(currentTime.getHours());
+      setYFrequencyScaling(currentTime.getMinutes());
+    } else {
+      setXFrequencyScaling(xFrequencyScalingInput.current.value);
+      setYFrequencyScaling(yFrequencyScalingInput.current.value);
+    }
+  }, [currentTime, isClockMode]);
+
   const onToggleMuted = () => {
     setIsMuted(!isMuted);
   };
@@ -109,12 +134,12 @@ const ROSC = () => {
     <Layout showLinksBar={false} showTitleNav={!isClockMode}>
       <BaseAnimationPage title="Return of Spontaneous Circulation">
         <ROSC.Content>
-          <ROSC.SquareContainer>
-            {isClockMode && <ROSC.Clock>3:15:23</ROSC.Clock>}
+          <ROSC.SquareContainer smallMode={isClockMode}>
             <ROSC.SketchWrapper id="canvasContainer">
               <Sketch waveformX={waveforms.x} waveformY={waveforms.y} />
             </ROSC.SketchWrapper>
           </ROSC.SquareContainer>
+          {isClockMode && <ROSC.Clock>{`${currentTime.getHours()}:${currentTime.getMinutes()}`}</ROSC.Clock>}
         </ROSC.Content>
         <ROSC.ControlsPanel>
           <ROSC.ControlsHeader>
@@ -173,6 +198,7 @@ const ROSC = () => {
               <ROSC.ControlRow>
                 <ROSC.ControlLabel>X Tone Multiple of 440Hz</ROSC.ControlLabel>
                 <ROSC.Input
+                  ref={xFrequencyScalingInput}
                   type="text"
                   autoComplete="off"
                   placeholder="Enter here"
@@ -183,6 +209,7 @@ const ROSC = () => {
               <ROSC.ControlRow>
                 <ROSC.ControlLabel>Y Tone Multiple of 440Hz</ROSC.ControlLabel>
                 <ROSC.Input
+                  ref={yFrequencyScalingInput}
                   type="text"
                   autoComplete="off"
                   placeholder="Enter here"
@@ -217,24 +244,21 @@ ROSC.SquareContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: .25rem;
-  position: relative;
 
-  @media screen and (orientation:landscape) {
-    height: 100vh;
-    width: 100vh;
+  @media screen and (orientation: landscape) {
+    height: ${(p) => (p.smallMode ? '80vh' : '100vh')};
+    width: ${(p) => (p.smallMode ? '80vh' : '100vh')};;
   }
 
-  @media screen and (orientation:portrait) {
-    height: 100vw;
-    width: 100vw;
+  @media screen and (orientation: portrait) {
+    height: ${(p) => (p.smallMode ? '80vw' : '100vw')};;
+    width: ${(p) => (p.smallMode ? '80vw' : '100vw')};;
   }
 `;
 
-ROSC.Clock = styled.h1`
-  font-size: 5rem;
+ROSC.Clock = styled.p`
+  font-size: 2.5rem;
   color: white;
-  position: absolute;
-  mix-blend-mode: exclusion;
 `;
 
 ROSC.SketchWrapper = styled.div`
