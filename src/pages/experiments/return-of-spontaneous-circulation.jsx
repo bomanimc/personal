@@ -5,22 +5,29 @@ import Sketch from '../../sketches/rosc';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
+const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
+const allTuningRatioOptions = ['manual', 'clock'];
+
 const ROSC = () => {
   const baseChannel = useRef(null);
   const [areControlsExposed, setAreControlsExposed] = useState(true);
   const [audioContextStarted, setAudioContextStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [isClockMode, setIsClockMode] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
+  const [
+    selectedTuningRatioOption,
+    setSelectedTuningRatioOption,
+  ] = useState(allTuningRatioOptions[0]);
   const [oscillators, setOscillators] = useState({});
   const [waveforms, setWaveforms] = useState({});
   const [xFrequencyScaling, setXFrequencyScaling] = useState(1);
   const [yFrequencyScaling, setYFrequencyScaling] = useState(1);
   const xFrequencyScalingInput = useRef();
   const yFrequencyScalingInput = useRef();
-  const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
   const middleCFrequency = 261.6;
+  const isClockMode = selectedTuningRatioOption === 'clock';
+
   const initializeOscillator = (type, frequency, phase = 0) => {
     const oscillator = new Tone.Oscillator({
       type,
@@ -99,9 +106,7 @@ const ROSC = () => {
     setIsMuted(!isMuted);
   };
 
-  const onToggleClockMode = () => {
-    setIsClockMode(!isClockMode);
-  };
+  const onToggleControls = () => setAreControlsExposed(!areControlsExposed);
 
   const onChangeOscillatorXType = (event) => {
     const type = event.target.value;
@@ -119,11 +124,14 @@ const ROSC = () => {
     });
   };
 
+  const onChangeTuningRatioOption = (event) => {
+    const option = event.target.value;
+    setSelectedTuningRatioOption(option);
+  };
+
   const onChangeXFrequencyScaling = (event) => setXFrequencyScaling(event.target.value || 1);
 
   const onChangeYFrequencyScaling = (event) => setYFrequencyScaling(event.target.value || 1);
-
-  const onToggleControls = () => setAreControlsExposed(!areControlsExposed);
 
   const onStartAudioContext = () => {
     Tone.context.resume();
@@ -139,7 +147,7 @@ const ROSC = () => {
               <Sketch waveformX={waveforms.x} waveformY={waveforms.y} />
             </ROSC.SketchWrapper>
           </ROSC.SquareContainer>
-          {isClockMode && <ROSC.Clock>{`${currentTime.getHours()}:${currentTime.getMinutes()}`}</ROSC.Clock>}
+          {isClockMode && <ROSC.Clock>{currentTime.toLocaleTimeString('en-US', { hour12: false })}</ROSC.Clock>}
         </ROSC.Content>
         <ROSC.ControlsPanel>
           <ROSC.ControlsHeader>
@@ -161,9 +169,6 @@ const ROSC = () => {
             )}
             <ROSC.ControlPanelSection>
               <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
-            </ROSC.ControlPanelSection>
-            <ROSC.ControlPanelSection>
-              <ROSC.Button isSelected={isClockMode} onClick={onToggleClockMode}>{`Clock Mode: ${isClockMode ? 'On' : 'Off'}`}</ROSC.Button>
             </ROSC.ControlPanelSection>
             <ROSC.ControlPanelSection>
               <ROSC.SectionTitle>X-Axis Waveform</ROSC.SectionTitle>
@@ -194,28 +199,54 @@ const ROSC = () => {
               </ROSC.ButtonGrid>
             </ROSC.ControlPanelSection>
             <ROSC.ControlPanelSection>
-              <ROSC.SectionTitle>Custom Tuning Ratio</ROSC.SectionTitle>
+              <ROSC.SectionTitle>Tuning Ratio</ROSC.SectionTitle>
+              <ROSC.ButtonGrid>
+                {allTuningRatioOptions.map((option) => (
+                  <ROSC.Button
+                    isSelected={option === selectedTuningRatioOption}
+                    onClick={onChangeTuningRatioOption}
+                    value={option}
+                  >
+                    {option}
+                  </ROSC.Button>
+                ))}
+              </ROSC.ButtonGrid>
               <ROSC.ControlRow>
-                <ROSC.ControlLabel>X Tone Multiple of 440Hz</ROSC.ControlLabel>
-                <ROSC.Input
-                  ref={xFrequencyScalingInput}
-                  type="text"
-                  autoComplete="off"
-                  placeholder="Enter here"
-                  defaultValue={1}
-                  onChange={onChangeXFrequencyScaling}
-                />
+                {isClockMode && <ROSC.ControlLabel>Turn off Clock Mode to set custom ratios.</ROSC.ControlLabel>}
               </ROSC.ControlRow>
               <ROSC.ControlRow>
-                <ROSC.ControlLabel>Y Tone Multiple of 440Hz</ROSC.ControlLabel>
-                <ROSC.Input
-                  ref={yFrequencyScalingInput}
-                  type="text"
-                  autoComplete="off"
-                  placeholder="Enter here"
-                  defaultValue={1}
-                  onChange={onChangeYFrequencyScaling}
-                />
+                {isClockMode ? (
+                  <ROSC.ControlLabel>{`X Tone Multiple of ${middleCFrequency}Hz set to ${xFrequencyScaling}`}</ROSC.ControlLabel>
+                ) : (
+                  <>
+                    <ROSC.ControlLabel>{`X Tone Multiple of ${middleCFrequency}Hz`}</ROSC.ControlLabel>
+                    <ROSC.Input
+                      ref={xFrequencyScalingInput}
+                      type="text"
+                      autoComplete="off"
+                      placeholder="Enter here"
+                      defaultValue={1}
+                      onChange={onChangeXFrequencyScaling}
+                    />
+                  </>
+                )}
+              </ROSC.ControlRow>
+              <ROSC.ControlRow>
+                {isClockMode ? (
+                  <ROSC.ControlLabel>{`Y Tone Multiple of ${middleCFrequency}Hz set to ${yFrequencyScaling}`}</ROSC.ControlLabel>
+                ) : (
+                  <>
+                    <ROSC.ControlLabel>{`Y Tone Multiple of ${middleCFrequency}Hz`}</ROSC.ControlLabel>
+                    <ROSC.Input
+                      ref={yFrequencyScalingInput}
+                      type="text"
+                      autoComplete="off"
+                      placeholder="Enter here"
+                      defaultValue={1}
+                      onChange={onChangeYFrequencyScaling}
+                    />
+                  </>
+                )}
               </ROSC.ControlRow>
             </ROSC.ControlPanelSection>
           </ROSC.ControlsContent>
