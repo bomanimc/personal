@@ -10,6 +10,7 @@ const ROSC = () => {
   const [areControlsExposed, setAreControlsExposed] = useState(true);
   const [audioContextStarted, setAudioContextStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [isClockMode, setIsClockMode] = useState(false);
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
   const [oscillators, setOscillators] = useState({});
   const [waveforms, setWaveforms] = useState({});
@@ -73,6 +74,10 @@ const ROSC = () => {
     setIsMuted(!isMuted);
   };
 
+  const onToggleClockMode = () => {
+    setIsClockMode(!isClockMode);
+  };
+
   const onChangeOscillatorXType = (event) => {
     const type = event.target.value;
     setSelectedOscillatorTypes({
@@ -101,10 +106,11 @@ const ROSC = () => {
   };
 
   return (
-    <Layout showLinksBar={false}>
+    <Layout showLinksBar={false} showTitleNav={!isClockMode}>
       <BaseAnimationPage title="Return of Spontaneous Circulation">
         <ROSC.Content>
           <ROSC.SquareContainer>
+            {isClockMode && <ROSC.Clock>3:15:23</ROSC.Clock>}
             <ROSC.SketchWrapper id="canvasContainer">
               <Sketch waveformX={waveforms.x} waveformY={waveforms.y} />
             </ROSC.SketchWrapper>
@@ -130,6 +136,9 @@ const ROSC = () => {
             )}
             <ROSC.ControlPanelSection>
               <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
+            </ROSC.ControlPanelSection>
+            <ROSC.ControlPanelSection>
+              <ROSC.Button isSelected={isClockMode} onClick={onToggleClockMode}>{`Clock Mode: ${isClockMode ? 'On' : 'Off'}`}</ROSC.Button>
             </ROSC.ControlPanelSection>
             <ROSC.ControlPanelSection>
               <ROSC.SectionTitle>X-Axis Waveform</ROSC.SectionTitle>
@@ -208,6 +217,7 @@ ROSC.SquareContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: .25rem;
+  position: relative;
 
   @media screen and (orientation:landscape) {
     height: 100vh;
@@ -218,6 +228,13 @@ ROSC.SquareContainer = styled.div`
     height: 100vw;
     width: 100vw;
   }
+`;
+
+ROSC.Clock = styled.h1`
+  font-size: 5rem;
+  color: white;
+  position: absolute;
+  mix-blend-mode: exclusion;
 `;
 
 ROSC.SketchWrapper = styled.div`
