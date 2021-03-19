@@ -10,12 +10,15 @@ export const LoadableSketch = Loadable(() => import('react-p5'));
 class Sketch extends Component {
   angle = 0;
 
-  curveSizingFactor = 0.8;
+  curveSizingFactor = 0.9;
 
   curve = null;
 
   setup = (p5, canvasParentRef) => {
     const { width, height } = this.getCanvasSizing();
+    const canvasContainer = document.getElementById('canvasContainer');
+    new ResizeObserver(() => this.windowResized(p5)).observe(canvasContainer);
+
     p5.createCanvas(width, height).parent(canvasParentRef);
 
     p5.strokeWeight(1);
