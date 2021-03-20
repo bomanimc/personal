@@ -144,7 +144,7 @@ const ROSC = () => {
         <ROSC.Content>
           <ROSC.SquareContainer smallMode={isClockMode}>
             <ROSC.SketchWrapper id="canvasContainer">
-              <Sketch waveformX={waveforms.x} waveformY={waveforms.y} />
+              <Sketch waveformX={waveforms.x} waveformY={waveforms.y} isClockMode={isClockMode} />
             </ROSC.SketchWrapper>
           </ROSC.SquareContainer>
           {isClockMode && <ROSC.Clock>{currentTime.toLocaleTimeString('en-US', { hour12: false })}</ROSC.Clock>}

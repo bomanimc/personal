@@ -10,8 +10,6 @@ export const LoadableSketch = Loadable(() => import('react-p5'));
 class Sketch extends Component {
   angle = 0;
 
-  curveSizingFactor = 0.9;
-
   curve = null;
 
   setup = (p5, canvasParentRef) => {
@@ -27,9 +25,10 @@ class Sketch extends Component {
   draw = (p5) => {
     p5.background(0, 0, 0, 255);
 
-    const { waveformX, waveformY } = this.props;
+    const { waveformX, waveformY, isClockMode } = this.props;
     const waveformXValues = waveformX.getValue();
     const waveformYValues = waveformY.getValue();
+    const curveSizingFactor = isClockMode ? 0.9 : 0.8;
 
     p5.stroke(255);
     p5.strokeWeight(1);
@@ -40,8 +39,8 @@ class Sketch extends Component {
     p5.beginShape();
     const maxValue = Math.max.apply(null, waveformXValues);
     const minValue = Math.min.apply(null, waveformXValues);
-    const widthHalf = (p5.width * this.curveSizingFactor) / 2;
-    const heightHalf = (p5.width * this.curveSizingFactor) / 2;
+    const widthHalf = (p5.width * curveSizingFactor) / 2;
+    const heightHalf = (p5.width * curveSizingFactor) / 2;
     for (let i = 0; i < waveformXValues.length; i += 1) {
       const x = p5.map(waveformXValues[i], minValue, maxValue, -widthHalf, widthHalf);
       const y = p5.map(waveformYValues[i], minValue, maxValue, heightHalf, -heightHalf);
@@ -79,11 +78,13 @@ class Sketch extends Component {
 Sketch.propTypes = {
   waveformX: PropTypes.shape(),
   waveformY: PropTypes.shape(),
+  isClockMode: PropTypes.bool,
 };
 
 Sketch.defaultProps = {
   waveformX: {},
   waveformY: {},
+  isClockMode: false,
 };
 
 export default Sketch;
