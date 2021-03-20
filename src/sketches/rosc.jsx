@@ -21,14 +21,9 @@ class MathematicalCurve {
   draw() {
     const { p5 } = this;
 
-    // p5.stroke(255);
-    // p5.strokeWeight(1);
-    // p5.noFill();
-
     p5.beginShape();
     for (let i = 0; i < this.path.length; i += 1) {
       const vertex = this.path[i];
-      // console.log(vertex);
       p5.vertex(vertex.x, vertex.y);
     }
     p5.endShape();
@@ -60,26 +55,26 @@ class Sketch extends Component {
     const waveformXValues = waveformX.getValue();
     const waveformYValues = waveformY.getValue();
     const curveSizingFactor = isClockMode ? 0.9 : 0.8;
+    const widthHalf = (p5.width * curveSizingFactor) / 2;
+    const heightHalf = (p5.width * curveSizingFactor) / 2;
 
     p5.stroke(255);
     p5.strokeWeight(1);
     p5.noFill();
 
     if (drawingMode === 'audio') {
-      this.drawAudioBasedCurve(p5, waveformXValues, waveformYValues, curveSizingFactor);
+      this.drawAudioBasedCurve(p5, waveformXValues, waveformYValues, widthHalf, heightHalf);
     } else {
-      this.drawMathematicalCurve(p5);
+      this.drawMathematicalCurve(p5, widthHalf, heightHalf);
     }
   };
 
-  drawAudioBasedCurve = (p5, waveformXValues, waveformYValues, curveSizingFactor) => {
+  drawAudioBasedCurve = (p5, waveformXValues, waveformYValues, widthHalf, heightHalf) => {
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);
     p5.beginShape();
     const maxValue = Math.max.apply(null, waveformXValues);
     const minValue = Math.min.apply(null, waveformXValues);
-    const widthHalf = (p5.width * curveSizingFactor) / 2;
-    const heightHalf = (p5.width * curveSizingFactor) / 2;
     for (let i = 0; i < waveformXValues.length; i += 1) {
       const x = p5.map(waveformXValues[i], minValue, maxValue, -widthHalf, widthHalf);
       const y = p5.map(waveformYValues[i], minValue, maxValue, heightHalf, -heightHalf);
@@ -89,30 +84,36 @@ class Sketch extends Component {
     p5.pop();
   }
 
-  drawMathematicalCurve = (p5) => {
+  drawMathematicalCurve = (p5, widthHalf, heightHalf) => {
     const { xFrequencyScaling, yFrequencyScaling } = this.props;
     const mathematicalCurve = new MathematicalCurve(p5);
     let angle = p5.TWO_PI;
 
+    p5.push();
+    p5.translate(p5.width / 2, p5.height / 2);
     while (angle >= 0) {
-      // Circle 1
-      const centerX = p5.width / 2;
-      const centerY = p5.height / 2;
-      const x = 100 * p5.cos(angle * xFrequencyScaling + p5.HALF_PI);
-      const y = 100 * p5.sin(angle * xFrequencyScaling + p5.HALF_PI);
+      const x = p5.map(
+        p5.sin(angle * xFrequencyScaling - p5.HALF_PI),
+        -1,
+        1,
+        -widthHalf,
+        widthHalf,
+      );
+      const y = p5.map(
+        p5.cos(angle * yFrequencyScaling - p5.HALF_PI),
+        -1,
+        1,
+        -heightHalf,
+        heightHalf,
+      );
 
-      // Circle 2
-      const centerX2 = (p5.width / 2);
-      const centerY2 = (p5.height / 2);
-      const x2 = 100 * p5.cos(angle * yFrequencyScaling + p5.HALF_PI);
-      const y2 = 100 * p5.sin(angle * yFrequencyScaling + p5.HALF_PI);
-
-      mathematicalCurve.addPoint(centerX + x, centerY2 + y2);
+      mathematicalCurve.addPoint(x, y);
 
       angle -= 0.01;
     }
 
     mathematicalCurve.draw();
+    p5.pop();
   }
 
   windowResized = (p5) => {
