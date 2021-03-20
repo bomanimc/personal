@@ -38,8 +38,6 @@ class Sketch extends Component {
 
     p5.createCanvas(width, height).parent(canvasParentRef);
 
-    p5.strokeWeight(1);
-
     this.mathematicalCurve = new MathematicalCurve(p5);
   };
 
@@ -70,6 +68,8 @@ class Sketch extends Component {
   };
 
   drawAudioBasedCurve = (p5, waveformXValues, waveformYValues, widthHalf, heightHalf) => {
+    p5.strokeWeight(1);
+
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);
     p5.beginShape();
@@ -85,6 +85,8 @@ class Sketch extends Component {
   }
 
   drawMathematicalCurve = (p5, widthHalf, heightHalf) => {
+    p5.strokeWeight(2);
+
     const { xFrequencyScaling, yFrequencyScaling } = this.props;
     const mathematicalCurve = new MathematicalCurve(p5);
     let angle = p5.TWO_PI;
@@ -109,7 +111,7 @@ class Sketch extends Component {
 
       mathematicalCurve.addPoint(x, y);
 
-      angle -= 0.01;
+      angle -= 0.001;
     }
 
     mathematicalCurve.draw();

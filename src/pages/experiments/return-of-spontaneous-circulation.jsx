@@ -8,6 +8,10 @@ import { BaseAnimationPage } from '../../components/commonComponents';
 const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
 const allTuningRatioOptions = ['manual', 'clock'];
 const allDrawingModes = ['audio', 'mathematical'];
+const drawingModeSupport = {
+  audio: allOscillatorTypes,
+  mathematical: ['sine'],
+};
 
 const ROSC = () => {
   const baseChannel = useRef(null);
@@ -61,12 +65,12 @@ const ROSC = () => {
     const { x: xType, y: yType } = selectedOscillatorTypes;
 
     const oscillatorX = initializeOscillator(xType, middleCFrequency * xFrequencyScaling);
-    const waveformX = new Tone.Waveform(1024);
+    const waveformX = new Tone.Waveform(2048);
     oscillatorX.connect(waveformX);
     oscillatorX.start().connect(baseChannel.current);
 
     const oscillatorY = initializeOscillator(yType, middleCFrequency * yFrequencyScaling, 90);
-    const waveformY = new Tone.Waveform(1024);
+    const waveformY = new Tone.Waveform(2048);
     oscillatorY.connect(waveformY);
     oscillatorY.start().connect(baseChannel.current);
 
@@ -103,6 +107,15 @@ const ROSC = () => {
       setYFrequencyScaling(yFrequencyScalingInput.current.value);
     }
   }, [currentTime, isClockMode]);
+
+  useEffect(() => {
+    if (selectedDrawingMode === 'mathematical') {
+      setSelectedOscillatorTypes({
+        x: 'sine',
+        y: 'sine',
+      });
+    }
+  }, [selectedDrawingMode]);
 
   const onToggleMuted = () => {
     setIsMuted(!isMuted);
@@ -206,6 +219,7 @@ const ROSC = () => {
                     isSelected={type === selectedOscillatorTypes.x}
                     onClick={onChangeOscillatorXType}
                     value={type}
+                    disabled={!drawingModeSupport[selectedDrawingMode].includes(type)}
                   >
                     {type}
                   </ROSC.Button>
@@ -220,6 +234,7 @@ const ROSC = () => {
                     isSelected={type === selectedOscillatorTypes.y}
                     onClick={onChangeOscillatorYType}
                     value={type}
+                    disabled={!drawingModeSupport[selectedDrawingMode].includes(type)}
                   >
                     {type}
                   </ROSC.Button>
@@ -240,11 +255,8 @@ const ROSC = () => {
                 ))}
               </ROSC.ButtonGrid>
               <ROSC.ControlRow>
-                {isClockMode && <ROSC.ControlLabel>Turn off Clock Mode to set custom ratios.</ROSC.ControlLabel>}
-              </ROSC.ControlRow>
-              <ROSC.ControlRow>
                 {isClockMode ? (
-                  <ROSC.ControlLabel>{`X Tone Multiple of ${middleCFrequency}Hz set to ${xFrequencyScaling}`}</ROSC.ControlLabel>
+                  <p>{`X Tone Multiple of ${middleCFrequency}Hz set to ${xFrequencyScaling}`}</p>
                 ) : (
                   <>
                     <ROSC.ControlLabel>{`X Tone Multiple of ${middleCFrequency}Hz`}</ROSC.ControlLabel>
@@ -261,7 +273,7 @@ const ROSC = () => {
               </ROSC.ControlRow>
               <ROSC.ControlRow>
                 {isClockMode ? (
-                  <ROSC.ControlLabel>{`Y Tone Multiple of ${middleCFrequency}Hz set to ${yFrequencyScaling}`}</ROSC.ControlLabel>
+                  <p>{`Y Tone Multiple of ${middleCFrequency}Hz set to ${yFrequencyScaling}`}</p>
                 ) : (
                   <>
                     <ROSC.ControlLabel>{`Y Tone Multiple of ${middleCFrequency}Hz`}</ROSC.ControlLabel>
@@ -409,6 +421,11 @@ ROSC.Button = styled.button`
   border: 1px solid white;
   padding: 0.5rem;
   width: 100%;
+
+  &:disabled {
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
 `;
 
 ROSC.FlashingButton = styled(ROSC.Button)`
