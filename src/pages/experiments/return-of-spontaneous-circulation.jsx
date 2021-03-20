@@ -7,6 +7,7 @@ import { BaseAnimationPage } from '../../components/commonComponents';
 
 const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
 const allTuningRatioOptions = ['manual', 'clock'];
+const allDrawingModes = ['audio', 'mathematical'];
 
 const ROSC = () => {
   const baseChannel = useRef(null);
@@ -19,6 +20,7 @@ const ROSC = () => {
     selectedTuningRatioOption,
     setSelectedTuningRatioOption,
   ] = useState(allTuningRatioOptions[0]);
+  const [selectedDrawingMode, setSelectedDrawingMode] = useState(allDrawingModes[0]);
   const [oscillators, setOscillators] = useState({});
   const [waveforms, setWaveforms] = useState({});
   const [xFrequencyScaling, setXFrequencyScaling] = useState(1);
@@ -129,6 +131,11 @@ const ROSC = () => {
     setSelectedTuningRatioOption(option);
   };
 
+  const onChangeDrawingMode = (event) => {
+    const mode = event.target.value;
+    setSelectedDrawingMode(mode);
+  };
+
   const onChangeXFrequencyScaling = (event) => setXFrequencyScaling(event.target.value || 1);
 
   const onChangeYFrequencyScaling = (event) => setYFrequencyScaling(event.target.value || 1);
@@ -144,7 +151,14 @@ const ROSC = () => {
         <ROSC.Content>
           <ROSC.SquareContainer smallMode={isClockMode}>
             <ROSC.SketchWrapper id="canvasContainer">
-              <Sketch waveformX={waveforms.x} waveformY={waveforms.y} isClockMode={isClockMode} />
+              <Sketch
+                waveformX={waveforms.x}
+                waveformY={waveforms.y}
+                isClockMode={isClockMode}
+                drawingMode={selectedDrawingMode}
+                xFrequencyScaling={xFrequencyScaling}
+                yFrequencyScaling={yFrequencyScaling}
+              />
             </ROSC.SketchWrapper>
           </ROSC.SquareContainer>
           {isClockMode && <ROSC.Clock>{currentTime.toLocaleTimeString('en-US', { hour12: false })}</ROSC.Clock>}
@@ -169,6 +183,20 @@ const ROSC = () => {
             )}
             <ROSC.ControlPanelSection>
               <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
+            </ROSC.ControlPanelSection>
+            <ROSC.ControlPanelSection>
+              <ROSC.SectionTitle>Drawing Mode</ROSC.SectionTitle>
+              <ROSC.ButtonGrid>
+                {allDrawingModes.map((mode) => (
+                  <ROSC.Button
+                    isSelected={mode === selectedDrawingMode}
+                    onClick={onChangeDrawingMode}
+                    value={mode}
+                  >
+                    {mode}
+                  </ROSC.Button>
+                ))}
+              </ROSC.ButtonGrid>
             </ROSC.ControlPanelSection>
             <ROSC.ControlPanelSection>
               <ROSC.SectionTitle>X-Axis Waveform</ROSC.SectionTitle>
