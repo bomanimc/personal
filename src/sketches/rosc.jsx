@@ -32,6 +32,7 @@ class MathematicalCurve {
 
 class Sketch extends Component {
   setup = (p5, canvasParentRef) => {
+    const { saveButtonRef } = this.props;
     const { width, height } = this.getCanvasSizing();
     const canvasContainer = document.getElementById('canvasContainer');
     new ResizeObserver(() => this.windowResized(p5)).observe(canvasContainer);
@@ -39,6 +40,8 @@ class Sketch extends Component {
     p5.createCanvas(width, height).parent(canvasParentRef);
 
     this.mathematicalCurve = new MathematicalCurve(p5);
+
+    saveButtonRef.current.addEventListener('click', () => p5.saveCanvas('snapshot', 'png'));
   };
 
   draw = (p5) => {
@@ -150,6 +153,7 @@ Sketch.propTypes = {
   drawingMode: PropTypes.oneOf(['mathematical', 'audio']).isRequired,
   xFrequencyScaling: PropTypes.number,
   yFrequencyScaling: PropTypes.number,
+  saveButtonRef: PropTypes.node,
 };
 
 Sketch.defaultProps = {
@@ -158,6 +162,7 @@ Sketch.defaultProps = {
   isClockMode: false,
   xFrequencyScaling: 1,
   yFrequencyScaling: 1,
+  saveButtonRef: null,
 };
 
 export default Sketch;

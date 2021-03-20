@@ -29,6 +29,7 @@ const ROSC = () => {
   const [waveforms, setWaveforms] = useState({});
   const [xFrequencyScaling, setXFrequencyScaling] = useState(1);
   const [yFrequencyScaling, setYFrequencyScaling] = useState(1);
+  const saveButton = useRef();
   const xFrequencyScalingInput = useRef();
   const yFrequencyScalingInput = useRef();
   const middleCFrequency = 261.6;
@@ -171,6 +172,7 @@ const ROSC = () => {
                 drawingMode={selectedDrawingMode}
                 xFrequencyScaling={xFrequencyScaling}
                 yFrequencyScaling={yFrequencyScaling}
+                saveButtonRef={saveButton}
               />
             </ROSC.SketchWrapper>
           </ROSC.SquareContainer>
@@ -196,6 +198,9 @@ const ROSC = () => {
             )}
             <ROSC.ControlPanelSection>
               <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</ROSC.Button>
+            </ROSC.ControlPanelSection>
+            <ROSC.ControlPanelSection>
+              <ROSC.Button id="saveButton" ref={saveButton}>Save Snapshot</ROSC.Button>
             </ROSC.ControlPanelSection>
             <ROSC.ControlPanelSection>
               <ROSC.SectionTitle>Drawing Mode</ROSC.SectionTitle>
