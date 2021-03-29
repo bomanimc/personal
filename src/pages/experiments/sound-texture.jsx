@@ -45,6 +45,7 @@ const SoundTexture = () => {
   const [areControlsExposed, setAreControlsExposed] = useState(true);
   const [audioContextStarted, setAudioContextStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [areAreasHidden, setAreAreasHidden] = useState(true);
   const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
   const [
     selectedTuningRatioOption,
@@ -111,6 +112,10 @@ const SoundTexture = () => {
     setIsMuted(!isMuted);
   };
 
+  const onToggleAreasHidden = () => {
+    setAreAreasHidden(!areAreasHidden);
+  };
+
   const onToggleControls = () => setAreControlsExposed(!areControlsExposed);
 
   const onStartAudioContext = () => {
@@ -138,6 +143,7 @@ const SoundTexture = () => {
               width={300}
               height={400}
               color="blue"
+              isHidden={areAreasHidden}
               onMouseEnter={onPlayTexture}
               onMouseLeave={onStopTexture}
             />
@@ -148,6 +154,7 @@ const SoundTexture = () => {
               width={700}
               height={200}
               color="red"
+              isHidden={areAreasHidden}
               onMouseEnter={onPlayTexture}
               onMouseLeave={onStopTexture}
             />
@@ -158,6 +165,7 @@ const SoundTexture = () => {
               width={200}
               height={400}
               color="green"
+              isHidden={areAreasHidden}
               onMouseEnter={onPlayTexture}
               onMouseLeave={onStopTexture}
             />
@@ -184,6 +192,9 @@ const SoundTexture = () => {
             <SoundTexture.ControlPanelSection>
               <SoundTexture.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</SoundTexture.Button>
             </SoundTexture.ControlPanelSection>
+            <SoundTexture.ControlPanelSection>
+              <SoundTexture.Button isSelected={areAreasHidden} onClick={onToggleAreasHidden}>{areAreasHidden ? 'Show Areas' : 'Hide Areas'}</SoundTexture.Button>
+            </SoundTexture.ControlPanelSection>
           </SoundTexture.ControlsContent>
         </SoundTexture.ControlsPanel>
       </BaseAnimationPage>
@@ -204,6 +215,7 @@ SoundTexture.Area = styled.div`
   border: 1px solid ${(p) => (p.color)};
   box-shadow: 3px 3px 3px ${(p) => p.color};
   margin: 1rem;
+  opacity: ${(p) => (p.isHidden ? 0 : 1)};
 `;
 
 SoundTexture.ControlsPanel = styled.div`
