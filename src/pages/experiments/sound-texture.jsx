@@ -7,6 +7,38 @@ import { BaseAnimationPage } from '../../components/commonComponents';
 
 const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
 const allTuningRatioOptions = ['manual', 'clock'];
+const textureAreas = {
+  low: [
+    {
+      freq: 120,
+      type: 'sine',
+    },
+    {
+      freq: 120,
+      type: 'sine',
+    },
+  ],
+  vibrate: [
+    {
+      freq: 120,
+      type: 'sine',
+    },
+    {
+      freq: 120,
+      type: 'sawtooth',
+    },
+  ],
+  smooth: [
+    {
+      freq: 100,
+      type: 'sine',
+    },
+    {
+      freq: 100,
+      type: 'square',
+    },
+  ],
+};
 
 const SoundTexture = () => {
   const baseChannel = useRef(null);
@@ -34,6 +66,10 @@ const SoundTexture = () => {
     return oscillator;
   };
 
+  const disposeOscillators = () => {
+    Object.values(oscillators).flat().map((oscillator) => oscillator.stop().dispose());
+  };
+
   useEffect(() => {
     Tone.Destination.mute = isMuted;
   }, [isMuted]);
@@ -42,7 +78,7 @@ const SoundTexture = () => {
     baseChannel.current = new Tone.Channel();
 
     return () => {
-      Object.values(oscillators).map((oscillator) => oscillator.stop().dispose());
+      disposeOscillators();
       if (baseChannel.current) {
         baseChannel.current.dispose();
       }
@@ -50,22 +86,26 @@ const SoundTexture = () => {
   }, []);
 
   useEffect(() => {
-    Object.values(oscillators).map((oscillator) => oscillator.dispose());
-    const { x: xType, y: yType } = selectedOscillatorTypes;
+    disposeOscillators();
 
-    const oscillatorX = initializeOscillator(xType, middleCFrequency * xFrequencyScaling);
-    oscillatorX.connect(baseChannel.current);
+    const areaOscillators = {};
+    Object.entries(textureAreas).forEach((entry) => {
+      const [areaLabel, areaData] = entry;
+      const [osc1Data, osc2Data] = areaData;
 
-    const oscillatorY = initializeOscillator(yType, middleCFrequency * yFrequencyScaling, 90);
-    oscillatorY.connect(baseChannel.current);
+      const oscillator1 = initializeOscillator(osc1Data.type, osc1Data.freq);
+      oscillator1.connect(baseChannel.current);
+
+      const oscillator2 = initializeOscillator(osc2Data.type, osc2Data.freq);
+      oscillator2.connect(baseChannel.current);
+
+      areaOscillators[areaLabel] = [oscillator1, oscillator2];
+    });
 
     baseChannel.current.toDestination();
 
-    setOscillators({
-      x: oscillatorX,
-      y: oscillatorY,
-    });
-  }, [selectedOscillatorTypes, xFrequencyScaling, yFrequencyScaling]);
+    setOscillators(areaOscillators);
+  }, []);
 
   const onToggleMuted = () => {
     setIsMuted(!isMuted);
@@ -78,14 +118,14 @@ const SoundTexture = () => {
     setAudioContextStarted(true);
   };
 
-  const onPlayTexture = () => {
-    console.log('PLAY');
-    Object.values(oscillators).forEach((oscillator) => oscillator.start());
+  const onPlayTexture = (event) => {
+    const areaLabel = event.target.dataset.area;
+    oscillators[areaLabel].forEach((oscillator) => oscillator.start());
   };
 
-  const onStopTexture = () => {
-    console.log('PAUSE');
-    Object.values(oscillators).forEach((oscillator) => oscillator.stop());
+  const onStopTexture = (event) => {
+    const areaLabel = event.target.dataset.area;
+    oscillators[areaLabel].forEach((oscillator) => oscillator.stop());
   };
 
   return (
@@ -94,6 +134,30 @@ const SoundTexture = () => {
         <SoundTexture.Content>
           <Draggable>
             <SoundTexture.Area
+              data-area="low"
+              width={300}
+              height={400}
+              color="blue"
+              onMouseEnter={onPlayTexture}
+              onMouseLeave={onStopTexture}
+            />
+          </Draggable>
+          <Draggable>
+            <SoundTexture.Area
+              data-area="smooth"
+              width={700}
+              height={200}
+              color="red"
+              onMouseEnter={onPlayTexture}
+              onMouseLeave={onStopTexture}
+            />
+          </Draggable>
+          <Draggable>
+            <SoundTexture.Area
+              data-area="vibrate"
+              width={200}
+              height={400}
+              color="green"
               onMouseEnter={onPlayTexture}
               onMouseLeave={onStopTexture}
             />
@@ -129,16 +193,17 @@ const SoundTexture = () => {
 
 SoundTexture.Content = styled.div`
   display: flex;
-  flex-direction: column;
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
 SoundTexture.Area = styled.div`
-  height: 300px;
-  width: 300px;
-  background: blue;
+  height: ${(p) => (p.height)}px;
+  width:  ${(p) => (p.width)}px;
+  border: 1px solid ${(p) => (p.color)};
+  box-shadow: 3px 3px 3px ${(p) => p.color};
+  margin: 1rem;
 `;
 
 SoundTexture.ControlsPanel = styled.div`
