@@ -8,7 +8,7 @@ import { BaseAnimationPage } from '../../components/commonComponents';
 const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
 const allTuningRatioOptions = ['manual', 'clock'];
 const textureAreas = {
-  low: [
+  smooth: [
     {
       freq: 120,
       type: 'sine',
@@ -20,21 +20,21 @@ const textureAreas = {
   ],
   vibrate: [
     {
-      freq: 120,
-      type: 'sine',
+      freq: 13,
+      type: 'triangle',
     },
     {
-      freq: 120,
-      type: 'sawtooth',
+      freq: 13,
+      type: 'square',
     },
   ],
-  smooth: [
+  bounce: [
     {
-      freq: 100,
-      type: 'sine',
+      freq: 5,
+      type: 'sawtooth',
     },
     {
-      freq: 100,
+      freq: 2,
       type: 'square',
     },
   ],
@@ -139,7 +139,7 @@ const SoundTexture = () => {
         <SoundTexture.Content>
           <Draggable>
             <SoundTexture.Area
-              data-area="low"
+              data-area="smooth"
               width={300}
               height={400}
               color="blue"
@@ -150,7 +150,7 @@ const SoundTexture = () => {
           </Draggable>
           <Draggable>
             <SoundTexture.Area
-              data-area="smooth"
+              data-area="bounce"
               width={700}
               height={200}
               color="red"
