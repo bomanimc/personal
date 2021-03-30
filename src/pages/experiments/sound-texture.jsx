@@ -5,8 +5,6 @@ import Draggable from 'react-draggable';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
-const allOscillatorTypes = ['sine', 'triangle', 'square', 'sawtooth'];
-const allTuningRatioOptions = ['manual', 'clock'];
 const textureAreas = {
   smooth: [
     {
@@ -46,20 +44,12 @@ const SoundTexture = () => {
   const [audioContextStarted, setAudioContextStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [areAreasHidden, setAreAreasHidden] = useState(true);
-  const [selectedOscillatorTypes, setSelectedOscillatorTypes] = useState({ x: 'sine', y: 'sine' });
-  const [
-    selectedTuningRatioOption,
-    setSelectedTuningRatioOption,
-  ] = useState(allTuningRatioOptions[0]);
   const [oscillators, setOscillators] = useState({});
-  const [xFrequencyScaling, setXFrequencyScaling] = useState(1);
-  const [yFrequencyScaling, setYFrequencyScaling] = useState(1);
-  const middleCFrequency = 261.6;
 
   const initializeOscillator = (type, frequency, phase = 0) => {
     const oscillator = new Tone.Oscillator({
       type,
-      frequency: frequency || middleCFrequency,
+      frequency,
       phase,
     });
     oscillator.volume.value = -30;
