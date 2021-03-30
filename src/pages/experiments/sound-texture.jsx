@@ -130,9 +130,10 @@ const SoundTexture = () => {
           <Draggable>
             <SoundTexture.Area
               data-area="smooth"
-              width={300}
+              width={400}
               height={400}
               color="blue"
+              isCircle
               isHidden={areAreasHidden}
               onMouseEnter={onPlayTexture}
               onMouseLeave={onStopTexture}
@@ -152,9 +153,10 @@ const SoundTexture = () => {
           <Draggable>
             <SoundTexture.Area
               data-area="vibrate"
-              width={200}
-              height={400}
+              width={300}
+              height={300}
               color="green"
+              isCircle
               isHidden={areAreasHidden}
               onMouseEnter={onPlayTexture}
               onMouseLeave={onStopTexture}
@@ -206,6 +208,7 @@ SoundTexture.Area = styled.div`
   box-shadow: 3px 3px 3px ${(p) => p.color};
   margin: 1rem;
   opacity: ${(p) => (p.isHidden ? 0 : 1)};
+  border-radius: ${(p) => (p.isCircle ? '50%' : '20px')};
 `;
 
 SoundTexture.ControlsPanel = styled.div`
