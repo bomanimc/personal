@@ -453,6 +453,7 @@ ROSC.Input = styled.input`
   padding: 0.5rem;
   text-align: center;
   border: 1px solid white;
+  border-radius: 0;
 `;
 
 ROSC.SectionTitle = styled.p`
