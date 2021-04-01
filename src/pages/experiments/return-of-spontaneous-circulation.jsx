@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import * as Tone from 'tone';
+import unmuteAudio from 'unmute-ios-audio';
 import Sketch from '../../sketches/rosc';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
@@ -51,6 +52,8 @@ const ROSC = () => {
   }, [isMuted]);
 
   useEffect(() => {
+    unmuteAudio();
+
     baseChannel.current = new Tone.Channel();
 
     return () => {
