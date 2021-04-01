@@ -178,7 +178,7 @@ const ROSC = () => {
           </ROSC.SquareContainer>
           {isClockMode && <ROSC.Clock>{currentTime.toLocaleTimeString('en-US', { hour12: false })}</ROSC.Clock>}
         </ROSC.Content>
-        <ROSC.ControlsPanel>
+        <ROSC.ControlsPanel isExposed={areControlsExposed}>
           <ROSC.ControlsHeader>
             <span>Controls</span>
             <ROSC.ControlsHeaderButton onClick={onToggleControls}>
@@ -352,10 +352,12 @@ ROSC.ControlsPanel = styled.div`
   flex-direction: column;
   width: 15rem;
   background: black;
+  opacity: 0.8;
 
   @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
     width: unset;
     left: 1rem;
+    top: ${(p) => (p.isExposed ? '8rem' : 'unset')};;
   }
 `;
 
@@ -383,6 +385,7 @@ ROSC.ControlsHeaderButton = styled.button`
 
 ROSC.ControlsContent = styled.div`
   display: ${(p) => (p.isExposed ? 'block' : 'none')};
+  overflow-y: scroll;
 `;
 
 ROSC.ControlPanelSection = styled.div`
