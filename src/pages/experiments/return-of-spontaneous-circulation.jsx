@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import * as Tone from 'tone';
 import unmuteAudio from 'unmute-ios-audio';
+import { isMobile } from 'react-device-detect';
 import Sketch from '../../sketches/rosc';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
@@ -52,6 +53,12 @@ const ROSC = () => {
   }, [isMuted]);
 
   useEffect(() => {
+    if (isMobile) {
+      setAreControlsExposed(false);
+      setSelectedDrawingMode(allDrawingModes[1]);
+      setSelectedTuningRatioOption(allTuningRatioOptions[1]);
+    }
+
     unmuteAudio();
 
     baseChannel.current = new Tone.Channel();
@@ -107,8 +114,8 @@ const ROSC = () => {
       setXFrequencyScaling(currentTime.getHours());
       setYFrequencyScaling(currentTime.getMinutes());
     } else {
-      setXFrequencyScaling(xFrequencyScalingInput.current.value);
-      setYFrequencyScaling(yFrequencyScalingInput.current.value);
+      setXFrequencyScaling(parseFloat(xFrequencyScalingInput.current.value));
+      setYFrequencyScaling(parseFloat(yFrequencyScalingInput.current.value));
     }
   }, [currentTime, isClockMode]);
 
@@ -210,6 +217,7 @@ const ROSC = () => {
               <ROSC.ButtonGrid>
                 {allDrawingModes.map((mode) => (
                   <ROSC.Button
+                    key={mode}
                     isSelected={mode === selectedDrawingMode}
                     onClick={onChangeDrawingMode}
                     value={mode}
@@ -224,6 +232,7 @@ const ROSC = () => {
               <ROSC.ButtonGrid>
                 {allOscillatorTypes.map((type) => (
                   <ROSC.Button
+                    key={type}
                     isSelected={type === selectedOscillatorTypes.x}
                     onClick={onChangeOscillatorXType}
                     value={type}
@@ -239,6 +248,7 @@ const ROSC = () => {
               <ROSC.ButtonGrid>
                 {allOscillatorTypes.map((type) => (
                   <ROSC.Button
+                    key={type}
                     isSelected={type === selectedOscillatorTypes.y}
                     onClick={onChangeOscillatorYType}
                     value={type}
@@ -254,6 +264,7 @@ const ROSC = () => {
               <ROSC.ButtonGrid>
                 {allTuningRatioOptions.map((option) => (
                   <ROSC.Button
+                    key={option}
                     isSelected={option === selectedTuningRatioOption}
                     onClick={onChangeTuningRatioOption}
                     value={option}

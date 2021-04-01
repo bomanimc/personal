@@ -32,7 +32,6 @@ const InternalLinkItem = styled(InternalLink)`
   ${linkStyle}
 `;
 
-
 const LinksBar = ({ links, isNav }) => {
   if (isNav) {
     return (
