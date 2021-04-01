@@ -165,7 +165,6 @@ export const BaseAnimationPage = ({ title, children }) => (
   </div>
 );
 
-
 BasePage.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.node.isRequired,

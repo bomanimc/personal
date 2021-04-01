@@ -153,7 +153,7 @@ Sketch.propTypes = {
   drawingMode: PropTypes.oneOf(['mathematical', 'audio']).isRequired,
   xFrequencyScaling: PropTypes.number,
   yFrequencyScaling: PropTypes.number,
-  saveButtonRef: PropTypes.node,
+  saveButtonRef: PropTypes.any,
 };
 
 Sketch.defaultProps = {

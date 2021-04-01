@@ -35,7 +35,6 @@ export const query = graphql`
   }
 `;
 
-
 const Project = (props) => {
   // Required check for no data being returned
   // eslint-disable-next-line react/prop-types
