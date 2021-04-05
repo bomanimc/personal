@@ -101,6 +101,7 @@ const AboutPage = (props) => {
               <BioContent allBiosEdgeDoc={doc} />
               <EducationBox />
               <SpeakingBox />
+              <InterviewsBox />
               <WritingBox />
               <FellowshipBox />
               <ExhibitionBox />
@@ -175,8 +176,30 @@ const WritingBox = () => (
           <WritingLink
             key={item.name}
             name={item.name}
-            date={item.date}
+            detail={item.date}
             link={item.link}
+          />
+        ))}
+      </div>
+    </AboutBoxContent>
+  </div>
+);
+
+// name, location, org, date, link, isNameTitle,
+const InterviewsBox = () => (
+  <div>
+    <AboutBoxTitle>Interviews</AboutBoxTitle>
+    <AboutBoxContent>
+      <div>
+        {AboutCopy.interviews.map((item) => (
+          <InterviewLink
+            key={item.name}
+            name={item.name}
+            org={item.org}
+            date={item.date}
+            location={item.location}
+            link={item.link}
+            isNameTitle={item.isNameTitle}
           />
         ))}
       </div>
@@ -209,7 +232,7 @@ const ExhibitionBox = () => (
       <div>
         {AboutCopy.exhibitions.map((item) => (
           <ExhibitionItem
-            key={item.org}
+            key={item.title}
             title={item.title}
             gallery={item.gallery}
             location={item.location}
@@ -249,14 +272,31 @@ const SpeakingLink = ({
   );
 };
 
-const WritingLink = ({ name, date, link }) => (
+const InterviewLink = ({
+  name, org, date, link, isNameTitle,
+}) => {
+  const formattedName = isNameTitle ? `"${name}"` : name;
+
+  return (
+    <SpeakingLinkItem>
+      {
+        link !== undefined && link !== null
+          ? <ExternalLink href={link} key={name}>{formattedName}</ExternalLink>
+          : formattedName
+      }
+      <AboutDetail>{`${org}, ${date}`}</AboutDetail>
+    </SpeakingLinkItem>
+  );
+};
+
+const WritingLink = ({ name, detail, link }) => (
   <SpeakingLinkItem>
     {
       link !== undefined && link !== null
         ? <ExternalLink href={link} key={name}>{`"${name}"`}</ExternalLink>
         : `"${name}"`
     }
-    <AboutDetail>{`${date}`}</AboutDetail>
+    <AboutDetail>{`${detail}`}</AboutDetail>
   </SpeakingLinkItem>
 );
 
@@ -307,9 +347,22 @@ SpeakingLink.propTypes = {
   isNameTitle: PropTypes.bool,
 };
 
+InterviewLink.propTypes = {
+  name: PropTypes.string.isRequired,
+  org: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  link: PropTypes.string,
+  isNameTitle: PropTypes.bool,
+};
+
 SpeakingLink.defaultProps = {
   link: null,
   isNameTitle: true,
+};
+
+InterviewLink.defaultProps = {
+  link: null,
+  isNameTitle: false,
 };
 
 EducationItem.defaultProps = {
@@ -318,7 +371,7 @@ EducationItem.defaultProps = {
 
 WritingLink.propTypes = {
   name: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  detail: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
 };
 
