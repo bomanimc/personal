@@ -471,7 +471,7 @@ ProjectContent[ProjectSlug.ml5] = {
   coders, and others.`,
   year: '2020 - Present',
   tools: 'Tensorflow.js, p5.js, GitHub',
-  role: 'Lead Maintainer',
+  role: 'Lead Software Maintainer',
   site: 'https://ml5js.org/',
   media: 'ml5js_main',
   primaryLink: `/${ProjectSlug.ml5}`,
@@ -576,11 +576,6 @@ export const AboutCopy = {
   ],
   writing: [
     {
-      name: 'Making ml5.js Accessible: Interview with Bomani Oseni McClendon',
-      link: 'https://medium.com/processing-foundation/making-ml5-js-accessible-b28ae295af4a',
-      date: 'Processing Foundation',
-    },
-    {
       name: 'A History of Pathologizing Blackness',
       link: 'https://issuu.com/sfpcspring2019/docs/darkmatterszinespring2019scan/4',
       date: 'Dark Matters (Zine)',
@@ -601,14 +596,27 @@ export const AboutCopy = {
       date: 'Knight Lab',
     },
   ],
-  speaking: [
+  interviews: [
+    {
+      name: 'TensorFlow.js Community "Show & Tell" #5',
+      link: 'https://youtu.be/IeTibm880ys?t=1317',
+      org: 'TensorFlow',
+      date: 'April 2021',
+    },
     {
       name: 'Speaker at Pond Mag & Eto Ano’s "Year-End Education Convention"',
-      event: "BABY TV by Baby's All Right",
+      org: "BABY TV by Baby's All Right",
       date: 'December 2020',
       location: 'Brooklyn, NY',
-      isNameTitle: false,
     },
+    {
+      name: 'Making ml5.js Accessible: Interview with Bomani Oseni McClendon',
+      link: 'https://medium.com/processing-foundation/making-ml5-js-accessible-b28ae295af4a',
+      org: 'Processing Foundation',
+      date: 'July 2020',
+    },
+  ],
+  speaking: [
     {
       name: 'Guest Speaker at "Introduction to Machine Learning for the Arts"',
       event: 'NYU Interactive Media Arts',
