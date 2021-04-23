@@ -724,13 +724,18 @@ export const AboutCopy = {
   ],
   fellowships: [
     {
+      org: 'Interact (Upcoming)',
+      title: 'Fellow',
+      date: '2021',
+    },
+    {
       org: 'Clinic for Open Source Arts',
       title: 'COSA Community Leaders Program Fellow',
       date: '2021',
     },
     {
-      org: 'Interact',
-      title: 'Fellow',
+      org: 'The Frank-Ratchye STUDIO for Creative Inquiry',
+      title: 'Open-Source Software Toolkits for the Arts Spring Resident',
       date: '2021',
     },
     {
