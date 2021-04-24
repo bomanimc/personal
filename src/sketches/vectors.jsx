@@ -20,8 +20,13 @@ class Particle {
   update(particlePosToFollow, toIndex) {
     const { p5, velocityMagnitude } = this;
     this.vel = p5.createVector(particlePosToFollow.x, particlePosToFollow.y);
-    this.pos = p5.createVector(this.pos.x + this.vel.x * velocityMagnitude, this.pos.y + this.vel.y * velocityMagnitude);
-
+    this.pos = p5.createVector(
+      this.pos.x + this.vel.x * velocityMagnitude,
+      this.pos.y + this.vel.y * velocityMagnitude,
+    );
+    if (this.pos.x > p5.width || this.pos.x < 0 || this.pos.y > p5.height || this.pos.y < 0) {
+      this.vel = p5.createVector(-this.vel.x, -this.vel.y);
+    }
     this.toIndex = toIndex;
   }
 
@@ -41,13 +46,15 @@ class Particle {
     const { p5 } = this;
 
     p5.push();
-    p5.strokeWeight(thickness * 0.01);
+
+    p5.strokeWeight(p5.map(p5.constrain(thickness, 0, 700), 0, 700, 5, 1));
     p5.translate(base.x, base.y);
     p5.line(0, 0, vec.x, vec.y);
     p5.rotate(vec.heading());
     const arrowSize = 3;
     p5.translate(vec.mag() - arrowSize, 0);
     p5.triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+
     p5.pop();
   }
 }

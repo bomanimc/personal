@@ -4,17 +4,15 @@ import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 import Sketch from '../../sketches/vectors';
 
-const Vectors = () => {
-  return (
-    <Layout showLinksBar={false}>
-      <BaseAnimationPage title="Vectors">
-        <Vectors.Container id="canvasContainer">
-          <Sketch />
-        </Vectors.Container>
-      </BaseAnimationPage>
-    </Layout>
-  );
-};
+const Vectors = () => (
+  <Layout showLinksBar={false}>
+    <BaseAnimationPage title="Vectors">
+      <Vectors.Container id="canvasContainer">
+        <Sketch />
+      </Vectors.Container>
+    </BaseAnimationPage>
+  </Layout>
+);
 
 Vectors.Container = styled.div`
   position: absolute;
