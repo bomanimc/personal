@@ -67,7 +67,7 @@ class Mover {
 class Sketch extends Component {
   movers = [];
 
-  attractor;
+  attractors = [];
 
   setup = (p5, canvasParentRef) => {
     const { width, height } = this.getCanvasSizing();
@@ -80,28 +80,47 @@ class Sketch extends Component {
       this.movers[i] = new Mover(p5, x, y, m);
     }
 
-    this.attractor = new Attractor(p5, width / 2, height / 2, 100);
+    p5.push();
+    p5.translate(width / 2, height / 2);
+    const radius = 300;
+    let angle = 0;
+    for (let i = 0; i < 6; i += 1) {
+      const x = radius * p5.sin(angle);
+      const y = radius * p5.cos(angle);
+      this.attractors.push(new Attractor(p5, x, y, 100));
+      angle += p5.TWO_PI / 6;
+    }
+    p5.pop();
 
     p5.background(0);
   };
 
   draw = (p5) => {
-    p5.background(0, 0, 0, 255);
-
     p5.background(0);
+    p5.push();
+    p5.translate(p5.width / 2, p5.height / 2);
+
     this.movers.forEach((mover) => {
       mover.update();
       mover.show();
-      this.attractor.attract(mover);
+      this.attractors.map((attractor) => attractor.attract(mover));
     });
 
-    this.attractor.show();
+    this.attractors.map((attractor) => attractor.show());
+
+    p5.pop();
   };
 
   windowResized = (p5) => {
     const { width, height } = this.getCanvasSizing();
     p5.resizeCanvas(width, height);
   }
+
+  getRandomPosition = (p5) => {
+    const x = p5.map(p5.random(), 0, 1, 0, p5.width);
+    const y = p5.map(p5.random(), 0, 1, 0, p5.height);
+    return [x, y];
+  };
 
   getCanvasSizing = () => {
     const canvasContainer = document.getElementById('canvasContainer');
