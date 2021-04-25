@@ -35,7 +35,7 @@ class Mover {
     const sinRange = p5.sin(0.0006 * p5.millis());
     const diameter = 200 * sinRange;
     const lerpedColor = p5.lerpColor(
-      p5.color(...[255, 82, 82, 10]),
+      p5.color(...[255, 82, 82, 5]),
       p5.color(...color),
       Math.abs(sinRange),
     );
@@ -62,7 +62,7 @@ class Attractor {
 
   initializeMovers() {
     const { p5 } = this;
-    const color = [p5.random(255), p5.random(255), p5.random(255), 10];
+    const color = [p5.random(255), p5.random(255), p5.random(255), 5];
     const distanceFromPoint = 50;
 
     for (let i = 0; i < 5; i += 1) {
