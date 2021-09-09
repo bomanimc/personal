@@ -213,7 +213,7 @@ const ROSC = () => {
               <ROSC.Button id="saveButton" ref={saveButton}>Save Snapshot</ROSC.Button>
             </ROSC.ControlPanelSection>
             <ROSC.ControlPanelSection>
-              <ROSC.SectionTitle>Drawing Mode</ROSC.SectionTitle>
+              <ROSC.SectionTitle>Wave Source</ROSC.SectionTitle>
               <ROSC.ButtonGrid>
                 {allDrawingModes.map((mode) => (
                   <ROSC.Button
@@ -260,7 +260,7 @@ const ROSC = () => {
               </ROSC.ButtonGrid>
             </ROSC.ControlPanelSection>
             <ROSC.ControlPanelSection>
-              <ROSC.SectionTitle>Tuning Ratio</ROSC.SectionTitle>
+              <ROSC.SectionTitle>Tuning Method</ROSC.SectionTitle>
               <ROSC.ButtonGrid>
                 {allTuningRatioOptions.map((option) => (
                   <ROSC.Button
@@ -275,10 +275,10 @@ const ROSC = () => {
               </ROSC.ButtonGrid>
               <ROSC.ControlRow>
                 {isClockMode ? (
-                  <p>{`X Tone Multiple of ${middleCFrequency}Hz set to ${xFrequencyScaling}`}</p>
+                  <p>{`X Tone Multiple of ${middleCFrequency}Hz (Middle C) set to ${xFrequencyScaling}`}</p>
                 ) : (
                   <>
-                    <ROSC.ControlLabel>{`X Tone Multiple of ${middleCFrequency}Hz`}</ROSC.ControlLabel>
+                    <ROSC.ControlLabel>{`X Tone Multiple of ${middleCFrequency}Hz (Middle C)`}</ROSC.ControlLabel>
                     <ROSC.Input
                       ref={xFrequencyScalingInput}
                       type="text"
@@ -292,10 +292,10 @@ const ROSC = () => {
               </ROSC.ControlRow>
               <ROSC.ControlRow>
                 {isClockMode ? (
-                  <p>{`Y Tone Multiple of ${middleCFrequency}Hz set to ${yFrequencyScaling}`}</p>
+                  <p>{`Y Tone Multiple of ${middleCFrequency}Hz (Middle C) set to ${yFrequencyScaling}`}</p>
                 ) : (
                   <>
-                    <ROSC.ControlLabel>{`Y Tone Multiple of ${middleCFrequency}Hz`}</ROSC.ControlLabel>
+                    <ROSC.ControlLabel>{`Y Tone Multiple of ${middleCFrequency}Hz (Middle C)`}</ROSC.ControlLabel>
                     <ROSC.Input
                       ref={yFrequencyScalingInput}
                       type="text"
