@@ -733,7 +733,7 @@ export const AboutCopy = {
     {
       org: 'Interact (Upcoming)',
       title: 'Fellow',
-      date: '2021',
+      date: '2022',
     },
     {
       org: 'Clinic for Open Source Arts',
