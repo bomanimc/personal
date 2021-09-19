@@ -618,24 +618,31 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Guest Speaker at "Python Crash Course"',
+      event: 'Upperline Code',
+      date: 'July 2021',
+      location: 'New York, NY (Online)',
+      isNameTitle: false,
+    },
+    {
       name: 'Guest Speaker at "Introduction to Machine Learning for the Arts"',
       event: 'NYU Interactive Media Arts',
       date: 'October 2020',
-      location: 'New York, NY',
+      location: 'New York, NY (Online)',
       isNameTitle: false,
     },
     {
       name: 'Panelist at Institute for Entrepreneurship',
       event: 'Prep for Prep',
       date: 'July 2020',
-      location: 'New York, NY',
+      location: 'New York, NY (Online)',
       isNameTitle: false,
     },
     {
       name: 'Guest Critic for "Intro to Web" Course',
       event: 'NYU Integrated Digital Media',
       date: 'May 2020',
-      location: 'New York, NY',
+      location: 'New York, NY (Online)',
       isNameTitle: false,
     },
     {
@@ -726,7 +733,7 @@ export const AboutCopy = {
     {
       org: 'Interact (Upcoming)',
       title: 'Fellow',
-      date: '2021',
+      date: '2022',
     },
     {
       org: 'Clinic for Open Source Arts',
