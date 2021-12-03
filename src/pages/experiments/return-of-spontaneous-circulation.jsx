@@ -182,6 +182,8 @@ const ROSC = () => {
                 drawingMode={selectedDrawingMode}
                 xFrequencyScaling={xFrequencyScaling}
                 yFrequencyScaling={yFrequencyScaling}
+                xOscillatorType={selectedOscillatorTypes.x}
+                yOscillatorType={selectedOscillatorTypes.y}
                 saveButtonRef={saveButton}
               />
             </ROSC.SketchWrapper>

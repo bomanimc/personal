@@ -41,7 +41,19 @@ class Sketch extends Component {
 
     this.mathematicalCurve = new MathematicalCurve(p5);
 
-    saveButtonRef.current.addEventListener('click', () => p5.saveCanvas('snapshot', 'png'));
+    saveButtonRef.current.addEventListener('click', () => this.generateFile(p5));
+  };
+
+  generateFile = (p5) => {
+    const {
+      xFrequencyScaling,
+      yFrequencyScaling,
+      xOscillatorType,
+      yOscillatorType,
+    } = this.props;
+
+    const filename = `${xFrequencyScaling}@${xOscillatorType}-${yFrequencyScaling}@${yOscillatorType}`;
+    p5.saveCanvas(filename, 'png');
   };
 
   draw = (p5) => {
@@ -153,6 +165,8 @@ Sketch.propTypes = {
   drawingMode: PropTypes.oneOf(['mathematical', 'audio']).isRequired,
   xFrequencyScaling: PropTypes.number,
   yFrequencyScaling: PropTypes.number,
+  xOscillatorType: PropTypes.string.isRequired,
+  yOscillatorType: PropTypes.string.isRequired,
   saveButtonRef: PropTypes.any,
 };
 
