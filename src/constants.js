@@ -36,7 +36,7 @@ export const FeaturedProjects = [
   ProjectSlug.mybluewindow,
   ProjectSlug.babyfaith,
   ProjectSlug.versions,
-  ProjectSlug.futurecity,
+  // ProjectSlug.futurecity,
 ];
 
 export const ProjectContent = {};

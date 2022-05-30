@@ -2,6 +2,7 @@
 /* eslint array-callback-return: 0 */
 
 import React from 'react';
+import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 import ProjectCard from '../components/partials/ProjectCard';
@@ -10,13 +11,17 @@ import {
 } from '../components/commonComponents';
 import { ProjectContent, FeaturedProjects } from '../constants';
 import { setMetaTitle } from '../utils/utils';
+import CenterNavBar from '../components/partials/CenterNavBar';
 
 const HomePage = () => (
-  <Layout>
+  <Layout showTitleNav={false}>
     <Helmet>
       {setMetaTitle('BOMANI')}
     </Helmet>
     <ProjectSection />
+    <HomePage.NavBar>
+      <CenterNavBar />
+    </HomePage.NavBar>
   </Layout>
 );
 
@@ -34,5 +39,13 @@ const ProjectSection = () => (
     </ProjectGridContainer>
   </ContentContainer>
 );
+
+HomePage.NavBar = styled.div`
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: exclusion;
+`;
 
 export default HomePage;
