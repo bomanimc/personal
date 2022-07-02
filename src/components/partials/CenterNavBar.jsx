@@ -5,6 +5,10 @@ import { InternalLink } from '../commonComponents';
 const NavBar = () => (
   <NavContainer>
     <Name to="/">Bomani</Name>
+    <LinksContainer>
+      <NavLink to="/">Work</NavLink>
+      <NavLink to="/info">Info</NavLink>
+    </LinksContainer>
   </NavContainer>
 );
 
@@ -18,7 +22,7 @@ const containerStyle = css`
 const NavContainer = styled.nav`
   ${containerStyle};
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 1rem;
 `;
 
@@ -29,6 +33,12 @@ const NavLink = styled(InternalLink)`
   pointer-events: auto;
   font-size: 1rem;
   margin: 0rem 1rem;
+`;
+
+const LinksContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 const Name = styled(NavLink)`

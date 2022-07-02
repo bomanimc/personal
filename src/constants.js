@@ -33,10 +33,15 @@ export const FeaturedProjects = [
   ProjectSlug.ml5,
   ProjectSlug.shrumen,
   ProjectSlug.codeasart,
-  ProjectSlug.mybluewindow,
   ProjectSlug.babyfaith,
   ProjectSlug.versions,
-  // ProjectSlug.futurecity,
+  ProjectSlug.ml5,
+  ProjectSlug.shrumen,
+  ProjectSlug.codeasart,
+  ProjectSlug.babyfaith,
+  ProjectSlug.versions,
+  ProjectSlug.shrumen,
+  ProjectSlug.codeasart,
 ];
 
 export const ProjectContent = {};

@@ -13,7 +13,6 @@ import { InternalLink, TextContent } from '../commonComponents';
 const TRANSITION_TIME = '.75s';
 
 const ProjectContainer = styled.div`
-  border: 1px solid ${(p) => p.theme.color.blue};
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
