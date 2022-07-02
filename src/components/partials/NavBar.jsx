@@ -49,7 +49,7 @@ const NavLink = styled(InternalLink)`
 `;
 
 const Name = styled(NavLink)`
-  font-size: 5.25rem;
+  font-size: 7rem;
 
   &:hover {
     text-decoration: none;

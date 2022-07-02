@@ -11,17 +11,13 @@ import {
 } from '../components/commonComponents';
 import { ProjectContent, FeaturedProjects } from '../constants';
 import { setMetaTitle } from '../utils/utils';
-import CenterNavBar from '../components/partials/CenterNavBar';
 
 const HomePage = () => (
-  <Layout showTitleNav={false}>
+  <Layout>
     <Helmet>
       {setMetaTitle('BOMANI')}
     </Helmet>
     <ProjectSection />
-    <HomePage.NavBar>
-      <CenterNavBar />
-    </HomePage.NavBar>
   </Layout>
 );
 
