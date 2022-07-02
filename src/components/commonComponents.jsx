@@ -74,7 +74,7 @@ export const ProjectGridContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   height: ${(props) => props.containerHeight ? props.containerHeight : '100%'};
 
-  @media (max-width: 1100px) {
+  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
     grid-gap: 1rem;
     grid-template-columns: repeat(1, 1fr);
   }

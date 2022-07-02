@@ -318,6 +318,7 @@ ProjectContent[ProjectSlug.codeasart] = {
       videoUrl: 'https://player.vimeo.com/video/307190485', // Demo Video
     },
   ],
+  displaysWithBorder: true,
 };
 
 ProjectContent[ProjectSlug.bikewheelsynth] = {

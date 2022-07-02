@@ -19,6 +19,7 @@ const ProjectContainer = styled.div`
   justify-content: center;
   flex-wrap: nowrap;
   transition: box-shadow ${TRANSITION_TIME} ease;
+  border: ${(p) => p.hasBorder ? '2px solid #ffffff30' : 'none'};
 
   @media (hover: hover) {
     &:hover {
@@ -131,8 +132,8 @@ const ProjectVideo = styled(Video)`
   object-fit: cover;
 `;
 
-const Project = ({ content }) => (
-  <ProjectContainer id={content.id}>
+const Project = ({ content, displaysProjectDetailsOnHover }) => (
+  <ProjectContainer id={content.id} hasBorder={content.displaysWithBorder}>
     <InternalLink to={content.primaryLink}>
       <ProjectDetailsWrapper>
         <ProjectMediaContainer>
@@ -166,14 +167,16 @@ const Project = ({ content }) => (
               )
           }
         </ProjectMediaContainer>
-        <ProjectDetails>
-          <ProjectDetailsText>
-            <h2>{content.title}</h2>
-            <TextContent>
-              <ReactMarkdown source={content.body} disallowedTypes={['link']} unwrapDisallowed />
-            </TextContent>
-          </ProjectDetailsText>
-        </ProjectDetails>
+        {displaysProjectDetailsOnHover && (
+          <ProjectDetails>
+            <ProjectDetailsText>
+              <h2>{content.title}</h2>
+              <TextContent>
+                <ReactMarkdown source={content.body} disallowedTypes={['link']} unwrapDisallowed />
+              </TextContent>
+            </ProjectDetailsText>
+          </ProjectDetails>
+        )}
       </ProjectDetailsWrapper>
     </InternalLink>
   </ProjectContainer>
@@ -181,6 +184,11 @@ const Project = ({ content }) => (
 
 Project.propTypes = {
   content: PropTypes.shape().isRequired,
+  displaysProjectDetailsOnHover: PropTypes.bool,
+};
+
+Project.defaultProps = {
+  displaysProjectDetailsOnHover: false,
 };
 
 export default Project;
