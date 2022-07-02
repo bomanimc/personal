@@ -7,6 +7,6 @@ export default {
     width: '1px',
   },
   breakPoints: {
-    mobile: '896px',
+    mobile: '930px',
   },
 };

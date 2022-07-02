@@ -33,10 +33,6 @@ export const FeaturedProjects = [
   ProjectSlug.ml5,
   ProjectSlug.shrumen,
   ProjectSlug.codeasart,
-  ProjectSlug.mybluewindow,
-  ProjectSlug.babyfaith,
-  ProjectSlug.versions,
-  ProjectSlug.futurecity,
 ];
 
 export const ProjectContent = {};
@@ -322,6 +318,7 @@ ProjectContent[ProjectSlug.codeasart] = {
       videoUrl: 'https://player.vimeo.com/video/307190485', // Demo Video
     },
   ],
+  displaysWithBorder: true,
 };
 
 ProjectContent[ProjectSlug.bikewheelsynth] = {

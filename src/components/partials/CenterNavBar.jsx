@@ -3,40 +3,27 @@ import styled, { css } from 'styled-components';
 import { InternalLink } from '../commonComponents';
 
 const NavBar = () => (
-  <>
-    <NavContainer>
-      <Name to="/">Bomani</Name>
-      <LinksRow>
-        <NavLink to="/">Work</NavLink>
-        <NavLink to="/info">Info</NavLink>
-      </LinksRow>
-    </NavContainer>
-  </>
+  <NavContainer>
+    <Name to="/">Bomani</Name>
+    <LinksContainer>
+      <NavLink to="/">Work</NavLink>
+      <NavLink to="/info">Info</NavLink>
+    </LinksContainer>
+  </NavContainer>
 );
 
 const containerStyle = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  mix-blend-mode: exclusion;
   pointer-events: none;
 `;
 
 const NavContainer = styled.nav`
   ${containerStyle};
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 1rem;
-`;
-
-const LinksRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const NavLink = styled(InternalLink)`
@@ -48,8 +35,14 @@ const NavLink = styled(InternalLink)`
   margin: 0rem 1rem;
 `;
 
+const LinksContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 const Name = styled(NavLink)`
-  font-size: 7rem;
+  font-size: 12rem;
 
   &:hover {
     text-decoration: none;

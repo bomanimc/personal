@@ -5,8 +5,7 @@ import styled, { css } from 'styled-components';
 import { InternalLink, ExternalLink } from '../commonComponents';
 
 const LinksContainer = styled.div`
-  background-color: blue;
-  padding: 10px;
+  margin-bottom: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
