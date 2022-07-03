@@ -133,7 +133,7 @@ const ProjectVideo = styled(Video)`
 `;
 
 const Project = ({ content, displaysProjectDetailsOnHover }) => (
-  <ProjectContainer id={content.id} hasBorder={content.displaysWithBorder}>
+  <ProjectContainer id={content.id} hasBorder>
     <InternalLink to={content.primaryLink}>
       <ProjectDetailsWrapper>
         <ProjectMediaContainer>

@@ -24,15 +24,21 @@ export const ProjectSlug = {
   mybluewindow: '1956-2054',
   babyfaith: 'baby-faith',
   ml5: 'ml5js',
+  ritualtranspondence: 'a-ritual-transpondence',
+  rosc: 'return-of-spontaneous-circulation',
+  dialupdigital: 'dial-up-digital',
 };
 
 export const FeaturedProjects = [
+  ProjectSlug.ritualtranspondence,
+  ProjectSlug.rosc,
   ProjectSlug.informedconsent,
   ProjectSlug.blackhealthbook,
+  ProjectSlug.dialupdigital,
   ProjectSlug.obb,
-  ProjectSlug.ml5,
   ProjectSlug.shrumen,
   ProjectSlug.codeasart,
+  ProjectSlug.ml5,
 ];
 
 export const ProjectContent = {};
@@ -511,6 +517,93 @@ ProjectContent[ProjectSlug.npr] = {
   ],
 };
 
+ProjectContent[ProjectSlug.ritualtranspondence] = {
+  id: ProjectSlug.ritualtranspondence,
+  title: 'A Ritual Transpondence',
+  body: `A Ritual Transpondence" is a multi-channel sound performance invoking 
+  ritualistic techniques from my upbringing in Ifa spiritual practices`,
+  year: '2022',
+  tools: 'Max MSP, Multi-channel Audio, Teensyduino, Concrete, Cowrie Shells, Nails, Palm Oil, Speakers.',
+  role: 'Individual Project',
+  primaryLink: `/${ProjectSlug.ritualtranspondence}`,
+  media: 'ritualtranspondence_main',
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'ritualtranspondence_main',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'ritualtranspondence_color_top_view',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'ritualtranspondence_color_side_view',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'ritualtranspondence_color_pour',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'ritualtranspondence_color_process',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.rosc] = {
+  id: ProjectSlug.rosc,
+  title: 'Return of Spontaneous Circulation',
+  body: `I made this tool called "Return of Spontaneous Circulation" to help myself
+  find the shape that describes the activity within my heart, and what frequencies and waveforms compose it.
+  This iteration visualizes a parametric graphing of two oscillators (either sine, sawtooth, square, or triangle)
+  producing sound at different frequencies.`,
+  year: '2021',
+  tools: 'Tone.js, p5.js',
+  role: 'Individual Project',
+  site: 'https://bomani.rip/experiments/return-of-spontaneous-circulation/',
+  primaryLink: `/${ProjectSlug.rosc}`,
+  media: 'rosc_main_video',
+  displaysWithBorder: true,
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'rosc_main_video',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'rosc_snapshot_1',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'rosc_snapshot_2',
+    },
+    {
+      type: MediaTypes.image,
+      src: 'rosc_snapshot_3',
+    },
+  ],
+};
+
+ProjectContent[ProjectSlug.dialupdigital] = {
+  id: ProjectSlug.dialupdigital,
+  title: 'Dial Up Digital',
+  body: `Dial Up Digital is a creative development studio focused on building unique
+  digital experiences for artists and organizations working in music and new media.`,
+  year: '2016-Present',
+  tools: 'React, React Native, Expo',
+  role: 'Cofounder',
+  site: 'https://dialup.digital/',
+  primaryLink: `/${ProjectSlug.dialupdigital}`,
+  media: 'dialupdigital_main_video',
+  projectMedia: [
+    {
+      type: MediaTypes.image,
+      src: 'dialupdigital_main_video',
+    },
+  ],
+};
+
 export const SocialLinks = [
   {
     name: 'Twitter',
@@ -554,6 +647,12 @@ export const NavLinks = [
 
 export const AboutCopy = {
   education: [
+    {
+      name: 'New York University',
+      degree: 'Masters in Interactive Telecommunications',
+      startDate: '2019',
+      endDate: '2022',
+    },
     {
       name: 'B&H Emergency Medical Training',
       degree: 'EMT Accelerated Course',
