@@ -83,9 +83,10 @@ module.exports = {
         reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
         mergeScriptHashes: false, // you can disable scripts sha256 hashes
         mergeStyleHashes: false, // you can disable styles sha256 hashes
-        mergeDefaultDirectives: true,
+        mergeDefaultDirectives: false,
         directives: {
-          'script-src': "'self' 'unsafe-inline'",
+          'default-src': "'self' 'res.cloudinary.com'",
+          'script-src': "'self' 'unsafe-inline' 'www.google-analytics.com'",
           'style-src': "'self' 'unsafe-inline'",
           // you can add your directives or override defaults
         },
