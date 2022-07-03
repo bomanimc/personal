@@ -85,9 +85,11 @@ module.exports = {
         mergeStyleHashes: false, // you can disable styles sha256 hashes
         mergeDefaultDirectives: false,
         directives: {
-          'default-src': "'self' res.cloudinary.com",
+          'default-src': "'self' res.cloudinary.com www.google-analytics.com",
           'script-src': "'self' 'unsafe-inline' www.google-analytics.com static.cdn.prismic.io",
           'style-src': "'self' 'unsafe-inline'",
+          'frame-src': "'self' bomani.prismic.io",
+          'connect-src': "'self' www.google-analytics.com",
           // you can add your directives or override defaults
         },
       },
