@@ -827,8 +827,8 @@ export const AboutCopy = {
   ],
   fellowships: [
     {
-      org: 'Interact (Upcoming)',
-      title: 'Fellow',
+      org: 'eTextiles Spring Break (Upcoming)',
+      title: 'Resident',
       date: '2022',
     },
     {
@@ -840,6 +840,11 @@ export const AboutCopy = {
       org: 'The Frank-Ratchye STUDIO for Creative Inquiry',
       title: 'Open-Source Software Toolkits for the Arts Spring Resident',
       date: '2021',
+    },
+    {
+      org: 'Interact',
+      title: 'Fellow',
+      date: '2020',
     },
     {
       org: 'Clinic for Open Source Arts',
