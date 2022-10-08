@@ -10,7 +10,7 @@ const NUM_WARPS = 20;
 // The number of rows
 const NUM_WEFTS = 15;
 
-const WEAVE_PATTERN = [false, false, true, true];
+const WEAVE_PATTERN = [false, true, false, true];
 
 const WEAVE_CARD = [...new Array(WEAVE_PATTERN.length - 1)].reduce((acc) => {
   const lastStepArray = [...acc[acc.length - 1]];
@@ -22,37 +22,41 @@ const COLORS = { warp: 'brown', weft: 'darkgreen' };
 
 const numNotes = NUM_WARPS * NUM_WEFTS;
 
-const WovenNotes = () => {
-  // const windowSize = useWindowSize();
-  const notes = 1;
+const WovenNotes = () => (
+  <Layout showLinksBar={false} showTitleNav={false}>
+    <BaseAnimationPage title="Woven Notes">
+      <WovenNotes.Container>
+        <WovenNotes.NotesGridContainer numWarps={NUM_WARPS} numWefts={NUM_WEFTS}>
+          {[...new Array(numNotes)].map((_, index) => {
+            const row = Math.floor(index / NUM_WARPS);
+            const col = index % NUM_WARPS;
+            const weaveCardRowIndex = (NUM_WEFTS - row) % WEAVE_PATTERN.length;
+            const weaveCardColIndex = col % WEAVE_PATTERN.length;
+            const isWarpThread = WEAVE_CARD[weaveCardRowIndex][weaveCardColIndex];
+            const shouldFoldUnder = (() => {
+              if (row === 0 || row === NUM_WEFTS - 1 || col === 0 || col === NUM_WARPS - 1) {
+                return false;
+              }
 
-  // const numRows = 0;
-  // const noteSize = 0;
+              const positionBelowIsWarp = WEAVE_CARD[(weaveCardRowIndex + 1) % WEAVE_CARD.length][weaveCardColIndex] === true;
+              const positionBesideIsWeft = WEAVE_CARD[weaveCardRowIndex][weaveCardColIndex % WEAVE_PATTERN.length] === true;
 
-  // useEffect(() => {
-  //   windowSize.width / NUM_WARPS
-  // }, [windowSize]);
+              return isWarpThread ? positionBelowIsWarp : positionBesideIsWeft;
+            })();
 
-  return (
-    <Layout showLinksBar={false} showTitleNav={false}>
-      <BaseAnimationPage title="Woven Notes">
-        <WovenNotes.Container>
-          <WovenNotes.NotesGridContainer numWarps={NUM_WARPS} numWefts={NUM_WEFTS}>
-            {[...new Array(numNotes)].map((_, index) => {
-              const row = Math.floor(index / NUM_WARPS);
-              const col = index % NUM_WARPS;
-              const isWarpThread = WEAVE_CARD[(NUM_WEFTS - row) % WEAVE_PATTERN.length][col % WEAVE_PATTERN.length];
-
-              return (
-                <WovenNotes.Note color={isWarpThread ? COLORS.warp : COLORS.weft} />
-              );
-            })}
-          </WovenNotes.NotesGridContainer>
-        </WovenNotes.Container>
-      </BaseAnimationPage>
-    </Layout>
-  );
-};
+            return (
+              <WovenNotes.Note
+                isWarp={isWarpThread}
+                color={isWarpThread ? COLORS.warp : COLORS.weft}
+                shouldFoldUnder={shouldFoldUnder}
+              />
+            );
+          })}
+        </WovenNotes.NotesGridContainer>
+      </WovenNotes.Container>
+    </BaseAnimationPage>
+  </Layout>
+);
 
 WovenNotes.Container = styled.div`
   position: absolute;
@@ -69,10 +73,11 @@ WovenNotes.NotesGridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(${(p) => p.numWarps}, 1fr);
   grid-template-rows: repeat(${(p) => p.numWefts}, 1fr);
-  `;
+`;
 
 WovenNotes.Note = styled.div`
   background: ${(p) => p.color};
+  margin: ${(p) => (p.isWarp ? '0 1vw' : '1vw 0')};
 `;
 
 export default WovenNotes;
