@@ -472,7 +472,7 @@ ProjectContent[ProjectSlug.ml5] = {
   body: `ml5.js is a beginner-friendly open-source machine learning library focused on making 
   creative ML techniques approachable for a broad audience of artists, educators, creative 
   coders, and others.`,
-  year: '2020 - Present',
+  year: '2020 - 2021',
   tools: 'Tensorflow.js, p5.js, GitHub',
   role: 'Lead Software Maintainer',
   site: 'https://ml5js.org/',
@@ -721,6 +721,13 @@ export const AboutCopy = {
       isNameTitle: false,
     },
     {
+      name: 'OSSTA Creative-In-Residence: Notes from ml5.js',
+      event: ' Open-Source Software Toolkits for the Arts (OSSTA) Lecture Series',
+      date: 'April 2021',
+      location: 'Pittsburgh, PA (Online)',
+      link: 'https://www.youtube.com/watch?v=nFtuh5Skz5Q',
+    },
+    {
       name: 'Guest Speaker at "Introduction to Machine Learning for the Arts"',
       event: 'NYU Interactive Media Arts',
       date: 'October 2020',
@@ -827,7 +834,7 @@ export const AboutCopy = {
   ],
   fellowships: [
     {
-      org: 'eTextiles Spring Break (Upcoming)',
+      org: 'eTextiles Spring Break',
       title: 'Resident',
       date: '2022',
     },
@@ -873,6 +880,18 @@ export const AboutCopy = {
     },
   ],
   exhibitions: [
+    {
+      title: 'eTextiles Spring Break: Artists In Residence Exhibition',
+      gallery: 'Prairie Ronde: Downtown Gallery',
+      location: 'Vicksburg, MI',
+      date: '2022',
+    },
+    {
+      title: 'No Media',
+      gallery: 'The Wrong 2022 Biennale',
+      location: 'Online (https://thewrong.tv)',
+      date: '2022',
+    },
     {
       title: 'Creative Code Festival',
       gallery: 'Lightbox',
