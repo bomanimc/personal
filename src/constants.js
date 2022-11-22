@@ -714,6 +714,20 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Engineering a Creative Career in Software',
+      event: 'Brilliant Black Minds',
+      date: 'October 2022',
+      location: 'New York, NY (Online)',
+      isNameTitle: true,
+    },
+    {
+      name: 'Speaker at "Fireside Chat"',
+      event: 'Brilliant Black Minds',
+      date: 'October 2022',
+      location: 'New York, NY (Online)',
+      isNameTitle: false,
+    },
+    {
       name: 'Guest Speaker at "Python Crash Course"',
       event: 'Upperline Code',
       date: 'July 2021',
