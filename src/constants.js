@@ -712,6 +712,40 @@ export const AboutCopy = {
       date: 'July 2020',
     },
   ],
+  teaching: [
+    {
+      name: 'Device Art',
+      institution: 'Parsons School of Design',
+      program: 'BFA Design & Technology',
+      date: 'Fall 2021 (Online)',
+      location: 'New York, NY',
+      link: 'https://teaching.bomani.rip/',
+    },
+    {
+      name: 'Core Lab: Collaboration',
+      institution: 'Parsons School of Design',
+      program: 'BFA Design & Technology',
+      date: 'Spring 2021 (Online)',
+      location: 'New York, NY',
+      link: 'https://docs.google.com/document/d/1dvY9GL7elRD2s6aC7_grKKAb2v6RTh02noOvQbdCZc0/edit?usp=sharing',
+    },
+    {
+      name: 'Core Lab: Objects',
+      institution: 'Parsons School of Design',
+      program: 'BFA Design & Technology',
+      date: 'Fall 2020',
+      location: 'New York, NY ',
+      link: 'https://docs.google.com/document/d/1rrc598ClaHOUXBGLW-vwzK8Yzt3KIU0uXRiqyQUFiEU/edit?usp=sharing',
+    },
+    {
+      name: 'Out of the Black Box',
+      institution: 'Pioneer Works',
+      program: 'Good Shepherd Services STEAM Program',
+      date: 'Summer 2019 - Fall 2019, Summer 2020 - Fall 2020 (Online)',
+      location: 'New York, NY',
+      link: '/out-of-the-black-box',
+    },
+  ],
   speaking: [
     {
       name: 'Engineering a Creative Career in Software',

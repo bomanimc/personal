@@ -100,6 +100,7 @@ const AboutPage = (props) => {
             <AboutSectionContainer>
               <BioContent allBiosEdgeDoc={doc} />
               <EducationBox />
+              <TeachingBox />
               <SpeakingBox />
               <InterviewsBox />
               <WritingBox />
@@ -139,6 +140,27 @@ const EducationBox = () => (
             startDate={item.startDate}
             endDate={item.endDate}
             degree={item.degree}
+          />
+        ))}
+      </div>
+    </AboutBoxContent>
+  </div>
+);
+
+const TeachingBox = () => (
+  <div>
+    <AboutBoxTitle>Teaching</AboutBoxTitle>
+    <AboutBoxContent>
+      <div>
+        {AboutCopy.teaching.map((item) => (
+          <TeachingItem
+            key={item.name}
+            name={item.name}
+            link={item.link}
+            institution={item.institution}
+            program={item.program}
+            date={item.date}
+            location={item.location}
           />
         ))}
       </div>
@@ -254,6 +276,21 @@ const EducationItem = ({
   </SpeakingLinkItem>
 );
 
+const TeachingItem = ({
+  name, link, institution, program, date, location,
+}) => (
+  <SpeakingLinkItem>
+    {
+      link !== undefined && link !== null
+        ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{name}</ExternalLink>
+        : name
+    }
+    <AboutDetail>{`${institution}, ${program}`}</AboutDetail>
+    <AboutDetail>{`${date}`}</AboutDetail>
+    <AboutDetail>{location}</AboutDetail>
+  </SpeakingLinkItem>
+);
+
 const SpeakingLink = ({
   name, location, event, date, link, isNameTitle,
 }) => {
@@ -263,7 +300,7 @@ const SpeakingLink = ({
     <SpeakingLinkItem>
       {
         link !== undefined && link !== null
-          ? <ExternalLink href={link} key={name}>{formattedName}</ExternalLink>
+          ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{formattedName}</ExternalLink>
           : formattedName
       }
       <AboutDetail>{`${event}, ${date}`}</AboutDetail>
@@ -281,7 +318,7 @@ const InterviewLink = ({
     <SpeakingLinkItem>
       {
         link !== undefined && link !== null
-          ? <ExternalLink href={link} key={name}>{formattedName}</ExternalLink>
+          ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{formattedName}</ExternalLink>
           : formattedName
       }
       <AboutDetail>{`${org}, ${date}`}</AboutDetail>
@@ -293,7 +330,7 @@ const WritingLink = ({ name, detail, link }) => (
   <SpeakingLinkItem>
     {
       link !== undefined && link !== null
-        ? <ExternalLink href={link} key={name}>{`"${name}"`}</ExternalLink>
+        ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{`"${name}"`}</ExternalLink>
         : `"${name}"`
     }
     <AboutDetail>{`${detail}`}</AboutDetail>
@@ -336,6 +373,15 @@ EducationItem.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string,
   degree: PropTypes.string.isRequired,
+};
+
+TeachingItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  institution: PropTypes.string.isRequired,
+  program: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
 };
 
 SpeakingLink.propTypes = {
