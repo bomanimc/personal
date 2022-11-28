@@ -5,12 +5,12 @@ import { BaseAnimationPage } from '../../components/commonComponents';
 // import useWindowSize from '../../hooks/useWindowSize';
 
 // Essentially, the number of cols
-const NUM_WARPS = 20;
+const NUM_WARPS = 100;
 
 // The number of rows
-const NUM_WEFTS = 15;
+const NUM_WEFTS = 75;
 
-const WEAVE_PATTERN = [false, true, false, true];
+const WEAVE_PATTERN = [true, true, false, true];
 
 const WEAVE_CARD = [...new Array(WEAVE_PATTERN.length - 1)].reduce((acc) => {
   const lastStepArray = [...acc[acc.length - 1]];
@@ -18,7 +18,7 @@ const WEAVE_CARD = [...new Array(WEAVE_PATTERN.length - 1)].reduce((acc) => {
   return [...acc, newPattern];
 }, [WEAVE_PATTERN]);
 
-const COLORS = { warp: 'brown', weft: 'darkgreen' };
+const COLORS = { warp: 'pink', weft: 'red' };
 
 const numNotes = NUM_WARPS * NUM_WEFTS;
 
@@ -45,11 +45,13 @@ const WovenNotes = () => (
             })();
 
             return (
-              <WovenNotes.Note
-                isWarp={isWarpThread}
-                color={isWarpThread ? COLORS.warp : COLORS.weft}
-                shouldFoldUnder={shouldFoldUnder}
-              />
+              <WovenNotes.Note>
+                <WovenNotes.NoteContent
+                  isWarp={isWarpThread}
+                  color={isWarpThread ? COLORS.warp : COLORS.weft}
+                  shouldFoldUnder={shouldFoldUnder}
+                />
+              </WovenNotes.Note>
             );
           })}
         </WovenNotes.NotesGridContainer>
@@ -65,6 +67,7 @@ WovenNotes.Container = styled.div`
   right: 0;
   bottom: 0;
   z-index: -1;
+  /* background: white; */
 `;
 
 WovenNotes.NotesGridContainer = styled.div`
@@ -76,8 +79,15 @@ WovenNotes.NotesGridContainer = styled.div`
 `;
 
 WovenNotes.Note = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
+WovenNotes.NoteContent = styled.div`
   background: ${(p) => p.color};
-  margin: ${(p) => (p.isWarp ? '0 1vw' : '1vw 0')};
+  height: ${(p) => (p.isWarp ? '90%' : '100%')};
+  width: ${(p) => (p.isWarp ? '100%' : '90%')};
 `;
 
 export default WovenNotes;
