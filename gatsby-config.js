@@ -88,7 +88,7 @@ module.exports = {
           'default-src': "'self' res.cloudinary.com www.google-analytics.com",
           'script-src': "'self' 'unsafe-inline' www.google-analytics.com static.cdn.prismic.io",
           'style-src': "'self' 'unsafe-inline'",
-          'frame-src': "'self' bomani.prismic.io",
+          'frame-src': "'self' bomani.prismic.io youtube.com www.youtube.com player.vimeo.com",
           'connect-src': "'self' www.google-analytics.com",
           // you can add your directives or override defaults
         },
