@@ -743,6 +743,13 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Guest Speaker at "The Musical Web"',
+      event: 'School for Poetic Computation',
+      date: 'April 2023',
+      location: 'New York, NY (Online)',
+      isNameTitle: false,
+    },
+    {
       name: 'Engineering a Creative Career in Software',
       event: 'Brilliant Black Minds',
       date: 'October 2022',
