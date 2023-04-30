@@ -606,11 +606,6 @@ ProjectContent[ProjectSlug.dialupdigital] = {
 
 export const SocialLinks = [
   {
-    name: 'Twitter',
-    link: 'https://twitter.com/bxmani',
-    isExternal: true,
-  },
-  {
     name: 'Instagram',
     link: 'https://www.instagram.com/bxmani/',
     isExternal: true,
@@ -717,7 +712,7 @@ export const AboutCopy = {
       name: 'Device Art',
       institution: 'Parsons School of Design',
       program: 'BFA Design & Technology',
-      date: 'Fall 2021 (Online)',
+      date: 'Fall 2021',
       location: 'New York, NY',
       link: 'https://teaching.bomani.rip/',
     },
@@ -733,7 +728,7 @@ export const AboutCopy = {
       name: 'Core Lab: Objects',
       institution: 'Parsons School of Design',
       program: 'BFA Design & Technology',
-      date: 'Fall 2020',
+      date: 'Fall 2020 (Online)',
       location: 'New York, NY ',
       link: 'https://docs.google.com/document/d/1rrc598ClaHOUXBGLW-vwzK8Yzt3KIU0uXRiqyQUFiEU/edit?usp=sharing',
     },
