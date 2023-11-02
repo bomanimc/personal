@@ -743,6 +743,13 @@ export const AboutCopy = {
   ],
   speaking: [
     {
+      name: 'Guest Speaker for "Intro to Web" Course',
+      event: 'NYU Integrated Digital Media',
+      date: 'October 2023',
+      location: 'Brooklyn, NY',
+      isNameTitle: false,
+    },
+    {
       name: 'Guest Speaker at "The Musical Web"',
       event: 'School for Poetic Computation',
       date: 'April 2023',
