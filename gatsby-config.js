@@ -1,7 +1,12 @@
-const { apiEndpoint } = require('./prismic-config');
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+ */
 
-const repo = /([^\/]+)\.prismic\.io\/graphql/.exec(apiEndpoint);
-
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
 module.exports = {
   siteMetadata: {
     title: 'BOMANI',
@@ -14,85 +19,30 @@ module.exports = {
     googleSiteVerification: 'oUOz_91m_HgyQz1q_kErpkk03-qUN-OS1Wh8once9gg',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
+    `gatsby-plugin-image`,
     {
-      resolve: 'gatsby-plugin-eslint',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        test: /\.js$|\.jsx$/,
-        exclude: /(node_modules|.cache|public)/,
-        stages: ['develop'],
-        options: {
-          emitWarning: true,
-          failOnError: false,
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'https://bomani.rip',
-        policy: [{ userAgent: '*', disallow: '' }],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-120000757-1',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
+        name: `images`,
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'BOMANI',
-        short_name: 'BOMANI',
-        start_url: '/',
-        background_color: '#000',
-        theme_color: '#000',
-        display: 'minimal-ui',
-        icon: 'src/images/drip.png', // This path is relative to the root of the site.
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: 'gatsby-source-prismic-graphql',
-      options: {
-        repositoryName: repo[1],
-        path: '/preview', // (optional preview path. Default: /preview)
-        previews: true, // (optional, activated Previews. Default: false)
-        pages: [{ // (optional, builds pages dynamically)
-          type: 'Project', // TypeName from prismic
-          match: '/:uid', // Pages will be generated under this pattern
-          path: '/', // Placeholder page for unpublished documents
-          component: require.resolve('./src/templates/project.jsx'),
-        }],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-csp',
-      options: {
-        disableOnDev: true,
-        reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
-        mergeScriptHashes: false, // you can disable scripts sha256 hashes
-        mergeStyleHashes: false, // you can disable styles sha256 hashes
-        mergeDefaultDirectives: false,
-        directives: {
-          'default-src': "'self' res.cloudinary.com www.google-analytics.com",
-          'script-src': "'self' 'unsafe-inline' www.google-analytics.com static.cdn.prismic.io",
-          'style-src': "'self' 'unsafe-inline'",
-          'frame-src': "'self' bomani.prismic.io youtube.com www.youtube.com player.vimeo.com",
-          'connect-src': "'self' www.google-analytics.com",
-          // you can add your directives or override defaults
-        },
-      },
-    },
+    `gatsby-plugin-styled-components`
   ],
-};
+}
