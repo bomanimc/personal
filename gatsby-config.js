@@ -19,6 +19,20 @@ module.exports = {
     googleSiteVerification: 'oUOz_91m_HgyQz1q_kErpkk03-qUN-OS1Wh8once9gg',
   },
   plugins: [
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `hhel7lt4`,
+        dataset: `production`,
+        // a token with read permissions is required
+        // if you have a private dataset
+        // token: process.env.SANITY_TOKEN,
+
+        // If the Sanity GraphQL API was deployed using `--tag <name>`,
+        // use `graphqlTag` to specify the tag name. Defaults to `default`.
+        // graphqlTag: 'default',
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
