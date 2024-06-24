@@ -1,5 +1,3 @@
-/* eslint no-confusing-arrow: 0 */
-
 import React from 'react';
 import { graphql } from 'gatsby';
 import { PortableText } from '@portabletext/react';
@@ -19,10 +17,8 @@ export const query = graphql`
 `;
 
 const Project = ({ data }) => {
-  console.log(data);
   const {slug: {current: projectId}, _rawContent} = data.sanityProject;
   const project = ProjectContent[projectId];
-  console.log(project);
 
   return (
     <BaseProjectPage
@@ -37,9 +33,7 @@ const Project = ({ data }) => {
           project={project}
           showMainMedia={false}
           customContent={
-            <PortableText
-              value={_rawContent}
-            />
+            <PortableText value={_rawContent} />
           }
         />
       )}

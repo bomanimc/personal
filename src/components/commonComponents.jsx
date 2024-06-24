@@ -35,6 +35,10 @@ export const TextContent = styled.span`
   ul {
     margin-left: 24px;
   }
+
+  p {
+    padding-bottom: 8px;
+  }
 `;
 
 export const InternalLink = styled(Link)`
