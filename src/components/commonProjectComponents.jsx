@@ -3,7 +3,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown/with-html';
 import { Image, Video, Transformation } from 'cloudinary-react';
 import { Helmet } from 'react-helmet';
 import Layout from './layout';
@@ -81,15 +80,15 @@ const Metadata = ({
   <MetadataSection>
     <MetadataItem>
       <MetadataTitle>Year</MetadataTitle>
-      <MetadataContent><ReactMarkdown source={year} /></MetadataContent>
+      <MetadataContent>{year}</MetadataContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Tools</MetadataTitle>
-      <MetadataContent><ReactMarkdown source={tools} /></MetadataContent>
+      <MetadataContent>{tools}</MetadataContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Role</MetadataTitle>
-      <MetadataContent><ReactMarkdown source={role} /></MetadataContent>
+      <MetadataContent>{role}</MetadataContent>
     </MetadataItem>
     { site
       && (

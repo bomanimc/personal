@@ -5,7 +5,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown/with-html';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import { PortableText } from '@portabletext/react';
 import Layout from '../components/layout';
 import { AboutCopy } from '../constants';
 import {
@@ -19,7 +21,6 @@ import {
   MetadataTitle,
   MetadataContent,
 } from '../components/commonComponents';
-import { Text } from '../components/slices';
 
 const GRID_GAP_VALUE = '3rem';
 
@@ -59,14 +60,8 @@ const SpeakingLinkItem = styled.div`
 
 export const query = graphql`
   {
-    prismic {
-      allBios {
-        edges {
-          node {
-            text
-          }
-        }
-      }
+    sanityPersonInfo {
+      _rawBio
     }
   }
 `;
@@ -75,21 +70,18 @@ const Metadata = ({ location, links }) => (
   <MetadataSection>
     <MetadataItem>
       <MetadataTitle>Location</MetadataTitle>
-      <MetadataContent><ReactMarkdown source={location} /></MetadataContent>
+      <MetadataContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={location} /></MetadataContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Links</MetadataTitle>
-      <MetadataContent><ReactMarkdown source={links} /></MetadataContent>
+      <MetadataContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={links} /></MetadataContent>
     </MetadataItem>
   </MetadataSection>
 );
 
-const AboutPage = (props) => {
-  // Required check for no data being returned
+const AboutPage = ({ data }) => {
   // eslint-disable-next-line react/prop-types
-  const { data } = props;
-  // eslint-disable-next-line react/prop-types
-  const doc = data.prismic.allBios.edges.slice(0, 1).pop();
+  const bioPortableText = data.sanityPersonInfo._rawBio;
 
   return (
     <Layout>
@@ -98,7 +90,7 @@ const AboutPage = (props) => {
         body={(
           <BodySection>
             <AboutSectionContainer>
-              <BioContent allBiosEdgeDoc={doc} />
+              <BioContent bioPortableText={bioPortableText} />
               <EducationBox />
               <TeachingBox />
               <SpeakingBox />
@@ -114,15 +106,15 @@ const AboutPage = (props) => {
   );
 };
 
-const BioContent = ({ allBiosEdgeDoc }) => {
-  if (!allBiosEdgeDoc) {
+const BioContent = ({ bioPortableText }) => {
+  if (!bioPortableText) {
     return null;
   }
 
   return (
     <BodySection>
       <TextContent>
-        <Text slice={allBiosEdgeDoc.node.text} />
+        <PortableText value={bioPortableText} />
       </TextContent>
     </BodySection>
   );
@@ -365,7 +357,7 @@ Metadata.propTypes = {
 
 BioContent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  allBiosEdgeDoc: PropTypes.object.isRequired,
+  bioPortableText: PropTypes.object.isRequired,
 };
 
 EducationItem.propTypes = {

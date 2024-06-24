@@ -1,7 +1,12 @@
-const { apiEndpoint } = require('./prismic-config');
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+ */
 
-const repo = /([^\/]+)\.prismic\.io\/graphql/.exec(apiEndpoint);
-
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
 module.exports = {
   siteMetadata: {
     title: 'BOMANI',
@@ -14,42 +19,30 @@ module.exports = {
     googleSiteVerification: 'oUOz_91m_HgyQz1q_kErpkk03-qUN-OS1Wh8once9gg',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
     {
-      resolve: 'gatsby-plugin-eslint',
+      resolve: `gatsby-source-sanity`,
       options: {
-        test: /\.js$|\.jsx$/,
-        exclude: /(node_modules|.cache|public)/,
-        stages: ['develop'],
-        options: {
-          emitWarning: true,
-          failOnError: false,
-        },
+        projectId: `hhel7lt4`,
+        dataset: `production`,
+        // a token with read permissions is required
+        // if you have a private dataset
+        // token: process.env.SANITY_TOKEN,
+
+        // If the Sanity GraphQL API was deployed using `--tag <name>`,
+        // use `graphqlTag` to specify the tag name. Defaults to `default`.
+        // graphqlTag: 'default',
       },
     },
+    `gatsby-plugin-image`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        host: 'https://bomani.rip',
-        policy: [{ userAgent: '*', disallow: '' }],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-120000757-1',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
+        name: `images`,
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -62,18 +55,12 @@ module.exports = {
         icon: 'src/images/drip.png', // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-styled-components`,
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
-        repositoryName: repo[1],
-        path: '/preview', // (optional preview path. Default: /preview)
-        previews: true, // (optional, activated Previews. Default: false)
-        pages: [{ // (optional, builds pages dynamically)
-          type: 'Project', // TypeName from prismic
-          match: '/:uid', // Pages will be generated under this pattern
-          path: '/', // Placeholder page for unpublished documents
-          component: require.resolve('./src/templates/project.jsx'),
-        }],
+        host: 'https://bomani.rip',
+        policy: [{ userAgent: '*', disallow: '' }],
       },
     },
     {
@@ -92,6 +79,12 @@ module.exports = {
           'connect-src': "'self' www.google-analytics.com",
           // you can add your directives or override defaults
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-120000757-1',
       },
     },
   ],

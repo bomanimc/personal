@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import Loadable from '@loadable/component';
 import PropTypes from 'prop-types';
 
-export const LoadableSketch = Loadable(() => import('react-p5'));
+export const LoadableSketch = Loadable(() => import('@react-p5/core'));
 
 class MathematicalCurve {
   constructor(p5) {

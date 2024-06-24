@@ -6,7 +6,7 @@ import Loadable from '@loadable/component';
 import Layout from '../../components/layout';
 import { BaseAnimationPage } from '../../components/commonComponents';
 
-export const LoadableSketch = Loadable(() => import('react-p5'));
+export const LoadableSketch = Loadable(() => import('@react-p5/core'));
 
 class Walker {
   constructor(p5, x, y, xNoiseIncrement, yNoiseIncrement, color1, color2) {

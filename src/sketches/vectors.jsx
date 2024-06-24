@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import Loadable from '@loadable/component';
 
-export const LoadableSketch = Loadable(() => import('react-p5'));
+export const LoadableSketch = Loadable(() => import('@react-p5/core'));
 
 class Particle {
   constructor(p5, pos, index) {
