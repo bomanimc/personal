@@ -55,6 +55,37 @@ module.exports = {
         icon: 'src/images/drip.png', // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://bomani.rip',
+        policy: [{ userAgent: '*', disallow: '' }],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-csp',
+      options: {
+        disableOnDev: true,
+        reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
+        mergeScriptHashes: false, // you can disable scripts sha256 hashes
+        mergeStyleHashes: false, // you can disable styles sha256 hashes
+        mergeDefaultDirectives: false,
+        directives: {
+          'default-src': "'self' res.cloudinary.com www.google-analytics.com",
+          'script-src': "'self' 'unsafe-inline' www.google-analytics.com static.cdn.prismic.io",
+          'style-src': "'self' 'unsafe-inline'",
+          'frame-src': "'self' bomani.prismic.io youtube.com www.youtube.com player.vimeo.com",
+          'connect-src': "'self' www.google-analytics.com",
+          // you can add your directives or override defaults
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-120000757-1',
+      },
+    },
   ],
 }
