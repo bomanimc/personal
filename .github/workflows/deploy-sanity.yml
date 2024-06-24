@@ -2,7 +2,7 @@ name: Deploy sanity studio
 'on':
   push:
     branches:
-      - deploy
+      - main
 jobs:
   deploy:
     name: Build and deploy
@@ -17,12 +17,15 @@ jobs:
         with:
           node-version: 16.x
       - name: "Restore cached Node Modules \U0001F4BE"
+        working-directory: ./sanity
         id: cache-node-modules
         uses: actions/cache@v3
         with:
           path: node_modules
           key: 'node-modules-${{ hashFiles(''package-lock.json'') }}'
       - name: Install dependencies
+        working-directory: ./sanity
         run: npm install
       - name: Deploy Studio
+        working-directory: ./sanity
         run: npm run deploy
