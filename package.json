@@ -5,7 +5,9 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@loadable/component": "^5.16.4",
     "@portabletext/react": "^3.1.0",
+    "@react-p5/core": "^1.3.0",
     "babel-plugin-styled-components": "^2.1.4",
     "cloudinary-react": "^1.8.1",
     "gatsby": "^5.13.5",
@@ -18,11 +20,15 @@
     "gatsby-source-sanity": "^7.9.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.6",
     "react-helmet": "^6.1.0",
     "react-markdown": "^9.0.1",
     "rehype-raw": "^7.0.0",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "tone": "14.7.77",
+    "unmute-ios-audio": "^3.3.0"
   },
   "devDependencies": {
     "prettier": "^2.8.8"
