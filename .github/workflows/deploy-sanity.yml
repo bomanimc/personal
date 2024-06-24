@@ -2,7 +2,7 @@ name: Deploy sanity studio
 'on':
   push:
     branches:
-      - main
+      - deploy
 jobs:
   deploy:
     name: Build and deploy
