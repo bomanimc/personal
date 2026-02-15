@@ -4,10 +4,10 @@ import { InternalLink } from '../commonComponents';
 
 const NavBar = () => (
   <NavContainer>
-    <Name to="/">Bomani</Name>
+    <Name href="/">Bomani</Name>
     <LinksContainer>
-      <NavLink to="/">Work</NavLink>
-      <NavLink to="/info">Info</NavLink>
+      <NavLink href="/">Work</NavLink>
+      <NavLink href="/info">Info</NavLink>
     </LinksContainer>
   </NavContainer>
 );

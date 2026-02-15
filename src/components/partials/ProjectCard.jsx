@@ -134,7 +134,7 @@ const ProjectVideo = styled(Video)`
 
 const Project = ({ content, displaysProjectDetailsOnHover }) => (
   <ProjectContainer id={content.id} hasBorder>
-    <InternalLink to={content.primaryLink}>
+    <InternalLink href={content.primaryLink}>
       <ProjectDetailsWrapper>
         <ProjectMediaContainer>
           {

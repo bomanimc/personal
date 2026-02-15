@@ -36,7 +36,7 @@ const LinksBar = ({ links, isNav }) => {
     return (
       <LinksContainer>
         {links.map((item) => (
-          <InternalLinkItem key={item.name} to={item.link} activeClassName="active">
+          <InternalLinkItem key={item.name} href={item.link} activeClassName="active">
             {item.name}
           </InternalLinkItem>
         ))}
@@ -52,7 +52,7 @@ const LinksBar = ({ links, isNav }) => {
         </ExternalLinkItem>
       )
       : (
-        <InternalLinkItem to={item.link} key={item.name}>
+        <InternalLinkItem href={item.link} key={item.name}>
           {item.name}
         </InternalLinkItem>
       )

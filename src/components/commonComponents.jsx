@@ -3,7 +3,7 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
 // Routing needs to be fixed
-import { Link } from 'gatsby';
+import Link from 'next/link'
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
