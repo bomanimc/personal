@@ -1,11 +1,13 @@
 /* eslint react/forbid-prop-types: 0 */
 
+'use client'
+
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Image, Video, Transformation } from 'cloudinary-react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { Helmet } from 'react-helmet';
-import Layout from './layout';
 import { MediaTypes } from '../constants';
 import {
   ExternalLink,
@@ -21,6 +23,9 @@ import {
   MetadataContent,
 } from './commonComponents';
 import { setMetaTitleWithName } from '../utils/utils';
+import theme from '../theme';
+
+const myCld = new Cloudinary({ cloud: { cloudName: 'bomani-personal' } });
 
 export const HiddenDivider = styled.div`
   margin: 48px 0px;
@@ -31,14 +36,14 @@ export const ProjectPageImageContainer = styled.div`
   margin-bottom: 16px;
 `;
 
-export const ProjectPageImage = styled(Image)`
-  border: 1px solid ${(p) => p.theme.color.blue};
+export const ProjectPageImage = styled(AdvancedImage)`
+  border: 1px solid ${theme.color.blue};
   width: 100%;
 `;
 
 const BaseVideoContainer = styled.div`
   width: 100%;
-  border: 1px solid ${(p) => p.theme.color.blue};
+  border: 1px solid ${theme.color.blue};
   margin-bottom: 16px;
 `;
 
@@ -68,7 +73,7 @@ const ProjectVideoContainer = styled(BaseVideoContainer)`
   }
 `;
 
-const ProjectVideo = styled(Video)`
+const ProjectVideo = styled(AdvancedVideo)`
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -119,7 +124,8 @@ export const getProjectMedia = (projectData, showMainMedia) => {
 export const BaseProjectPage = ({
   year, title, tools, role, site, body,
 }) => (
-  <Layout>
+  // TODO: Fix Layout
+  <div>
     <Helmet>
       {setMetaTitleWithName(title)}
     </Helmet>
@@ -131,7 +137,7 @@ export const BaseProjectPage = ({
         {body}
       </PageCenteringContainer>
     </Page>
-  </Layout>
+  </div>
 );
 
 export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
@@ -171,36 +177,40 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
         );
       }
       case MediaTypes.image:
-      default:
-        return (
-          media.src.includes('video')
-            ? (
-              <ProjectVideoContainer>
+      default: {
+        if (media.src.includes('video')) {
+          const myVideo = cld
+            .video(media.src)
+            .audioCodec("none");
+
+          return (
+            <ProjectVideoContainer>
                 <ProjectVideo
-                  cloudName="bomani-personal"
-                  publicId={media.src}
+                  cldVid={myVideo}
                   autoPlay
                   loop
                   muted
                   playsInline
                   secure
-                >
-                  <Transformation audioCodec="none" />
-                </ProjectVideo>
+                />
               </ProjectVideoContainer>
-            )
-            : (
-              <ProjectPageImageContainer key={media.src}>
+          );
+        } else {
+          const img = myCld
+            .image(media.src)
+            .quality('auto')
+            .format('auto');
+
+          return (
+            <ProjectPageImageContainer key={media.src}>
                 <ProjectPageImage
-                  cloudName="bomani-personal"
-                  publicId={media.src}
+                  cldImg={img}
                   secure
-                >
-                  <Transformation quality="auto:best" crop="limit" fetchFormat="auto" />
-                </ProjectPageImage>
+                />
               </ProjectPageImageContainer>
-            )
-        );
+          );
+        }
+      }
     }
   });
 

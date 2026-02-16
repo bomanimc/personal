@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import styled, { ThemeProvider } from 'styled-components';
 import "./globals.css";
+import NavBar from '../components/partials/NavBar';
+import LinksBar from '../components/partials/LinksBar';
+import { SocialLinks } from '../constants';
+import theme from '../theme';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +16,29 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const BaseWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  align-content: center;
+  flex-direction: column;
+  padding: 0 3rem;
+
+  @media screen and (max-width: ${theme.breakPoints}) {
+    padding: 0 1rem;
+  }
+`;
+
+const Main = styled.main`
+  display: flex;
+  flex: 1;
+`;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +51,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    // TODO: Fix themeing approach
+    <ThemeProvider theme={theme}>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <BaseWrapper>
+          {/* <SEO /> */}
+          {/* {showTitleNav && <NavBar />} */}
+          <Main>
+            <ContentWrapper>{children}</ContentWrapper>
+          </Main>
+          {/* {showLinksBar && <LinksBar links={SocialLinks} />} */}
+        </BaseWrapper>
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

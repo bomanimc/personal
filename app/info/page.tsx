@@ -3,7 +3,6 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { type SanityDocument } from "next-sanity";
 import {client} from '@/sanity/lib/client'
 import {BIO_QUERY} from '@/sanity/lib/queries'
 import PropTypes from 'prop-types';
