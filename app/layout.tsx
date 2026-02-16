@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local'
 import styled, { ThemeProvider } from 'styled-components';
 import "./globals.css";
 import NavBar from '../components/partials/NavBar';
@@ -7,15 +7,24 @@ import LinksBar from '../components/partials/LinksBar';
 import { SocialLinks } from '../constants';
 import theme from '../theme';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+ 
+// Font files can be colocated inside of `app`
+const breweryFont = localFont({
+  src: [
+    {
+      path: '../fonts/LinotypeBrewery-Regular/LinotypeBrewery-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/LinotypeBrewery-Heavy/LinotypeBrewery-Heavy.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: "--font-brewery",
+})
 
 const BaseWrapper = styled.div`
   display: flex;
@@ -50,20 +59,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const showTitleNav = true;
+  const showLinksBar = true;
+
   return (
     // TODO: Fix themeing approach
     <ThemeProvider theme={theme}>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+      <html lang="en" className={breweryFont.className}>
+        <body>
           <BaseWrapper>
           {/* <SEO /> */}
-          {/* {showTitleNav && <NavBar />} */}
+          {showTitleNav && <NavBar />}
           <Main>
             <ContentWrapper>{children}</ContentWrapper>
           </Main>
-          {/* {showLinksBar && <LinksBar links={SocialLinks} />} */}
+          {showLinksBar && <LinksBar links={SocialLinks} />}
         </BaseWrapper>
         </body>
       </html>

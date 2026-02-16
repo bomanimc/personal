@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { InternalLink } from '../commonComponents';
+import theme from '../../theme';
 
 const NavBar = () => (
   <>

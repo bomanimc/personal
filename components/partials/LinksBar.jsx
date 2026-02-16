@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { InternalLink, ExternalLink } from '../commonComponents';
+import theme from '../../theme';
 
 const LinksContainer = styled.div`
   margin-bottom: 36px;
