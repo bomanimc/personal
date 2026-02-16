@@ -8,6 +8,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 // import { Helmet } from 'react-helmet';
 import { setMetaTitleWithName } from '../utils/utils';
+import theme from '../theme';
 
 export const PAGE_WIDTH = '1000px';
 
@@ -78,7 +79,7 @@ export const ProjectGridContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   height: ${(props) => props.containerHeight ? props.containerHeight : '100%'};
 
-  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
+  @media (max-width: ${theme.breakPoints.mobile}) {
     grid-gap: 1rem;
     grid-template-columns: repeat(1, 1fr);
   }

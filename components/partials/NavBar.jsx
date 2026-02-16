@@ -55,7 +55,7 @@ const Name = styled(NavLink)`
     text-decoration: none;
   }
 
-  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
+  @media (max-width: ${theme.breakPoints.mobile}) {
     font-size: 20vw;
   }
 `;

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
+import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
 import { Helmet } from 'react-helmet';
 import { MediaTypes } from '../constants';
 import {
@@ -181,7 +182,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
         if (media.src.includes('video')) {
           const myVideo = cld
             .video(media.src)
-            .audioCodec("none");
+            .transcode(audioCodec("none"));
 
           return (
             <ProjectVideoContainer>
@@ -198,7 +199,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
         } else {
           const img = myCld
             .image(media.src)
-            .quality('auto')
+            .quality('auto:best')
             .format('auto');
 
           return (

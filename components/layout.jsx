@@ -20,7 +20,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   padding: 0 3rem;
 
-  @media screen and (max-width: ${(p) => p.theme.breakPoints.mobile}) {
+  @media screen and (max-width: ${theme.breakPoints.mobile}) {
     padding: 0 1rem;
   }
 `;
