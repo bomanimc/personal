@@ -121,18 +121,6 @@ const ProjectImage = styled(AdvancedImage)`
   }
 `;
 
-const ProjectVideoContainer = styled.div`
-  width: 100%;
-  display: block;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    min-width: auto;
-  }
-`;
-
 const ProjectVideo = styled(AdvancedVideo)`
   height: 100%;
   width: 100%;

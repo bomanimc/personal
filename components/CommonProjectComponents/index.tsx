@@ -3,13 +3,12 @@
 'use client'
 
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
 import { Helmet } from 'react-helmet';
-import { MediaTypes } from '../constants';
+import { MediaTypes } from '../../constants';
 import {
   ExternalLink,
   TextContent,
@@ -22,63 +21,11 @@ import {
   MetadataItem,
   MetadataTitle,
   MetadataContent,
-} from './commonComponents';
-import { setMetaTitleWithName } from '../utils/utils';
-import theme from '../theme';
+} from '../commonComponents';
+import { setMetaTitleWithName } from '../../utils/utils';
+import styles from "./commonProjectComponents.module.scss";
 
 const myCld = new Cloudinary({ cloud: { cloudName: 'bomani-personal' } });
-
-export const HiddenDivider = styled.div`
-  margin: 48px 0px;
-`;
-
-export const ProjectPageImageContainer = styled.div`
-  width: 100%;
-  margin-bottom: 16px;
-`;
-
-export const ProjectPageImage = styled(AdvancedImage)`
-  border: 1px solid ${theme.color.blue};
-  width: 100%;
-`;
-
-const BaseVideoContainer = styled.div`
-  width: 100%;
-  border: 1px solid ${theme.color.blue};
-  margin-bottom: 16px;
-`;
-
-export const VideoWrapper = styled(BaseVideoContainer)`
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-  overflow: hidden;
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-const ProjectVideoContainer = styled(BaseVideoContainer)`
-  display: block;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    min-width: auto;
-  }
-`;
-
-const ProjectVideo = styled(AdvancedVideo)`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-`;
 
 const Metadata = ({
   year, tools, role, site,
@@ -172,9 +119,9 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
             />
           );
         return (
-          <VideoWrapper key={media.videoUrl}>
+          <div className={styles.videoWrapper} key={media.videoUrl}>
             {videoIframe}
-          </VideoWrapper>
+          </div>
         );
       }
       case MediaTypes.image:
@@ -185,8 +132,9 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
             .transcode(audioCodec("none"));
 
           return (
-            <ProjectVideoContainer>
-                <ProjectVideo
+            <div className={styles.projectVideoContainer}>
+                <AdvancedVideo
+                  className={styles.projectPageVideo}
                   cldVid={myVideo}
                   autoPlay
                   loop
@@ -194,7 +142,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
                   playsInline
                   secure
                 />
-              </ProjectVideoContainer>
+              </div>
           );
         } else {
           const img = myCld
@@ -203,12 +151,13 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
             .format('auto');
 
           return (
-            <ProjectPageImageContainer key={media.src}>
-                <ProjectPageImage
-                  cldImg={img}
-                  secure
-                />
-              </ProjectPageImageContainer>
+            <div className={styles.projectPageImageContainer} key={media.src}>
+              <AdvancedImage
+                className={styles.projectPageImage}
+                cldImg={img}
+                secure
+              />
+            </div>
           );
         }
       }
@@ -220,7 +169,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
   return (
     <BodySection>
       <TextContent>{content}</TextContent>
-      <HiddenDivider />
+      <div className={styles.hiddenDivider} />
       {mediaSection}
     </BodySection>
   );

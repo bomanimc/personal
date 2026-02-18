@@ -3,7 +3,7 @@ import { PortableText } from '@portabletext/react';
 import {client} from '@/sanity/lib/client';
 import {PROJECTS_QUERY} from '@/sanity/lib/queries';
 import { ProjectContent } from '../../constants';
-import { BaseProjectPage, BaseBodyContent } from '../../components/commonProjectComponents';
+import { BaseProjectPage, BaseBodyContent } from '../../components/CommonProjectComponents';
 
 export default async function ProjectPage({ params }: { params: { project: string } }) {
   const { project } = await params;
