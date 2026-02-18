@@ -16,12 +16,10 @@ import {
   Page,
   PageCenteringContainer,
   PageTitle,
-  BodySection,
   MetadataSection,
   MetadataItem,
   MetadataTitle,
-  MetadataContent,
-} from '../commonComponents';
+} from '../CommonComponents';
 import { setMetaTitleWithName } from '../../utils/utils';
 import styles from "./commonProjectComponents.module.scss";
 
@@ -33,25 +31,25 @@ const Metadata = ({
   <MetadataSection>
     <MetadataItem>
       <MetadataTitle>Year</MetadataTitle>
-      <MetadataContent>{year}</MetadataContent>
+      <TextContent>{year}</TextContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Tools</MetadataTitle>
-      <MetadataContent>{tools}</MetadataContent>
+      <TextContent>{tools}</TextContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Role</MetadataTitle>
-      <MetadataContent>{role}</MetadataContent>
+      <TextContent>{role}</TextContent>
     </MetadataItem>
     { site
       && (
       <MetadataItem>
         <MetadataTitle>External Site</MetadataTitle>
-        <MetadataContent>
+        <TextContent>
           <ExternalLink href={site} target="_blank" rel="noopener noreferrer">
             {site}
           </ExternalLink>
-        </MetadataContent>
+        </TextContent>
       </MetadataItem>
       )}
   </MetadataSection>
@@ -167,11 +165,11 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
   const content = customContent || project.body;
 
   return (
-    <BodySection>
+    <TextContent>
       <TextContent>{content}</TextContent>
       <div className={styles.hiddenDivider} />
       {mediaSection}
-    </BodySection>
+    </TextContent>
   );
 };
 

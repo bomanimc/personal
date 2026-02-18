@@ -1,5 +1,5 @@
 import React from 'react';
-import { InternalLink } from '../commonComponents';
+import { InternalLink } from '../CommonComponents';
 import styles from "./navbar.module.scss";
 
 const NavBar = () => (

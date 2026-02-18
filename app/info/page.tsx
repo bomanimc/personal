@@ -15,12 +15,10 @@ import {
   BasePage,
   Body,
   TextContent,
-  BodySection,
   MetadataSection,
   MetadataItem,
   MetadataTitle,
-  MetadataContent,
-} from '../../components/commonComponents';
+} from '../../components/CommonComponents';
 
 
 const GRID_GAP_VALUE = '3rem';
@@ -59,25 +57,15 @@ const SpeakingLinkItem = styled.div`
   }
 `;
 
-// export const query = graphql`
-//   {
-//     sanityPersonInfo {
-//       _rawBio
-//     }
-//   }
-// `;
-
-// const options = { next: { revalidate: 30 } };
-
 const Metadata = ({ location, links }) => (
   <MetadataSection>
     <MetadataItem>
       <MetadataTitle>Location</MetadataTitle>
-      <MetadataContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={location} /></MetadataContent>
+      <TextContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={location} /></TextContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Links</MetadataTitle>
-      <MetadataContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={links} /></MetadataContent>
+      <TextContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={links} /></TextContent>
     </MetadataItem>
   </MetadataSection>
 );
@@ -91,7 +79,7 @@ const AboutPage = async () => {
       <BasePage
         title="Info"
         body={(
-          <BodySection>
+          <TextContent>
             <AboutSectionContainer>
               <BioContent bioPortableText={bioPortableText} />
               <EducationBox />
@@ -102,7 +90,7 @@ const AboutPage = async () => {
               <FellowshipBox />
               <ExhibitionBox />
             </AboutSectionContainer>
-          </BodySection>
+          </TextContent>
         )}
       />
     </div>
@@ -115,11 +103,11 @@ const BioContent = ({ bioPortableText }) => {
   }
 
   return (
-    <BodySection>
+    <TextContent>
       <TextContent>
         <PortableText value={bioPortableText} />
       </TextContent>
-    </BodySection>
+    </TextContent>
   );
 };
 

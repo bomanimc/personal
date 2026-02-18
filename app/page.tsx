@@ -8,9 +8,10 @@ import styled from 'styled-components';
 import ProjectCard from '../components/partials/ProjectCard';
 import {
   ContentContainer, ProjectGridContainer,
-} from '../components/commonComponents';
+} from '../components/CommonComponents';
 import { ProjectContent, FeaturedProjects } from '../constants';
 import { setMetaTitle } from '../utils/utils';
+import styles from "./page.module.scss";
 
 const HomePage = () => (
   <div>
@@ -22,7 +23,7 @@ const HomePage = () => (
 );
 
 const ProjectSection = () => (
-  <ContentContainer horizontalCenter containerHeight="auto" marginTop="36px" marginBottom="36px">
+  <div className={styles.contentContainer}>
     <ProjectGridContainer containerHeight="auto">
       {
         FeaturedProjects.map((section) => (
@@ -33,15 +34,7 @@ const ProjectSection = () => (
         ))
       }
     </ProjectGridContainer>
-  </ContentContainer>
+  </div>
 );
-
-HomePage.NavBar = styled.div`
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: exclusion;
-`;
 
 export default HomePage;

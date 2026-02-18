@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { InternalLink, ExternalLink } from '../commonComponents';
+import { InternalLink, ExternalLink } from '../CommonComponents';
 import theme from '../../theme';
 
 const LinksContainer = styled.div`

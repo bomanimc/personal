@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
-import { InternalLink, TextContent } from '../commonComponents';
+import { InternalLink, TextContent } from '../CommonComponents';
 import { crop, scale } from '@cloudinary/url-gen/actions/resize';
 import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
 import theme from '../../theme';

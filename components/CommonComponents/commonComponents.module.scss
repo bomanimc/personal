@@ -1,0 +1,109 @@
+$page-width: 1000px;
+
+.link {
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.bodyText {
+  font-weight: lighter;
+}
+
+.textContent {
+  font-weight: lighter;
+
+  a {
+    @extend .link;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  ul {
+    margin-left: 24px;
+  }
+
+  p {
+    padding-bottom: 8px;
+  }
+}
+
+.divider {
+  width: 200px;
+  border-top: 1px dashed white;
+  margin: 48px 0px;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.pageTitle {
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+.pageCenteringContainer {
+  width: $page-width;
+
+  @media (max-width: $page-width) {
+    width: 100%;
+  }
+}
+
+.metadataTitle {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.metadataItem {
+  margin-right: 48px;
+  width: 300px;
+
+  @media (max-width: $page-width) {
+    width: 100%;
+    margin-bottom: 16px;
+
+    :last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.metadataSection {
+  display: flex;
+  margin-top: 24px;
+
+  @media (max-width: $page-width) {
+    flex-direction: column;
+  }
+}
+
+.projectGridContainer {
+  display: grid;
+  width: 100%;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  height: var(--container-height, 100%);
+
+  // TODO: Use theme breakpoint
+  @media (max-width: 930px) {
+    grid-gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
