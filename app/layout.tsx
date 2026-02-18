@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import styled, { ThemeProvider } from 'styled-components';
 import "./globals.css";
-import NavBar from '../components/partials/NavBar';
+import NavBar from '../components/NavBar';
 import LinksBar from '../components/partials/LinksBar';
 import { SocialLinks } from '../constants';
 import theme from '../theme';

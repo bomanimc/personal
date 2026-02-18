@@ -171,7 +171,6 @@ const Project = ({ content, displaysProjectDetailsOnHover }) => {
           cldImg={img}
           order={1}
           alt={content.title}
-          secure
         />
       );
     }

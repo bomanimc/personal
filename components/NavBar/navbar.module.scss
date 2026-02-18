@@ -1,0 +1,42 @@
+.navContainer {
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  mix-blend-mode: exclusion;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.linksRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLink {
+  font-weight: bold;
+  text-transform: uppercase;
+  pointer-events: auto;
+  font-size: 1rem;
+  margin: 0rem 1rem;
+}
+
+.name {
+  @extend .navLink;
+  font-size: 7rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  // TODO: Use variable for mobile breakpoint
+  @media (max-width: 930px) {
+    font-size: 20vw;
+  }
+}

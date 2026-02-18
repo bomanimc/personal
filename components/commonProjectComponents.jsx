@@ -180,7 +180,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
       case MediaTypes.image:
       default: {
         if (media.src.includes('video')) {
-          const myVideo = cld
+          const myVideo = myCld
             .video(media.src)
             .transcode(audioCodec("none"));
 
