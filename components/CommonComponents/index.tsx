@@ -1,8 +1,6 @@
 import React from "react";
 import cx from "classnames";
 import Link, { LinkProps } from "next/link";
-// import { Helmet } from 'react-helmet';
-// import { setMetaTitleWithName } from "../../utils/utils";
 import styles from "./commonComponents.module.scss";
 
 interface StylingWrapperProps {
@@ -138,13 +136,9 @@ interface BaseAnimationPageProps {
 }
 
 export const BaseAnimationPage = ({
-  title,
   children,
 }: BaseAnimationPageProps) => (
   <div>
-    {/* <Helmet>
-      {setMetaTitleWithName(title)}
-    </Helmet> */}
     <Page>{children}</Page>
   </div>
 );

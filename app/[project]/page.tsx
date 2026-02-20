@@ -20,6 +20,7 @@ export async function generateMetadata(
   const { project } = await params;
   const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
  
+  // TODO: Copy functionality from utils.jsx to here.
   return {
     title: fetchedProject.title,
   }

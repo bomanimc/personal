@@ -78,7 +78,6 @@ export default function RootLayout({
       <html lang="en" className={breweryFont.className}>
         <body>
           <BaseWrapper>
-          {/* <SEO /> */}
           {showTitleNav && <NavBar />}
           <Main>
             <ContentWrapper>{children}</ContentWrapper>

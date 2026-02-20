@@ -20,7 +20,6 @@
     "prop-types": "^15.8.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-helmet": "^6.1.0",
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0",
     "sanity": "^4.22.0",

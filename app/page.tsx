@@ -3,21 +3,15 @@
 /* eslint array-callback-return: 0 */
 
 import React from 'react';
-import styled from 'styled-components';
-// import { Helmet } from 'react-helmet';
 import ProjectCard from '../components/partials/ProjectCard';
 import {
-  ContentContainer, ProjectGridContainer,
+  ProjectGridContainer,
 } from '../components/CommonComponents';
 import { ProjectContent, FeaturedProjects } from '../constants';
-import { setMetaTitle } from '../utils/utils';
 import styles from "./page.module.scss";
 
 const HomePage = () => (
   <div>
-    {/* <Helmet>
-      {setMetaTitle('BOMANI')}
-    </Helmet> */}
     <ProjectSection />
   </div>
 );

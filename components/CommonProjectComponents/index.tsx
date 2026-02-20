@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
-import { Helmet } from 'react-helmet';
 import { MediaTypes } from '../../constants';
 import {
   ExternalLink,
@@ -20,7 +19,6 @@ import {
   MetadataItem,
   MetadataTitle,
 } from '../CommonComponents';
-import { setMetaTitleWithName } from '../../utils/utils';
 import styles from "./commonProjectComponents.module.scss";
 
 const myCld = new Cloudinary({ cloud: { cloudName: 'bomani-personal' } });
@@ -72,9 +70,6 @@ export const BaseProjectPage = ({
 }) => (
   // TODO: Fix Layout
   <div>
-    <Helmet>
-      {setMetaTitleWithName(title)}
-    </Helmet>
     <Page>
       <PageCenteringContainer>
         <PageTitle>{title}</PageTitle>
