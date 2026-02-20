@@ -5,8 +5,6 @@ import Link, { LinkProps } from "next/link";
 // import { setMetaTitleWithName } from "../../utils/utils";
 import styles from "./commonComponents.module.scss";
 
-export const PAGE_WIDTH = "1000px";
-
 interface StylingWrapperProps {
   className?: string;
   children: React.ReactNode;

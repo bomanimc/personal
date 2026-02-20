@@ -4,10 +4,18 @@ import {client} from '@/sanity/lib/client';
 import {PROJECTS_QUERY} from '@/sanity/lib/queries';
 import { ProjectContent } from '../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../../components/CommonProjectComponents';
+import { Metadata } from 'next';
+interface ProjectParams {
+  project: string;
+}
+
+type Props = {
+  params: Promise<ProjectParams>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
+  { params }: Props,
 ): Promise<Metadata> {
   const { project } = await params;
   const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
@@ -16,9 +24,8 @@ export async function generateMetadata(
     title: fetchedProject.title,
   }
 }
- 
 
-export default async function ProjectPage({ params }: { params: { project: string } }) {
+export default async function ProjectPage({ params }: Props) {
   const { project } = await params;
   const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
   console.log(fetchedProject);
