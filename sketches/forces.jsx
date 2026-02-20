@@ -1,12 +1,6 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint max-classes-per-file: 0 */
-
 'use client'
 
-import React, { Component } from 'react';
-import Loadable from '@loadable/component';
-
-export const LoadableSketch = Loadable(() => import('@react-p5/core'));
+import { NextReactP5Wrapper } from "@p5-wrapper/next";
 
 class Mover {
   constructor(p5, x, y, m, color) {
@@ -100,11 +94,11 @@ class Attractor {
   }
 }
 
-class Sketch extends Component {
-  attractors = [];
+const sketch = (p5) => {
+  let attractors = [];
 
-  setup = (p5, canvasParentRef) => {
-    const { width, height } = this.getCanvasSizing();
+  p5.setup = (canvasParentRef) => {
+    const { width, height } = getCanvasSizing();
     p5.createCanvas(width, height).parent(canvasParentRef);
 
     p5.push();
@@ -115,7 +109,7 @@ class Sketch extends Component {
     for (let i = 0; i < numAttractors; i += 1) {
       const x = radius * p5.sin(angle);
       const y = radius * p5.cos(angle);
-      this.attractors.push(new Attractor(p5, x, y, 10));
+      attractors.push(new Attractor(p5, x, y, 10));
       angle += p5.TWO_PI / numAttractors;
     }
     p5.pop();
@@ -125,12 +119,12 @@ class Sketch extends Component {
     p5.blendMode(p5.ADD);
   };
 
-  draw = (p5) => {
+  p5.draw = () => {
     p5.background(0, 0, 0, 255);
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);
 
-    this.attractors.map((attractor) => {
+    attractors.map((attractor) => {
       attractor.updateMovers();
       attractor.show();
     });
@@ -138,18 +132,12 @@ class Sketch extends Component {
     p5.pop();
   };
 
-  windowResized = (p5) => {
-    const { width, height } = this.getCanvasSizing();
+  p5.windowResized = () => {
+    const { width, height } = getCanvasSizing();
     p5.resizeCanvas(width, height);
   }
 
-  getRandomPosition = (p5) => {
-    const x = p5.map(p5.random(), 0, 1, 0, p5.width);
-    const y = p5.map(p5.random(), 0, 1, 0, p5.height);
-    return [x, y];
-  };
-
-  getCanvasSizing = () => {
+  const getCanvasSizing = () => {
     const canvasContainer = document.getElementById('canvasContainer');
 
     return {
@@ -157,16 +145,10 @@ class Sketch extends Component {
       height: typeof window !== 'undefined' ? canvasContainer.offsetHeight : 0,
     };
   }
-
-  render() {
-    return (
-      <LoadableSketch
-        setup={this.setup}
-        draw={this.draw}
-        windowResized={this.windowResized}
-      />
-    );
-  }
 }
 
-export default Sketch;
+export default function Forces() {
+  return (
+    <NextReactP5Wrapper sketch={sketch} />
+  );
+}

@@ -1,17 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../../components/layout';
-import { BaseAnimationPage } from '../../components/commonComponents';
-import Sketch from '../../sketches/forces';
+import { BaseAnimationPage } from '../../../components/CommonComponents';
+import Sketch from '../../../sketches/forces';
 
 const Forces = () => (
-  <Layout showLinksBar={false}>
-    <BaseAnimationPage title="Forces">
-      <Forces.Container id="canvasContainer">
-        <Sketch />
-      </Forces.Container>
-    </BaseAnimationPage>
-  </Layout>
+  <BaseAnimationPage title="Forces">
+    <Forces.Container id="canvasContainer">
+      <Sketch />
+    </Forces.Container>
+  </BaseAnimationPage>
 );
 
 Forces.Container = styled.div`

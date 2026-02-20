@@ -1,12 +1,9 @@
 /* eslint-disable react/forbid-prop-types */
-/* eslint max-classes-per-file: 0 */
 
 'use client'
 
-import React, { Component } from 'react';
-import Loadable from '@loadable/component';
-
-export const LoadableSketch = Loadable(() => import('@react-p5/core'));
+import React from 'react';
+import { NextReactP5Wrapper } from "@p5-wrapper/next";
 
 class Particle {
   constructor(p5, pos, index) {
@@ -61,30 +58,51 @@ class Particle {
   }
 }
 
-class Sketch extends Component {
-  angle = 0;
+const sketch = (p5) => {
+  let angle = 0;
 
-  curveSizingFactor = 0.5;
+  let curveSizingFactor = 0.5;
 
-  curve = null;
+  let curve = null;
 
-  coordinates = [];
+  let coordinates = [];
 
-  particles = [];
+  let particles = [];
 
-  setup = (p5, canvasParentRef) => {
-    const { width, height } = this.getCanvasSizing();
+  const getCanvasSizing = () => {
+    const canvasContainer = document.getElementById('canvasContainer');
+
+    return {
+      width: typeof window !== 'undefined' ? canvasContainer.offsetWidth : 0,
+      height: typeof window !== 'undefined' ? canvasContainer.offsetHeight : 0,
+    };
+  }
+
+  const drawParticleShape = (coordinates) => {
+    if (particles.length === 0) {
+      particles = coordinates.map((coordinate, idx) => new Particle(p5, coordinate, idx));
+    }
+
+    particles.forEach((particle, idx) => {
+      const particleToFollow = particles[(idx + 1) % particles.length];
+      particle.update(particleToFollow.pos, particleToFollow.index);
+      particle.draw();
+    });
+  }
+
+  p5.setup = (canvasParentRef) => {
+    const { width, height } = getCanvasSizing();
     p5.createCanvas(width, height).parent(canvasParentRef);
 
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);
 
-    const widthHalf = (p5.width * this.curveSizingFactor) / 2;
-    const heightHalf = (p5.width * this.curveSizingFactor) / 2;
+    const widthHalf = (p5.width * curveSizingFactor) / 2;
+    const heightHalf = (p5.width * curveSizingFactor) / 2;
     for (let i = 0; i < 50; i += 1) {
       const x = p5.map(p5.random(), 0, 1, -widthHalf, widthHalf);
       const y = p5.map(p5.random(), 0, 1, heightHalf, -heightHalf);
-      this.coordinates.push(p5.createVector(x, y));
+      coordinates.push(p5.createVector(x, y));
     }
 
     p5.pop();
@@ -92,7 +110,7 @@ class Sketch extends Component {
     p5.strokeWeight(1);
   };
 
-  draw = (p5) => {
+  p5.draw = () => {
     p5.background(0, 0, 0, 255);
 
     p5.stroke(255);
@@ -102,46 +120,19 @@ class Sketch extends Component {
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);
 
-    this.drawParticleShape(p5, this.coordinates);
+    drawParticleShape(coordinates);
 
     p5.pop();
   };
 
-  drawParticleShape = (p5, coordinates) => {
-    if (this.particles.length === 0) {
-      this.particles = coordinates.map((coordinate, idx) => new Particle(p5, coordinate, idx));
-    }
-
-    this.particles.forEach((particle, idx) => {
-      const particleToFollow = this.particles[(idx + 1) % this.particles.length];
-      particle.update(particleToFollow.pos, particleToFollow.index);
-      particle.draw();
-    });
-  }
-
-  windowResized = (p5) => {
-    const { width, height } = this.getCanvasSizing();
+  p5.windowResized = () => {
+    const { width, height } = getCanvasSizing();
     p5.resizeCanvas(width, height);
-  }
-
-  getCanvasSizing = () => {
-    const canvasContainer = document.getElementById('canvasContainer');
-
-    return {
-      width: typeof window !== 'undefined' ? canvasContainer.offsetWidth : 0,
-      height: typeof window !== 'undefined' ? canvasContainer.offsetHeight : 0,
-    };
-  }
-
-  render() {
-    return (
-      <LoadableSketch
-        setup={this.setup}
-        draw={this.draw}
-        windowResized={this.windowResized}
-      />
-    );
   }
 }
 
-export default Sketch;
+export default function Forces() {
+  return (
+    <NextReactP5Wrapper sketch={sketch} />
+  );
+}
