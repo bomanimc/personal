@@ -1,13 +1,8 @@
-/* eslint max-classes-per-file: 0 */
-
 'use client'
 
-import React, { Component } from "react";
 import styled from "styled-components";
-import dynamic from 'next/dynamic';
+import { NextReactP5Wrapper } from "@p5-wrapper/next";
 import { BaseAnimationPage } from "../../../components/CommonComponents";
-
-const LoadableSketch = dynamic(() => import('@react-p5/core'));
 
 class Walker {
   constructor(p5, x, y, xNoiseIncrement, yNoiseIncrement, color1, color2) {
@@ -52,18 +47,14 @@ class Walker {
   }
 }
 
-class Vasoconstriction extends Component {
-  x = 0;
+const sketch = (p5) => {
+  let walker = null;
 
-  y = 0;
-
-  walker = null;
-
-  setup = (p5, canvasParentRef) => {
+  p5.setup = (canvasParentRef) => {
     p5.createCanvas(window.innerWidth, window.innerHeight).parent(
       canvasParentRef,
     );
-    this.walker = new Walker(
+    walker = new Walker(
       p5,
       0,
       0,
@@ -76,28 +67,24 @@ class Vasoconstriction extends Component {
     p5.blendMode(p5.ADD);
   };
 
-  draw = (p5) => {
-    p5.background(0, 0, 0, 255);
-    this.walker.move();
-  };
-
-  windowResized = (p5) => {
+  p5.windowResized = () => {
     p5.resizeCanvas(window.innerWidth, window.innerHeight);
   };
 
-  render() {
-    return (
-      <BaseAnimationPage title="Vasoconstriction">
+  p5.draw = () => {
+    p5.background(0, 0, 0, 255);
+    walker.move();
+  };
+};
+
+export default function Vasoconstriction() {
+  return (
+    <BaseAnimationPage title="Vasoconstriction">
         <Vasoconstriction.Container>
-          <LoadableSketch
-            setup={this.setup}
-            draw={this.draw}
-            windowResized={this.windowResized}
-          />
+          <NextReactP5Wrapper sketch={sketch} />
         </Vasoconstriction.Container>
       </BaseAnimationPage>
-    );
-  }
+  );
 }
 
 Vasoconstriction.Container = styled.div`
@@ -108,5 +95,3 @@ Vasoconstriction.Container = styled.div`
   right: 0;
   z-index: -1;
 `;
-
-export default Vasoconstriction;
