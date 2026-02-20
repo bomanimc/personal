@@ -5,11 +5,21 @@ import {PROJECTS_QUERY} from '@/sanity/lib/queries';
 import { ProjectContent } from '../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../../components/CommonProjectComponents';
 
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { project } = await params;
+  const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
+ 
+  return {
+    title: fetchedProject.title,
+  }
+}
+ 
+
 export default async function ProjectPage({ params }: { params: { project: string } }) {
   const { project } = await params;
-  console.log("Project", project);
-  console.log("Params", params);
-
   const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
   console.log(fetchedProject);
   // @ts-ignore

@@ -2,6 +2,7 @@
 /* eslint array-callback-return: 0 */
 
 import React from 'react';
+import type { Metadata } from 'next'
 import styled from 'styled-components';
 import {client} from '@/sanity/lib/client'
 import {BIO_QUERY} from '@/sanity/lib/queries'
@@ -19,7 +20,10 @@ import {
   MetadataItem,
   MetadataTitle,
 } from '../../components/CommonComponents';
-
+ 
+export const metadata: Metadata = {
+  title: 'Info',
+}
 
 const GRID_GAP_VALUE = '3rem';
 
@@ -77,7 +81,6 @@ const AboutPage = async () => {
   return (
     <div>
       <BasePage
-        title="Info"
         body={(
           <TextContent>
             <AboutSectionContainer>
