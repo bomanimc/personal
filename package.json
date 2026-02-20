@@ -25,6 +25,7 @@
     "react": "19.2.3",
     "react-device-detect": "^2.2.3",
     "react-dom": "19.2.3",
+    "react-draggable": "^4.4.6",
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0",
     "sanity": "^4.22.0",

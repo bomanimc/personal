@@ -1,45 +1,50 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled, { keyframes } from 'styled-components';
-import * as Tone from 'tone';
-import Draggable from 'react-draggable';
-import Layout from '../../components/layout';
-import { BaseAnimationPage } from '../../../components/CommonComponents';
+'use client'
+
+import React, { useState, useEffect, useRef } from "react";
+import styled, { keyframes } from "styled-components";
+import * as Tone from "tone";
+import Draggable from "react-draggable";
+import { BaseAnimationPage } from "../../../components/CommonComponents";
+import theme from "../../../theme";
 
 const textureAreas = {
   smooth: [
     {
       freq: 120,
-      type: 'sine',
+      type: "sine",
     },
     {
       freq: 120,
-      type: 'sine',
+      type: "sine",
     },
   ],
   vibrate: [
     {
       freq: 13,
-      type: 'triangle',
+      type: "triangle",
     },
     {
       freq: 13,
-      type: 'square',
+      type: "square",
     },
   ],
   bounce: [
     {
       freq: 5,
-      type: 'sawtooth',
+      type: "sawtooth",
     },
     {
       freq: 2,
-      type: 'square',
+      type: "square",
     },
   ],
 };
 
 const SoundTexture = () => {
   const baseChannel = useRef(null);
+  const dragRef1 = useRef(null);
+  const dragRef2 = useRef(null);
+  const dragRef3 = useRef(null);
   const [areControlsExposed, setAreControlsExposed] = useState(true);
   const [audioContextStarted, setAudioContextStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -58,7 +63,9 @@ const SoundTexture = () => {
   };
 
   const disposeOscillators = () => {
-    Object.values(oscillators).flat().map((oscillator) => oscillator.stop().dispose());
+    Object.values(oscillators)
+      .flat()
+      .map((oscillator) => oscillator.stop().dispose());
   };
 
   useEffect(() => {
@@ -124,73 +131,81 @@ const SoundTexture = () => {
   };
 
   return (
-    <Layout showLinksBar={false}>
-      <BaseAnimationPage title="Sound Texture">
-        <SoundTexture.Content>
-          <Draggable>
-            <SoundTexture.Area
-              data-area="smooth"
-              width={400}
-              height={400}
-              color="blue"
-              isCircle
-              isHidden={areAreasHidden}
-              onMouseEnter={onPlayTexture}
-              onMouseLeave={onStopTexture}
-            />
-          </Draggable>
-          <Draggable>
-            <SoundTexture.Area
-              data-area="bounce"
-              width={700}
-              height={200}
-              color="red"
-              isHidden={areAreasHidden}
-              onMouseEnter={onPlayTexture}
-              onMouseLeave={onStopTexture}
-            />
-          </Draggable>
-          <Draggable>
-            <SoundTexture.Area
-              data-area="vibrate"
-              width={300}
-              height={300}
-              color="green"
-              isCircle
-              isHidden={areAreasHidden}
-              onMouseEnter={onPlayTexture}
-              onMouseLeave={onStopTexture}
-            />
-          </Draggable>
-        </SoundTexture.Content>
-        <SoundTexture.ControlsPanel>
-          <SoundTexture.ControlsHeader>
-            <span>Controls</span>
-            <SoundTexture.ControlsHeaderButton onClick={onToggleControls}>
-              {areControlsExposed ? '–' : '+'}
-            </SoundTexture.ControlsHeaderButton>
-          </SoundTexture.ControlsHeader>
-          <SoundTexture.ControlsContent isExposed={areControlsExposed}>
-            {!audioContextStarted && (
-              <SoundTexture.ControlPanelSection>
-                <SoundTexture.FlashingButton
-                  isSelected={isMuted}
-                  onClick={onStartAudioContext}
-                >
-                  Activate Audio Context
-                </SoundTexture.FlashingButton>
-              </SoundTexture.ControlPanelSection>
-            )}
+    <BaseAnimationPage title="Sound Texture">
+      <SoundTexture.Content>
+        <Draggable nodeRef={dragRef1}>
+          <SoundTexture.Area
+            ref={dragRef1}
+            data-area="smooth"
+            $width={400}
+            $height={400}
+            $color="blue"
+            $isCircle
+            $isHidden={areAreasHidden}
+            onMouseEnter={onPlayTexture}
+            onMouseLeave={onStopTexture}
+          />
+        </Draggable>
+        <Draggable nodeRef={dragRef2}>
+          <SoundTexture.Area
+            ref={dragRef2}
+            data-area="bounce"
+            $width={700}
+            $height={200}
+            $color="red"
+            $isHidden={areAreasHidden}
+            onMouseEnter={onPlayTexture}
+            onMouseLeave={onStopTexture}
+          />
+        </Draggable>
+        <Draggable nodeRef={dragRef3}>
+          <SoundTexture.Area
+            ref={dragRef3}
+            data-area="vibrate"
+            $width={300}
+            $height={300}
+            $color="green"
+            $isCircle
+            $isHidden={areAreasHidden}
+            onMouseEnter={onPlayTexture}
+            onMouseLeave={onStopTexture}
+          />
+        </Draggable>
+      </SoundTexture.Content>
+      <SoundTexture.ControlsPanel>
+        <SoundTexture.ControlsHeader>
+          <span>Controls</span>
+          <SoundTexture.ControlsHeaderButton onClick={onToggleControls}>
+            {areControlsExposed ? "–" : "+"}
+          </SoundTexture.ControlsHeaderButton>
+        </SoundTexture.ControlsHeader>
+        <SoundTexture.ControlsContent $isExposed={areControlsExposed}>
+          {!audioContextStarted && (
             <SoundTexture.ControlPanelSection>
-              <SoundTexture.Button isSelected={isMuted} onClick={onToggleMuted}>{isMuted ? 'Unmute' : 'Mute'}</SoundTexture.Button>
+              <SoundTexture.FlashingButton
+                $isSelected={isMuted}
+                onClick={onStartAudioContext}
+              >
+                Activate Audio Context
+              </SoundTexture.FlashingButton>
             </SoundTexture.ControlPanelSection>
-            <SoundTexture.ControlPanelSection>
-              <SoundTexture.Button isSelected={areAreasHidden} onClick={onToggleAreasHidden}>{areAreasHidden ? 'Show Areas' : 'Hide Areas'}</SoundTexture.Button>
-            </SoundTexture.ControlPanelSection>
-          </SoundTexture.ControlsContent>
-        </SoundTexture.ControlsPanel>
-      </BaseAnimationPage>
-    </Layout>
+          )}
+          <SoundTexture.ControlPanelSection>
+            <SoundTexture.Button $isSelected={isMuted} onClick={onToggleMuted}>
+              {isMuted ? "Unmute" : "Mute"}
+            </SoundTexture.Button>
+          </SoundTexture.ControlPanelSection>
+          <SoundTexture.ControlPanelSection>
+            <SoundTexture.Button
+              $isSelected={areAreasHidden}
+              onClick={onToggleAreasHidden}
+            >
+              {areAreasHidden ? "Show Areas" : "Hide Areas"}
+            </SoundTexture.Button>
+          </SoundTexture.ControlPanelSection>
+        </SoundTexture.ControlsContent>
+      </SoundTexture.ControlsPanel>
+    </BaseAnimationPage>
   );
 };
 
@@ -202,13 +217,13 @@ SoundTexture.Content = styled.div`
 `;
 
 SoundTexture.Area = styled.div`
-  height: ${(p) => (p.height)}px;
-  width:  ${(p) => (p.width)}px;
-  border: 1px solid ${(p) => (p.color)};
-  box-shadow: 3px 3px 3px ${(p) => p.color};
+  height: ${(p) => p.$height}px;
+  width: ${(p) => p.$width}px;
+  border: 1px solid ${(p) => p.$color};
+  box-shadow: 3px 3px 3px ${(p) => p.$color};
   margin: 1rem;
-  opacity: ${(p) => (p.isHidden ? 0 : 1)};
-  border-radius: ${(p) => (p.isCircle ? '50%' : '20px')};
+  opacity: ${(p) => (p.$isHidden ? 0 : 1)};
+  border-radius: ${(p) => (p.$isCircle ? "50%" : "20px")};
 `;
 
 SoundTexture.ControlsPanel = styled.div`
@@ -222,7 +237,7 @@ SoundTexture.ControlsPanel = styled.div`
   width: 15rem;
   background: black;
 
-  @media (max-width: ${(p) => p.theme.breakPoints.mobile}) {
+  @media (max-width: ${theme.breakPoints.mobile}) {
     width: unset;
     left: 1rem;
   }
@@ -238,7 +253,7 @@ SoundTexture.ControlsHeader = styled.div`
   font-weight: bold;
   border-bottom: 1px solid white;
   flex: 1;
-  background: rgba(0, 0, 255, .37);
+  background: rgba(0, 0, 255, 0.37);
 `;
 
 SoundTexture.ControlsHeaderButton = styled.button`
@@ -251,7 +266,7 @@ SoundTexture.ControlsHeaderButton = styled.button`
 `;
 
 SoundTexture.ControlsContent = styled.div`
-  display: ${(p) => (p.isExposed ? 'block' : 'none')};
+  display: ${(p) => (p.$isExposed ? "block" : "none")};
 `;
 
 SoundTexture.ControlPanelSection = styled.div`
@@ -289,7 +304,7 @@ const flashingBorder = keyframes`
 `;
 
 SoundTexture.Button = styled.button`
-  background: ${(p) => (p.isSelected ? 'rgba(0, 0, 255, 0.37)' : 'none')};
+  background: ${(p) => (p.$isSelected ? "rgba(0, 0, 255, 0.37)" : "none")};
   color: white;
   text-transform: capitalize;
   border: 1px solid white;
