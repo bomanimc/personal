@@ -26,7 +26,7 @@ const ProjectContainer = styled.div`
   justify-content: center;
   flex-wrap: nowrap;
   transition: box-shadow ${TRANSITION_TIME} ease;
-  border: ${(p) => p.hasBorder ? '2px solid #ffffff30' : 'none'};
+  border: ${(p) => p.$hasBorder ? '2px solid #ffffff30' : 'none'};
 
   @media (hover: hover) {
     &:hover {
@@ -142,7 +142,6 @@ const Project = ({ content, displaysProjectDetailsOnHover }) => {
           loop
           muted
           playsInline
-          secure
         />
       );
     }
@@ -165,7 +164,7 @@ const Project = ({ content, displaysProjectDetailsOnHover }) => {
   })();
 
   return (
-    <ProjectContainer id={content.id} hasBorder>
+    <ProjectContainer id={content.id} $hasBorder={true}>
       <InternalLink href={content.primaryLink}>
         <ProjectDetailsWrapper>
           <ProjectMediaContainer>

@@ -133,7 +133,6 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
                   loop
                   muted
                   playsInline
-                  secure
                 />
               </div>
           );
@@ -148,7 +147,6 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
               <AdvancedImage
                 className={styles.projectPageImage}
                 cldImg={img}
-                secure
               />
             </div>
           );

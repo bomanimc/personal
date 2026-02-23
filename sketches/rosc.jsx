@@ -24,6 +24,8 @@ class MathematicalCurve {
 }
 
 export const sketch = (p5) => {
+  console.log("TOP OF SKETCH");
+  let mathematicalCurve = null;
   let frequencyScalingsRef = {};
   let xOscillatorType = "sine";
   let yOscillatorType = "sine";
