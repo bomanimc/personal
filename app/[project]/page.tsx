@@ -22,17 +22,21 @@ export async function generateMetadata(
  
   // TODO: Copy functionality from utils.jsx to here.
   return {
-    title: fetchedProject.title,
+    title: fetchedProject?.title,
   }
 }
 
 export default async function ProjectPage({ params }: Props) {
   const { project } = await params;
   const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
-  console.log(fetchedProject);
+
+  // TODO: Understand why this is possible null
+  if (!fetchedProject) {
+    return;
+  }
+  
   // @ts-ignore
   const projectData = ProjectContent[fetchedProject.projectId];
-  console.log(project);
 
   return (
     <BaseProjectPage
@@ -46,7 +50,8 @@ export default async function ProjectPage({ params }: Props) {
           project={projectData}
           showMainMedia={false}
           customContent={
-            <PortableText value={fetchedProject.content} />
+             // @ts-ignore
+            <PortableText value={fetchedProject?.content} />
           }
         />
       )}
