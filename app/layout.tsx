@@ -1,31 +1,30 @@
 import type { Metadata } from "next";
-import localFont from 'next/font/local'
-import styled, { ThemeProvider } from 'styled-components';
+import localFont from "next/font/local";
+import styled, { ThemeProvider } from "styled-components";
 import "./globals.css";
-import NavBar from '../components/NavBar';
-import LinksBar from '../components/partials/LinksBar';
-import { SocialLinks } from '../constants';
-import theme from '../theme';
+import NavBar from "../components/NavBar";
+import LinksBar from "../components/partials/LinksBar";
+import theme from "../theme";
 import { openGraph } from "./shared-metadata";
-import StyledComponentsRegistry from '../lib/registry'
+import StyledComponentsRegistry from "../lib/registry";
 
 // Font files can be colocated inside of `app`
 const breweryFont = localFont({
   src: [
     {
-      path: '../fonts/LinotypeBrewery-Regular/LinotypeBrewery-Regular.woff2',
-      weight: '400',
-      style: 'normal',
+      path: "../fonts/LinotypeBrewery-Regular/LinotypeBrewery-Regular.woff2",
+      weight: "400",
+      style: "normal",
     },
     {
-      path: '../fonts/LinotypeBrewery-Heavy/LinotypeBrewery-Heavy.woff2',
-      weight: '700',
-      style: 'normal',
+      path: "../fonts/LinotypeBrewery-Heavy/LinotypeBrewery-Heavy.woff2",
+      weight: "700",
+      style: "normal",
     },
   ],
-  display: 'swap',
+  display: "swap",
   variable: "--font-brewery",
-})
+});
 
 const BaseWrapper = styled.div`
   display: flex;
@@ -51,18 +50,18 @@ const Main = styled.main`
 `;
 
 export const metadata: Metadata = {
-  title: 'BOMANI',
-  description: 'Bomani Oseni McClendon is an engineer living in Brooklyn, NY.',
+  title: "BOMANI",
+  description: "Bomani Oseni McClendon is an engineer living in Brooklyn, NY.",
   openGraph: {
     ...openGraph,
   },
   twitter: {
-    creator: '@bxmani',
-    site: 'bomani.rip',
-  }, 
+    creator: "@bxmani",
+    site: "bomani.rip",
+  },
   verification: {
-    google: 'oUOz_91m_HgyQz1q_kErpkk03-qUN-OS1Wh8once9gg',
-  }
+    google: "oUOz_91m_HgyQz1q_kErpkk03-qUN-OS1Wh8once9gg",
+  },
 };
 
 export default function RootLayout({
@@ -78,13 +77,15 @@ export default function RootLayout({
     <ThemeProvider theme={theme}>
       <html lang="en" className={breweryFont.className}>
         <body>
-          <BaseWrapper>
-          {showTitleNav && <NavBar />}
-          <Main>
-            <ContentWrapper>{children}</ContentWrapper>
-          </Main>
-          {showLinksBar && <LinksBar links={SocialLinks} />}
-        </BaseWrapper>
+          <StyledComponentsRegistry>
+            <BaseWrapper>
+              {showTitleNav && <NavBar />}
+              <Main>
+                <ContentWrapper>{children}</ContentWrapper>
+              </Main>
+              {showLinksBar && <LinksBar />}
+            </BaseWrapper>
+          </StyledComponentsRegistry>
         </body>
       </html>
     </ThemeProvider>

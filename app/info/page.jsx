@@ -76,7 +76,6 @@ const Metadata = ({ location, links }) => (
 
 const AboutPage = async () => {
   const bioPortableText = await client.fetch(BIO_QUERY);
-  console.log(bioPortableText);
 
   return (
     <div>
