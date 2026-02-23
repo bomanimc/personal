@@ -12,7 +12,7 @@ import ReactMarkdown from 'react-markdown';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { InternalLink, TextContent } from '../CommonComponents';
-import { crop, scale } from '@cloudinary/url-gen/actions/resize';
+import { limitFit } from "@cloudinary/url-gen/actions/resize";
 import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
 import theme from '../../theme';
 
@@ -148,8 +148,7 @@ const Project = ({ content, displaysProjectDetailsOnHover }) => {
     else {
       const img = myCld
         .image(content.media)
-        // TODO: Understand the implications of the height issue
-        // .resize({height: 630})
+        .resize(limitFit().height(630))
         .quality('auto')
         .format('auto');
       
