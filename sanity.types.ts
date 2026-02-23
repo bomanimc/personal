@@ -21,6 +21,7 @@ export type SocialMedia = {
   _rev: string;
   platform?: string;
   url?: string;
+  orderRank?: string;
 };
 
 export type PersonInfo = {
@@ -263,7 +264,7 @@ export type PROJECTS_QUERY_RESULT = {
 
 // Source: sanity/lib/queries.ts
 // Variable: SOCIALS_QUERY
-// Query: *[_type == "socialMedia"]
+// Query: *[_type == "socialMedia"]|order(orderRank)
 export type SOCIALS_QUERY_RESULT = Array<{
   _id: string;
   _type: "socialMedia";
@@ -272,6 +273,7 @@ export type SOCIALS_QUERY_RESULT = Array<{
   _rev: string;
   platform?: string;
   url?: string;
+  orderRank?: string;
 }>;
 
 // Query TypeMap
@@ -280,6 +282,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "personInfo"][0].bio': BIO_QUERY_RESULT;
     "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title}": PROJECTS_QUERY_RESULT;
-    '*[_type == "socialMedia"]': SOCIALS_QUERY_RESULT;
+    '*[_type == "socialMedia"]|order(orderRank)': SOCIALS_QUERY_RESULT;
   }
 }
