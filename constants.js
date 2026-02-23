@@ -604,29 +604,6 @@ ProjectContent[ProjectSlug.dialupdigital] = {
   ],
 };
 
-export const SocialLinks = [
-  {
-    name: 'Instagram',
-    link: 'https://www.instagram.com/bxmani/',
-    isExternal: true,
-  },
-  {
-    name: 'Email',
-    link: 'mailto:bomanimc@gmail.com',
-    isExternal: true,
-  },
-  {
-    name: 'GitHub',
-    link: 'https://github.com/bomanimc',
-    isExternal: true,
-  },
-  {
-    name: 'Are.na',
-    link: 'https://www.are.na/bomani-oseni-mcclendon',
-    isExternal: true,
-  },
-];
-
 export const NavLinks = [
   {
     name: 'Work',

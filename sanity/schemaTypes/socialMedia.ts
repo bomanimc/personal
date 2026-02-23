@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import {orderRankField} from '@sanity/orderable-document-list'
 
 export const socialMediaType = defineType({
   name: "socialMedia",
@@ -19,5 +20,6 @@ export const socialMediaType = defineType({
           scheme: ["http", "https", "mailto"],
         }),
     }),
+    orderRankField({ type: "socialMedia" }),
   ],
 });
