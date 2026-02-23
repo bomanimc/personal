@@ -7,6 +7,7 @@ import LinksBar from '../components/partials/LinksBar';
 import { SocialLinks } from '../constants';
 import theme from '../theme';
 import { openGraph } from "./shared-metadata";
+import StyledComponentsRegistry from '../lib/registry'
 
 // Font files can be colocated inside of `app`
 const breweryFont = localFont({
