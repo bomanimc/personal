@@ -13,9 +13,9 @@
  */
 
 // Source: schema.json
-export type SpeakingEngagements = {
+export type SpeakingEngagement = {
   _id: string;
-  _type: "speakingEngagements";
+  _type: "speakingEngagement";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -210,7 +210,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = SpeakingEngagements | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: BIO_QUERY
@@ -271,7 +271,19 @@ export type SOCIALS_QUERYResult = Array<{
 }>;
 // Variable: SPEAKING_ENGAGEMENTS_QUERY
 // Query: *[_type == "speakingEngagement"]
-export type SPEAKING_ENGAGEMENTS_QUERYResult = Array<never>;
+export type SPEAKING_ENGAGEMENTS_QUERYResult = Array<{
+  _id: string;
+  _type: "speakingEngagement";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  event?: string;
+  location?: string;
+  date?: string;
+  url?: string;
+  isNameTitle?: boolean;
+}>;
 
 // Query TypeMap
 import "@sanity/client";

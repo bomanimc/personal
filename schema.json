@@ -1,6 +1,6 @@
 [
   {
-    "name": "speakingEngagements",
+    "name": "speakingEngagement",
     "type": "document",
     "attributes": {
       "_id": {
@@ -13,7 +13,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "speakingEngagements"
+          "value": "speakingEngagement"
         }
       },
       "_createdAt": {
