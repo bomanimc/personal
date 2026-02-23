@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { NextReactP5Wrapper } from "@p5-wrapper/next";
 import styled, { keyframes } from "styled-components";
 import * as Tone from "tone";
 import unmuteAudio from "unmute-ios-audio";
 import { isMobile } from "react-device-detect";
-import Sketch from "../../../sketches/rosc";
 import { BaseAnimationPage } from "../../../components/CommonComponents";
 import theme from "../../../theme";
+import { sketch } from "../../../sketches/rosc";
 
 const allOscillatorTypes = ["sine", "triangle", "square", "sawtooth"];
 const allTuningRatioOptions = ["manual", "clock"];
@@ -34,7 +35,9 @@ const ROSC = () => {
     allDrawingModes[0],
   );
   const [oscillators, setOscillators] = useState({});
+  const waveformsRef = useRef({});
   const [waveforms, setWaveforms] = useState({});
+  const frequencyScalingsRef = useRef({});
   const [xFrequencyScaling, setXFrequencyScaling] = useState(1);
   const [yFrequencyScaling, setYFrequencyScaling] = useState(1);
   const saveButton = useRef();
@@ -43,7 +46,18 @@ const ROSC = () => {
   const middleCFrequency = 261.6;
   const isClockMode = selectedTuningRatioOption === "clock";
 
+  const setXFrequencyScalingWithRefUpdate = (scale) => {
+    setXFrequencyScaling(scale);
+    frequencyScalingsRef.current.x = scale
+  };
+
+  const setYFrequencyScalingWithRefUpdate = (scale) => {
+    setYFrequencyScaling(scale);
+    frequencyScalingsRef.current.y = scale
+  };
+
   const initializeOscillator = (type, frequency, phase = 0) => {
+    console.log("INIT OSCS");
     const oscillator = new Tone.Oscillator({
       type,
       frequency: frequency || middleCFrequency,
@@ -67,9 +81,11 @@ const ROSC = () => {
 
     unmuteAudio();
 
+    console.log("NEW TONE CHANNEL");
     baseChannel.current = new Tone.Channel();
 
     return () => {
+      console.log("CLEAN UP TONE");
       Object.values(oscillators).map((oscillator) =>
         oscillator.stop().dispose(),
       );
@@ -80,6 +96,7 @@ const ROSC = () => {
   }, []);
 
   useEffect(() => {
+    console.log("REDO TONE SETUP");
     Object.values(oscillators).map((oscillator) => oscillator.dispose());
     const { x: xType, y: yType } = selectedOscillatorTypes;
 
@@ -110,6 +127,11 @@ const ROSC = () => {
       x: waveformX,
       y: waveformY,
     });
+    waveformsRef.current = {
+      x: waveformX,
+      y: waveformY,
+    };
+
   }, [selectedOscillatorTypes, xFrequencyScaling, yFrequencyScaling]);
 
   useEffect(() => {
@@ -126,11 +148,11 @@ const ROSC = () => {
 
   useEffect(() => {
     if (isClockMode) {
-      setXFrequencyScaling(currentTime.getHours());
-      setYFrequencyScaling(currentTime.getMinutes());
+      setXFrequencyScalingWithRefUpdate(currentTime.getHours());
+      setYFrequencyScalingWithRefUpdate(currentTime.getMinutes());
     } else {
-      setXFrequencyScaling(parseFloat(xFrequencyScalingInput.current.value));
-      setYFrequencyScaling(parseFloat(yFrequencyScalingInput.current.value));
+      setXFrequencyScalingWithRefUpdate(parseFloat(xFrequencyScalingInput.current.value));
+      setYFrequencyScalingWithRefUpdate(parseFloat(yFrequencyScalingInput.current.value));
     }
   }, [currentTime, isClockMode]);
 
@@ -176,10 +198,10 @@ const ROSC = () => {
   };
 
   const onChangeXFrequencyScaling = (event) =>
-    setXFrequencyScaling(event.target.value || 1);
+    setXFrequencyScalingWithRefUpdate(event.target.value || 1);
 
   const onChangeYFrequencyScaling = (event) =>
-    setYFrequencyScaling(event.target.value || 1);
+    setYFrequencyScalingWithRefUpdate(event.target.value || 1);
 
   const onStartAudioContext = () => {
     Tone.context.resume();
@@ -189,18 +211,17 @@ const ROSC = () => {
   return (
     <BaseAnimationPage title="Return of Spontaneous Circulation">
       <ROSC.Content>
-        <ROSC.SquareContainer smallMode={isClockMode}>
+        <ROSC.SquareContainer $smallMode={isClockMode}>
           <ROSC.SketchWrapper id="canvasContainer">
-            <Sketch
-              waveformX={waveforms.x}
-              waveformY={waveforms.y}
+            <NextReactP5Wrapper
+              sketch={sketch}
+              waveformsRef={waveformsRef}
               isClockMode={isClockMode}
               drawingMode={selectedDrawingMode}
-              xFrequencyScaling={xFrequencyScaling}
-              yFrequencyScaling={yFrequencyScaling}
+              frequencyScalingsRef={frequencyScalingsRef}
               xOscillatorType={selectedOscillatorTypes.x}
               yOscillatorType={selectedOscillatorTypes.y}
-              saveButtonRef={saveButton}
+              // saveButtonRef={saveButtonRef}
             />
           </ROSC.SketchWrapper>
         </ROSC.SquareContainer>
@@ -210,18 +231,18 @@ const ROSC = () => {
           </ROSC.Clock>
         )}
       </ROSC.Content>
-      <ROSC.ControlsPanel isExposed={areControlsExposed}>
+      <ROSC.ControlsPanel $isExposed={areControlsExposed}>
         <ROSC.ControlsHeader>
           <span>Controls</span>
           <ROSC.ControlsHeaderButton onClick={onToggleControls}>
             {areControlsExposed ? "–" : "+"}
           </ROSC.ControlsHeaderButton>
         </ROSC.ControlsHeader>
-        <ROSC.ControlsContent isExposed={areControlsExposed}>
+        <ROSC.ControlsContent $isExposed={areControlsExposed}>
           {!audioContextStarted && (
             <ROSC.ControlPanelSection>
               <ROSC.FlashingButton
-                isSelected={isMuted}
+                $isSelected={isMuted}
                 onClick={onStartAudioContext}
               >
                 Activate Audio Context
@@ -229,7 +250,7 @@ const ROSC = () => {
             </ROSC.ControlPanelSection>
           )}
           <ROSC.ControlPanelSection>
-            <ROSC.Button isSelected={isMuted} onClick={onToggleMuted}>
+            <ROSC.Button $isSelected={isMuted} onClick={onToggleMuted}>
               {isMuted ? "Unmute" : "Mute"}
             </ROSC.Button>
           </ROSC.ControlPanelSection>
@@ -244,7 +265,7 @@ const ROSC = () => {
               {allDrawingModes.map((mode) => (
                 <ROSC.Button
                   key={mode}
-                  isSelected={mode === selectedDrawingMode}
+                  $isSelected={mode === selectedDrawingMode}
                   onClick={onChangeDrawingMode}
                   value={mode}
                 >
@@ -259,7 +280,7 @@ const ROSC = () => {
               {allOscillatorTypes.map((type) => (
                 <ROSC.Button
                   key={type}
-                  isSelected={type === selectedOscillatorTypes.x}
+                  $isSelected={type === selectedOscillatorTypes.x}
                   onClick={onChangeOscillatorXType}
                   value={type}
                   disabled={
@@ -277,7 +298,7 @@ const ROSC = () => {
               {allOscillatorTypes.map((type) => (
                 <ROSC.Button
                   key={type}
-                  isSelected={type === selectedOscillatorTypes.y}
+                  $isSelected={type === selectedOscillatorTypes.y}
                   onClick={onChangeOscillatorYType}
                   value={type}
                   disabled={
@@ -295,7 +316,7 @@ const ROSC = () => {
               {allTuningRatioOptions.map((option) => (
                 <ROSC.Button
                   key={option}
-                  isSelected={option === selectedTuningRatioOption}
+                  $isSelected={option === selectedTuningRatioOption}
                   onClick={onChangeTuningRatioOption}
                   value={option}
                 >
@@ -365,13 +386,13 @@ ROSC.SquareContainer = styled.div`
   padding: 0.25rem;
 
   @media screen and (orientation: landscape) {
-    height: ${(p) => (p.smallMode ? "80vh" : "100vh")};
-    width: ${(p) => (p.smallMode ? "80vh" : "100vh")};
+    height: ${(p) => (p.$smallMode ? "80vh" : "100vh")};
+    width: ${(p) => (p.$smallMode ? "80vh" : "100vh")};
   }
 
   @media screen and (orientation: portrait) {
-    height: ${(p) => (p.smallMode ? "80vw" : "100vw")};
-    width: ${(p) => (p.smallMode ? "80vw" : "100vw")};
+    height: ${(p) => (p.$smallMode ? "80vw" : "100vw")};
+    width: ${(p) => (p.$smallMode ? "80vw" : "100vw")};
   }
 `;
 
@@ -400,7 +421,7 @@ ROSC.ControlsPanel = styled.div`
   @media (max-width: ${theme.breakPoints.mobile}) {
     width: unset;
     left: 1rem;
-    top: ${(p) => (p.isExposed ? "8rem" : "unset")};
+    top: ${(p) => (p.$isExposed ? "8rem" : "unset")};
   }
 `;
 
@@ -427,7 +448,7 @@ ROSC.ControlsHeaderButton = styled.button`
 `;
 
 ROSC.ControlsContent = styled.div`
-  display: ${(p) => (p.isExposed ? "block" : "none")};
+  display: ${(p) => (p.$isExposed ? "block" : "none")};
   overflow-y: scroll;
 `;
 
@@ -466,7 +487,7 @@ const flashingBorder = keyframes`
 `;
 
 ROSC.Button = styled.button`
-  background: ${(p) => (p.isSelected ? "rgba(0, 0, 255, 0.37)" : "none")};
+  background: ${(p) => (p.$isSelected ? "rgba(0, 0, 255, 0.37)" : "none")};
   color: white;
   text-transform: capitalize;
   border: 1px solid white;
