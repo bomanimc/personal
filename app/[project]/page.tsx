@@ -36,7 +36,6 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <BaseProjectPage
-      id={projectData.id}
       title={projectData.title}
       year={projectData.year}
       tools={projectData.tools}

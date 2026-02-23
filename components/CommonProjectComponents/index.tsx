@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint react/forbid-prop-types: 0 */
 
 'use client'
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
@@ -23,9 +23,16 @@ import styles from "./commonProjectComponents.module.scss";
 
 const myCld = new Cloudinary({ cloud: { cloudName: 'bomani-personal' } });
 
+interface MetadataProps {
+  year: string;
+  tools: string;
+  role: string;
+  site?: string;
+};
+
 const Metadata = ({
   year, tools, role, site,
-}) => (
+}: MetadataProps) => (
   <MetadataSection>
     <MetadataItem>
       <MetadataTitle>Year</MetadataTitle>
@@ -53,7 +60,7 @@ const Metadata = ({
   </MetadataSection>
 );
 
-export const getProjectMedia = (projectData, showMainMedia) => {
+export const getProjectMedia = (projectData: any, showMainMedia: boolean) => {
   const { projectMedia } = projectData;
   return showMainMedia
     ? [
@@ -65,9 +72,19 @@ export const getProjectMedia = (projectData, showMainMedia) => {
     : projectMedia;
 };
 
+
+interface BaseProjectPageProps {
+  year: string;
+  title: string;
+  body: React.ReactNode;
+  tools: string;
+  role: string;
+  site?: string,
+};
+
 export const BaseProjectPage = ({
   year, title, tools, role, site, body,
-}) => (
+}: BaseProjectPageProps) => (
   // TODO: Fix Layout
   <div>
     <Page>
@@ -81,7 +98,15 @@ export const BaseProjectPage = ({
   </div>
 );
 
-export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
+
+interface BaseBodyContentProps {
+  customContent?: React.ReactNode;
+  project: any;
+  showMainMedia?: boolean;
+};
+
+export const BaseBodyContent = ({ project, showMainMedia = true, customContent }: BaseBodyContentProps) => {
+  // @ts-ignore
   const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
     switch (media.type) {
       case MediaTypes.video: {
@@ -90,7 +115,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
             <iframe
               src={`${media.videoUrl}?title=0&amp;byline=0&amp;portrait=0&amp;playsinline=0&amp;autopause=0&amp;controls=0&amp;app_id=122963`}
               allow="autoplay; fullscreen"
-              allowFullScreen=""
+              allowFullScreen={true}
               title="Vimeo Video Player"
               data-ready="true"
               style={{ width: '100%', height: '100%' }}
@@ -101,7 +126,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
           )
           : (
             <iframe
-              allowFullScreen="1"
+              allowFullScreen={true}
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               title="YouTube Video Player"
               src={`${media.videoUrl}?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1`}
@@ -166,37 +191,7 @@ export const BaseBodyContent = ({ project, showMainMedia, customContent }) => {
   );
 };
 
-Metadata.propTypes = {
-  year: PropTypes.string.isRequired,
-  tools: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  site: PropTypes.string,
-};
 
-BaseProjectPage.propTypes = {
-  year: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.node.isRequired,
-  tools: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  site: PropTypes.string,
-};
 
-BaseBodyContent.propTypes = {
-  customContent: PropTypes.node,
-  project: PropTypes.object.isRequired,
-  showMainMedia: PropTypes.bool,
-};
 
-BaseBodyContent.defaultProps = {
-  customContent: null,
-  showMainMedia: true,
-};
 
-BaseProjectPage.defaultProps = {
-  site: null,
-};
-
-Metadata.defaultProps = {
-  site: null,
-};

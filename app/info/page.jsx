@@ -2,7 +2,7 @@
 /* eslint array-callback-return: 0 */
 
 import React from 'react';
-import type { Metadata } from 'next'
+// import type { Metadata } from 'next'
 import styled from 'styled-components';
 import {client} from '@/sanity/lib/client'
 import {BIO_QUERY} from '@/sanity/lib/queries'
@@ -21,7 +21,7 @@ import {
   MetadataTitle,
 } from '../../components/CommonComponents';
  
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Info',
 }
 
