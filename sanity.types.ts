@@ -13,6 +13,20 @@
  */
 
 // Source: schema.json
+export type SpeakingEngagements = {
+  _id: string;
+  _type: "speakingEngagements";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  event?: string;
+  location?: string;
+  date?: string;
+  url?: string;
+  isNameTitle?: boolean;
+};
+
 export type SocialMedia = {
   _id: string;
   _type: "socialMedia";
@@ -196,28 +210,12 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes =
-  | SocialMedia
-  | PersonInfo
-  | Project
-  | Slug
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageMetadata
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityAssetSourceData
-  | SanityImageAsset
-  | Geopoint;
-
+export type AllSanitySchemaTypes = SpeakingEngagements | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-
-// Source: sanity/lib/queries.ts
+// Source: ./sanity/lib/queries.ts
 // Variable: BIO_QUERY
 // Query: *[_type == "personInfo"][0].bio
-export type BIO_QUERY_RESULT = Array<{
+export type BIO_QUERYResult = Array<{
   children?: Array<{
     marks?: Array<string>;
     text?: string;
@@ -235,11 +233,9 @@ export type BIO_QUERY_RESULT = Array<{
   _type: "block";
   _key: string;
 }> | null;
-
-// Source: sanity/lib/queries.ts
 // Variable: PROJECTS_QUERY
 // Query: *[_type == "project" && slug.current == $project][0]{'projectId': slug.current, content, title}
-export type PROJECTS_QUERY_RESULT = {
+export type PROJECTS_QUERYResult = {
   projectId: string | null;
   content: Array<{
     children?: Array<{
@@ -261,11 +257,9 @@ export type PROJECTS_QUERY_RESULT = {
   }> | null;
   title: string | null;
 } | null;
-
-// Source: sanity/lib/queries.ts
 // Variable: SOCIALS_QUERY
 // Query: *[_type == "socialMedia"]|order(orderRank)
-export type SOCIALS_QUERY_RESULT = Array<{
+export type SOCIALS_QUERYResult = Array<{
   _id: string;
   _type: "socialMedia";
   _createdAt: string;
@@ -275,13 +269,17 @@ export type SOCIALS_QUERY_RESULT = Array<{
   url?: string;
   orderRank?: string;
 }>;
+// Variable: SPEAKING_ENGAGEMENTS_QUERY
+// Query: *[_type == "speakingEngagement"]
+export type SPEAKING_ENGAGEMENTS_QUERYResult = Array<never>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "personInfo"][0].bio': BIO_QUERY_RESULT;
-    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title}": PROJECTS_QUERY_RESULT;
-    '*[_type == "socialMedia"]|order(orderRank)': SOCIALS_QUERY_RESULT;
+    "*[_type == \"personInfo\"][0].bio": BIO_QUERYResult;
+    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title}": PROJECTS_QUERYResult;
+    "*[_type == \"socialMedia\"]|order(orderRank)": SOCIALS_QUERYResult;
+    "*[_type == \"speakingEngagement\"]": SPEAKING_ENGAGEMENTS_QUERYResult;
   }
 }

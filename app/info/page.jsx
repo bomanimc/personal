@@ -1,16 +1,16 @@
 /* eslint no-confusing-arrow: 0 */
 /* eslint array-callback-return: 0 */
 
-import React from 'react';
+import React from "react";
 // import type { Metadata } from 'next'
-import styled from 'styled-components';
-import {client} from '@/sanity/lib/client'
-import {BIO_QUERY} from '@/sanity/lib/queries'
-import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw'
-import { PortableText } from '@portabletext/react';
-import { AboutCopy } from '../../constants';
+import styled from "styled-components";
+import { client } from "@/sanity/lib/client";
+import { BIO_QUERY, SPEAKING_ENGAGEMENTS_QUERY } from "@/sanity/lib/queries";
+import PropTypes from "prop-types";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import { PortableText } from "@portabletext/react";
+import { AboutCopy } from "../../constants";
 import {
   ExternalLink,
   BasePage,
@@ -19,13 +19,13 @@ import {
   MetadataSection,
   MetadataItem,
   MetadataTitle,
-} from '../../components/CommonComponents';
- 
-export const metadata = {
-  title: 'Info',
-}
+} from "../../components/CommonComponents";
 
-const GRID_GAP_VALUE = '3rem';
+export const metadata = {
+  title: "Info",
+};
+
+const GRID_GAP_VALUE = "3rem";
 
 const AboutSectionContainer = styled.div`
   display: grid;
@@ -65,11 +65,15 @@ const Metadata = ({ location, links }) => (
   <MetadataSection>
     <MetadataItem>
       <MetadataTitle>Location</MetadataTitle>
-      <TextContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={location} /></TextContent>
+      <TextContent>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} source={location} />
+      </TextContent>
     </MetadataItem>
     <MetadataItem>
       <MetadataTitle>Links</MetadataTitle>
-      <TextContent><ReactMarkdown rehypePlugins={[rehypeRaw]} source={links} /></TextContent>
+      <TextContent>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} source={links} />
+      </TextContent>
     </MetadataItem>
   </MetadataSection>
 );
@@ -80,7 +84,7 @@ const AboutPage = async () => {
   return (
     <div>
       <BasePage
-        body={(
+        body={
           <TextContent>
             <AboutSectionContainer>
               <BioContent bioPortableText={bioPortableText} />
@@ -93,7 +97,7 @@ const AboutPage = async () => {
               <ExhibitionBox />
             </AboutSectionContainer>
           </TextContent>
-        )}
+        }
       />
     </div>
   );
@@ -153,26 +157,33 @@ const TeachingBox = () => (
   </div>
 );
 
-const SpeakingBox = () => (
-  <div>
-    <AboutBoxTitle>Speaking</AboutBoxTitle>
-    <AboutBoxContent>
-      <div>
-        {AboutCopy.speaking.map((item) => (
-          <SpeakingLink
-            key={item.name}
-            name={item.name}
-            event={item.event}
-            date={item.date}
-            location={item.location}
-            link={item.link}
-            isNameTitle={item.isNameTitle}
-          />
-        ))}
-      </div>
-    </AboutBoxContent>
-  </div>
-);
+const SpeakingBox = async () => {
+  const speakingEngagements = await client.fetch(SPEAKING_ENGAGEMENTS_QUERY);
+
+  return (
+    <div>
+      <AboutBoxTitle>Speaking</AboutBoxTitle>
+      <AboutBoxContent>
+        <div>
+          {speakingEngagements
+            // TODO: Handle sorting at query level
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((item) => (
+              <SpeakingLink
+                key={item.name}
+                name={item.name}
+                event={item.event}
+                date={item.date}
+                location={item.location}
+                link={item.url}
+                isNameTitle={item.isNameTitle}
+              />
+            ))}
+        </div>
+      </AboutBoxContent>
+    </div>
+  );
+};
 
 const WritingBox = () => (
   <div>
@@ -251,61 +262,76 @@ const ExhibitionBox = () => (
   </div>
 );
 
-const EducationItem = ({
-  name, degree, startDate, endDate,
-}) => (
+const EducationItem = ({ name, degree, startDate, endDate }) => (
   <SpeakingLinkItem>
     {name}
     <AboutDetail>{degree}</AboutDetail>
-    <AboutDetail>{endDate ? `${startDate} - ${endDate}` : startDate}</AboutDetail>
+    <AboutDetail>
+      {endDate ? `${startDate} - ${endDate}` : startDate}
+    </AboutDetail>
   </SpeakingLinkItem>
 );
 
-const TeachingItem = ({
-  name, link, institution, program, date, location,
-}) => (
+const TeachingItem = ({ name, link, institution, program, date, location }) => (
   <SpeakingLinkItem>
-    {
-      link !== undefined && link !== null
-        ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{name}</ExternalLink>
-        : name
-    }
+    {link !== undefined && link !== null ? (
+      <ExternalLink
+        href={link}
+        key={name}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {name}
+      </ExternalLink>
+    ) : (
+      name
+    )}
     <AboutDetail>{`${institution}, ${program}`}</AboutDetail>
     <AboutDetail>{`${date}`}</AboutDetail>
     <AboutDetail>{location}</AboutDetail>
   </SpeakingLinkItem>
 );
 
-const SpeakingLink = ({
-  name, location, event, date, link, isNameTitle,
-}) => {
+const SpeakingLink = ({ name, location, event, date, link, isNameTitle }) => {
   const formattedName = isNameTitle ? `"${name}"` : name;
 
   return (
     <SpeakingLinkItem>
-      {
-        link !== undefined && link !== null
-          ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{formattedName}</ExternalLink>
-          : formattedName
-      }
+      {link !== undefined && link !== null ? (
+        <ExternalLink
+          href={link}
+          key={name}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {formattedName}
+        </ExternalLink>
+      ) : (
+        formattedName
+      )}
       <AboutDetail>{`${event}, ${date}`}</AboutDetail>
       <AboutDetail>{location}</AboutDetail>
     </SpeakingLinkItem>
   );
 };
 
-const InterviewLink = ({
-  name, org, date, link, isNameTitle,
-}) => {
+const InterviewLink = ({ name, org, date, link, isNameTitle }) => {
   const formattedName = isNameTitle ? `"${name}"` : name;
 
   return (
     <SpeakingLinkItem>
-      {
-        link !== undefined && link !== null
-          ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{formattedName}</ExternalLink>
-          : formattedName
-      }
+      {link !== undefined && link !== null ? (
+        <ExternalLink
+          href={link}
+          key={name}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {formattedName}
+        </ExternalLink>
+      ) : (
+        formattedName
+      )}
       <AboutDetail>{`${org}, ${date}`}</AboutDetail>
     </SpeakingLinkItem>
   );
@@ -313,18 +339,21 @@ const InterviewLink = ({
 
 const WritingLink = ({ name, detail, link }) => (
   <SpeakingLinkItem>
-    {
-      link !== undefined && link !== null
-        ? <ExternalLink href={link} key={name} target="_blank" rel="noopener noreferrer">{`"${name}"`}</ExternalLink>
-        : `"${name}"`
-    }
+    {link !== undefined && link !== null ? (
+      <ExternalLink
+        href={link}
+        key={name}
+        target="_blank"
+        rel="noopener noreferrer"
+      >{`"${name}"`}</ExternalLink>
+    ) : (
+      `"${name}"`
+    )}
     <AboutDetail>{`${detail}`}</AboutDetail>
   </SpeakingLinkItem>
 );
 
-const FellowshipItem = ({
-  org, title, date,
-}) => (
+const FellowshipItem = ({ org, title, date }) => (
   <SpeakingLinkItem>
     {org}
     <AboutDetail>{title}</AboutDetail>
@@ -332,9 +361,7 @@ const FellowshipItem = ({
   </SpeakingLinkItem>
 );
 
-const ExhibitionItem = ({
-  location, gallery, title, date,
-}) => (
+const ExhibitionItem = ({ location, gallery, title, date }) => (
   <SpeakingLinkItem>
     {title}
     <AboutDetail>{gallery}</AboutDetail>

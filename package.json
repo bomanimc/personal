@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "update:schema": "sanity schema extract && sanity typegen generate"
   },
   "dependencies": {
     "@cloudinary/react": "^1.14.4",
