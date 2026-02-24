@@ -19,18 +19,9 @@ export const metadata = {
   title: "Info",
 };
 
-const GRID_GAP_VALUE = "3rem";
-
-const AboutTextContent = styled(TextContent)`
-  a, p {
-    padding-bottom: 0px;
-    margin-bottom: 2px;
-  }
-`;
-
 const AboutSectionContainer = styled.div`
   display: grid;
-  grid-gap: ${GRID_GAP_VALUE};
+  grid-gap: 3rem;
   grid-template-columns: repeat(1, 1fr);
 `;
 

@@ -261,9 +261,9 @@ export type BIO_QUERYResult = Array<{
   _type: "block";
   _key: string;
 }> | null;
-// Variable: PROJECTS_QUERY
-// Query: *[_type == "project" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, mainMedia, otherMedia}
-export type PROJECTS_QUERYResult = {
+// Variable: PROJECT_QUERY
+// Query: *[_type == "project" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, otherMedia}
+export type PROJECT_QUERYResult = {
   projectId: string;
   content: Array<{
     children?: Array<{
@@ -288,13 +288,19 @@ export type PROJECTS_QUERYResult = {
   role: string;
   tools: string;
   site: string | null;
-  mainMedia: null;
   otherMedia: Array<{
     _key: string;
   } & CloudinaryImage | {
     _key: string;
   } & Video> | null;
 } | null;
+// Variable: ALL_PROJECTS_QUERY
+// Query: *[_type == "project"]{'projectId': slug.current, title, primaryMedia}
+export type ALL_PROJECTS_QUERYResult = Array<{
+  projectId: string;
+  title: string;
+  primaryMedia: string;
+}>;
 // Variable: SOCIALS_QUERY
 // Query: *[_type == "socialMedia"]|order(orderRank)
 export type SOCIALS_QUERYResult = Array<{
@@ -328,7 +334,8 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"personInfo\"][0].bio": BIO_QUERYResult;
-    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, mainMedia, otherMedia}": PROJECTS_QUERYResult;
+    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, otherMedia}": PROJECT_QUERYResult;
+    "*[_type == \"project\"]{'projectId': slug.current, title, primaryMedia}": ALL_PROJECTS_QUERYResult;
     "*[_type == \"socialMedia\"]|order(orderRank)": SOCIALS_QUERYResult;
     "*[_type == \"speakingEngagement\"]": SPEAKING_ENGAGEMENTS_QUERYResult;
   }

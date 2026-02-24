@@ -1,34 +1,26 @@
-// @ts-nocheck
-/* eslint no-confusing-arrow: 0 */
-/* eslint array-callback-return: 0 */
-
-import React from 'react';
-import ProjectCard from '../components/partials/ProjectCard';
-import {
-  ProjectGridContainer,
-} from '../components/CommonComponents';
-import { ProjectContent, FeaturedProjects } from '../constants';
+import { client } from "@/sanity/lib/client";
+import { ALL_PROJECTS_QUERY } from "@/sanity/lib/queries";
+import ProjectCard from "./projectCard";
+import { ProjectGridContainer } from "../components/CommonComponents";
 import styles from "./page.module.scss";
 
-const HomePage = () => (
-  <div>
-    <ProjectSection />
-  </div>
-);
+export default async function HomePage() {
+  const allProjects = await client.fetch(ALL_PROJECTS_QUERY);
 
-const ProjectSection = () => (
-  <div className={styles.contentContainer}>
-    <ProjectGridContainer containerHeight="auto">
-      {
-        FeaturedProjects.map((section) => (
-          <ProjectCard
-            key={ProjectContent[section].id}
-            content={ProjectContent[section]}
-          />
-        ))
-      }
-    </ProjectGridContainer>
-  </div>
-);
-
-export default HomePage;
+  return (
+    <div>
+      <div className={styles.contentContainer}>
+        <ProjectGridContainer containerHeight="auto">
+          {allProjects.map((project) => (
+            <ProjectCard
+              key={project.projectId}
+              projectId={project.projectId}
+              media={project.primaryMedia}
+              title={project.title}
+            />
+          ))}
+        </ProjectGridContainer>
+      </div>
+    </div>
+  );
+}

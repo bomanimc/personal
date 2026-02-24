@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
-import { PROJECTS_QUERY } from "@/sanity/lib/queries";
+import { PROJECT_QUERY } from "@/sanity/lib/queries";
 import {
   ExternalLink,
   TextContent,
@@ -25,7 +25,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { project } = await params;
-  const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
+  const fetchedProject = await client.fetch(PROJECT_QUERY, { project });
 
   // TODO: Copy functionality from utils.jsx to here.
   return {
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectPage({ params }: Props) {
   const { project } = await params;
-  const fetchedProject = await client.fetch(PROJECTS_QUERY, { project });
+  const fetchedProject = await client.fetch(PROJECT_QUERY, { project });
 
   // TODO: Understand why this is possible null
   if (!fetchedProject) {
