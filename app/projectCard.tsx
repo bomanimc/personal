@@ -56,6 +56,7 @@ const ProjectDetailsWrapper = styled.div`
 
 const ProjectImage = styled(AdvancedImage)`
   width: 100%;
+  height: 100%;
   display: block;
 
   @media (max-width: 768px) {
