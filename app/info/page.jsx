@@ -1,14 +1,11 @@
 /* eslint no-confusing-arrow: 0 */
 /* eslint array-callback-return: 0 */
 
-import React from "react";
 // import type { Metadata } from 'next'
 import styled from "styled-components";
 import { client } from "@/sanity/lib/client";
 import { BIO_QUERY, SPEAKING_ENGAGEMENTS_QUERY } from "@/sanity/lib/queries";
 import PropTypes from "prop-types";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import { PortableText } from "@portabletext/react";
 import { AboutCopy } from "../../constants";
 import {
@@ -16,9 +13,6 @@ import {
   BasePage,
   Body,
   TextContent,
-  MetadataSection,
-  MetadataItem,
-  MetadataTitle,
 } from "../../components/CommonComponents";
 
 export const metadata = {
@@ -26,6 +20,13 @@ export const metadata = {
 };
 
 const GRID_GAP_VALUE = "3rem";
+
+const AboutTextContent = styled(TextContent)`
+  a, p {
+    padding-bottom: 0px;
+    margin-bottom: 2px;
+  }
+`;
 
 const AboutSectionContainer = styled.div`
   display: grid;
@@ -38,6 +39,11 @@ const AboutBoxContent = styled.div`
   border-style: solid;
   border-color: white;
   padding: 6px;
+
+  a, p {
+    padding-bottom: 0px !important;
+    margin-bottom: 2px;
+  }
 `;
 
 const AboutBoxTitle = styled.div`
@@ -53,30 +59,16 @@ const AboutDetail = styled(Body)`
   opacity: 0.5;
 `;
 
-const SpeakingLinkItem = styled.div`
+const CVItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   margin-bottom: 16px;
 
   :last-child {
     margin-bottom: 0px;
   }
 `;
-
-const Metadata = ({ location, links }) => (
-  <MetadataSection>
-    <MetadataItem>
-      <MetadataTitle>Location</MetadataTitle>
-      <TextContent>
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} source={location} />
-      </TextContent>
-    </MetadataItem>
-    <MetadataItem>
-      <MetadataTitle>Links</MetadataTitle>
-      <TextContent>
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} source={links} />
-      </TextContent>
-    </MetadataItem>
-  </MetadataSection>
-);
 
 const AboutPage = async () => {
   const bioPortableText = await client.fetch(BIO_QUERY);
@@ -264,17 +256,17 @@ const ExhibitionBox = () => (
 );
 
 const EducationItem = ({ name, degree, startDate, endDate }) => (
-  <SpeakingLinkItem>
-    {name}
+  <CVItem>
+    <p>{name}</p>
     <AboutDetail>{degree}</AboutDetail>
     <AboutDetail>
       {endDate ? `${startDate} - ${endDate}` : startDate}
     </AboutDetail>
-  </SpeakingLinkItem>
+  </CVItem>
 );
 
 const TeachingItem = ({ name, link, institution, program, date, location }) => (
-  <SpeakingLinkItem>
+  <CVItem>
     {link !== undefined && link !== null ? (
       <ExternalLink
         href={link}
@@ -285,19 +277,19 @@ const TeachingItem = ({ name, link, institution, program, date, location }) => (
         {name}
       </ExternalLink>
     ) : (
-      name
+      <p>{name}</p>
     )}
     <AboutDetail>{`${institution}, ${program}`}</AboutDetail>
     <AboutDetail>{`${date}`}</AboutDetail>
     <AboutDetail>{location}</AboutDetail>
-  </SpeakingLinkItem>
+  </CVItem>
 );
 
 const SpeakingLink = ({ name, location, event, date, link, isNameTitle }) => {
   const formattedName = isNameTitle ? `"${name}"` : name;
 
   return (
-    <SpeakingLinkItem>
+    <CVItem>
       {link !== undefined && link !== null ? (
         <ExternalLink
           href={link}
@@ -308,11 +300,11 @@ const SpeakingLink = ({ name, location, event, date, link, isNameTitle }) => {
           {formattedName}
         </ExternalLink>
       ) : (
-        formattedName
+        <p>{formattedName}</p>
       )}
       <AboutDetail>{`${event}, ${date}`}</AboutDetail>
       <AboutDetail>{location}</AboutDetail>
-    </SpeakingLinkItem>
+    </CVItem>
   );
 };
 
@@ -320,7 +312,7 @@ const InterviewLink = ({ name, org, date, link, isNameTitle }) => {
   const formattedName = isNameTitle ? `"${name}"` : name;
 
   return (
-    <SpeakingLinkItem>
+    <CVItem>
       {link !== undefined && link !== null ? (
         <ExternalLink
           href={link}
@@ -331,15 +323,15 @@ const InterviewLink = ({ name, org, date, link, isNameTitle }) => {
           {formattedName}
         </ExternalLink>
       ) : (
-        formattedName
+        <p>{formattedName}</p>
       )}
       <AboutDetail>{`${org}, ${date}`}</AboutDetail>
-    </SpeakingLinkItem>
+    </CVItem>
   );
 };
 
 const WritingLink = ({ name, detail, link }) => (
-  <SpeakingLinkItem>
+  <CVItem>
     {link !== undefined && link !== null ? (
       <ExternalLink
         href={link}
@@ -348,33 +340,28 @@ const WritingLink = ({ name, detail, link }) => (
         rel="noopener noreferrer"
       >{`"${name}"`}</ExternalLink>
     ) : (
-      `"${name}"`
+      <p>{`"${name}"`}</p>
     )}
     <AboutDetail>{`${detail}`}</AboutDetail>
-  </SpeakingLinkItem>
+  </CVItem>
 );
 
 const FellowshipItem = ({ org, title, date }) => (
-  <SpeakingLinkItem>
-    {org}
+  <CVItem>
+    <p>{org}</p>
     <AboutDetail>{title}</AboutDetail>
     <AboutDetail>{date}</AboutDetail>
-  </SpeakingLinkItem>
+  </CVItem>
 );
 
 const ExhibitionItem = ({ location, gallery, title, date }) => (
-  <SpeakingLinkItem>
-    {title}
+  <CVItem>
+    <p>{title}</p>
     <AboutDetail>{gallery}</AboutDetail>
     <AboutDetail>{location}</AboutDetail>
     <AboutDetail>{date}</AboutDetail>
-  </SpeakingLinkItem>
+  </CVItem>
 );
-
-Metadata.propTypes = {
-  location: PropTypes.string.isRequired,
-  links: PropTypes.string.isRequired,
-};
 
 BioContent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types

@@ -29,7 +29,6 @@
     "react-dom": "19.2.3",
     "react-draggable": "^4.4.6",
     "react-markdown": "^10.1.0",
-    "rehype-raw": "^7.0.0",
     "sanity": "^4.22.0",
     "styled-components": "^6.3.9",
     "tone": "^14.7.77",
