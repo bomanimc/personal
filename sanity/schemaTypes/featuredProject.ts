@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import {orderRankField} from '@sanity/orderable-document-list'
+import { orderRankField } from "@sanity/orderable-document-list";
 
 export const featuredProjectType = defineType({
   name: "featuredProject",
@@ -8,9 +8,18 @@ export const featuredProjectType = defineType({
     defineField({
       name: "project",
       type: "reference",
-      to: [{type: 'project'}],
-      validation: rule => rule.required(),
+      to: [{ type: "project" }],
+      validation: (rule) => rule.required(),
     }),
     orderRankField({ type: "featuredProject" }),
   ],
+  preview: {
+     select: {
+      projectTitle: 'project.title',
+    },
+    prepare: ({projectTitle}) => ({
+      title: projectTitle || 'Referenced Project',
+      subtitle: 'Project'
+    }),
+  },
 });
