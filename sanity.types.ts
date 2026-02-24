@@ -13,6 +13,21 @@
  */
 
 // Source: schema.json
+export type FeaturedProject = {
+  _id: string;
+  _type: "featuredProject";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  project: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "project";
+  };
+  orderRank?: string;
+};
+
 export type Video = {
   _id: string;
   _type: "video";
@@ -238,7 +253,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = FeaturedProject | Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: BIO_QUERY
@@ -294,12 +309,14 @@ export type PROJECT_QUERYResult = {
     _key: string;
   } & Video> | null;
 } | null;
-// Variable: ALL_PROJECTS_QUERY
-// Query: *[_type == "project"]{'projectId': slug.current, title, primaryMedia}
-export type ALL_PROJECTS_QUERYResult = Array<{
-  projectId: string;
-  title: string;
-  primaryMedia: string;
+// Variable: FEATURED_PROJECTS_QUERY
+// Query: *[_type == "featuredProject"]|order(orderRank){ "project": project->{'projectId': slug.current, title, primaryMedia} }
+export type FEATURED_PROJECTS_QUERYResult = Array<{
+  project: {
+    projectId: string;
+    title: string;
+    primaryMedia: string;
+  };
 }>;
 // Variable: SOCIALS_QUERY
 // Query: *[_type == "socialMedia"]|order(orderRank)
@@ -335,7 +352,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"personInfo\"][0].bio": BIO_QUERYResult;
     "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, otherMedia}": PROJECT_QUERYResult;
-    "*[_type == \"project\"]{'projectId': slug.current, title, primaryMedia}": ALL_PROJECTS_QUERYResult;
+    "*[_type == \"featuredProject\"]|order(orderRank){ \"project\": project->{'projectId': slug.current, title, primaryMedia} }": FEATURED_PROJECTS_QUERYResult;
     "*[_type == \"socialMedia\"]|order(orderRank)": SOCIALS_QUERYResult;
     "*[_type == \"speakingEngagement\"]": SPEAKING_ENGAGEMENTS_QUERYResult;
   }

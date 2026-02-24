@@ -6,6 +6,7 @@ import { socialMediaType } from "./socialMedia";
 import { speakingEngagementType } from "./speakingEngagement";
 import { cloudinaryImageType } from "./cloudinaryImage";
 import { videoType } from "./video";
+import { featuredProjectType } from "./featuredProject";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -15,5 +16,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     speakingEngagementType,
     cloudinaryImageType,
     videoType,
+    featuredProjectType,
   ],
 };
