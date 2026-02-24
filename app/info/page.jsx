@@ -84,6 +84,7 @@ const AboutPage = async () => {
   return (
     <div>
       <BasePage
+        title="Info"
         body={
           <TextContent>
             <AboutSectionContainer>
