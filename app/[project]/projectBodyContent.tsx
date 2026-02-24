@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint react/forbid-prop-types: 0 */
-
 'use client'
 
 import React from 'react';
@@ -9,106 +6,20 @@ import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
 import type { Project } from '@/sanity.types'
 
-import { MediaTypes } from '../../constants';
 import {
-  ExternalLink,
   TextContent,
-  Divider,
-  Page,
-  PageCenteringContainer,
-  PageTitle,
-  MetadataSection,
-  MetadataItem,
-  MetadataTitle,
-} from '../CommonComponents';
-import styles from "./commonProjectComponents.module.scss";
+} from '../../components/CommonComponents';
+import styles from "./projectBodyContent.module.scss";
 
 const myCld = new Cloudinary({ cloud: { cloudName: 'bomani-personal' } });
 
-interface MetadataProps {
-  year: string;
-  tools: string;
-  role: string;
-  site?: string;
-};
-
-const Metadata = ({
-  year, tools, role, site,
-}: MetadataProps) => (
-  <MetadataSection>
-    <MetadataItem>
-      <MetadataTitle>Year</MetadataTitle>
-      <TextContent>{year}</TextContent>
-    </MetadataItem>
-    <MetadataItem>
-      <MetadataTitle>Tools</MetadataTitle>
-      <TextContent>{tools}</TextContent>
-    </MetadataItem>
-    <MetadataItem>
-      <MetadataTitle>Role</MetadataTitle>
-      <TextContent>{role}</TextContent>
-    </MetadataItem>
-    { site
-      && (
-      <MetadataItem>
-        <MetadataTitle>External Site</MetadataTitle>
-        <TextContent>
-          <ExternalLink href={site} target="_blank" rel="noopener noreferrer">
-            {site}
-          </ExternalLink>
-        </TextContent>
-      </MetadataItem>
-      )}
-  </MetadataSection>
-);
-
-export const getProjectMedia = (projectData: any, showMainMedia: boolean) => {
-  const { projectMedia } = projectData;
-  return showMainMedia
-    ? [
-      {
-        type: MediaTypes.image,
-        src: projectData.media,
-      },
-    ].concat(projectMedia)
-    : projectMedia;
-};
-
-
-interface BaseProjectPageProps {
-  year: string;
-  title: string;
-  body: React.ReactNode;
-  tools: string;
-  role: string;
-  site?: string,
-};
-
-export const BaseProjectPage = ({
-  year, title, tools, role, site, body,
-}: BaseProjectPageProps) => (
-  // TODO: Fix Layout
-  <div>
-    <Page>
-      <PageCenteringContainer>
-        <PageTitle>{title}</PageTitle>
-        <Metadata year={year} tools={tools} role={role} site={site} />
-        <Divider />
-        {body}
-      </PageCenteringContainer>
-    </Page>
-  </div>
-);
-
-
-interface BaseBodyContentProps {
+interface Props {
   content?: React.ReactNode;
-  media?: Project['otherMedia']
+  media: Project['otherMedia'] | null;
 };
 
-export const BaseBodyContent = ({ media, content }: BaseBodyContentProps) => {
+export default function ProjectBodyContent({ media, content }: Props) {
   const mediaSection = (media ?? []).map((mediaItem) => {
-    console.log(mediaItem);
     switch (mediaItem._type) {
       case "video": {
         const videoIframe = mediaItem.url?.includes('vimeo')
@@ -189,8 +100,3 @@ export const BaseBodyContent = ({ media, content }: BaseBodyContentProps) => {
     </TextContent>
   );
 };
-
-
-
-
-

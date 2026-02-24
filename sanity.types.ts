@@ -88,14 +88,14 @@ export type Project = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  slug?: Slug;
-  title?: string;
-  year?: string;
-  tools?: string;
-  role?: string;
+  slug: Slug;
+  title: string;
+  year: string;
+  tools: string;
+  role: string;
   site?: string;
-  primaryMedia?: string;
-  content?: Array<{
+  primaryMedia: string;
+  content: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -122,7 +122,7 @@ export type Project = {
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -147,9 +147,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
+  height: number;
+  width: number;
+  aspectRatio: number;
 };
 
 export type SanityImageMetadata = {
@@ -165,18 +165,18 @@ export type SanityImageMetadata = {
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
 };
 
 export type SanityFileAsset = {
@@ -264,7 +264,7 @@ export type BIO_QUERYResult = Array<{
 // Variable: PROJECTS_QUERY
 // Query: *[_type == "project" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, mainMedia, otherMedia}
 export type PROJECTS_QUERYResult = {
-  projectId: string | null;
+  projectId: string;
   content: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -282,11 +282,11 @@ export type PROJECTS_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
-  title: string | null;
-  year: string | null;
-  role: string | null;
-  tools: string | null;
+  }>;
+  title: string;
+  year: string;
+  role: string;
+  tools: string;
   site: string | null;
   mainMedia: null;
   otherMedia: Array<{
