@@ -6,7 +6,6 @@ import styles from "./page.module.scss";
 
 export default async function HomePage() {
   const featuredProjectReferences = await client.fetch(FEATURED_PROJECTS_QUERY);
-  console.log(featuredProjectReferences);
 
   return (
     <div>
