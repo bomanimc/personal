@@ -2,7 +2,6 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 import {client} from '@/sanity/lib/client';
 import {PROJECTS_QUERY} from '@/sanity/lib/queries';
-import { ProjectContent } from '../../constants';
 import { BaseProjectPage, BaseBodyContent } from '../../components/CommonProjectComponents';
 import { Metadata } from 'next';
 interface ProjectParams {
@@ -34,24 +33,22 @@ export default async function ProjectPage({ params }: Props) {
   if (!fetchedProject) {
     return;
   }
-  
-  // @ts-ignore
-  const projectData = ProjectContent[fetchedProject.projectId];
+
+  console.log(fetchedProject?.otherMedia)
 
   return (
+    // TODO: Get rich text to work in these strings
     <BaseProjectPage
-      title={projectData.title}
-      year={projectData.year}
-      tools={projectData.tools}
-      role={projectData.role}
-      site={projectData.site}
+      title={fetchedProject.title}
+      year={fetchedProject.year}
+      tools={fetchedProject.tools}
+      role={fetchedProject.role}
+      site={fetchedProject.site}
       body={(
         <BaseBodyContent
-          project={projectData}
-          showMainMedia={false}
-          customContent={
-             // @ts-ignore
-            <PortableText value={fetchedProject?.content} />
+          media={fetchedProject?.otherMedia}
+          content={
+            <PortableText value={fetchedProject.content} />
           }
         />
       )}

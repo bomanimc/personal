@@ -7,6 +7,8 @@ import React from 'react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { audioCodec } from "@cloudinary/url-gen/actions/transcode";
+import type { Project } from '@/sanity.types'
+
 import { MediaTypes } from '../../constants';
 import {
   ExternalLink,
@@ -100,20 +102,19 @@ export const BaseProjectPage = ({
 
 
 interface BaseBodyContentProps {
-  customContent?: React.ReactNode;
-  project: any;
-  showMainMedia?: boolean;
+  content?: React.ReactNode;
+  media?: Project['otherMedia']
 };
 
-export const BaseBodyContent = ({ project, showMainMedia = true, customContent }: BaseBodyContentProps) => {
-  // @ts-ignore
-  const mediaSection = getProjectMedia(project, showMainMedia).map((media) => {
-    switch (media.type) {
-      case MediaTypes.video: {
-        const videoIframe = media.videoUrl.includes('vimeo')
+export const BaseBodyContent = ({ media, content }: BaseBodyContentProps) => {
+  const mediaSection = (media ?? []).map((mediaItem) => {
+    console.log(mediaItem);
+    switch (mediaItem._type) {
+      case "video": {
+        const videoIframe = mediaItem.url?.includes('vimeo')
           ? (
             <iframe
-              src={`${media.videoUrl}?title=0&amp;byline=0&amp;portrait=0&amp;playsinline=0&amp;autopause=0&amp;controls=0&amp;app_id=122963`}
+              src={`${mediaItem.url}?title=0&amp;byline=0&amp;portrait=0&amp;playsinline=0&amp;autopause=0&amp;controls=0&amp;app_id=122963`}
               allow="autoplay; fullscreen"
               allowFullScreen={true}
               title="Vimeo Video Player"
@@ -129,7 +130,7 @@ export const BaseBodyContent = ({ project, showMainMedia = true, customContent }
               allowFullScreen={true}
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               title="YouTube Video Player"
-              src={`${media.videoUrl}?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1`}
+              src={`${mediaItem.url}?autoplay=0&amp;mute=0&amp;controls=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1`}
               id="widget2"
               width="100%"
               height="100%"
@@ -137,16 +138,16 @@ export const BaseBodyContent = ({ project, showMainMedia = true, customContent }
             />
           );
         return (
-          <div className={styles.videoWrapper} key={media.videoUrl}>
+          <div className={styles.videoWrapper} key={mediaItem.url}>
             {videoIframe}
           </div>
         );
       }
-      case MediaTypes.image:
+      case "cloudinaryImage":
       default: {
-        if (media.src.includes('video')) {
+        if (mediaItem.cloudinaryKey?.includes('video')) {
           const myVideo = myCld
-            .video(media.src)
+            .video(mediaItem.cloudinaryKey)
             .transcode(audioCodec("none"));
 
           return (
@@ -163,12 +164,12 @@ export const BaseBodyContent = ({ project, showMainMedia = true, customContent }
           );
         } else {
           const img = myCld
-            .image(media.src)
+            .image(mediaItem.cloudinaryKey)
             .quality('auto:best')
             .format('auto');
 
           return (
-            <div className={styles.projectPageImageContainer} key={media.src}>
+            <div className={styles.projectPageImageContainer} key={mediaItem.cloudinaryKey}>
               <AdvancedImage
                 className={styles.projectPageImage}
                 cldImg={img}
@@ -179,8 +180,6 @@ export const BaseBodyContent = ({ project, showMainMedia = true, customContent }
       }
     }
   });
-
-  const content = customContent || project.body;
 
   return (
     <TextContent>

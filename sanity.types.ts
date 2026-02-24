@@ -13,6 +13,24 @@
  */
 
 // Source: schema.json
+export type Video = {
+  _id: string;
+  _type: "video";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  url?: string;
+};
+
+export type CloudinaryImage = {
+  _id: string;
+  _type: "cloudinaryImage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  cloudinaryKey?: string;
+};
+
 export type SpeakingEngagement = {
   _id: string;
   _type: "speakingEngagement";
@@ -72,6 +90,11 @@ export type Project = {
   _rev: string;
   slug?: Slug;
   title?: string;
+  year?: string;
+  tools?: string;
+  role?: string;
+  site?: string;
+  primaryMedia?: string;
   content?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -90,6 +113,11 @@ export type Project = {
     _type: "block";
     _key: string;
   }>;
+  otherMedia?: Array<{
+    _key: string;
+  } & CloudinaryImage | {
+    _key: string;
+  } & Video>;
 };
 
 export type Slug = {
@@ -210,7 +238,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: BIO_QUERY
@@ -234,7 +262,7 @@ export type BIO_QUERYResult = Array<{
   _key: string;
 }> | null;
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project" && slug.current == $project][0]{'projectId': slug.current, content, title}
+// Query: *[_type == "project" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, mainMedia, otherMedia}
 export type PROJECTS_QUERYResult = {
   projectId: string | null;
   content: Array<{
@@ -256,6 +284,16 @@ export type PROJECTS_QUERYResult = {
     _key: string;
   }> | null;
   title: string | null;
+  year: string | null;
+  role: string | null;
+  tools: string | null;
+  site: string | null;
+  mainMedia: null;
+  otherMedia: Array<{
+    _key: string;
+  } & CloudinaryImage | {
+    _key: string;
+  } & Video> | null;
 } | null;
 // Variable: SOCIALS_QUERY
 // Query: *[_type == "socialMedia"]|order(orderRank)
@@ -290,7 +328,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"personInfo\"][0].bio": BIO_QUERYResult;
-    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title}": PROJECTS_QUERYResult;
+    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, mainMedia, otherMedia}": PROJECTS_QUERYResult;
     "*[_type == \"socialMedia\"]|order(orderRank)": SOCIALS_QUERYResult;
     "*[_type == \"speakingEngagement\"]": SPEAKING_ENGAGEMENTS_QUERYResult;
   }
