@@ -6,3 +6,4 @@ export const FEATURED_PROJECTS_QUERY = defineQuery(`*[_type == "featuredProject"
 export const SOCIALS_QUERY = defineQuery(`*[_type == "socialMedia"]|order(orderRank)`)
 // TODO: Fix the date field on projects and order in query
 export const SPEAKING_ENGAGEMENTS_QUERY = defineQuery(`*[_type == "speakingEngagement"]`)
+export const INTERVIEWS_QUERY = defineQuery(`*[_type == "interview"]`)

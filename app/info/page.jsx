@@ -4,7 +4,11 @@
 // import type { Metadata } from 'next'
 import styled from "styled-components";
 import { client } from "@/sanity/lib/client";
-import { BIO_QUERY, SPEAKING_ENGAGEMENTS_QUERY } from "@/sanity/lib/queries";
+import {
+  BIO_QUERY,
+  INTERVIEWS_QUERY,
+  SPEAKING_ENGAGEMENTS_QUERY,
+} from "@/sanity/lib/queries";
 import PropTypes from "prop-types";
 import { PortableText } from "@portabletext/react";
 import { AboutCopy } from "../../constants";
@@ -31,7 +35,8 @@ const AboutBoxContent = styled.div`
   border-color: white;
   padding: 6px;
 
-  a, p {
+  a,
+  p {
     padding-bottom: 0px !important;
     margin-bottom: 2px;
   }
@@ -187,27 +192,32 @@ const WritingBox = () => (
   </div>
 );
 
-// name, location, org, date, link, isNameTitle,
-const InterviewsBox = () => (
-  <div>
-    <AboutBoxTitle>Interviews</AboutBoxTitle>
-    <AboutBoxContent>
-      <div>
-        {AboutCopy.interviews.map((item) => (
-          <InterviewLink
-            key={item.name}
-            name={item.name}
-            org={item.org}
-            date={item.date}
-            location={item.location}
-            link={item.link}
-            isNameTitle={item.isNameTitle}
-          />
-        ))}
-      </div>
-    </AboutBoxContent>
-  </div>
-);
+const InterviewsBox = async () => {
+  const interviews = await client.fetch(INTERVIEWS_QUERY);
+
+  return (
+    <div>
+      <AboutBoxTitle>Interviews</AboutBoxTitle>
+      <AboutBoxContent>
+        <div>
+          {interviews
+            // TODO: Handle sorting at query level
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((item) => (
+              <InterviewLink
+                key={item.name}
+                name={item.name}
+                org={item.organization}
+                date={item.date}
+                location={item.location}
+                link={item.url}
+              />
+            ))}
+        </div>
+      </AboutBoxContent>
+    </div>
+  );
+};
 
 const FellowshipBox = () => (
   <div>

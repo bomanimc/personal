@@ -13,6 +13,19 @@
  */
 
 // Source: schema.json
+export type Interview = {
+  _id: string;
+  _type: "interview";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  organization?: string;
+  location?: string;
+  date?: string;
+  url?: string;
+};
+
 export type FeaturedProject = {
   _id: string;
   _type: "featuredProject";
@@ -253,7 +266,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = FeaturedProject | Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Interview | FeaturedProject | Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: BIO_QUERY
@@ -345,6 +358,20 @@ export type SPEAKING_ENGAGEMENTS_QUERYResult = Array<{
   url?: string;
   isNameTitle?: boolean;
 }>;
+// Variable: INTERVIEWS_QUERY
+// Query: *[_type == "interview"]
+export type INTERVIEWS_QUERYResult = Array<{
+  _id: string;
+  _type: "interview";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  organization?: string;
+  location?: string;
+  date?: string;
+  url?: string;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -355,5 +382,6 @@ declare module "@sanity/client" {
     "*[_type == \"featuredProject\"]|order(orderRank){ \"project\": project->{'projectId': slug.current, title, primaryMedia} }": FEATURED_PROJECTS_QUERYResult;
     "*[_type == \"socialMedia\"]|order(orderRank)": SOCIALS_QUERYResult;
     "*[_type == \"speakingEngagement\"]": SPEAKING_ENGAGEMENTS_QUERYResult;
+    "*[_type == \"interview\"]": INTERVIEWS_QUERYResult;
   }
 }
