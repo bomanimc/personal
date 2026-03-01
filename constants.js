@@ -45,26 +45,6 @@ export const AboutCopy = {
       date: 'Knight Lab',
     },
   ],
-  interviews: [
-    {
-      name: 'TensorFlow.js Community "Show & Tell" #5',
-      link: 'https://youtu.be/IeTibm880ys?t=1317',
-      org: 'TensorFlow',
-      date: 'April 2021',
-    },
-    {
-      name: 'Speaker at Pond Mag & Eto Ano’s "Year-End Education Convention"',
-      org: "BABY TV by Baby's All Right",
-      date: 'December 2020',
-      location: 'Brooklyn, NY',
-    },
-    {
-      name: 'Making ml5.js Accessible: Interview with Bomani Oseni McClendon',
-      link: 'https://medium.com/processing-foundation/making-ml5-js-accessible-b28ae295af4a',
-      org: 'Processing Foundation',
-      date: 'July 2020',
-    },
-  ],
   teaching: [
     {
       name: 'Device Art',
