@@ -67,7 +67,7 @@ export const AboutCopy = {
       institution: 'Parsons School of Design',
       program: 'BFA Design & Technology',
       date: 'Fall 2020 (Online)',
-      location: 'New York, NY ',
+      location: 'New York, NY',
       link: 'https://docs.google.com/document/d/1rrc598ClaHOUXBGLW-vwzK8Yzt3KIU0uXRiqyQUFiEU/edit?usp=sharing',
     },
     {

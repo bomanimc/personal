@@ -8,6 +8,7 @@ import { cloudinaryImageType } from "./cloudinaryImage";
 import { videoType } from "./video";
 import { featuredProjectType } from "./featuredProject";
 import { interviewType } from "./interview";
+import { courseTaughtType } from "./courseTaught";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +20,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     videoType,
     featuredProjectType,
     interviewType,
+    courseTaughtType,
   ],
 };

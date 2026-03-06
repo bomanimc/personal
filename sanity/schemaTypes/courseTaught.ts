@@ -1,7 +1,8 @@
 import { defineField, defineType } from "sanity";
+import { orderRankField } from "@sanity/orderable-document-list";
 
-export const interviewType = defineType({
-  name: "interview",
+export const courseTaughtType = defineType({
+  name: "courseTaught",
   type: "document",
   fields: [
     defineField({
@@ -10,7 +11,12 @@ export const interviewType = defineType({
       validation: rule => rule.required(),
     }),
     defineField({
-      name: "organization",
+      name: "institution",
+      type: "string",
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: "program",
       type: "string",
       validation: rule => rule.required(),
     }),
@@ -28,5 +34,6 @@ export const interviewType = defineType({
       name: "url",
       type: "url",
     }),
+    orderRankField({ type: "courseTaught" }),
   ],
 });

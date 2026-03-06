@@ -9,21 +9,25 @@ export const speakingEngagementType = defineType({
       title: "Name",
       name: "name",
       type: "string",
+      validation: rule => rule.required(),
     }),
     defineField({
       title: "Event",
       name: "event",
       type: "string",
+      validation: rule => rule.required(),
     }),
     defineField({
       title: "Location",
       name: "location",
       type: "string",
+      validation: rule => rule.required(),
     }),
     defineField({
       title: "Date",
       name: "date",
       type: "string",
+      validation: rule => rule.required(),
     }),
     defineField({
       title: "URL",
@@ -34,6 +38,7 @@ export const speakingEngagementType = defineType({
       title: "Is Name the title?",
       name: "isNameTitle",
       type: "boolean",
+      validation: rule => rule.required(),
     }),
   ],
 });

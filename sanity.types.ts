@@ -13,16 +13,31 @@
  */
 
 // Source: schema.json
+export type CourseTaught = {
+  _id: string;
+  _type: "courseTaught";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  institution: string;
+  program: string;
+  location: string;
+  date: string;
+  url?: string;
+  orderRank?: string;
+};
+
 export type Interview = {
   _id: string;
   _type: "interview";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  organization?: string;
-  location?: string;
-  date?: string;
+  name: string;
+  organization: string;
+  location: string;
+  date: string;
   url?: string;
 };
 
@@ -65,12 +80,12 @@ export type SpeakingEngagement = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  event?: string;
-  location?: string;
-  date?: string;
+  name: string;
+  event: string;
+  location: string;
+  date: string;
   url?: string;
-  isNameTitle?: boolean;
+  isNameTitle: boolean;
 };
 
 export type SocialMedia = {
@@ -266,7 +281,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Interview | FeaturedProject | Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = CourseTaught | Interview | FeaturedProject | Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: BIO_QUERY
@@ -351,12 +366,12 @@ export type SPEAKING_ENGAGEMENTS_QUERYResult = Array<{
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  event?: string;
-  location?: string;
-  date?: string;
+  name: string;
+  event: string;
+  location: string;
+  date: string;
   url?: string;
-  isNameTitle?: boolean;
+  isNameTitle: boolean;
 }>;
 // Variable: INTERVIEWS_QUERY
 // Query: *[_type == "interview"]
@@ -366,11 +381,27 @@ export type INTERVIEWS_QUERYResult = Array<{
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  organization?: string;
-  location?: string;
-  date?: string;
+  name: string;
+  organization: string;
+  location: string;
+  date: string;
   url?: string;
+}>;
+// Variable: COURSES_TAUGHT_QUERY
+// Query: *[_type == "courseTaught"]|order(orderRank)
+export type COURSES_TAUGHT_QUERYResult = Array<{
+  _id: string;
+  _type: "courseTaught";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  institution: string;
+  program: string;
+  location: string;
+  date: string;
+  url?: string;
+  orderRank?: string;
 }>;
 
 // Query TypeMap
@@ -383,5 +414,6 @@ declare module "@sanity/client" {
     "*[_type == \"socialMedia\"]|order(orderRank)": SOCIALS_QUERYResult;
     "*[_type == \"speakingEngagement\"]": SPEAKING_ENGAGEMENTS_QUERYResult;
     "*[_type == \"interview\"]": INTERVIEWS_QUERYResult;
+    "*[_type == \"courseTaught\"]|order(orderRank)": COURSES_TAUGHT_QUERYResult;
   }
 }

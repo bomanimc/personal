@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { client } from "@/sanity/lib/client";
 import {
   BIO_QUERY,
+  COURSES_TAUGHT_QUERY,
   INTERVIEWS_QUERY,
   SPEAKING_ENGAGEMENTS_QUERY,
 } from "@/sanity/lib/queries";
@@ -125,26 +126,30 @@ const EducationBox = () => (
   </div>
 );
 
-const TeachingBox = () => (
-  <div>
-    <AboutBoxTitle>Teaching</AboutBoxTitle>
-    <AboutBoxContent>
-      <div>
-        {AboutCopy.teaching.map((item) => (
-          <TeachingItem
-            key={item.name}
-            name={item.name}
-            link={item.link}
-            institution={item.institution}
-            program={item.program}
-            date={item.date}
-            location={item.location}
-          />
-        ))}
-      </div>
-    </AboutBoxContent>
-  </div>
-);
+const TeachingBox = async () => {
+  const coursesTaught = await client.fetch(COURSES_TAUGHT_QUERY);
+
+  return (
+    <div>
+      <AboutBoxTitle>Teaching</AboutBoxTitle>
+      <AboutBoxContent>
+        <div>
+          {coursesTaught.map((item) => (
+            <TeachingItem
+              key={item.name}
+              name={item.name}
+              link={item.url}
+              institution={item.institution}
+              program={item.program}
+              date={item.date}
+              location={item.location}
+            />
+          ))}
+        </div>
+      </AboutBoxContent>
+    </div>
+  );
+};
 
 const SpeakingBox = async () => {
   const speakingEngagements = await client.fetch(SPEAKING_ENGAGEMENTS_QUERY);

@@ -12,6 +12,7 @@ export const structure: StructureResolver = (S, context) =>
       S.divider(),
       // TODO: Default to initial person info
       S.documentTypeListItem('personInfo').title('Personal Info'),
+      orderableDocumentListDeskItem({type: 'courseTaught', title: 'Courses Taught', S, context}),
       S.documentTypeListItem('speakingEngagement'),
       S.documentTypeListItem('interview'),
       // TODO: See of there's a way to add new schema types to list by default
