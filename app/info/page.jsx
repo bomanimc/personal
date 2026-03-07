@@ -141,6 +141,7 @@ const TeachingBox = async () => {
               link={item.url}
               institution={item.institution}
               program={item.program}
+              format={item.format}
               date={item.date}
               location={item.location}
             />
@@ -271,7 +272,7 @@ const EducationItem = ({ name, degree, startDate, endDate }) => (
   </CVItem>
 );
 
-const TeachingItem = ({ name, link, institution, program, date, location }) => (
+const TeachingItem = ({ name, link, institution, program, format, date, location }) => (
   <CVItem>
     {link !== undefined && link !== null ? (
       <ExternalLink
@@ -286,6 +287,7 @@ const TeachingItem = ({ name, link, institution, program, date, location }) => (
       <p>{name}</p>
     )}
     <AboutDetail>{`${institution}, ${program}`}</AboutDetail>
+    <AboutDetail>{format}</AboutDetail>
     <AboutDetail>{`${date}`}</AboutDetail>
     <AboutDetail>{location}</AboutDetail>
   </CVItem>

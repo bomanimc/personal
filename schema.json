@@ -55,6 +55,13 @@
         },
         "optional": false
       },
+      "format": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
       "location": {
         "type": "objectAttribute",
         "value": {

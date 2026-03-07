@@ -22,6 +22,7 @@ export type CourseTaught = {
   name: string;
   institution: string;
   program: string;
+  format: string;
   location: string;
   date: string;
   url?: string;
@@ -398,6 +399,7 @@ export type COURSES_TAUGHT_QUERYResult = Array<{
   name: string;
   institution: string;
   program: string;
+  format: string;
   location: string;
   date: string;
   url?: string;
