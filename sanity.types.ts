@@ -13,6 +13,18 @@
  */
 
 // Source: schema.json
+export type Exhibition = {
+  _id: string;
+  _type: "exhibition";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  gallery: string;
+  location: string;
+  date: string;
+};
+
 export type CourseTaught = {
   _id: string;
   _type: "courseTaught";
@@ -42,18 +54,20 @@ export type Interview = {
   url?: string;
 };
 
+export type ProjectReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "project";
+};
+
 export type FeaturedProject = {
   _id: string;
   _type: "featuredProject";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  project: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "project";
-  };
+  project: ProjectReference;
   orderRank?: string;
 };
 
@@ -157,11 +171,18 @@ export type Project = {
     _type: "block";
     _key: string;
   }>;
-  otherMedia?: Array<{
-    _key: string;
-  } & CloudinaryImage | {
-    _key: string;
-  } & Video>;
+  otherMedia?: Array<
+    | {
+        cloudinaryKey?: string;
+        _type: "cloudinaryImage";
+        _key: string;
+      }
+    | {
+        url?: string;
+        _type: "video";
+        _key: string;
+      }
+  >;
 };
 
 export type Slug = {
@@ -203,6 +224,7 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette;
   lqip?: string;
   blurHash?: string;
+  thumbHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
 };
@@ -234,14 +256,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   source?: SanityAssetSourceData;
 };
 
@@ -263,14 +285,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -282,12 +304,36 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = CourseTaught | Interview | FeaturedProject | Video | CloudinaryImage | SpeakingEngagement | SocialMedia | PersonInfo | Project | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes =
+  | Exhibition
+  | CourseTaught
+  | Interview
+  | ProjectReference
+  | FeaturedProject
+  | Video
+  | CloudinaryImage
+  | SpeakingEngagement
+  | SocialMedia
+  | PersonInfo
+  | Project
+  | Slug
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityImageHotspot
+  | SanityImageCrop
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint;
+
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ./sanity/lib/queries.ts
+
+// Source: sanity/lib/queries.ts
 // Variable: BIO_QUERY
 // Query: *[_type == "personInfo"][0].bio
-export type BIO_QUERYResult = Array<{
+export type BIO_QUERY_RESULT = Array<{
   children?: Array<{
     marks?: Array<string>;
     text?: string;
@@ -305,9 +351,11 @@ export type BIO_QUERYResult = Array<{
   _type: "block";
   _key: string;
 }> | null;
+
+// Source: sanity/lib/queries.ts
 // Variable: PROJECT_QUERY
 // Query: *[_type == "project" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, otherMedia}
-export type PROJECT_QUERYResult = {
+export type PROJECT_QUERY_RESULT = {
   projectId: string;
   content: Array<{
     children?: Array<{
@@ -332,24 +380,35 @@ export type PROJECT_QUERYResult = {
   role: string;
   tools: string;
   site: string | null;
-  otherMedia: Array<{
-    _key: string;
-  } & CloudinaryImage | {
-    _key: string;
-  } & Video> | null;
+  otherMedia: Array<
+    | {
+        cloudinaryKey?: string;
+        _type: "cloudinaryImage";
+        _key: string;
+      }
+    | {
+        url?: string;
+        _type: "video";
+        _key: string;
+      }
+  > | null;
 } | null;
+
+// Source: sanity/lib/queries.ts
 // Variable: FEATURED_PROJECTS_QUERY
 // Query: *[_type == "featuredProject"]|order(orderRank){ "project": project->{'projectId': slug.current, title, primaryMedia} }
-export type FEATURED_PROJECTS_QUERYResult = Array<{
+export type FEATURED_PROJECTS_QUERY_RESULT = Array<{
   project: {
     projectId: string;
     title: string;
     primaryMedia: string;
   };
 }>;
+
+// Source: sanity/lib/queries.ts
 // Variable: SOCIALS_QUERY
 // Query: *[_type == "socialMedia"]|order(orderRank)
-export type SOCIALS_QUERYResult = Array<{
+export type SOCIALS_QUERY_RESULT = Array<{
   _id: string;
   _type: "socialMedia";
   _createdAt: string;
@@ -359,9 +418,11 @@ export type SOCIALS_QUERYResult = Array<{
   url?: string;
   orderRank?: string;
 }>;
+
+// Source: sanity/lib/queries.ts
 // Variable: SPEAKING_ENGAGEMENTS_QUERY
 // Query: *[_type == "speakingEngagement"]
-export type SPEAKING_ENGAGEMENTS_QUERYResult = Array<{
+export type SPEAKING_ENGAGEMENTS_QUERY_RESULT = Array<{
   _id: string;
   _type: "speakingEngagement";
   _createdAt: string;
@@ -374,9 +435,11 @@ export type SPEAKING_ENGAGEMENTS_QUERYResult = Array<{
   url?: string;
   isNameTitle: boolean;
 }>;
+
+// Source: sanity/lib/queries.ts
 // Variable: INTERVIEWS_QUERY
 // Query: *[_type == "interview"]
-export type INTERVIEWS_QUERYResult = Array<{
+export type INTERVIEWS_QUERY_RESULT = Array<{
   _id: string;
   _type: "interview";
   _createdAt: string;
@@ -388,9 +451,11 @@ export type INTERVIEWS_QUERYResult = Array<{
   date: string;
   url?: string;
 }>;
+
+// Source: sanity/lib/queries.ts
 // Variable: COURSES_TAUGHT_QUERY
 // Query: *[_type == "courseTaught"]|order(orderRank)
-export type COURSES_TAUGHT_QUERYResult = Array<{
+export type COURSES_TAUGHT_QUERY_RESULT = Array<{
   _id: string;
   _type: "courseTaught";
   _createdAt: string;
@@ -410,12 +475,12 @@ export type COURSES_TAUGHT_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"personInfo\"][0].bio": BIO_QUERYResult;
-    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, otherMedia}": PROJECT_QUERYResult;
-    "*[_type == \"featuredProject\"]|order(orderRank){ \"project\": project->{'projectId': slug.current, title, primaryMedia} }": FEATURED_PROJECTS_QUERYResult;
-    "*[_type == \"socialMedia\"]|order(orderRank)": SOCIALS_QUERYResult;
-    "*[_type == \"speakingEngagement\"]": SPEAKING_ENGAGEMENTS_QUERYResult;
-    "*[_type == \"interview\"]": INTERVIEWS_QUERYResult;
-    "*[_type == \"courseTaught\"]|order(orderRank)": COURSES_TAUGHT_QUERYResult;
+    '*[_type == "personInfo"][0].bio': BIO_QUERY_RESULT;
+    "*[_type == \"project\" && slug.current == $project][0]{'projectId': slug.current, content, title, year, role, tools, site, otherMedia}": PROJECT_QUERY_RESULT;
+    '*[_type == "featuredProject"]|order(orderRank){ "project": project->{\'projectId\': slug.current, title, primaryMedia} }': FEATURED_PROJECTS_QUERY_RESULT;
+    '*[_type == "socialMedia"]|order(orderRank)': SOCIALS_QUERY_RESULT;
+    '*[_type == "speakingEngagement"]': SPEAKING_ENGAGEMENTS_QUERY_RESULT;
+    '*[_type == "interview"]': INTERVIEWS_QUERY_RESULT;
+    '*[_type == "courseTaught"]|order(orderRank)': COURSES_TAUGHT_QUERY_RESULT;
   }
 }

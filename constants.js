@@ -92,48 +92,4 @@ export const AboutCopy = {
       date: '2015 - 2017',
     },
   ],
-  exhibitions: [
-    {
-      title: 'eTextiles Spring Break: Artists In Residence Exhibition',
-      gallery: 'Prairie Ronde: Downtown Gallery',
-      location: 'Vicksburg, MI',
-      date: '2022',
-    },
-    {
-      title: 'No Media',
-      gallery: 'The Wrong 2022 Biennale',
-      location: 'Online (https://thewrong.tv)',
-      date: '2022',
-    },
-    {
-      title: 'Creative Code Festival',
-      gallery: 'Lightbox',
-      location: 'New York, NY',
-      date: '2020',
-    },
-    {
-      title: 'Poetic Computation: Seven Years of SFPC',
-      gallery: 'Westbeth Gallery',
-      location: 'New York, NY',
-      date: '2020',
-    },
-    {
-      title: 'Second Sundays',
-      gallery: 'Pioneer Works',
-      location: 'Brooklyn, NY',
-      date: '2019',
-    },
-    {
-      title: 'SFPC Spring 2019 Student Showcase',
-      gallery: 'School for Poetic Computation',
-      location: 'New York, NY',
-      date: '2019',
-    },
-    {
-      title: 'Innuendo',
-      gallery: 'Light Grey Art Lab',
-      location: 'Minneapolis, MN',
-      date: '2019',
-    },
-  ],
 };

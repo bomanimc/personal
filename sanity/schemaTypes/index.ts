@@ -9,6 +9,7 @@ import { videoType } from "./video";
 import { featuredProjectType } from "./featuredProject";
 import { interviewType } from "./interview";
 import { courseTaughtType } from "./courseTaught";
+import { exhibitionType } from "./exhibition";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -21,5 +22,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     featuredProjectType,
     interviewType,
     courseTaughtType,
+    exhibitionType,
   ],
 };

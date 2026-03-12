@@ -8,6 +8,7 @@ import {
   BIO_QUERY,
   COURSES_TAUGHT_QUERY,
   INTERVIEWS_QUERY,
+  EXHIBITIONS_QUERY,
   SPEAKING_ENGAGEMENTS_QUERY,
 } from "@/sanity/lib/queries";
 import PropTypes from "prop-types";
@@ -243,24 +244,31 @@ const FellowshipBox = () => (
   </div>
 );
 
-const ExhibitionBox = () => (
-  <div>
-    <AboutBoxTitle>Exhibitions & Showings</AboutBoxTitle>
-    <AboutBoxContent>
-      <div>
-        {AboutCopy.exhibitions.map((item) => (
-          <ExhibitionItem
-            key={item.title}
-            title={item.title}
-            gallery={item.gallery}
-            location={item.location}
-            date={item.date}
-          />
-        ))}
-      </div>
-    </AboutBoxContent>
-  </div>
-);
+const ExhibitionBox = async () => {
+  const exhibitions = await client.fetch(EXHIBITIONS_QUERY);
+
+  return (
+    <div>
+      <AboutBoxTitle>Exhibitions & Showings</AboutBoxTitle>
+      <AboutBoxContent>
+        <div>
+          {exhibitions
+            // TODO: Handle sorting at query level
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((item) => (
+              <ExhibitionItem
+                key={item.title}
+                title={item.title}
+                gallery={item.gallery}
+                location={item.location}
+                date={item.date}
+              />
+            ))}
+        </div>
+      </AboutBoxContent>
+    </div>
+  );
+};
 
 const EducationItem = ({ name, degree, startDate, endDate }) => (
   <CVItem>
@@ -272,7 +280,15 @@ const EducationItem = ({ name, degree, startDate, endDate }) => (
   </CVItem>
 );
 
-const TeachingItem = ({ name, link, institution, program, format, date, location }) => (
+const TeachingItem = ({
+  name,
+  link,
+  institution,
+  program,
+  format,
+  date,
+  location,
+}) => (
   <CVItem>
     {link !== undefined && link !== null ? (
       <ExternalLink
