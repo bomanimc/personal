@@ -30,6 +30,7 @@
     "react-draggable": "^4.4.6",
     "react-markdown": "^10.1.0",
     "sanity": "^5.14.1",
+    "sanity-plugin-netlify": "^1.4.0",
     "styled-components": "^6.3.9",
     "tone": "^14.7.77",
     "unmute-ios-audio": "^3.3.0"
