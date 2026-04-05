@@ -14,6 +14,7 @@ import {
 } from '../../components/CommonComponents';
 import ProjectBodyContent from "./projectBodyContent";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 interface ProjectParams {
   project: string;
 }
@@ -39,7 +40,7 @@ export default async function ProjectPage({ params }: Props) {
 
   // TODO: Understand why this is possible null
   if (!fetchedProject) {
-    return;
+    notFound();
   }
 
   const { title, year, tools, role, site, content, otherMedia } =
