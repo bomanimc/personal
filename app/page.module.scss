@@ -5,3 +5,20 @@
   margin-top: 36px;
   margin-bottom: 36px;
 }
+
+.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  // TODO: Use theme breakpoint
+  @media (max-width: 930px) {
+    display: none;
+  }
+}
+
+.placeholderImage {
+  height: 150px;
+  opacity: 0.25;
+}
