@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 
-import useShouldHideHeaderFooter from '@/hooks/useShouldHideHeaderFooter';
+import useShouldShowNavOrFooter from '@/hooks/useShouldShowNavOrFooter';
 
 const Container = styled.div`
   margin-bottom: 36px;
@@ -13,8 +13,8 @@ const Container = styled.div`
 `;
 
 const LinksContainer = ({children}: {children: React.ReactNode}) => {
- const shouldHide = useShouldHideHeaderFooter();
-  if (shouldHide) {
+ const {shouldShowFooter} = useShouldShowNavOrFooter();
+  if (!shouldShowFooter) {
     return;
   }
 

@@ -1,12 +1,12 @@
 "use client"
 
-import useShouldHideHeaderFooter from '@/hooks/useShouldHideHeaderFooter';
+import useShouldShowNavOrFooter from '@/hooks/useShouldShowNavOrFooter';
 import { InternalLink } from '../CommonComponents';
 import styles from "./navbar.module.scss";
 
 const NavBar = () => {
-  const shouldHide = useShouldHideHeaderFooter();
-  if (shouldHide) {
+  const {shouldShowNav} = useShouldShowNavOrFooter();
+  if (!shouldShowNav) {
     return;
   }
 
