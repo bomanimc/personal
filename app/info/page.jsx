@@ -51,6 +51,7 @@ const AboutBoxTitle = styled.div`
   font-size: 12px;
   line-height: 6px;
   font-weight: bold;
+  scroll-margin-top: 250px;
 `;
 
 const AboutDetail = styled(Body)`
@@ -109,8 +110,8 @@ const BioContent = ({ bioPortableText }) => {
 };
 
 const EducationBox = () => (
-  <div id="education">
-    <AboutBoxTitle>Education</AboutBoxTitle>
+  <div>
+    <AboutBoxTitle id="education">Education</AboutBoxTitle>
     <AboutBoxContent>
       <div>
         {AboutCopy.education.map((item) => (
@@ -131,8 +132,8 @@ const TeachingBox = async () => {
   const coursesTaught = await client.fetch(COURSES_TAUGHT_QUERY);
 
   return (
-    <div id="teaching">
-      <AboutBoxTitle>Teaching</AboutBoxTitle>
+    <div>
+      <AboutBoxTitle id="teaching">Teaching</AboutBoxTitle>
       <AboutBoxContent>
         <div>
           {coursesTaught.map((item) => (
@@ -157,8 +158,8 @@ const SpeakingBox = async () => {
   const speakingEngagements = await client.fetch(SPEAKING_ENGAGEMENTS_QUERY);
 
   return (
-    <div id="speaking">
-      <AboutBoxTitle>Speaking</AboutBoxTitle>
+    <div>
+      <AboutBoxTitle id="speaking">Speaking</AboutBoxTitle>
       <AboutBoxContent>
         <div>
           {speakingEngagements
@@ -182,8 +183,8 @@ const SpeakingBox = async () => {
 };
 
 const WritingBox = () => (
-  <div id="writing">
-    <AboutBoxTitle>Writing</AboutBoxTitle>
+  <div>
+    <AboutBoxTitle id="writing">Writing</AboutBoxTitle>
     <AboutBoxContent>
       <div>
         {AboutCopy.writing.map((item) => (
@@ -203,8 +204,8 @@ const InterviewsBox = async () => {
   const interviews = await client.fetch(INTERVIEWS_QUERY);
 
   return (
-    <div id="interviews">
-      <AboutBoxTitle>Interviews</AboutBoxTitle>
+    <div>
+      <AboutBoxTitle id="interviews">Interviews</AboutBoxTitle>
       <AboutBoxContent>
         <div>
           {interviews
@@ -227,8 +228,8 @@ const InterviewsBox = async () => {
 };
 
 const FellowshipBox = () => (
-  <div id="residencies">
-    <AboutBoxTitle>Fellowships & Residencies</AboutBoxTitle>
+  <div>
+    <AboutBoxTitle id="residencies">Fellowships & Residencies</AboutBoxTitle>
     <AboutBoxContent>
       <div>
         {AboutCopy.fellowships.map((item) => (
@@ -248,8 +249,8 @@ const ExhibitionBox = async () => {
   const exhibitions = await client.fetch(EXHIBITIONS_QUERY);
 
   return (
-    <div id="exhibitions">
-      <AboutBoxTitle>Exhibitions & Showings</AboutBoxTitle>
+    <div>
+      <AboutBoxTitle id="exhibitions">Exhibitions & Showings</AboutBoxTitle>
       <AboutBoxContent>
         <div>
           {exhibitions
