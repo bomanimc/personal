@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
 import styled, { ThemeProvider } from "styled-components";
 import "./globals.css";
 import NavBar from "../components/NavBar";
@@ -70,26 +70,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const showTitleNav = true;
-  const showLinksBar = true;
 
   return (
     // TODO: Fix themeing approach
     <ThemeProvider theme={theme}>
-      <html lang="en" className={breweryFont.className}>
-        <body>
-          <StyledComponentsRegistry>
-            <BaseWrapper>
-              {showTitleNav && <NavBar />}
-              <Main>
-                <ContentWrapper>{children}</ContentWrapper>
-              </Main>
-              {showLinksBar && <LinksBar />}
-            </BaseWrapper>
-          </StyledComponentsRegistry>
-        </body>
-        <GoogleAnalytics gaId="G-H4V3JVL74Z" />
-      </html>
+        <html lang="en" className={breweryFont.className}>
+          <body>
+            <StyledComponentsRegistry>
+              <BaseWrapper>
+                <NavBar />
+                <Main>
+                  <ContentWrapper>{children}</ContentWrapper>
+                </Main>
+                <LinksBar />
+              </BaseWrapper>
+            </StyledComponentsRegistry>
+          </body>
+          <GoogleAnalytics gaId="G-H4V3JVL74Z" />
+        </html>
     </ThemeProvider>
   );
 }

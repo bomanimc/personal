@@ -1,17 +1,9 @@
-import React from "react";
 import styled, { css } from "styled-components";
 import { client } from "@/sanity/lib/client";
 import { SOCIALS_QUERY } from "@/sanity/lib/queries";
 
 import { ExternalLink } from "../CommonComponents";
-
-const LinksContainer = styled.div`
-  margin-bottom: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-`;
+import LinksContainer from "./LinksContainer";
 
 const linkStyle = css`
   display: inline-block;
