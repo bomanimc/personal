@@ -109,7 +109,7 @@ const BioContent = ({ bioPortableText }) => {
 };
 
 const EducationBox = () => (
-  <div>
+  <div id="education">
     <AboutBoxTitle>Education</AboutBoxTitle>
     <AboutBoxContent>
       <div>
@@ -131,7 +131,7 @@ const TeachingBox = async () => {
   const coursesTaught = await client.fetch(COURSES_TAUGHT_QUERY);
 
   return (
-    <div>
+    <div id="teaching">
       <AboutBoxTitle>Teaching</AboutBoxTitle>
       <AboutBoxContent>
         <div>
@@ -157,7 +157,7 @@ const SpeakingBox = async () => {
   const speakingEngagements = await client.fetch(SPEAKING_ENGAGEMENTS_QUERY);
 
   return (
-    <div>
+    <div id="speaking">
       <AboutBoxTitle>Speaking</AboutBoxTitle>
       <AboutBoxContent>
         <div>
@@ -182,7 +182,7 @@ const SpeakingBox = async () => {
 };
 
 const WritingBox = () => (
-  <div>
+  <div id="writing">
     <AboutBoxTitle>Writing</AboutBoxTitle>
     <AboutBoxContent>
       <div>
@@ -203,7 +203,7 @@ const InterviewsBox = async () => {
   const interviews = await client.fetch(INTERVIEWS_QUERY);
 
   return (
-    <div>
+    <div id="interviews">
       <AboutBoxTitle>Interviews</AboutBoxTitle>
       <AboutBoxContent>
         <div>
@@ -227,7 +227,7 @@ const InterviewsBox = async () => {
 };
 
 const FellowshipBox = () => (
-  <div>
+  <div id="residencies">
     <AboutBoxTitle>Fellowships & Residencies</AboutBoxTitle>
     <AboutBoxContent>
       <div>
@@ -248,7 +248,7 @@ const ExhibitionBox = async () => {
   const exhibitions = await client.fetch(EXHIBITIONS_QUERY);
 
   return (
-    <div>
+    <div id="exhibitions">
       <AboutBoxTitle>Exhibitions & Showings</AboutBoxTitle>
       <AboutBoxContent>
         <div>
