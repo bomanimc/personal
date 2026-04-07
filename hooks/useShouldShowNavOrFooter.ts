@@ -17,6 +17,6 @@ const NAV_FOOTER_OVERRIDES_BY_ROUTE: Record<string, Record<string, boolean>> = {
 
 export default function useShouldShowNavOrFooter() {
     const pathname = usePathname();
-    console.log(pathname);
-    return {...NAV_FOOTER_OVERRIDES_BY_ROUTE[pathname]};
+    const defaultPresentation = {shouldShowNav: true, shouldShowFooter: true};
+    return {...defaultPresentation, ...NAV_FOOTER_OVERRIDES_BY_ROUTE[pathname]};
 };
