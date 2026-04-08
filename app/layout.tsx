@@ -34,11 +34,13 @@ const BaseWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+  boxing-sizing: border-box;
   display: flex;
   flex: 1;
   align-content: center;
   flex-direction: column;
   padding: 0 3rem;
+  max-width: 100%;
 
   @media screen and (max-width: ${theme.breakPoints.mobile}) {
     padding: 0 1rem;
