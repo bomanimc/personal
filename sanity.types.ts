@@ -13,6 +13,19 @@
  */
 
 // Source: schema.json
+export type Residency = {
+  _id: string;
+  _type: "residency";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  organization: string;
+  url?: string;
+  role: string;
+  date: string;
+  orderRank?: string;
+};
+
 export type Exhibition = {
   _id: string;
   _type: "exhibition";
@@ -305,6 +318,7 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | Residency
   | Exhibition
   | CourseTaught
   | Interview
@@ -471,6 +485,37 @@ export type COURSES_TAUGHT_QUERY_RESULT = Array<{
   orderRank?: string;
 }>;
 
+// Source: sanity/lib/queries.ts
+// Variable: EXHIBITIONS_QUERY
+// Query: *[_type == "exhibition"]
+export type EXHIBITIONS_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "exhibition";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  gallery: string;
+  location: string;
+  date: string;
+}>;
+
+// Source: sanity/lib/queries.ts
+// Variable: RESIDENCY_QUERY
+// Query: *[_type == "residency"]|order(orderRank)
+export type RESIDENCY_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "residency";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  organization: string;
+  url?: string;
+  role: string;
+  date: string;
+  orderRank?: string;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -482,5 +527,7 @@ declare module "@sanity/client" {
     '*[_type == "speakingEngagement"]': SPEAKING_ENGAGEMENTS_QUERY_RESULT;
     '*[_type == "interview"]': INTERVIEWS_QUERY_RESULT;
     '*[_type == "courseTaught"]|order(orderRank)': COURSES_TAUGHT_QUERY_RESULT;
+    '*[_type == "exhibition"]': EXHIBITIONS_QUERY_RESULT;
+    '*[_type == "residency"]|order(orderRank)': RESIDENCY_QUERY_RESULT;
   }
 }

@@ -10,6 +10,7 @@ import {
   INTERVIEWS_QUERY,
   EXHIBITIONS_QUERY,
   SPEAKING_ENGAGEMENTS_QUERY,
+  RESIDENCY_QUERY,
 } from "@/sanity/lib/queries";
 import PropTypes from "prop-types";
 import { PortableText } from "@portabletext/react";
@@ -85,7 +86,7 @@ const AboutPage = async () => {
               <SpeakingBox />
               <InterviewsBox />
               <WritingBox />
-              <FellowshipBox />
+              <ResidencyBox />
               <ExhibitionBox />
             </AboutSectionContainer>
           </TextContent>
@@ -227,23 +228,28 @@ const InterviewsBox = async () => {
   );
 };
 
-const FellowshipBox = () => (
-  <div>
-    <AboutBoxTitle id="residencies">Fellowships & Residencies</AboutBoxTitle>
-    <AboutBoxContent>
-      <div>
-        {AboutCopy.fellowships.map((item) => (
-          <FellowshipItem
-            key={item.org}
-            org={item.org}
-            date={item.date}
-            title={item.title}
-          />
-        ))}
-      </div>
-    </AboutBoxContent>
-  </div>
-);
+const ResidencyBox = async () => {
+  const residencies = await client.fetch(RESIDENCY_QUERY);
+
+  return (
+    <div>
+      <AboutBoxTitle id="residencies">Residencies & Fellowships</AboutBoxTitle>
+      <AboutBoxContent>
+        <div>
+          {residencies.map((item) => (
+            <ResidencyItem
+              key={`${item.organization}-${item.title}`}
+              org={item.organization}
+              date={item.date}
+              role={item.role}
+              url={item.url}
+            />
+          ))}
+        </div>
+      </AboutBoxContent>
+    </div>
+  );
+};
 
 const ExhibitionBox = async () => {
   const exhibitions = await client.fetch(EXHIBITIONS_QUERY);
@@ -371,10 +377,21 @@ const WritingLink = ({ name, detail, link }) => (
   </CVItem>
 );
 
-const FellowshipItem = ({ org, title, date }) => (
+const ResidencyItem = ({ org, role, date, url }) => (
   <CVItem>
-    <p>{org}</p>
-    <AboutDetail>{title}</AboutDetail>
+    {url !== undefined && url !== null ? (
+        <ExternalLink
+          href={url}
+          key={url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {org}
+        </ExternalLink>
+      ) : (
+        <p>{org}</p>
+      )}
+    <AboutDetail>{role}</AboutDetail>
     <AboutDetail>{date}</AboutDetail>
   </CVItem>
 );
@@ -446,10 +463,11 @@ WritingLink.propTypes = {
   link: PropTypes.string.isRequired,
 };
 
-FellowshipItem.propTypes = {
+ResidencyItem.propTypes = {
   org: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 ExhibitionItem.propTypes = {

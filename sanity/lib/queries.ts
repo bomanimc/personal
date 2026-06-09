@@ -9,3 +9,4 @@ export const SPEAKING_ENGAGEMENTS_QUERY = defineQuery(`*[_type == "speakingEngag
 export const INTERVIEWS_QUERY = defineQuery(`*[_type == "interview"]`)
 export const COURSES_TAUGHT_QUERY = defineQuery(`*[_type == "courseTaught"]|order(orderRank)`)
 export const EXHIBITIONS_QUERY = defineQuery(`*[_type == "exhibition"]`)
+export const RESIDENCY_QUERY = defineQuery(`*[_type == "residency"]|order(orderRank)`)

@@ -10,6 +10,7 @@ import { featuredProjectType } from "./featuredProject";
 import { interviewType } from "./interview";
 import { courseTaughtType } from "./courseTaught";
 import { exhibitionType } from "./exhibition";
+import { residencyType }  from "./residency";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,5 +24,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     interviewType,
     courseTaughtType,
     exhibitionType,
+    residencyType
   ],
 };
