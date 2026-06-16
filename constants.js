@@ -1,28 +1,4 @@
 export const AboutCopy = {
-  education: [
-    {
-      name: 'New York University',
-      degree: 'Masters in Interactive Telecommunications',
-      startDate: '2019',
-      endDate: '2022',
-    },
-    {
-      name: 'B&H Emergency Medical Training',
-      degree: 'EMT Accelerated Course',
-      startDate: '2021',
-    },
-    {
-      name: 'School for Poetic Computation',
-      degree: '10-Week Spring Session',
-      startDate: '2019',
-    },
-    {
-      name: 'Northwestern University',
-      degree: 'B.S in Computer Science',
-      startDate: '2013',
-      endDate: '2017',
-    },
-  ],
   writing: [
     {
       name: 'A History of Pathologizing Blackness',

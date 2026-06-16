@@ -11,6 +11,7 @@ import {
   EXHIBITIONS_QUERY,
   SPEAKING_ENGAGEMENTS_QUERY,
   RESIDENCY_QUERY,
+  EDUCATION_QUERY,
 } from "@/sanity/lib/queries";
 import PropTypes from "prop-types";
 import { PortableText } from "@portabletext/react";
@@ -110,24 +111,31 @@ const BioContent = ({ bioPortableText }) => {
   );
 };
 
-const EducationBox = () => (
-  <div>
-    <AboutBoxTitle id="education">Education</AboutBoxTitle>
-    <AboutBoxContent>
-      <div>
-        {AboutCopy.education.map((item) => (
-          <EducationItem
-            key={item.name}
-            name={item.name}
-            startDate={item.startDate}
-            endDate={item.endDate}
-            degree={item.degree}
-          />
-        ))}
-      </div>
-    </AboutBoxContent>
-  </div>
-);
+const EducationBox = async () => {
+  const education = await client.fetch(EDUCATION_QUERY);
+
+  return (
+    <div>
+      <AboutBoxTitle id="education">Education</AboutBoxTitle>
+      <AboutBoxContent>
+        <div>
+          {education
+            // TODO: Handle sorting at query level
+            .sort((a, b) => new Date(b.endDate) - new Date(a.endDate))
+            .map((item) => (
+              <EducationItem
+                key={item.org}
+                name={item.org}
+                startDate={item.startDate}
+                endDate={item.endDate}
+                degree={item.degree}
+              />
+            ))}
+        </div>
+      </AboutBoxContent>
+    </div>
+  );
+};
 
 const TeachingBox = async () => {
   const coursesTaught = await client.fetch(COURSES_TAUGHT_QUERY);
@@ -282,7 +290,7 @@ const EducationItem = ({ name, degree, startDate, endDate }) => (
     <p>{name}</p>
     <AboutDetail>{degree}</AboutDetail>
     <AboutDetail>
-      {endDate ? `${startDate} - ${endDate}` : startDate}
+      {startDate === endDate ? endDate: `${startDate} - ${endDate}`}
     </AboutDetail>
   </CVItem>
 );
@@ -380,17 +388,17 @@ const WritingLink = ({ name, detail, link }) => (
 const ResidencyItem = ({ org, role, date, url }) => (
   <CVItem>
     {url !== undefined && url !== null ? (
-        <ExternalLink
-          href={url}
-          key={url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {org}
-        </ExternalLink>
-      ) : (
-        <p>{org}</p>
-      )}
+      <ExternalLink
+        href={url}
+        key={url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {org}
+      </ExternalLink>
+    ) : (
+      <p>{org}</p>
+    )}
     <AboutDetail>{role}</AboutDetail>
     <AboutDetail>{date}</AboutDetail>
   </CVItem>

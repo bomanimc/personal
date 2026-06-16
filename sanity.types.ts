@@ -13,6 +13,18 @@
  */
 
 // Source: schema.json
+export type Education = {
+  _id: string;
+  _type: "education";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  org: string;
+  degree: string;
+  startDate: string;
+  endDate: string;
+};
+
 export type Residency = {
   _id: string;
   _type: "residency";
@@ -318,6 +330,7 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | Education
   | Residency
   | Exhibition
   | CourseTaught
@@ -516,6 +529,21 @@ export type RESIDENCY_QUERY_RESULT = Array<{
   orderRank?: string;
 }>;
 
+// Source: sanity/lib/queries.ts
+// Variable: EDUCATION_QUERY
+// Query: *[_type == "education"]
+export type EDUCATION_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "education";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  org: string;
+  degree: string;
+  startDate: string;
+  endDate: string;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -529,5 +557,6 @@ declare module "@sanity/client" {
     '*[_type == "courseTaught"]|order(orderRank)': COURSES_TAUGHT_QUERY_RESULT;
     '*[_type == "exhibition"]': EXHIBITIONS_QUERY_RESULT;
     '*[_type == "residency"]|order(orderRank)': RESIDENCY_QUERY_RESULT;
+    '*[_type == "education"]': EDUCATION_QUERY_RESULT;
   }
 }

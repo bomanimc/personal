@@ -12,6 +12,7 @@ export const structure: StructureResolver = (S, context) =>
       S.divider(),
       // TODO: Default to initial person info
       S.documentTypeListItem('personInfo').title('Personal Info'),
+      S.documentTypeListItem('education'),
       orderableDocumentListDeskItem({type: 'courseTaught', title: 'Courses Taught', S, context}),
       S.documentTypeListItem('speakingEngagement'),
       S.documentTypeListItem('interview'),
