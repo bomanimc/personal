@@ -47,12 +47,10 @@
           "type": "union",
           "of": [
             {
-              "type": "string",
-              "value": "ep"
+              "type": "string"
             },
             {
-              "type": "string",
-              "value": "song"
+              "type": "string"
             }
           ]
         },

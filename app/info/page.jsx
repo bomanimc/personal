@@ -12,6 +12,7 @@ import {
   SPEAKING_ENGAGEMENTS_QUERY,
   RESIDENCY_QUERY,
   EDUCATION_QUERY,
+  RECORDING_CREDITS_QUERY,
 } from "@/sanity/lib/queries";
 import PropTypes from "prop-types";
 import { PortableText } from "@portabletext/react";
@@ -89,6 +90,7 @@ const AboutPage = async () => {
               <WritingBox />
               <ResidencyBox />
               <ExhibitionBox />
+              <RecordingCreditsBox />
             </AboutSectionContainer>
           </TextContent>
         }
@@ -298,10 +300,11 @@ const RecordingCreditsBox = async () => {
             .sort((a, b) => new Date(b.date) - new Date(a.date))
             .map((item) => (
               <RecordingCreditItem
-                key={item.title}
-                title={item.title}
-                gallery={item.gallery}
-                location={item.location}
+                key={item.project}
+                project={item.project}
+                projectType={item.projectType}
+                band={item.band}
+                url={item.url}
                 date={item.date}
               />
             ))}
@@ -439,7 +442,7 @@ const ExhibitionItem = ({ location, gallery, title, date }) => (
   </CVItem>
 );
 
-const RecordingCreditItem = ({ project, band, role, date, url }) => (
+const RecordingCreditItem = ({ project, projectType, band, role, date, url }) => (
   <CVItem>
     {url !== undefined && url !== null ? (
       <ExternalLink
@@ -448,10 +451,10 @@ const RecordingCreditItem = ({ project, band, role, date, url }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        {project}
+        {`"${project}" (${projectType})`}
       </ExternalLink>
     ) : (
-      <p>{project}</p>
+       <p>{`"${project}" (${projectType})`}</p>
     )}
     <AboutDetail>{band}</AboutDetail>
     <AboutDetail>{role}</AboutDetail>
