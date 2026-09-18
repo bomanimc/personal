@@ -13,6 +13,20 @@
  */
 
 // Source: schema.json
+export type RecordingCredit = {
+  _id: string;
+  _type: "recordingCredit";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  project: string;
+  projectType?: "ep" | "song";
+  band: string;
+  url?: string;
+  role: string;
+  date: string;
+};
+
 export type Education = {
   _id: string;
   _type: "education";
@@ -330,6 +344,7 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | RecordingCredit
   | Education
   | Residency
   | Exhibition
@@ -544,6 +559,23 @@ export type EDUCATION_QUERY_RESULT = Array<{
   endDate: string;
 }>;
 
+// Source: sanity/lib/queries.ts
+// Variable: RECORDING_CREDITS_QUERY
+// Query: *[_type == "recordingCredit"]
+export type RECORDING_CREDITS_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "recordingCredit";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  project: string;
+  projectType?: "ep" | "song";
+  band: string;
+  url?: string;
+  role: string;
+  date: string;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -558,5 +590,6 @@ declare module "@sanity/client" {
     '*[_type == "exhibition"]': EXHIBITIONS_QUERY_RESULT;
     '*[_type == "residency"]|order(orderRank)': RESIDENCY_QUERY_RESULT;
     '*[_type == "education"]': EDUCATION_QUERY_RESULT;
+    '*[_type == "recordingCredit"]': RECORDING_CREDITS_QUERY_RESULT;
   }
 }

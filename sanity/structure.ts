@@ -18,5 +18,6 @@ export const structure: StructureResolver = (S, context) =>
       S.documentTypeListItem('interview'),
       S.documentTypeListItem('exhibition'),
       orderableDocumentListDeskItem({type: 'residency', title: 'Residencies & Fellowships', S, context}),
+      S.documentTypeListItem('recordingCredit'),
       // TODO: See of there's a way to add new schema types to list by default
     ])

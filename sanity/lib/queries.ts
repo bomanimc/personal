@@ -11,3 +11,4 @@ export const COURSES_TAUGHT_QUERY = defineQuery(`*[_type == "courseTaught"]|orde
 export const EXHIBITIONS_QUERY = defineQuery(`*[_type == "exhibition"]`)
 export const RESIDENCY_QUERY = defineQuery(`*[_type == "residency"]|order(orderRank)`)
 export const EDUCATION_QUERY = defineQuery(`*[_type == "education"]`)
+export const RECORDING_CREDITS_QUERY = defineQuery(`*[_type == "recordingCredit"]`)

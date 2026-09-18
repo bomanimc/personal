@@ -285,6 +285,32 @@ const ExhibitionBox = async () => {
   );
 };
 
+const RecordingCreditsBox = async () => {
+  const recordingCredits = await client.fetch(RECORDING_CREDITS_QUERY);
+
+  return (
+    <div>
+      <AboutBoxTitle id="recording-credits">Recording Credits</AboutBoxTitle>
+      <AboutBoxContent>
+        <div>
+          {recordingCredits
+            // TODO: Handle sorting at query level
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((item) => (
+              <RecordingCreditItem
+                key={item.title}
+                title={item.title}
+                gallery={item.gallery}
+                location={item.location}
+                date={item.date}
+              />
+            ))}
+        </div>
+      </AboutBoxContent>
+    </div>
+  );
+};
+
 const EducationItem = ({ name, degree, startDate, endDate }) => (
   <CVItem>
     <p>{name}</p>
@@ -413,6 +439,26 @@ const ExhibitionItem = ({ location, gallery, title, date }) => (
   </CVItem>
 );
 
+const RecordingCreditItem = ({ project, band, role, date, url }) => (
+  <CVItem>
+    {url !== undefined && url !== null ? (
+      <ExternalLink
+        href={url}
+        key={url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {project}
+      </ExternalLink>
+    ) : (
+      <p>{project}</p>
+    )}
+    <AboutDetail>{band}</AboutDetail>
+    <AboutDetail>{role}</AboutDetail>
+    <AboutDetail>{date}</AboutDetail>
+  </CVItem>
+);
+
 BioContent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   bioPortableText: PropTypes.object.isRequired,
@@ -483,6 +529,14 @@ ExhibitionItem.propTypes = {
   gallery: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+};
+
+RecordingCreditItem.propTypes = {
+  project: PropTypes.string.isRequired,
+  band: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default AboutPage;
