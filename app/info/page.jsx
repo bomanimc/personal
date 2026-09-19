@@ -304,6 +304,7 @@ const RecordingCreditsBox = async () => {
                 project={item.project}
                 projectType={item.projectType}
                 band={item.band}
+                role={item.role}
                 url={item.url}
                 date={item.date}
               />
@@ -319,7 +320,7 @@ const EducationItem = ({ name, degree, startDate, endDate }) => (
     <p>{name}</p>
     <AboutDetail>{degree}</AboutDetail>
     <AboutDetail>
-      {startDate === endDate ? endDate: `${startDate} - ${endDate}`}
+      {startDate === endDate ? endDate : `${startDate} - ${endDate}`}
     </AboutDetail>
   </CVItem>
 );
@@ -442,25 +443,35 @@ const ExhibitionItem = ({ location, gallery, title, date }) => (
   </CVItem>
 );
 
-const RecordingCreditItem = ({ project, projectType, band, role, date, url }) => (
-  <CVItem>
-    {url !== undefined && url !== null ? (
-      <ExternalLink
-        href={url}
-        key={url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {`"${project}" (${projectType})`}
-      </ExternalLink>
-    ) : (
-       <p>{`"${project}" (${projectType})`}</p>
-    )}
-    <AboutDetail>{band}</AboutDetail>
-    <AboutDetail>{role}</AboutDetail>
-    <AboutDetail>{date}</AboutDetail>
-  </CVItem>
-);
+const RecordingCreditItem = ({
+  project,
+  projectType,
+  band,
+  role,
+  date,
+  url,
+}) => {
+  const stringTemplate = `"${project}" by ${band} (${projectType})`;
+
+  return (
+    <CVItem>
+      {url !== undefined && url !== null ? (
+        <ExternalLink
+          href={url}
+          key={url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {stringTemplate}
+        </ExternalLink>
+      ) : (
+        <p>{stringTemplate}</p>
+      )}
+      <AboutDetail>{role}</AboutDetail>
+      <AboutDetail>{date}</AboutDetail>
+    </CVItem>
+  );
+};
 
 BioContent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types

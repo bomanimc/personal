@@ -20,7 +20,7 @@ export type RecordingCredit = {
   _updatedAt: string;
   _rev: string;
   project: string;
-  projectType?: string | string;
+  projectType?: "EP" | "Song";
   band: string;
   url?: string;
   role: string;
@@ -569,7 +569,7 @@ export type RECORDING_CREDITS_QUERY_RESULT = Array<{
   _updatedAt: string;
   _rev: string;
   project: string;
-  projectType?: string;
+  projectType?: "EP" | "Song";
   band: string;
   url?: string;
   role: string;

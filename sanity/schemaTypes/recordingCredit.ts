@@ -14,8 +14,8 @@ export const recordingCreditType = defineType({
       type: "string",
       options: {
         list: [
-          { title: "EP" },
-          { title: "Song"},
+          { title: "EP", value: "EP" },
+          { title: "Song", value: "Song" },
         ],
       },
     }),
